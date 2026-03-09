@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>426 SHOP – Redeem Code</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f5f3f0" />
   <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -177,6 +178,7 @@
       gap: 6px;
       font-size: 0.72rem;
       color: var(--text-sub);
+      flex-wrap: wrap;
     }
 
     .step-pill {
@@ -261,6 +263,7 @@
       font-size: 0.72rem;
       color: var(--text-sub);
       gap: 6px;
+      flex-wrap: wrap;
     }
 
     .small-tag {
@@ -274,6 +277,7 @@
     #lineInfo {
       text-align: right;
       flex: 1;
+      min-height: 1.2em;
     }
 
     /* BUTTON ROW */
@@ -297,7 +301,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 8px;
       box-shadow: 0 12px 25px rgba(0,0,0,0.15);
       transition: all 0.2s ease;
       white-space: nowrap;
@@ -342,6 +346,20 @@
       border-color: #cfc5ba;
     }
 
+    /* LOADING SPINNER */
+    .btn-primary .spinner {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      border: 2px solid rgba(255,255,255,0.6);
+      border-top-color: rgba(255,255,255,1);
+      animation: spin 0.7s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
     /* WARN TEXT */
     .warn-text {
       margin-top: 4px;
@@ -369,6 +387,14 @@
     .status-strong {
       font-weight: 600;
       color: var(--text-main);
+    }
+
+    .status-error {
+      color: #e57373 !important;
+    }
+
+    .status-ok {
+      color: #2e7d32 !important;
     }
 
     /* RESULT */
@@ -473,6 +499,29 @@
       75% { transform: translateX(5px); }
     }
 
+    /* TOAST */
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%) translateY(40px);
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(57,53,50,0.96);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 500;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      z-index: 9999;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
     @media (max-width: 480px) {
       .app {
         padding: 10px 12px 14px;
@@ -555,6 +604,9 @@
     </footer>
   </div>
 
+  <!-- Toast สำหรับแจ้งเตือน copy -->
+  <div id="toast" class="toast">คัดลอกข้อความแล้ว</div>
+
   <script>
     // 🔗 URL Web App ของ Google Apps Script
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
@@ -564,10 +616,25 @@
     const btnClear = document.getElementById("btnClear");
     const codeInput = document.getElementById("codeInput");
     const lineInfo = document.getElementById("lineInfo");
+    const status = document.getElementById("status");
+    const resultsDiv = document.getElementById("results");
+    const toast = document.getElementById("toast");
 
     btnRedeem.addEventListener("click", redeem);
     btnClear.addEventListener("click", clearForm);
     codeInput.addEventListener("input", updateLineInfo);
+
+    // โฟกัสช่องกรอกอัตโนมัติเมื่อโหลดหน้า
+    window.addEventListener("load", () => {
+      codeInput.focus();
+    });
+
+    // เวลา focus ถ้ามีข้อความอยู่ ให้ select ทั้งหมดเพื่อแก้ง่าย
+    codeInput.addEventListener("focus", () => {
+      if (codeInput.value.trim()) {
+        codeInput.select();
+      }
+    });
 
     function updateLineInfo() {
       const raw = codeInput.value || "";
@@ -584,26 +651,25 @@
     }
 
     function clearForm() {
-      const status = document.getElementById("status");
-      const resDiv = document.getElementById("results");
-
       codeInput.value = "";
       status.innerHTML = "";
-      resDiv.innerHTML = "";
+      status.classList.remove("status-error", "status-ok");
+      resultsDiv.innerHTML = "";
       lineInfo.textContent = "สูงสุด ~5 โค้ด/ครั้ง";
       codeInput.focus();
     }
 
     function redeem() {
-      const status = document.getElementById("status");
       const inputContainer = document.querySelector(".input-field");
       const raw = codeInput.value;
       const input = raw.trim();
 
+      status.classList.remove("status-error", "status-ok");
+
       if (!input) {
         inputContainer.classList.add("shake");
         status.innerHTML = "กรุณากรอกรหัสก่อนนะคะ";
-        status.style.color = "#e57373";
+        status.classList.add("status-error");
         setTimeout(() => inputContainer.classList.remove("shake"), 500);
         return;
       }
@@ -615,7 +681,11 @@
       }
 
       btnRedeem.disabled = true;
-      btnRedeem.innerHTML = "กำลังตรวจสอบ…";
+      btnRedeem.innerHTML = `
+        <span class="spinner"></span>
+        <span>กำลังตรวจสอบ…</span>
+      `;
+
       status.style.color = "#8b8680";
       status.innerHTML =
         "ระบบกำลังตรวจสอบรหัสของคุณ...<br>" +
@@ -631,26 +701,25 @@
         })
         .then((data) => {
           btnRedeem.disabled = false;
-          btnRedeem.innerHTML = "รับสินค้า";
+          btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
           renderResult(data);
         })
         .catch((err) => {
           console.error(err);
           btnRedeem.disabled = false;
-          btnRedeem.innerHTML = "รับสินค้า";
+          btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
           status.innerHTML = "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งค่ะ";
-          status.style.color = "#e57373";
+          status.classList.add("status-error");
         });
     }
 
     function renderResult(res) {
-      const resDiv = document.getElementById("results");
-      const status = document.getElementById("status");
-      resDiv.innerHTML = "";
+      resultsDiv.innerHTML = "";
+      status.classList.remove("status-error", "status-ok");
 
       if (!res) {
         status.innerHTML = "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งค่ะ";
-        status.style.color = "#e57373";
+        status.classList.add("status-error");
         return;
       }
 
@@ -675,29 +744,34 @@
       }
 
       status.innerHTML = msgLines.join("<br>");
-      status.style.color = res.ok ? "#393532" : "#e57373";
+
+      if (res.ok) {
+        status.classList.add("status-ok");
+      } else {
+        status.classList.add("status-error");
+      }
 
       if (res.items && res.items.length > 0) {
         res.items.forEach((item) => {
           const card = document.createElement("div");
           card.className = "result-item";
-          const safeReplyText = encodeURIComponent(item.reply);
+          const safeReplyText = encodeURIComponent(item.reply || "");
 
           card.innerHTML = `
             <div class="item-header">REDEEMED CODE: ${item.code}</div>
-            <div class="item-body">${item.reply}</div>
+            <div class="item-body">${item.reply || ""}</div>
             <button class="btn-copy" data-text="${safeReplyText}">
               <span>คัดลอกรายละเอียด</span>
             </button>
           `;
-          resDiv.appendChild(card);
+          resultsDiv.appendChild(card);
         });
 
         document.querySelectorAll(".btn-copy").forEach((btn) => {
           btn.addEventListener("click", () => copyToClipboard(btn));
         });
 
-        window.scrollTo({ top: resDiv.offsetTop - 18, behavior: "smooth" });
+        window.scrollTo({ top: resultsDiv.offsetTop - 18, behavior: "smooth" });
       }
     }
 
@@ -714,15 +788,24 @@
         navigator.clipboard.writeText(text);
       }
 
+      // เปลี่ยนปุ่มนิดหน่อย
       const originalText = btn.innerHTML;
       btn.innerHTML = "คัดลอกแล้ว ✓";
       btn.style.background = "#f4faf7";
       btn.style.borderColor = "#85b8a6";
+
       setTimeout(() => {
         btn.innerHTML = originalText;
         btn.style.background = "#ffffff";
         btn.style.borderColor = "#e3ddd5";
       }, 1800);
+
+      // แสดง toast ด้านล่าง
+      if (toast) {
+        toast.textContent = "คัดลอกรายละเอียดแล้ว ✨";
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 2000);
+      }
     }
   </script>
 </body>
