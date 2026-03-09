@@ -2,7 +2,7 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <title>426 SHOP – Cute Redeem</title>
+  <title>426 SHOP – Premium Redeem Center</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
   <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
@@ -15,364 +15,254 @@
       --accent-orange: #ffcfb3;
       --accent-green: #90beaa;  
       --warning-red: #ff8b8b;
-      --chip-bg: #fff0f3;
     }
 
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-      outline: none;
-    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
 
     body {
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       background: radial-gradient(circle at 0% 0%, #fff0f5 0%, transparent 40%),
                   radial-gradient(circle at 100% 100%, #fff4e6 0%, transparent 40%),
                   var(--bg-color);
       font-family: 'Anuphan', sans-serif;
       color: var(--deep-brown);
-      display: flex;
-      justify-content: center;
-      min-height: 100vh;
-      overflow-x: hidden;
+      display: flex; justify-content: center; min-height: 100vh;
     }
 
     .app-wrapper {
-      width: 100%;
-      max-width: 440px;
-      margin: 40px 15px 80px;
-      display: flex;
-      flex-direction: column;
-      position: relative;
+      width: 100%; max-width: 440px;
+      margin: 30px 15px 60px;
+      display: flex; flex-direction: column; position: relative;
     }
 
-    /* Floating Icons */
-    .deco-icon {
-      position: absolute;
-      z-index: -1;
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
-      animation: float 4s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-15px) rotate(10deg); }
-    }
+    /* Floating Decor */
+    .deco { position: absolute; z-index: -1; animation: float 4s ease-in-out infinite; opacity: 0.6; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-    /* Header Design */
-    .header {
-      text-align: center;
-      margin-bottom: 25px;
-    }
-
-    .logo-container {
-      position: relative;
-      width: fit-content;
-      margin: 0 auto 15px;
-    }
-
+    /* Header */
+    .header { text-align: center; margin-bottom: 20px; }
     .logo-box {
-      width: 100px;
-      height: 100px;
-      background: var(--soft-cream);
-      border-radius: 35px;
-      padding: 8px;
-      box-shadow: 0 15px 35px rgba(138, 106, 79, 0.15);
-      border: 2px solid #fff;
+      width: 90px; height: 90px; background: #fff; border-radius: 30px;
+      margin: 0 auto 10px; padding: 8px; box-shadow: 0 10px 25px rgba(138, 106, 79, 0.1);
     }
-
     .logo-inner {
-      width: 100%; height: 100%;
-      border-radius: 28px;
+      width: 100%; height: 100%; border-radius: 22px;
       background: linear-gradient(135deg, #ffe0ec 0%, #fff0da 100%);
       display: flex; align-items: center; justify-content: center;
     }
+    .bear { width: 50px; height: 44px; background: #c99b7a; border-radius: 50px; position: relative; }
+    .bear::before, .bear::after { content: ''; width: 18px; height: 18px; background: #c99b7a; border-radius: 50%; position: absolute; top: -6px; }
+    .bear::before { left: 2px; } .bear::after { right: 2px; }
+    
+    .header h1 { font-size: 1.6rem; margin: 0; color: var(--deep-brown); letter-spacing: 1px; }
+    .header p { font-size: 0.8rem; margin: 2px 0; color: var(--main-brown); opacity: 0.6; letter-spacing: 3px; }
 
-    /* Bear Animation */
-    .bear-face {
-      width: 60px; height: 52px; background: #c99b7a; border-radius: 50px; position: relative;
+    /* Status Bar */
+    .status-bar {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 12px; padding: 0 10px; font-size: 0.75rem; font-weight: 700;
     }
-    .bear-ear { width: 22px; height: 22px; background: #c99b7a; border-radius: 50%; position: absolute; top: -8px; }
-    .bear-ear.left { left: 2px; } .bear-ear.right { right: 2px; }
-    .bear-eye { width: 6px; height: 6px; background: #3b291e; border-radius: 50%; position: absolute; top: 18px; animation: blink 4s infinite; }
-    .bear-eye.left { left: 18px; } .bear-eye.right { right: 18px; }
-    .bear-nose { width: 10px; height: 7px; background: #3b291e; border-radius: 50%; position: absolute; top: 26px; left: 50%; transform: translateX(-50%); }
-    .bear-cheek { width: 8px; height: 5px; background: #f3adba; border-radius: 50%; position: absolute; top: 28px; }
-    .bear-cheek.left { left: 8px; } .bear-cheek.right { right: 8px; }
+    .online-indicator { display: flex; align-items: center; gap: 5px; color: var(--accent-green); }
+    .dot { width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; animation: blink 1.5s infinite; }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-    @keyframes blink { 0%, 90%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
-
-    .header h1 { font-size: 1.8rem; margin: 0; color: var(--deep-brown); font-weight: 800; letter-spacing: 1px; }
-    .header p { font-size: 0.85rem; margin: 4px 0; color: var(--main-brown); opacity: 0.7; letter-spacing: 3px; font-weight: 600; }
-
-    /* Warning Banner */
-    .warning-banner {
-      background: #fff5f5;
-      border: 1px dashed var(--warning-red);
-      border-radius: 18px;
-      padding: 12px;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      animation: pulse 2s infinite;
+    /* Warning */
+    .warning-box {
+      background: #fff5f5; border: 1px dashed var(--warning-red);
+      border-radius: 18px; padding: 12px; margin-bottom: 15px;
+      display: flex; align-items: center; gap: 10px;
     }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0px rgba(255, 139, 139, 0.4); }
-      70% { box-shadow: 0 0 0 10px rgba(255, 139, 139, 0); }
-      100% { box-shadow: 0 0 0 0px rgba(255, 139, 139, 0); }
-    }
-    .warning-text { font-size: 0.8rem; color: #d65a5a; font-weight: 600; line-height: 1.4; }
+    .warning-text { font-size: 0.75rem; color: #d65a5a; font-weight: 600; }
 
     /* Main Card */
     .card-main {
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(10px);
-      border-radius: 35px;
-      padding: 30px 24px;
-      box-shadow: 0 20px 40px rgba(138, 106, 79, 0.08);
-      border: 1px solid rgba(255,255,255,0.6);
+      background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);
+      border-radius: 30px; padding: 25px 20px;
+      box-shadow: 0 15px 35px rgba(138, 106, 79, 0.05);
+      border: 1px solid rgba(255,255,255,0.7);
     }
 
-    .input-label { font-weight: 700; color: var(--main-brown); display: block; margin-bottom: 5px; font-size: 1rem; }
-    .input-sub { font-size: 0.8rem; color: #bca08e; margin-bottom: 15px; }
-
-    .input-container {
-      background: #fdfaf8;
-      border-radius: 22px;
-      padding: 18px;
-      border: 2px solid #f1ece8;
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    .input-label { font-weight: 700; color: var(--main-brown); font-size: 0.95rem; margin-bottom: 5px; display: block; }
+    .input-area {
+      background: #fdfaf8; border-radius: 20px; padding: 15px;
+      border: 2px solid #f1ece8; transition: 0.3s;
     }
-    .input-container:focus-within {
-      border-color: var(--accent-pink);
-      background: #fff;
-      transform: scale(1.02);
-      box-shadow: 0 10px 20px rgba(255, 183, 206, 0.15);
-    }
-
+    .input-area:focus-within { border-color: var(--accent-pink); background: #fff; }
     textarea {
-      width: 100%; height: 100px; border: none; background: transparent;
-      font-family: 'Anuphan', sans-serif; font-size: 1rem; color: var(--deep-brown);
-      resize: none;
+      width: 100%; height: 90px; border: none; background: transparent;
+      font-family: inherit; font-size: 1rem; color: var(--deep-brown); resize: none;
     }
 
-    /* Submit Button */
     .btn-submit {
-      width: 100%;
-      padding: 18px;
-      margin-top: 20px;
-      border-radius: 22px;
+      width: 100%; padding: 16px; margin-top: 15px; border-radius: 20px;
       background: linear-gradient(135deg, var(--accent-pink), var(--accent-orange));
-      color: white;
-      border: none;
-      font-size: 1.1rem;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 10px 25px rgba(255, 183, 206, 0.4);
-      transition: all 0.3s ease;
-      display: flex; align-items: center; justify-content: center; gap: 10px;
+      color: white; border: none; font-size: 1rem; font-weight: 700;
+      cursor: pointer; box-shadow: 0 8px 20px rgba(255, 183, 206, 0.4);
+      transition: 0.3s;
     }
-    .btn-submit:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255, 183, 206, 0.5); }
-    .btn-submit:active { transform: translateY(0); }
-    .btn-submit:disabled { filter: grayscale(1); cursor: not-allowed; transform: none; }
+    .btn-submit:active { transform: scale(0.98); }
+    .btn-submit:disabled { filter: grayscale(1); opacity: 0.7; }
 
-    /* Results */
-    #status { margin-top: 20px; font-size: 0.9rem; font-weight: 600; border-radius: 15px; }
-    .status-box { padding: 12px; border-radius: 15px; background: #fffcf0; border: 1px solid #f9eed0; margin-bottom: 10px; }
-
-    .result-card {
-      background: white;
-      border-radius: 22px;
-      padding: 20px;
-      margin-top: 20px;
-      border: 1px solid #f3e2d4;
-      position: relative;
-      animation: slideUp 0.5s ease-out;
+    /* Result Section */
+    #status-msg { margin-top: 15px; font-size: 0.85rem; font-weight: 600; text-align: center; }
+    .result-item {
+      background: #fff; border-radius: 20px; padding: 18px; margin-top: 15px;
+      border: 1px solid #f3e2d4; animation: slideUp 0.4s ease-out;
     }
-    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-    .tag-app {
-      background: #f0f7ff; color: #5a9fff; font-size: 0.7rem; font-weight: 700;
-      padding: 4px 12px; border-radius: 999px; margin-bottom: 8px; display: inline-block;
-    }
-
-    .code-title { font-size: 0.7rem; color: #bca08e; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
-    .reply-content { font-size: 0.95rem; line-height: 1.6; font-weight: 500; margin-bottom: 15px; white-space: pre-wrap; }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } }
 
     .btn-copy {
-      width: 100%; padding: 12px; border-radius: 15px; border: 1.5px solid #f1ece8;
-      background: #fff; color: var(--main-brown); font-weight: 700; cursor: pointer;
-      transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; padding: 10px; margin-top: 10px; border-radius: 12px;
+      border: 1px solid #eee; background: #fafafa; font-weight: 700; cursor: pointer;
+      font-size: 0.8rem; color: var(--main-brown);
     }
-    .btn-copy:hover { background: #fdfaf8; border-color: var(--accent-pink); color: var(--accent-pink); }
-
-    /* Footer */
-    .footer { text-align: center; margin-top: 30px; }
-    .contact-badge {
-      display: inline-flex; align-items: center; gap: 8px; background: white;
-      padding: 10px 20px; border-radius: 999px; font-size: 0.85rem; font-weight: 700;
-      color: #06c755; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee;
+    .btn-copy-all {
+      width: 100%; padding: 12px; margin-top: 10px; border-radius: 15px;
+      background: #fff0f3; border: 1.5px dashed var(--accent-pink);
+      color: #d65a8a; font-weight: 700; cursor: pointer; font-size: 0.85rem;
     }
 
-    .shake { animation: shake 0.4s ease-in-out; }
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-8px); }
-      75% { transform: translateX(8px); }
-    }
+    .tag { display: inline-block; padding: 2px 10px; border-radius: 20px; background: #f0f7ff; color: #5a9fff; font-size: 0.65rem; font-weight: 700; margin-bottom: 5px; }
+
+    footer { text-align: center; margin-top: 25px; padding-bottom: 30px; }
+    .line-btn { display: inline-flex; align-items: center; gap: 5px; color: #06c755; font-weight: 700; font-size: 0.8rem; text-decoration: none; }
+
+    .shake { animation: shake 0.4s; }
+    @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
   </style>
 </head>
 <body>
+
   <div class="app-wrapper">
-    <span class="deco-icon" style="top: -20px; left: -10px; font-size: 30px;">🌸</span>
-    <span class="deco-icon" style="top: 100px; right: -20px; font-size: 25px; animation-delay: 1s;">✨</span>
-    <span class="deco-icon" style="bottom: 100px; left: -30px; font-size: 20px; animation-delay: 2s;">☁️</span>
+    <span class="deco" style="top:-10px; left:10px;">🌸</span>
+    <span class="deco" style="top:50px; right:10px; animation-delay:1s;">✨</span>
 
     <header class="header">
-      <div class="logo-container">
-        <div class="logo-box">
-          <div class="logo-inner">
-            <div class="bear-face">
-              <div class="bear-ear left"></div>
-              <div class="bear-ear right"></div>
-              <div class="bear-eye left"></div>
-              <div class="bear-eye right"></div>
-              <div class="bear-nose"></div>
-              <div class="bear-cheek left"></div>
-              <div class="bear-cheek right"></div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="logo-box"><div class="logo-inner"><div class="bear"></div></div></div>
       <h1>426 SHOP</h1>
-      <p>Redeem Center</p>
+      <p>PREMIUM REDEEM</p>
     </header>
 
-    <div class="warning-banner">
-      <span style="font-size: 24px;">⚠️</span>
-      <div class="warning-text">
-        <strong>ข้อควรระวัง:</strong> เมื่อกดรับสินค้าแล้ว <br>
-        กรุณาคัดลอกข้อมูลทันที <u>ห้ามรีเฟรชหน้าเว็บเด็ดขาด</u>
-      </div>
+    <div class="status-bar">
+      <div class="online-indicator"><span class="dot"></span> System Online</div>
+      <div style="color: #bca08e; cursor:pointer;" onclick="alert('วิธีใช้: วางโค้ด 1 บรรทัดต่อ 1 โค้ด แล้วกดปุ่มสีชมพูได้เลยค่ะ!')">ช่วยเหลือ?</div>
+    </div>
+
+    <div class="warning-box">
+      <span style="font-size: 20px;">⚠️</span>
+      <div class="warning-text">รับสินค้าแล้วให้คัดลอกทันที <b>ห้ามรีเฟรชหน้าเว็บ</b></div>
     </div>
 
     <main class="card-main">
-      <label class="input-label">กรอกรหัสโค้ดที่นี่ 🧸</label>
-      <div class="input-sub">วางโค้ดที่แอดมินส่งให้ (1 บรรทัดต่อ 1 โค้ด)</div>
-
-      <div class="input-container" id="inputWrap">
-        <textarea id="codeInput" placeholder="ตัวอย่าง...&#10;NFX-12345&#10;DSN-67890"></textarea>
+      <label class="input-label">วางรหัสรับสินค้า 🧸</label>
+      <div class="input-area" id="inputWrap">
+        <textarea id="codeInput" placeholder="วางโค้ดที่นี่..."></textarea>
       </div>
 
-      <button class="btn-submit" id="btnRedeem">
-        <span>รับสินค้าเลย ✨</span>
-      </button>
+      <button class="btn-submit" id="btnRedeem">รับสินค้าตอนนี้ ✨</button>
 
-      <div id="status"></div>
+      <div id="status-msg"></div>
       <div id="results"></div>
     </main>
 
-    <footer class="footer">
-      <a href="https://line.me/ti/p/@467dlpti" style="text-decoration: none;">
-        <div class="contact-badge">
-          <span>LINE: @467dlpti</span>
-        </div>
+    <footer>
+      <a href="https://line.me/ti/p/@467dlpti" class="line-btn">
+        <span>LINE: @467dlpti</span>
       </a>
-      <p style="font-size: 0.7rem; color: #bca08e; margin-top: 15px; letter-spacing: 2px;">EST. 2024 • PREMIUM SERVICE</p>
+      <div style="font-size: 0.65rem; color: #ccc; margin-top: 10px;">426 SHOP © 2024-2026</div>
     </footer>
   </div>
 
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
-    const btnRedeem = document.getElementById("btnRedeem");
-    const codeInput = document.getElementById("codeInput");
-    const inputWrap = document.getElementById("inputWrap");
-    const statusDiv = document.getElementById("status");
+    
+    const btn = document.getElementById("btnRedeem");
+    const input = document.getElementById("codeInput");
     const resultsDiv = document.getElementById("results");
+    const statusMsg = document.getElementById("status-msg");
 
-    btnRedeem.addEventListener("click", redeem);
-
-    // ป้องกันการเผลอกด Refresh (ในบาง Browser)
+    // แจ้งเตือนก่อนปิดหน้าเว็บถ้ามีข้อมูลอยู่
     window.onbeforeunload = function() {
-        if (resultsDiv.children.length > 0) {
-            return "คุณได้รับสินค้าแล้ว อย่าลืมคัดลอกข้อมูลก่อนปิดหน้าเว็บนะคะ!";
-        }
+      if (resultsDiv.children.length > 0) return "อย่าลืมก๊อปปี้รหัสก่อนปิดนะคะ!";
     };
 
-    function redeem() {
-      const text = codeInput.value.trim();
-
-      if (!text) {
-        inputWrap.classList.add("shake");
-        statusDiv.innerHTML = "<div style='color:#ff8b8b; text-align:center; padding:10px;'>กรุณาใส่โค้ดก่อนนะคะตัวเล็ก 🥺</div>";
-        setTimeout(() => inputWrap.classList.remove("shake"), 500);
+    btn.addEventListener("click", async () => {
+      const code = input.value.trim();
+      if (!code) {
+        document.getElementById("inputWrap").classList.add("shake");
+        setTimeout(() => document.getElementById("inputWrap").classList.remove("shake"), 400);
         return;
       }
 
-      // UI Loading
-      btnRedeem.disabled = true;
-      btnRedeem.innerHTML = "<span>รอสักครู่นะคะ ☁️</span>";
-      statusDiv.innerHTML = "<div class='status-box'>⏳ ระบบกำลังตรวจสอบโค้ดให้คุณคร้าบ...</div>";
+      btn.disabled = true;
+      btn.innerHTML = "กำลังดึงข้อมูล... ⏳";
+      statusMsg.innerHTML = "รอสักครู่นะคะ ระบบกำลังประมวลผล...";
       resultsDiv.innerHTML = "";
 
-      fetch(API_URL + "?action=redeem&text=" + encodeURIComponent(text))
-        .then(res => res.json())
-        .then(data => {
-          btnRedeem.disabled = false;
-          btnRedeem.innerHTML = "<span>รับสินค้าเลย ✨</span>";
-          processResponse(data);
-        })
-        .catch(err => {
-          btnRedeem.disabled = false;
-          btnRedeem.innerHTML = "<span>รับสินค้าเลย ✨</span>";
-          statusDiv.innerHTML = "<div class='status-box' style='color:red;'>❌ เกิดข้อผิดพลาด กรุณาติดต่อแอดมินนะคะ</div>";
-        });
-    }
-
-    function processResponse(res) {
-      let statusHtml = "<div class='status-box'>";
-      
-      if(res.ok) {
-        statusHtml += "✅ ตรวจสอบเรียบร้อยแล้วค่ะ!<br>";
+      try {
+        const response = await fetch(`${API_URL}?action=redeem&text=${encodeURIComponent(code)}`);
+        const data = await response.json();
+        renderResults(data);
+      } catch (err) {
+        statusMsg.innerHTML = "<span style='color:red;'>เกิดข้อผิดพลาด ลองใหม่อีกครั้งนะคะ</span>";
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = "รับสินค้าตอนนี้ ✨";
       }
-      
-      if(res.message) statusHtml += `💬 ${res.message}<br>`;
-      if(res.notFound && res.notFound.length) statusHtml += `❓ ไม่พบโค้ด: ${res.notFound.join(', ')}<br>`;
-      if(res.used && res.used.length) statusHtml += `⚠️ โค้ดถูกใช้แล้ว: ${res.used.map(u => u.code).join(', ')}<br>`;
-      
-      statusHtml += "</div>";
-      statusDiv.innerHTML = statusHtml;
+    });
 
-      if(res.items && res.items.length > 0) {
+    function renderResults(res) {
+      statusMsg.innerHTML = res.ok ? "✅ ดึงข้อมูลสำเร็จแล้วค่ะ" : "❌ พบปัญหาบางประการ";
+      
+      // ปุ่ม Copy All ถ้ามีมากกว่า 1 รายการ
+      if (res.items && res.items.length > 1) {
+        const btnAll = document.createElement("button");
+        btnAll.className = "btn-copy-all";
+        btnAll.innerHTML = "📋 คัดลอกสินค้าทั้งหมดในครั้งเดียว";
+        btnAll.onclick = () => {
+          const allText = res.items.map(i => `[${i.appName || 'Product'}]\n${i.reply}`).join('\n\n---\n\n');
+          copyToClipboard(allText, btnAll, "คัดลอกทั้งหมดแล้ว! ✨");
+        };
+        resultsDiv.appendChild(btnAll);
+      }
+
+      // แสดงรายการสินค้า
+      if (res.items) {
         res.items.forEach(item => {
-          const card = document.createElement("div");
-          card.className = "result-card";
-          card.innerHTML = `
-            ${item.appName ? `<div class="tag-app">${item.appName}</div>` : ''}
-            <div class="code-title">รหัส: ${item.code}</div>
-            <div class="reply-content">${item.reply}</div>
-            <button class="btn-copy" onclick="copyText(this, \`${encodeURIComponent(item.reply)}\`)">
-               คัดลอกข้อมูล 📋
-            </button>
+          const div = document.createElement("div");
+          div.className = "result-item";
+          div.innerHTML = `
+            ${item.appName ? `<span class="tag">${item.appName}</span>` : ''}
+            <div style="font-size:0.7rem; color:#bca08e;">CODE: ${item.code}</div>
+            <div style="margin:8px 0; line-height:1.5; font-weight:500; white-space:pre-wrap;">${item.reply}</div>
+            <button class="btn-copy">คัดลอกเฉพาะรายการนี้</button>
           `;
-          resultsDiv.appendChild(card);
+          div.querySelector(".btn-copy").onclick = (e) => copyToClipboard(item.reply, e.target);
+          resultsDiv.appendChild(div);
         });
-        window.scrollTo({ top: resultsDiv.offsetTop - 50, behavior: 'smooth' });
+      }
+
+      // ข้อความเพิ่มเติม (ถ้ามีโค้ดใช้ไปแล้วหรือหาไม่เจอ)
+      if ((res.used && res.used.length) || (res.notFound && res.notFound.length)) {
+        const info = document.createElement("div");
+        info.style = "font-size:0.75rem; color:#999; margin-top:15px; padding:10px; background:#f9f9f9; border-radius:10px;";
+        let infoText = "";
+        if(res.used?.length) infoText += `⚠️ โค้ดที่ใช้ไปแล้ว: ${res.used.map(u=>u.code).join(', ')}<br>`;
+        if(res.notFound?.length) infoText += `🔍 ไม่พบโค้ด: ${res.notFound.join(', ')}`;
+        info.innerHTML = infoText;
+        resultsDiv.appendChild(info);
       }
     }
 
-    function copyText(btn, encodedText) {
-      const text = decodeURIComponent(encodedText);
+    function copyToClipboard(text, btn, successMsg = "คัดลอกแล้ว! ✨") {
       navigator.clipboard.writeText(text).then(() => {
-        const originalText = btn.innerHTML;
-        btn.innerHTML = "คัดลอกสำเร็จ! ✨";
-        btn.style.color = "#90beaa";
-        btn.style.borderColor = "#90beaa";
+        const oldText = btn.innerHTML;
+        btn.innerHTML = successMsg;
+        btn.style.borderColor = "var(--accent-green)";
+        btn.style.color = "var(--accent-green)";
         setTimeout(() => {
-          btn.innerHTML = originalText;
-          btn.style.color = "";
-          btn.style.borderColor = "";
+          btn.innerHTML = oldText;
+          btn.style = "";
         }, 2000);
       });
     }
