@@ -42,6 +42,24 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* 🌙 Dark theme */
+    body.theme-dark {
+      --bg: #1f2225;
+      --card: #2a2f34;
+      --accent: #8cc3b0;
+      --accent-soft: #243a35;
+      --text-main: #f5f5f5;
+      --text-sub: #a3a7ad;
+      --border-soft: #3a4046;
+      --shadow-soft: 0 18px 40px rgba(0,0,0,0.7);
+    }
+    body.theme-dark {
+      background:
+        radial-gradient(circle at 0 0, #343840 0, transparent 55%),
+        radial-gradient(circle at 100% 0, #27373a 0, transparent 55%),
+        var(--bg);
+    }
+
     .app {
       width: 100%;
       max-width: 480px;
@@ -64,7 +82,14 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 12px;
+    }
+
+    .brand-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
     }
 
     .logo-circle {
@@ -79,6 +104,23 @@
       position: relative;
       overflow: hidden;
       flex-shrink: 0;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    body.theme-dark .logo-circle {
+      background: linear-gradient(135deg, #343840, #1f3634);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.6);
+    }
+
+    /* success animation */
+    .logo-circle.success-pop {
+      animation: successPop 0.7s ease-out;
+    }
+    @keyframes successPop {
+      0%   { transform: scale(1) rotate(0deg); }
+      25%  { transform: scale(1.06) rotate(-2deg); }
+      60%  { transform: scale(1.03) rotate(1.5deg); }
+      100% { transform: scale(1) rotate(0deg); }
     }
 
     .bear-min {
@@ -88,6 +130,9 @@
       border-radius: 20px;
       position: relative;
     }
+    body.theme-dark .bear-min {
+      background: #b5947d;
+    }
     .bear-min::before,
     .bear-min::after {
       content: "";
@@ -96,7 +141,7 @@
       width: 12px;
       height: 12px;
       border-radius: 999px;
-      background: #c9a48b;
+      background: inherit;
     }
     .bear-min::before { left: 3px; }
     .bear-min::after { right: 3px; }
@@ -135,6 +180,7 @@
       display: flex;
       flex-direction: column;
       gap: 2px;
+      min-width: 0;
     }
 
     .brand-title {
@@ -142,6 +188,7 @@
       font-size: 1.4rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
     .brand-sub {
@@ -149,6 +196,14 @@
       color: var(--text-sub);
       letter-spacing: 0.18em;
       text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
     }
 
     .badge {
@@ -164,12 +219,42 @@
       white-space: nowrap;
     }
 
+    body.theme-dark .badge {
+      background: rgba(25,27,30,0.9);
+      border-color: #3b4149;
+    }
+
     .badge-dot {
       width: 7px;
       height: 7px;
       border-radius: 999px;
       background: #4caf50;
       box-shadow: 0 0 0 4px rgba(76,175,80,0.18);
+    }
+
+    .theme-toggle {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid #ddd3c7;
+      background: rgba(255,255,255,0.9);
+      font-size: 0.72rem;
+      color: var(--text-sub);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .theme-toggle:hover {
+      border-color: #cfc4b8;
+      background: #f7f1ea;
+    }
+    body.theme-dark .theme-toggle {
+      background: rgba(29,31,35,0.95);
+      border-color: #3c434a;
+    }
+    body.theme-dark .theme-toggle:hover {
+      background: #343a41;
     }
 
     /* STEP ROW */
@@ -179,16 +264,45 @@
       font-size: 0.72rem;
       color: var(--text-sub);
       flex-wrap: wrap;
+      margin-top: 4px;
     }
 
     .step-pill {
       padding: 4px 10px;
       border-radius: 999px;
       background: rgba(255,255,255,0.9);
-      border: 1px dashed #ded5cb;
+      border: 1px solid #ded5cb;
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    /* state */
+    .step-pill--active {
+      border-color: var(--accent);
+      background: #e7f4ee;
+      color: var(--text-main);
+      box-shadow: 0 0 0 1px rgba(133,184,166,0.2);
+    }
+    .step-pill--done {
+      border-style: solid;
+      border-color: #d3c5b8;
+      background: #f6f0ea;
+      opacity: 0.95;
+    }
+
+    body.theme-dark .step-pill {
+      background: rgba(33,36,40,0.9);
+      border-color: #3a4046;
+    }
+    body.theme-dark .step-pill--active {
+      background: #19342d;
+      border-color: #7fb29f;
+    }
+    body.theme-dark .step-pill--done {
+      background: #2f3339;
+      border-color: #5b636d;
     }
 
     /* CARD MAIN */
@@ -237,10 +351,19 @@
       transition: all 0.25s ease;
     }
 
+    body.theme-dark .input-field {
+      background: #25292e;
+      border-color: #40464e;
+    }
+
     .input-field:focus-within {
       border-color: var(--accent);
       background: #ffffff;
       box-shadow: 0 0 0 3px rgba(133,184,166,0.16);
+    }
+    body.theme-dark .input-field:focus-within {
+      background: #262b30;
+      box-shadow: 0 0 0 3px rgba(140,195,176,0.28);
     }
 
     textarea {
@@ -253,7 +376,7 @@
       color: var(--text-main);
       line-height: 1.5;
       padding: 4px 0 0;
-      min-height: 160px; /* ช่องใส่โค้ดใหญ่ขึ้น */
+      min-height: 160px;
     }
 
     .input-helper-row {
@@ -273,6 +396,10 @@
       background: #f5efea;
       border: 1px dashed #e0d4c8;
       white-space: nowrap;
+    }
+    body.theme-dark .small-tag {
+      background: #2c3137;
+      border-color: #4c555f;
     }
 
     #lineInfo {
@@ -306,6 +433,11 @@
       box-shadow: 0 12px 25px rgba(0,0,0,0.15);
       transition: all 0.2s ease;
       white-space: nowrap;
+    }
+
+    body.theme-dark .btn-primary {
+      background: radial-gradient(circle at 0 0, #4f8274 0, #396258 55%);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.7);
     }
 
     .btn-primary:hover {
@@ -347,6 +479,15 @@
       border-color: #cfc5ba;
     }
 
+    body.theme-dark .btn-secondary {
+      background: #262b30;
+      border-color: #40464e;
+    }
+    body.theme-dark .btn-secondary:hover {
+      background: #2f343a;
+      border-color: #525a64;
+    }
+
     /* LOADING SPINNER */
     .btn-primary .spinner {
       width: 14px;
@@ -376,7 +517,6 @@
       margin-top: 1px;
     }
 
-    /* 🔥 เตือนห้ามรีเฟรชแบบกระพริบ */
     .warn-text--important {
       margin-top: 6px;
       padding: 8px 10px;
@@ -384,6 +524,11 @@
       background: #fff4e7;
       border: 1px solid #f0c2a0;
       animation: warnPulse 1.4s ease-in-out infinite;
+    }
+
+    body.theme-dark .warn-text--important {
+      background: #3b3129;
+      border-color: #e0a87a;
     }
 
     .warn-text--important .warn-text-icon {
@@ -430,6 +575,13 @@
       color: #2e7d32 !important;
     }
 
+    #advice {
+      font-size: 0.78rem;
+      margin-top: 4px;
+      color: #c27a5a;
+      min-height: 16px;
+    }
+
     /* SUMMARY COUNTS */
     #summary {
       margin-top: 8px;
@@ -466,6 +618,45 @@
       border-color: #f5c5bf;
     }
 
+    body.theme-dark .summary-pill {
+      background: #2d3136;
+      border-color: #4a525c;
+    }
+    body.theme-dark .summary-pill--ok {
+      background: #233731;
+      border-color: #4e7f6c;
+    }
+    body.theme-dark .summary-pill--used {
+      background: #3a3049;
+      border-color: #6f5a94;
+    }
+    body.theme-dark .summary-pill--nf {
+      background: #43252a;
+      border-color: #8d5257;
+    }
+
+    .used-warning-box {
+      margin-top: 6px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: #f1f4ff;
+      border: 1px solid #c6d3ff;
+      font-size: 0.78rem;
+      color: #4a5a88;
+    }
+    body.theme-dark .used-warning-box {
+      background: #262d42;
+      border-color: #43507e;
+      color: #c3c9e4;
+    }
+
+    /* TIMING */
+    #timing {
+      margin-top: 4px;
+      font-size: 0.75rem;
+      color: var(--text-sub);
+    }
+
     /* RESULT */
     #results {
       margin-top: 4px;
@@ -480,6 +671,11 @@
       background: #fdfbf9;
       padding: 10px 10px 10px;
       animation: fadeIn 0.35s ease-out;
+    }
+
+    body.theme-dark .result-item {
+      background: #262b30;
+      border-color: #40464e;
     }
 
     @keyframes fadeIn {
@@ -522,6 +718,15 @@
       border-color: #d3c8bc;
     }
 
+    body.theme-dark .btn-eye {
+      background: #2b3036;
+      border-color: #444b55;
+      color: #d0d3d7;
+    }
+    body.theme-dark .btn-eye:hover {
+      background: #343940;
+    }
+
     .item-body {
       font-size: 0.9rem;
       line-height: 1.7;
@@ -530,7 +735,6 @@
       margin-bottom: 8px;
     }
 
-    /* เบลอรายละเอียดเริ่มต้น */
     .item-body.blurred {
       filter: blur(4px);
       pointer-events: none;
@@ -565,6 +769,16 @@
       background: #f4faf7;
     }
 
+    body.theme-dark .btn-copy {
+      background: #2b3036;
+      border-color: #444b55;
+      color: #e6e8ea;
+    }
+    body.theme-dark .btn-copy:hover {
+      background: #31363c;
+      border-color: #6c8f80;
+    }
+
     /* FOOTER */
     .footer {
       margin-top: 4px;
@@ -586,9 +800,17 @@
       border: 1px solid #e5dfd8;
     }
 
+    body.theme-dark .support-pill {
+      background: rgba(29,31,35,0.9);
+      border-color: #3a4046;
+    }
+
     .support-pill span:first-child {
       font-weight: 600;
       color: #7d7a76;
+    }
+    body.theme-dark .support-pill span:first-child {
+      color: #d0d3d7;
     }
 
     .copyright {
@@ -631,7 +853,48 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    /* BUBBLE TIPS */
+    .tips-bubble {
+      position: fixed;
+      left: 16px;
+      bottom: 70px;
+      max-width: 240px;
+      padding: 8px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.95);
+      border: 1px solid rgba(0,0,0,0.04);
+      font-size: 0.76rem;
+      color: #6b6258;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+      display: flex;
+      gap: 6px;
+      align-items: flex-start;
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: all 0.4s ease;
+      z-index: 999;
+    }
+    .tips-bubble.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .tips-bubble-icon {
+      font-size: 1rem;
+      margin-top: 1px;
+    }
+
+    body.theme-dark .tips-bubble {
+      background: rgba(23,24,28,0.98);
+      border-color: #363b43;
+      color: #dadde1;
+    }
+
     @media (max-width: 480px) {
+      .tips-bubble {
+        bottom: 80px;
+        max-width: 220px;
+      }
       .app {
         padding: 10px 12px 14px;
       }
@@ -645,27 +908,35 @@
   <div class="app">
     <header class="header">
       <div class="brand-row">
-        <div class="logo-circle">
-          <div class="bear-min">
-            <div class="bear-eye left"></div>
-            <div class="bear-eye right"></div>
-            <div class="bear-nose"></div>
+        <div class="brand-left">
+          <div class="logo-circle" id="logoCircle">
+            <div class="bear-min">
+              <div class="bear-eye left"></div>
+              <div class="bear-eye right"></div>
+              <div class="bear-nose"></div>
+            </div>
+          </div>
+          <div class="brand-text">
+            <div class="brand-title">426 SHOP</div>
+            <div class="brand-sub">PREMIUM ACCESS</div>
           </div>
         </div>
-        <div class="brand-text">
-          <div class="brand-title">426 SHOP</div>
-          <div class="brand-sub">PREMIUM ACCESS</div>
-        </div>
-        <div class="badge">
-          <span class="badge-dot"></span>
-          <span>ระบบออนไลน์</span>
+        <div class="header-right">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            <span>ระบบออนไลน์</span>
+          </div>
+          <button class="theme-toggle" id="themeToggle" type="button">
+            <span id="themeIcon">🌤</span>
+            <span id="themeLabel">โหมดสว่าง</span>
+          </button>
         </div>
       </div>
 
       <div class="step-row">
-        <div class="step-pill">① วางโค้ด</div>
-        <div class="step-pill">② กดรับสินค้า</div>
-        <div class="step-pill">③ คัดลอกรายละเอียด</div>
+        <div class="step-pill step-pill--active" id="step1">① วางโค้ด</div>
+        <div class="step-pill" id="step2">② กดรับสินค้า</div>
+        <div class="step-pill" id="step3">③ คัดลอกรายละเอียด</div>
       </div>
     </header>
 
@@ -681,16 +952,16 @@
       <div class="input-field">
         <textarea id="codeInput" placeholder="เช่น NFXA1B2&#10;หรือ DSN9X3Y"></textarea>
         <div class="input-helper-row">
-          <div class="small-tag">แนะนำ: วางโค้ดแยกบรรทัด</div>
+          <div class="small-tag">ตัวอย่าง: NFXA1B2, DSN9X3Y, YTB3A5Z</div>
           <span id="lineInfo">สูงสุด ~5 โค้ด/ครั้ง</span>
         </div>
       </div>
 
       <div class="btn-row">
-        <button class="btn-primary" id="btnRedeem">
+        <button class="btn-primary" id="btnRedeem" type="button">
           <span>รับสินค้า</span><span>↗</span>
         </button>
-        <button class="btn-secondary" id="btnClear">
+        <button class="btn-secondary" id="btnClear" type="button">
           <span>ล้างทั้งหมด</span>
         </button>
       </div>
@@ -705,6 +976,8 @@
       <div id="summary"></div>
 
       <div id="status"></div>
+      <div id="advice"></div>
+      <div id="timing"></div>
       <div id="results"></div>
     </main>
 
@@ -720,6 +993,12 @@
   <!-- Toast สำหรับแจ้งเตือน copy -->
   <div id="toast" class="toast">คัดลอกข้อความแล้ว</div>
 
+  <!-- Bubble tips -->
+  <div id="tipsBubble" class="tips-bubble">
+    <div class="tips-bubble-icon">💡</div>
+    <div id="tipsText">1 บรรทัดต่อ 1 โค้ด ระบบจะอ่านง่ายที่สุดค่ะ</div>
+  </div>
+
   <script>
     // 🔗 URL Web App ของ Google Apps Script
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
@@ -730,11 +1009,74 @@
     const codeInput = document.getElementById("codeInput");
     const lineInfo = document.getElementById("lineInfo");
     const status = document.getElementById("status");
+    const advice = document.getElementById("advice");
+    const timing = document.getElementById("timing");
     const resultsDiv = document.getElementById("results");
     const summaryDiv = document.getElementById("summary");
     const toast = document.getElementById("toast");
+    const logoCircle = document.getElementById("logoCircle");
+
+    const step1 = document.getElementById("step1");
+    const step2 = document.getElementById("step2");
+    const step3 = document.getElementById("step3");
+
+    const themeToggle = document.getElementById("themeToggle");
+    const themeIcon = document.getElementById("themeIcon");
+    const themeLabel = document.getElementById("themeLabel");
+
+    const tipsBubble = document.getElementById("tipsBubble");
+    const tipsText = document.getElementById("tipsText");
 
     let isLoading = false;
+
+    // Theme init
+    (function initTheme() {
+      const saved = localStorage.getItem("themeMode");
+      if (saved === "dark") {
+        document.body.classList.add("theme-dark");
+      }
+      updateThemeLabel();
+    })();
+
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("theme-dark");
+      const mode = document.body.classList.contains("theme-dark") ? "dark" : "light";
+      localStorage.setItem("themeMode", mode);
+      updateThemeLabel();
+    });
+
+    function updateThemeLabel() {
+      const dark = document.body.classList.contains("theme-dark");
+      if (dark) {
+        themeIcon.textContent = "🌙";
+        themeLabel.textContent = "โหมดกลางคืน";
+      } else {
+        themeIcon.textContent = "🌤";
+        themeLabel.textContent = "โหมดสว่าง";
+      }
+    }
+
+    // Bubble tips rotation
+    const tipsMessages = [
+      "1 บรรทัดต่อ 1 โค้ด ระบบจะอ่านง่ายที่สุดค่ะ",
+      "สามารถวางได้ทีละหลายโค้ด สูงสุดประมาณ 5 โค้ดต่อครั้ง",
+      "หลังจากกดรับสินค้าแล้ว ห้ามรีเฟรชจนกว่าผลจะขึ้นครบค่ะ",
+      "ถ้ามีโค้ดใช้แล้วหลายตัว แนะนำแคปหน้าจอส่งให้แอดมินตรวจสอบนะคะ"
+    ];
+    let tipIndex = 0;
+
+    function showTip() {
+      if (!tipsBubble) return;
+      tipsBubble.classList.add("show");
+      tipsText.textContent = tipsMessages[tipIndex];
+      tipIndex = (tipIndex + 1) % tipsMessages.length;
+      setTimeout(() => {
+        tipsBubble.classList.remove("show");
+      }, 5500);
+    }
+    // เริ่มแสดง tip แบบวน
+    setTimeout(showTip, 2000);
+    setInterval(showTip, 9000);
 
     btnRedeem.addEventListener("click", redeem);
     btnClear.addEventListener("click", clearForm);
@@ -747,17 +1089,36 @@
       e.returnValue = "ระบบกำลังตรวจสอบโค้ดของคุณอยู่ หากออกจากหน้านี้อาจทำให้ไม่ได้รับโค้ดนะคะ";
     });
 
-    // โฟกัสช่องกรอกอัตโนมัติเมื่อโหลดหน้า
     window.addEventListener("load", () => {
       codeInput.focus();
     });
 
-    // เวลา focus ถ้ามีข้อความอยู่ ให้ select ทั้งหมดเพื่อแก้ง่าย
     codeInput.addEventListener("focus", () => {
       if (codeInput.value.trim()) {
         codeInput.select();
       }
+      setStepState("input");
     });
+
+    function setStepState(state) {
+      // เคลียร์ class
+      [step1, step2, step3].forEach(s => {
+        s.classList.remove("step-pill--active", "step-pill--done");
+      });
+
+      if (state === "input") {
+        step1.classList.add("step-pill--active");
+      } else if (state === "loading") {
+        step1.classList.add("step-pill--done");
+        step2.classList.add("step-pill--active");
+      } else if (state === "done") {
+        step1.classList.add("step-pill--done");
+        step2.classList.add("step-pill--done");
+        step3.classList.add("step-pill--active");
+      } else {
+        step1.classList.add("step-pill--active");
+      }
+    }
 
     function updateLineInfo() {
       const raw = codeInput.value || "";
@@ -777,9 +1138,12 @@
       codeInput.value = "";
       status.innerHTML = "";
       status.classList.remove("status-error", "status-ok");
+      advice.innerHTML = "";
+      timing.innerHTML = "";
       resultsDiv.innerHTML = "";
       summaryDiv.innerHTML = "";
       lineInfo.textContent = "สูงสุด ~5 โค้ด/ครั้ง";
+      setStepState("input");
       codeInput.focus();
     }
 
@@ -789,11 +1153,14 @@
       const input = raw.trim();
 
       status.classList.remove("status-error", "status-ok");
+      advice.innerHTML = "";
+      timing.innerHTML = "";
 
       if (!input) {
         inputContainer.classList.add("shake");
         status.innerHTML = "กรุณากรอกรหัสก่อนนะคะ";
         status.classList.add("status-error");
+        setStepState("input");
         setTimeout(() => inputContainer.classList.remove("shake"), 500);
         return;
       }
@@ -805,6 +1172,7 @@
       }
 
       isLoading = true;
+      setStepState("loading");
       btnRedeem.disabled = true;
       btnRedeem.innerHTML = `
         <span class="spinner"></span>
@@ -817,6 +1185,12 @@
         "<span style='font-size:0.78rem;color:#c27a5a;'>หลังจากส่งโค้ดแล้ว ห้ามรีเฟรช/ปิดหน้านี้จนกว่าผลจะขึ้นครบค่ะ</span>" +
         (preWarn ? "<br><span style='font-size:0.78rem;color:#c27a5a;'>" + preWarn + "</span>" : "");
 
+      resultsDiv.innerHTML = "";
+      summaryDiv.innerHTML = "";
+      advice.innerHTML = "";
+      timing.innerHTML = "";
+
+      const t0 = performance.now();
       const url = API_URL + "?action=redeem&text=" + encodeURIComponent(input);
 
       fetch(url)
@@ -825,6 +1199,9 @@
           return res.json();
         })
         .then((data) => {
+          const t1 = performance.now();
+          const duration = ((t1 - t0) / 1000).toFixed(2);
+          showTiming(duration);
           isLoading = false;
           btnRedeem.disabled = false;
           btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
@@ -837,17 +1214,32 @@
           btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
           status.innerHTML = "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งค่ะ";
           status.classList.add("status-error");
+          setStepState("input");
         });
+    }
+
+    function showTiming(sec) {
+      timing.textContent = `⏱ เวลาในการประมวลผล: ${sec} วินาที`;
+    }
+
+    function showSuccessAnimation() {
+      if (!logoCircle) return;
+      logoCircle.classList.remove("success-pop");
+      // trigger reflow
+      void logoCircle.offsetWidth;
+      logoCircle.classList.add("success-pop");
     }
 
     function renderResult(res) {
       resultsDiv.innerHTML = "";
       summaryDiv.innerHTML = "";
       status.classList.remove("status-error", "status-ok");
+      advice.innerHTML = "";
 
       if (!res) {
         status.innerHTML = "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งค่ะ";
         status.classList.add("status-error");
+        setStepState("input");
         return;
       }
 
@@ -871,6 +1263,14 @@
         summaryDiv.innerHTML = `<div class="summary-row">${chips.join("")}</div>`;
       } else {
         summaryDiv.innerHTML = "";
+      }
+
+      // กล่องเตือนกรณีมีโค้ดใช้แล้วหลายตัว
+      if (usedCount >= 2) {
+        const warnBox = document.createElement("div");
+        warnBox.className = "used-warning-box";
+        warnBox.innerHTML = "🔁 พบโค้ดที่ถูกใช้งานแล้วหลายรายการ<br>หากไม่แน่ใจ แนะนำแคปหน้าจอนี้ส่งให้แอดมินตรวจสอบนะคะ";
+        summaryDiv.appendChild(warnBox);
       }
 
       // ==== Status text ====
@@ -898,8 +1298,21 @@
 
       if (res.ok) {
         status.classList.add("status-ok");
+        setStepState("done");
+        if ((res.items && res.items.length) || 0) {
+          showSuccessAnimation();
+        }
       } else {
         status.classList.add("status-error");
+        setStepState("input");
+      }
+
+      // Hint พิเศษเมื่อดูเหมือนโค้ดผิดรูปแบบ
+      const msg = (res.message || "") + " " + (res.multiInLineMessage || "");
+      if (msg.includes("รูปแบบโค้ดไม่ถูกต้อง")) {
+        advice.innerHTML = "ดูเหมือนมีช่องว่างหรือขีดในโค้ดนะคะ ลองลบช่องว่าง/ขีดออก แล้วส่งใหม่แบบตัวอักษรติดกัน เช่น NFXA1B2 ✨";
+      } else if (msg.includes("ไม่พบโค้ดในข้อความที่กรอกเข้ามา")) {
+        advice.innerHTML = "ลองเช็กอีกครั้งว่าโค้ดพิมพ์ครบทุกตัว และไม่มีช่องว่างเกินมานะคะ 😊";
       }
 
       // ล้างช่องกรอกอัตโนมัติถ้ามีโค้ดที่ใช้ได้จริง
@@ -927,7 +1340,6 @@
           `;
           resultsDiv.appendChild(card);
 
-          // ปุ่มแสดง/ซ่อนรายละเอียด
           const eyeBtn = card.querySelector(".btn-eye");
           const body = card.querySelector(".item-body");
           eyeBtn.addEventListener("click", () => {
@@ -961,7 +1373,6 @@
         navigator.clipboard.writeText(text);
       }
 
-      // เปลี่ยนปุ่มนิดหน่อย
       const originalText = btn.innerHTML;
       btn.innerHTML = "คัดลอกแล้ว ✓";
       btn.style.background = "#f4faf7";
@@ -969,11 +1380,10 @@
 
       setTimeout(() => {
         btn.innerHTML = originalText;
-        btn.style.background = "#ffffff";
-        btn.style.borderColor = "#e3ddd5";
+        btn.style.background = "";
+        btn.style.borderColor = "";
       }, 1800);
 
-      // แสดง toast ด้านล่าง
       if (toast) {
         toast.textContent = "คัดลอกรายละเอียดแล้ว ✨";
         toast.classList.add("show");
