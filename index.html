@@ -2,16 +2,16 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <title>426 SHOP – Premium Cute Redeem</title>
+  <title>426 SHOP – The Ultimate Experience</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
   <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --primary-pink: #ffdae9;
-      --soft-peach: #fff0db;
-      --text-main: #6b4f3f;
-      --accent-grad: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-      --glass-bg: rgba(255, 255, 255, 0.7);
+      --p-pink: #ffafbd;
+      --p-orange: #ffc3a0;
+      --deep-brown: #4a3728;
+      --glass: rgba(255, 255, 255, 0.45);
+      --glass-border: rgba(255, 255, 255, 0.7);
     }
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -19,299 +19,253 @@
     body {
       margin: 0; padding: 0;
       font-family: 'Anuphan', sans-serif;
-      color: var(--text-main);
-      background: #fff9f5;
-      /* พื้นหลังแบบไล่สีฟุ้งๆ */
-      background-image: 
-        radial-gradient(at 0% 0%, #ffedf4 0px, transparent 50%),
-        radial-gradient(at 100% 0%, #fff4e1 0px, transparent 50%),
-        radial-gradient(at 100% 100%, #e8f5ff 0px, transparent 50%),
-        radial-gradient(at 0% 100%, #fff0f5 0px, transparent 50%);
+      color: var(--deep-brown);
       min-height: 100vh;
-      display: flex; justify-content: center; overflow-x: hidden;
+      display: flex; justify-content: center;
+      overflow-x: hidden;
+      /* Animated Mesh Gradient Background */
+      background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+      background-attachment: fixed;
     }
 
-    .container {
-      width: 100%; max-width: 450px;
-      margin: 40px 15px;
-      position: relative;
+    /* ตกแต่งพื้นหลังด้วยวงกลมฟุ้งๆ */
+    body::before {
+      content: ""; position: fixed; top: -10%; left: -10%; width: 50%; height: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%);
+      filter: blur(50px); z-index: -1; animation: orbit 20s infinite linear;
     }
 
-    /* ตกแต่งพื้นหลังลอยๆ */
-    .floating-deco {
-      position: absolute; z-index: -1; animation: float 6s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      50% { transform: translate(10px, -20px) rotate(10deg); }
+    @keyframes orbit {
+      from { transform: rotate(0deg) translateX(50px) rotate(0deg); }
+      to { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
     }
 
-    /* Header Design */
-    .header { text-align: center; margin-bottom: 30px; }
-    .logo-wrapper {
-      position: relative; width: 110px; height: 110px; margin: 0 auto 15px;
+    .app-container {
+      width: 100%; max-width: 480px;
+      padding: 40px 20px;
+      z-index: 1;
     }
-    .logo-main {
-      width: 100%; height: 100%; background: #fff; border-radius: 40px;
-      padding: 10px; box-shadow: 0 20px 40px rgba(255, 154, 158, 0.2);
-      transform: rotate(-5deg); transition: 0.5s;
+
+    /* Header & Logo */
+    .header { text-align: center; margin-bottom: 35px; }
+    .logo-orbit {
+      width: 120px; height: 120px; margin: 0 auto 20px;
+      background: var(--glass);
+      backdrop-filter: blur(15px);
+      border-radius: 45px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+      animation: softBounce 3s ease-in-out infinite;
     }
-    .logo-main:hover { transform: rotate(0deg) scale(1.05); }
     
-    .bear-head {
-      width: 100%; height: 100%; background: var(--soft-peach); border-radius: 32px;
-      display: flex; align-items: center; justify-content: center; position: relative;
+    .bear-icon {
+      width: 65px; height: 55px; background: #c99b7a; border-radius: 50px; position: relative;
     }
-    .bear-ear-l, .bear-ear-r {
-      width: 25px; height: 25px; background: var(--soft-peach); border-radius: 50%;
-      position: absolute; top: -5px;
+    .bear-icon::before, .bear-icon::after {
+      content: ""; width: 22px; height: 22px; background: #c99b7a; border-radius: 50%;
+      position: absolute; top: -8px;
     }
-    .bear-ear-l { left: 10px; } .bear-ear-r { right: 10px; }
+    .bear-icon::before { left: 2px; } .bear-icon::after { right: 2px; }
 
-    .header h1 { font-size: 1.8rem; margin: 0; font-weight: 800; color: #5a4637; letter-spacing: -0.5px; }
-    .header .subtitle { font-size: 0.8rem; font-weight: 700; color: #d4a5a5; letter-spacing: 5px; text-transform: uppercase; }
+    @keyframes softBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-    /* Glass Card */
-    .glass-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: 35px;
-      padding: 30px 25px;
-      border: 2px solid rgba(255, 255, 255, 0.8);
-      box-shadow: 0 25px 50px -12px rgba(138, 106, 79, 0.1);
+    .header h1 { font-size: 2rem; margin: 0; font-weight: 800; letter-spacing: -1px; }
+    .header p { font-size: 0.8rem; font-weight: 700; opacity: 0.5; letter-spacing: 6px; text-transform: uppercase; margin-top: 5px; }
+
+    /* Main Glass Card */
+    .main-card {
+      background: var(--glass);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border-radius: 40px;
+      padding: 35px 25px;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+      position: relative; overflow: hidden;
     }
 
-    .system-status {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      font-size: 0.8rem; font-weight: 700; color: #90beaa; margin-bottom: 20px;
+    /* Status Bar */
+    .status-indicator {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.5); padding: 6px 15px;
+      border-radius: 999px; font-size: 0.75rem; font-weight: 700; color: #6e8e7e;
+      margin-bottom: 25px;
     }
-    .status-dot { width: 8px; height: 8px; background: #90beaa; border-radius: 50%; box-shadow: 0 0 10px #90beaa; animation: pulse 2s infinite; }
-    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+    .dot { width: 6px; height: 6px; background: #90beaa; border-radius: 50%; animation: pulse 1.5s infinite; }
 
-    /* Input Styling */
-    .input-group { margin-bottom: 20px; }
-    .label { font-size: 0.95rem; font-weight: 700; color: #8a6a4f; margin-left: 10px; margin-bottom: 8px; display: block; }
-    
-    .input-box {
-      background: rgba(255, 255, 255, 0.5);
-      border: 2px solid #f1ece8;
-      border-radius: 25px;
-      padding: 20px;
-      transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Input Field */
+    .input-wrapper {
+      background: rgba(255,255,255,0.6);
+      border-radius: 30px; padding: 20px;
+      border: 1px solid transparent;
+      transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      margin-bottom: 20px;
     }
-    .input-box:focus-within {
+    .input-wrapper:focus-within {
       background: #fff;
-      border-color: #ffb7ce;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(255, 183, 206, 0.15);
+      transform: scale(1.02);
+      border-color: var(--p-pink);
+      box-shadow: 0 15px 30px rgba(255, 175, 189, 0.2);
     }
     textarea {
-      width: 100%; height: 100px; border: none; background: transparent;
-      font-family: inherit; font-size: 1rem; color: #5a4637; resize: none;
+      width: 100%; height: 110px; border: none; background: transparent;
+      font-family: inherit; font-size: 1.05rem; color: var(--deep-brown);
+      resize: none; font-weight: 500;
     }
 
-    /* Button */
-    .btn-redeem {
-      width: 100%;
-      padding: 18px;
-      border-radius: 25px;
-      border: none;
-      background: var(--accent-grad);
-      color: white;
-      font-size: 1.1rem;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 10px 25px rgba(255, 154, 158, 0.3);
-      transition: 0.3s;
+    /* Premium Button */
+    .btn-main {
+      width: 100%; padding: 20px; border-radius: 30px; border: none;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+      color: white; font-size: 1.15rem; font-weight: 800; cursor: pointer;
+      box-shadow: 0 15px 35px rgba(255, 154, 158, 0.4);
+      transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    .btn-redeem:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 30px rgba(255, 154, 158, 0.4); }
-    .btn-redeem:active { transform: translateY(0) scale(0.98); }
-    .btn-redeem:disabled { filter: grayscale(0.8); cursor: not-allowed; }
+    .btn-main:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(255, 154, 158, 0.5); }
+    .btn-main:active { transform: scale(0.96); }
 
-    /* Result Items */
-    .result-container { margin-top: 25px; }
-    .item-card {
-      background: #fff;
-      border-radius: 25px;
-      padding: 20px;
-      margin-bottom: 15px;
-      border: 1px solid #f9f0ea;
-      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Result Animation */
+    .result-item {
+      background: #fff; border-radius: 30px; padding: 25px; margin-top: 20px;
+      border: 1px solid rgba(0,0,0,0.03);
+      animation: reveal 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
     }
-    @keyframes popIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+    @keyframes reveal { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-    .app-tag {
-      display: inline-block; padding: 4px 12px; border-radius: 12px;
-      background: #f0f7ff; color: #5a9fff; font-size: 0.7rem; font-weight: 800; margin-bottom: 10px;
+    .copy-btn {
+      width: 100%; padding: 14px; margin-top: 15px; border-radius: 20px;
+      border: 1.5px solid #f1f1f1; background: #fff; color: #8a6a4f;
+      font-weight: 700; cursor: pointer; transition: 0.3s;
     }
-    .code-text { font-size: 0.95rem; line-height: 1.6; white-space: pre-wrap; margin-bottom: 15px; }
+    .copy-btn:hover { background: #fff8f9; border-color: var(--p-pink); color: var(--p-pink); }
 
-    .btn-copy-small {
-      width: 100%; padding: 12px; border-radius: 15px; border: 1.5px solid #f1ece8;
-      background: #fff; color: #8a6a4f; font-weight: 700; cursor: pointer; transition: 0.2s;
-    }
-    .btn-copy-small:hover { border-color: #ffb7ce; color: #ffb7ce; background: #fffafb; }
-
-    /* Warning Overlay */
-    .reload-warning {
-      background: #fff0f0; border-radius: 20px; padding: 12px; 
-      margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
-    }
-
+    /* Footer */
     footer { text-align: center; margin-top: 40px; }
-    .line-contact {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 10px 25px; background: #fff; border-radius: 999px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05); color: #06c755; text-decoration: none; font-weight: 700;
+    .line-link {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #fff; padding: 12px 30px; border-radius: 999px;
+      color: #06c755; text-decoration: none; font-weight: 800; font-size: 0.9rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
     }
 
-    /* Shake animation */
-    .shake { animation: shake 0.4s ease-in-out; }
-    @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-8px); } 75% { transform: translateX(8px); } }
+    /* Floating Tags */
+    .tag { display: inline-block; padding: 4px 12px; background: #f0f7ff; color: #5a9fff; border-radius: 12px; font-size: 0.7rem; font-weight: 800; margin-bottom: 10px; }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <span class="floating-deco" style="top: -20px; left: -30px; font-size: 40px;">🧸</span>
-    <span class="floating-deco" style="top: 100px; right: -40px; font-size: 30px; animation-delay: 1s;">✨</span>
-    <span class="floating-deco" style="bottom: 50px; left: -40px; font-size: 25px; animation-delay: 2s;">🎀</span>
-
+  <div class="app-container">
     <header class="header">
-      <div class="logo-wrapper">
-        <div class="logo-main">
-          <div class="bear-head">
-            <div class="bear-ear-l"></div>
-            <div class="bear-ear-r"></div>
-            <div style="width: 6px; height: 6px; background: #3b291e; border-radius: 50%; position: absolute; top: 38px; left: 30px;"></div>
-            <div style="width: 6px; height: 6px; background: #3b291e; border-radius: 50%; position: absolute; top: 38px; right: 30px;"></div>
-            <div style="width: 10px; height: 7px; background: #3b291e; border-radius: 50%; position: absolute; top: 48px;"></div>
-          </div>
+      <div class="logo-orbit">
+        <div class="bear-icon">
+          <div style="width: 7px; height: 7px; background: #3b291e; border-radius: 50%; position: absolute; top: 22px; left: 18px;"></div>
+          <div style="width: 7px; height: 7px; background: #3b291e; border-radius: 50%; position: absolute; top: 22px; right: 18px;"></div>
+          <div style="width: 12px; height: 8px; background: #3b291e; border-radius: 50%; position: absolute; top: 32px; left: 50%; transform: translateX(-50%);"></div>
         </div>
       </div>
       <h1>426 SHOP</h1>
-      <div class="subtitle">Premium Access</div>
+      <p>Premium Access</p>
     </header>
 
-    <div class="glass-card">
-      <div class="system-status">
-        <span class="status-dot"></span>
-        <span>Redeem System Online</span>
+    <main class="main-card">
+      <div class="status-indicator">
+        <span class="dot"></span> 🔐 ระบบตรวจสอบรหัสพร้อมใช้งาน
       </div>
 
-      <div class="reload-warning">
-        <span style="font-size: 24px;">🚫</span>
-        <div style="font-size: 0.75rem; color: #d65a5a; font-weight: 700;">ห้ามรีเฟรชหน้าจอนะคะ <br> มิเช่นนั้นข้อมูลรหัสจะหายไปค่ะ!</div>
+      <div style="font-size: 0.75rem; color: #d65a5a; font-weight: 800; text-align: center; margin-bottom: 20px; background: #fff0f0; padding: 10px; border-radius: 15px;">
+        ⚠️ ห้ามรีเฟรชหน้าจอเด็ดขาด ข้อมูลจะหายทันที!
       </div>
 
-      <div class="input-group">
-        <label class="label">วางโค้ดตรงนี้เลยค่ะ ☁️</label>
-        <div class="input-box" id="boxEffect">
-          <textarea id="codeInput" placeholder="ตัวอย่าง...&#10;NFX-12345678&#10;DSN-87654321"></textarea>
-        </div>
+      <div class="input-wrapper">
+        <textarea id="codeInput" placeholder="กรอกรหัสสินค้าที่นี่..."></textarea>
       </div>
 
-      <button class="btn-redeem" id="btnRedeem">รับสินค้าทันที ✨</button>
+      <button class="btn-main" id="btnGo">รับสินค้าทันที ✨</button>
 
-      <div id="statusArea"></div>
-      <div class="result-container" id="results"></div>
-    </div>
+      <div id="status"></div>
+      <div id="results"></div>
+    </main>
 
     <footer>
-      <a href="https://line.me/ti/p/@467dlpti" class="line-contact">
-        <span>LINE: @467dlpti</span>
+      <a href="https://line.me/ti/p/@467dlpti" class="line-link">
+        <span>Support: @467dlpti</span>
       </a>
-      <p style="font-size: 0.7rem; color: #bca08e; margin-top: 15px; font-weight: 700;">EST. 2024 • COZY REDEEM CENTER</p>
+      <p style="font-size: 0.7rem; opacity: 0.4; margin-top: 20px; font-weight: 800; letter-spacing: 2px;">AUTHENTIC DIGITAL CONTENT</p>
     </footer>
   </div>
 
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
-    const btn = document.getElementById("btnRedeem");
+    const btn = document.getElementById("btnGo");
     const input = document.getElementById("codeInput");
-    const resultsArea = document.getElementById("results");
-    const statusArea = document.getElementById("statusArea");
+    const results = document.getElementById("results");
+    const status = document.getElementById("status");
 
-    // กันรีเฟรช
+    // แจ้งเตือนรีเฟรช
     window.onbeforeunload = function() {
-      if (resultsArea.children.length > 0) return "คุณจะเสียข้อมูลรหัสไปนะคะ ก๊อปปี้หรือยังเอ่ย?";
+      if (results.children.length > 0) return "รหัสสินค้าจะหายไปหากคุณรีเฟรช!";
     };
 
     btn.addEventListener("click", async () => {
-      const code = input.value.trim();
-      if (!code) {
-        document.getElementById("boxEffect").classList.add("shake");
-        setTimeout(() => document.getElementById("boxEffect").classList.remove("shake"), 400);
-        return;
-      }
+      const val = input.value.trim();
+      if (!val) return;
 
       btn.disabled = true;
-      btn.innerHTML = "กำลังดึงข้อมูล... 🧸";
-      statusArea.innerHTML = "<div style='text-align:center; margin-top:15px; font-size:0.8rem; font-weight:700;'>⏳ รอสักครู่นะคะคนดี...</div>";
-      resultsArea.innerHTML = "";
+      btn.innerHTML = "กำลังประมวลผลระบบพรีเมียม...";
+      status.innerHTML = "<p style='text-align:center; font-weight:800; font-size:0.8rem; margin-top:20px;'>⏳ กรุณารอสักครู่ ระบบกำลังดึงข้อมูลฐานข้อมูล...</p>";
+      results.innerHTML = "";
 
       try {
-        const res = await fetch(`${API_URL}?action=redeem&text=${encodeURIComponent(code)}`);
+        const res = await fetch(`${API_URL}?action=redeem&text=${encodeURIComponent(val)}`);
         const data = await res.json();
         
-        statusArea.innerHTML = "";
+        status.innerHTML = "";
         if (data.ok) {
-          renderData(data);
-        } else {
-          statusArea.innerHTML = `<div style='color:#ff8b8b; text-align:center; margin-top:15px; font-weight:700;'>⚠️ ${data.message || 'พบข้อผิดพลาด'}</div>`;
+          if(data.items.length > 1) {
+            const copyAll = document.createElement("button");
+            copyAll.className = "btn-main";
+            copyAll.style.background = "#fff";
+            copyAll.style.color = "#ff9a9e";
+            copyAll.style.border = "2px solid #ff9a9e";
+            copyAll.style.marginBottom = "20px";
+            copyAll.innerHTML = "📋 คัดลอกรายละเอียดทั้งหมด";
+            copyAll.onclick = () => {
+                const totalText = data.items.map(i => `[${i.appName}]\n${i.reply}`).join('\n\n---\n\n');
+                doCopy(totalText, copyAll);
+            };
+            results.appendChild(copyAll);
+          }
+
+          data.items.forEach(item => {
+            const card = document.createElement("div");
+            card.className = "result-item";
+            card.innerHTML = `
+              <span class="tag">${item.appName || 'Premium'}</span>
+              <div style="font-weight:600; line-height:1.6; color:#5a4637;">${item.reply}</div>
+              <button class="copy-btn">คัดลอกเฉพาะรายการนี้ 📋</button>
+            `;
+            card.querySelector("button").onclick = (e) => doCopy(item.reply, e.target);
+            results.appendChild(card);
+          });
         }
       } catch (e) {
-        statusArea.innerHTML = "<div style='color:red; text-align:center; margin-top:15px;'>เกิดข้อผิดพลาดในการเชื่อมต่อค่ะ</div>";
+        status.innerHTML = "<p style='color:red; text-align:center;'>เชื่อมต่อผิดพลาด</p>";
       } finally {
         btn.disabled = false;
         btn.innerHTML = "รับสินค้าทันที ✨";
       }
     });
 
-    function renderData(data) {
-      if (data.items && data.items.length > 0) {
-        // ปุ่ม Copy All
-        if(data.items.length > 1) {
-            const copyAll = document.createElement("button");
-            copyAll.className = "btn-redeem";
-            copyAll.style.background = "#fff";
-            copyAll.style.color = "#ff9a9e";
-            copyAll.style.border = "2px solid #ff9a9e";
-            copyAll.style.marginBottom = "20px";
-            copyAll.innerHTML = "📋 คัดลอกสินค้าทั้งหมด";
-            copyAll.onclick = () => {
-                const totalText = data.items.map(i => `[${i.appName}]\n${i.reply}`).join('\n\n---\n\n');
-                copyAction(totalText, copyAll, "คัดลอกทั้งหมดแล้ว! ✅");
-            };
-            resultsArea.appendChild(copyAll);
-        }
-
-        data.items.forEach(item => {
-          const card = document.createElement("div");
-          card.className = "item-card";
-          card.innerHTML = `
-            ${item.appName ? `<span class="app-tag">${item.appName}</span>` : ''}
-            <div class="code-text">${item.reply}</div>
-            <button class="btn-copy-small">คัดลอกรายการนี้ 📋</button>
-          `;
-          card.querySelector("button").onclick = (e) => copyAction(item.reply, e.target);
-          resultsArea.appendChild(card);
-        });
-        window.scrollTo({ top: resultsArea.offsetTop, behavior: 'smooth' });
-      }
-    }
-
-    function copyAction(text, btnEl, successText = "คัดลอกแล้ว! ✨") {
+    function doCopy(text, el) {
       navigator.clipboard.writeText(text).then(() => {
-        const originalText = btnEl.innerHTML;
-        btnEl.innerHTML = successText;
-        btnEl.style.color = "#90beaa";
-        btnEl.style.borderColor = "#90beaa";
+        const original = el.innerHTML;
+        el.innerHTML = "คัดลอกสำเร็จ! ✨";
+        el.style.borderColor = "#90beaa";
+        el.style.color = "#90beaa";
         setTimeout(() => {
-          btnEl.innerHTML = originalText;
-          btnEl.style.color = "";
-          btnEl.style.borderColor = "";
+          el.innerHTML = original;
+          el.style = "";
         }, 2000);
       });
     }
