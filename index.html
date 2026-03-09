@@ -2,18 +2,20 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <title>426 SHOP – Redeem Code</title>
+  <title>426 SHOP – Cute Redeem</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
   <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-color: #fdf7f1;       /* ครีมอมชมพูละมุน */
-      --main-brown: #8a6a4f;    /* น้ำตาลนม */
-      --deep-brown: #5a4637;    /* น้ำตาลเข้ม */
-      --soft-cream: #ffffff;    /* ขาวสะอาด */
-      --accent-pink: #f2b6c7;   /* ชมพูพาสเทล */
-      --accent-green: #a9c8b8;  /* เขียวมินต์ */
-      --chip-bg: #fff4f7;
+      --bg-color: #fff9f5;       
+      --main-brown: #8a6a4f;    
+      --deep-brown: #5a4637;    
+      --soft-cream: #ffffff;    
+      --accent-pink: #ffb7ce;   
+      --accent-orange: #ffcfb3;
+      --accent-green: #90beaa;  
+      --warning-red: #ff8b8b;
+      --chip-bg: #fff0f3;
     }
 
     * {
@@ -25,581 +27,354 @@
     body {
       margin: 0;
       padding: 0;
-      background: radial-gradient(circle at 0 0, #ffe9f0 0, transparent 55%),
-                  radial-gradient(circle at 100% 0, #ffe5c0 0, transparent 55%),
+      background: radial-gradient(circle at 0% 0%, #fff0f5 0%, transparent 40%),
+                  radial-gradient(circle at 100% 100%, #fff4e6 0%, transparent 40%),
                   var(--bg-color);
       font-family: 'Anuphan', sans-serif;
       color: var(--deep-brown);
       display: flex;
       justify-content: center;
       min-height: 100vh;
-      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     .app-wrapper {
       width: 100%;
-      max-width: 420px;
-      margin: 40px 20px 60px;
+      max-width: 440px;
+      margin: 40px 15px 80px;
       display: flex;
       flex-direction: column;
       position: relative;
     }
 
-    /* ตกแต่ง background bubble น่ารัก ๆ */
-    .bubble {
+    /* Floating Icons */
+    .deco-icon {
       position: absolute;
-      border-radius: 999px;
-      opacity: 0.18;
       z-index: -1;
-      filter: blur(0.5px);
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
+      animation: float 4s ease-in-out infinite;
     }
-    .bubble.b1 {
-      width: 120px; height: 120px;
-      background: #ffe0ec;
-      top: -30px; left: -10px;
-    }
-    .bubble.b2 {
-      width: 160px; height: 160px;
-      background: #ffd9b6;
-      top: 40px; right: -40px;
-    }
-    .bubble.b3 {
-      width: 100px; height: 100px;
-      background: #e3f3ee;
-      bottom: 10px; left: 20px;
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(10deg); }
     }
 
-    /* Header */
+    /* Header Design */
     .header {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
+    }
+
+    .logo-container {
+      position: relative;
+      width: fit-content;
+      margin: 0 auto 15px;
     }
 
     .logo-box {
-      width: 92px;
-      height: 92px;
-      margin: 0 auto 14px;
+      width: 100px;
+      height: 100px;
       background: var(--soft-cream);
-      border-radius: 32px;
-      padding: 7px;
-      box-shadow: 0 12px 32px rgba(138, 106, 79, 0.18);
-      position: relative;
-      overflow: hidden;
+      border-radius: 35px;
+      padding: 8px;
+      box-shadow: 0 15px 35px rgba(138, 106, 79, 0.15);
+      border: 2px solid #fff;
     }
 
     .logo-inner {
-      width: 100%;
-      height: 100%;
-      border-radius: 26px;
-      background: linear-gradient(135deg, #fce0ed, #ffe4c5);
+      width: 100%; height: 100%;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #ffe0ec 0%, #fff0da 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* Bear Animation */
+    .bear-face {
+      width: 60px; height: 52px; background: #c99b7a; border-radius: 50px; position: relative;
+    }
+    .bear-ear { width: 22px; height: 22px; background: #c99b7a; border-radius: 50%; position: absolute; top: -8px; }
+    .bear-ear.left { left: 2px; } .bear-ear.right { right: 2px; }
+    .bear-eye { width: 6px; height: 6px; background: #3b291e; border-radius: 50%; position: absolute; top: 18px; animation: blink 4s infinite; }
+    .bear-eye.left { left: 18px; } .bear-eye.right { right: 18px; }
+    .bear-nose { width: 10px; height: 7px; background: #3b291e; border-radius: 50%; position: absolute; top: 26px; left: 50%; transform: translateX(-50%); }
+    .bear-cheek { width: 8px; height: 5px; background: #f3adba; border-radius: 50%; position: absolute; top: 28px; }
+    .bear-cheek.left { left: 8px; } .bear-cheek.right { right: 8px; }
+
+    @keyframes blink { 0%, 90%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+
+    .header h1 { font-size: 1.8rem; margin: 0; color: var(--deep-brown); font-weight: 800; letter-spacing: 1px; }
+    .header p { font-size: 0.85rem; margin: 4px 0; color: var(--main-brown); opacity: 0.7; letter-spacing: 3px; font-weight: 600; }
+
+    /* Warning Banner */
+    .warning-banner {
+      background: #fff5f5;
+      border: 1px dashed var(--warning-red);
+      border-radius: 18px;
+      padding: 12px;
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      position: relative;
+      gap: 10px;
+      animation: pulse 2s infinite;
     }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0px rgba(255, 139, 139, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(255, 139, 139, 0); }
+      100% { box-shadow: 0 0 0 0px rgba(255, 139, 139, 0); }
+    }
+    .warning-text { font-size: 0.8rem; color: #d65a5a; font-weight: 600; line-height: 1.4; }
 
-    /* หมีดุ๊กดิ๊ก */
-    .bear-face {
-      width: 56px;
-      height: 50px;
-      background: #c99b7a;
-      border-radius: 50px;
-      position: relative;
-      box-shadow: 0 4px 0 rgba(0,0,0,0.08);
-    }
-    .bear-ear {
-      width: 22px;
-      height: 22px;
-      background: #c99b7a;
-      border-radius: 999px;
-      position: absolute;
-      top: -10px;
-    }
-    .bear-ear.left { left: 4px; }
-    .bear-ear.right { right: 4px; }
-    .bear-ear-inner {
-      width: 12px;
-      height: 12px;
-      background: #f6d0b6;
-      border-radius: 999px;
-      position: absolute;
-      top: 5px;
-      left: 5px;
-    }
-    .bear-eye {
-      width: 6px;
-      height: 6px;
-      background: #3b291e;
-      border-radius: 999px;
-      position: absolute;
-      top: 18px;
-      animation: blink 4s infinite;
-    }
-    .bear-eye.left { left: 16px; }
-    .bear-eye.right { right: 16px; }
-    .bear-nose {
-      width: 12px;
-      height: 9px;
-      background: #3b291e;
-      border-radius: 50% 50% 60% 60%;
-      position: absolute;
-      top: 25px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .bear-mouth {
-      width: 16px;
-      height: 10px;
-      border-bottom: 2px solid #3b291e;
-      border-radius: 0 0 16px 16px;
-      position: absolute;
-      top: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .bear-cheek {
-      width: 8px;
-      height: 6px;
-      background: #f3adba;
-      border-radius: 999px;
-      position: absolute;
-      top: 28px;
-    }
-    .bear-cheek.left { left: 6px; }
-    .bear-cheek.right { right: 6px; }
-
-    @keyframes blink {
-      0%, 92%, 100% { transform: scaleY(1); }
-      95% { transform: scaleY(0.1); }
-      97% { transform: scaleY(1); }
-    }
-
-    .header h1 {
-      font-size: 1.6rem;
-      margin: 0;
-      font-weight: 700;
-      letter-spacing: 1.6px;
-      color: var(--deep-brown);
-    }
-
-    .header p {
-      font-size: 0.8rem;
-      margin-top: 6px;
-      color: var(--main-brown);
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      opacity: .8;
-    }
-
-    .mini-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--chip-bg);
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 0.7rem;
-      color: var(--main-brown);
-      margin-top: 8px;
-    }
-
-    /* Main card */
+    /* Main Card */
     .card-main {
-      background: var(--soft-cream);
-      border-radius: 30px;
-      padding: 24px 22px 26px;
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
-      border: 1px solid rgba(138, 106, 79, 0.12);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-radius: 35px;
+      padding: 30px 24px;
+      box-shadow: 0 20px 40px rgba(138, 106, 79, 0.08);
+      border: 1px solid rgba(255,255,255,0.6);
     }
 
-    .label-hint {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--main-brown);
-      margin-bottom: 8px;
-      display: block;
-      text-align: left;
-    }
-    .label-sub {
-      font-size: 0.75rem;
-      color: #b99680;
-      margin-bottom: 14px;
-    }
+    .input-label { font-weight: 700; color: var(--main-brown); display: block; margin-bottom: 5px; font-size: 1rem; }
+    .input-sub { font-size: 0.8rem; color: #bca08e; margin-bottom: 15px; }
 
-    .input-field {
-      background: #faf7f4;
-      border-radius: 18px;
-      padding: 14px 14px 4px;
-      border: 1.5px solid #eee;
-      transition: all .3s ease;
+    .input-container {
+      background: #fdfaf8;
+      border-radius: 22px;
+      padding: 18px;
+      border: 2px solid #f1ece8;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    .input-field:focus-within {
+    .input-container:focus-within {
       border-color: var(--accent-pink);
       background: #fff;
-      box-shadow: 0 0 0 4px rgba(242, 182, 199, 0.18);
+      transform: scale(1.02);
+      box-shadow: 0 10px 20px rgba(255, 183, 206, 0.15);
     }
 
     textarea {
-      width: 100%;
-      height: 80px;
-      border: none;
-      font-family: 'Anuphan', sans-serif;
-      font-size: 1rem;
-      color: var(--deep-brown);
+      width: 100%; height: 100px; border: none; background: transparent;
+      font-family: 'Anuphan', sans-serif; font-size: 1rem; color: var(--deep-brown);
       resize: none;
-      background: transparent;
-      line-height: 1.5;
     }
 
-    .input-hint-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 4px;
-      font-size: 0.7rem;
-      color: #b39b87;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: #fff;
-      border: 1px dashed #f0c0cf;
-    }
-
+    /* Submit Button */
     .btn-submit {
       width: 100%;
-      padding: 15px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent-pink), #ffcfb3);
-      color: #fff;
-      font-size: 1.05rem;
-      font-weight: 700;
+      padding: 18px;
+      margin-top: 20px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, var(--accent-pink), var(--accent-orange));
+      color: white;
       border: none;
-      cursor: pointer;
-      margin-top: 18px;
-      transition: all .25s ease;
-      box-shadow: 0 10px 20px rgba(241, 165, 189, 0.4);
-    }
-    .btn-submit:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 12px 24px rgba(241, 165, 189, 0.45);
-    }
-    .btn-submit:active {
-      transform: translateY(0);
-      box-shadow: 0 6px 14px rgba(241, 165, 189, 0.25);
-    }
-
-    #status {
-      text-align: left;
-      font-size: .8rem;
-      margin-top: 16px;
-      font-weight: 600;
-      min-height: 20px;
-      color: var(--main-brown);
-      line-height: 1.5;
-    }
-
-    .status-emoji {
-      margin-right: 4px;
-    }
-
-    .result-item {
-      margin-top: 18px;
-      background: #fffdfa;
-      border-radius: 20px;
-      padding: 16px 16px 14px;
-      border: 1px solid #f3e2d4;
-      animation: fadeIn .5s ease-out;
-      position: relative;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(15px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .item-header {
-      font-size: .75rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      color: #bca08e;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(255, 183, 206, 0.4);
+      transition: all 0.3s ease;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .btn-submit:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255, 183, 206, 0.5); }
+    .btn-submit:active { transform: translateY(0); }
+    .btn-submit:disabled { filter: grayscale(1); cursor: not-allowed; transform: none; }
+
+    /* Results */
+    #status { margin-top: 20px; font-size: 0.9rem; font-weight: 600; border-radius: 15px; }
+    .status-box { padding: 12px; border-radius: 15px; background: #fffcf0; border: 1px solid #f9eed0; margin-bottom: 10px; }
+
+    .result-card {
+      background: white;
+      border-radius: 22px;
+      padding: 20px;
+      margin-top: 20px;
+      border: 1px solid #f3e2d4;
+      position: relative;
+      animation: slideUp 0.5s ease-out;
+    }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    .tag-app {
+      background: #f0f7ff; color: #5a9fff; font-size: 0.7rem; font-weight: 700;
+      padding: 4px 12px; border-radius: 999px; margin-bottom: 8px; display: inline-block;
     }
 
-    .item-body {
-      font-size: 0.95rem;
-      line-height: 1.9;
-      color: var(--deep-brown);
-      margin-bottom: 12px;
-      white-space: pre-wrap;
-      font-weight: 500;
-    }
-
-    .chip-app {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: #f7f1ff;
-      color: #7350aa;
-      font-size: 0.7rem;
-      margin-bottom: 4px;
-      font-weight: 600;
-    }
+    .code-title { font-size: 0.7rem; color: #bca08e; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
+    .reply-content { font-size: 0.95rem; line-height: 1.6; font-weight: 500; margin-bottom: 15px; white-space: pre-wrap; }
 
     .btn-copy {
-      width: 100%;
-      padding: 10px;
-      border-radius: 12px;
-      background: #fff9f5;
-      color: var(--main-brown);
-      border: 1px solid #f1ded0;
-      font-weight: 700;
-      cursor: pointer;
-      font-size: .8rem;
-      transition: all .2s ease;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 6px;
+      width: 100%; padding: 12px; border-radius: 15px; border: 1.5px solid #f1ece8;
+      background: #fff; color: var(--main-brown); font-weight: 700; cursor: pointer;
+      transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
     }
-    .btn-copy:hover {
-      border-color: var(--accent-green);
-      background: #f4faf8;
-    }
+    .btn-copy:hover { background: #fdfaf8; border-color: var(--accent-pink); color: var(--accent-pink); }
 
     /* Footer */
-    .footer {
-      margin-top: 28px;
-      text-align: center;
-      padding-bottom: 40px;
-    }
-    .line-contact {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #fff;
-      border: 1px solid #f0dfcf;
-      padding: 8px 18px;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: .8rem;
-      color: #06c755;
-      box-shadow: 0 5px 12px rgba(0,0,0,0.03);
-    }
-    .copyright {
-      margin-top: 12px;
-      font-size: .7rem;
-      font-weight: 600;
-      letter-spacing: 5px;
-      color: #bca08e;
-      text-transform: uppercase;
+    .footer { text-align: center; margin-top: 30px; }
+    .contact-badge {
+      display: inline-flex; align-items: center; gap: 8px; background: white;
+      padding: 10px 20px; border-radius: 999px; font-size: 0.85rem; font-weight: 700;
+      color: #06c755; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee;
     }
 
-    /* Error shake */
-    .shake {
-      animation: shake .4s;
-      border-color: #e57373 !important;
-    }
+    .shake { animation: shake 0.4s ease-in-out; }
     @keyframes shake {
-      0%,100% { transform: translateX(0); }
-      25% { transform: translateX(-6px); }
-      75% { transform: translateX(6px); }
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
     }
   </style>
 </head>
 <body>
   <div class="app-wrapper">
-    <!-- bubbles -->
-    <div class="bubble b1"></div>
-    <div class="bubble b2"></div>
-    <div class="bubble b3"></div>
+    <span class="deco-icon" style="top: -20px; left: -10px; font-size: 30px;">🌸</span>
+    <span class="deco-icon" style="top: 100px; right: -20px; font-size: 25px; animation-delay: 1s;">✨</span>
+    <span class="deco-icon" style="bottom: 100px; left: -30px; font-size: 20px; animation-delay: 2s;">☁️</span>
 
     <header class="header">
-      <div class="logo-box">
-        <div class="logo-inner">
-          <div class="bear-face">
-            <div class="bear-ear left"><div class="bear-ear-inner"></div></div>
-            <div class="bear-ear right"><div class="bear-ear-inner"></div></div>
-            <div class="bear-eye left"></div>
-            <div class="bear-eye right"></div>
-            <div class="bear-cheek left"></div>
-            <div class="bear-cheek right"></div>
-            <div class="bear-nose"></div>
-            <div class="bear-mouth"></div>
+      <div class="logo-container">
+        <div class="logo-box">
+          <div class="logo-inner">
+            <div class="bear-face">
+              <div class="bear-ear left"></div>
+              <div class="bear-ear right"></div>
+              <div class="bear-eye left"></div>
+              <div class="bear-eye right"></div>
+              <div class="bear-nose"></div>
+              <div class="bear-cheek left"></div>
+              <div class="bear-cheek right"></div>
+            </div>
           </div>
         </div>
       </div>
       <h1>426 SHOP</h1>
-      <p>Premium Access</p>
-      <div class="mini-chip">
-        <span>🔐</span><span>วางโค้ดแล้วรับสินค้าได้ทันที</span>
-      </div>
+      <p>Redeem Center</p>
     </header>
 
-    <main class="card-main">
-      <span class="label-hint">กรอกรหัสรับสินค้า</span>
-      <div class="label-sub">วางโค้ดที่ได้รับจากแอดมิน 1 บรรทัดต่อ 1 โค้ด ได้หลายโค้ดพร้อมกัน</div>
+    <div class="warning-banner">
+      <span style="font-size: 24px;">⚠️</span>
+      <div class="warning-text">
+        <strong>ข้อควรระวัง:</strong> เมื่อกดรับสินค้าแล้ว <br>
+        กรุณาคัดลอกข้อมูลทันที <u>ห้ามรีเฟรชหน้าเว็บเด็ดขาด</u>
+      </div>
+    </div>
 
-      <div class="input-field">
-        <textarea id="codeInput" placeholder="ตัวอย่างเช่น NFXA1B2 หรือ DSN9X3Y ..."></textarea>
-        <div class="input-hint-row">
-          <div class="pill">
-            <span>⭐</span><span>รองรับหลายโค้ดในครั้งเดียว</span>
-          </div>
-          <span>สูงสุด ~5 โค้ด/ครั้ง</span>
-        </div>
+    <main class="card-main">
+      <label class="input-label">กรอกรหัสโค้ดที่นี่ 🧸</label>
+      <div class="input-sub">วางโค้ดที่แอดมินส่งให้ (1 บรรทัดต่อ 1 โค้ด)</div>
+
+      <div class="input-container" id="inputWrap">
+        <textarea id="codeInput" placeholder="ตัวอย่าง...&#10;NFX-12345&#10;DSN-67890"></textarea>
       </div>
 
-      <button class="btn-submit" id="btnRedeem">รับสินค้า ✨</button>
+      <button class="btn-submit" id="btnRedeem">
+        <span>รับสินค้าเลย ✨</span>
+      </button>
 
       <div id="status"></div>
-
       <div id="results"></div>
     </main>
 
     <footer class="footer">
-      <div class="line-contact">
-        <span style="color:#999;font-weight:500;">Support:</span> @467dlpti
-      </div>
-      <div class="copyright">426 SHOP . EST 2024</div>
+      <a href="https://line.me/ti/p/@467dlpti" style="text-decoration: none;">
+        <div class="contact-badge">
+          <span>LINE: @467dlpti</span>
+        </div>
+      </a>
+      <p style="font-size: 0.7rem; color: #bca08e; margin-top: 15px; letter-spacing: 2px;">EST. 2024 • PREMIUM SERVICE</p>
     </footer>
   </div>
 
   <script>
-    // 🔗 URL Web App ของ Google Apps Script
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
-
     const btnRedeem = document.getElementById("btnRedeem");
+    const codeInput = document.getElementById("codeInput");
+    const inputWrap = document.getElementById("inputWrap");
+    const statusDiv = document.getElementById("status");
+    const resultsDiv = document.getElementById("results");
+
     btnRedeem.addEventListener("click", redeem);
 
-    function redeem() {
-      const status = document.getElementById("status");
-      const inputContainer = document.querySelector(".input-field");
-      const input = document.getElementById("codeInput").value.trim();
+    // ป้องกันการเผลอกด Refresh (ในบาง Browser)
+    window.onbeforeunload = function() {
+        if (resultsDiv.children.length > 0) {
+            return "คุณได้รับสินค้าแล้ว อย่าลืมคัดลอกข้อมูลก่อนปิดหน้าเว็บนะคะ!";
+        }
+    };
 
-      if (!input) {
-        inputContainer.classList.add("shake");
-        status.innerHTML = "กรุณาระบุรหัสสินค้าค่ะ";
-        status.style.color = "#e57373";
-        setTimeout(() => inputContainer.classList.remove("shake"), 500);
+    function redeem() {
+      const text = codeInput.value.trim();
+
+      if (!text) {
+        inputWrap.classList.add("shake");
+        statusDiv.innerHTML = "<div style='color:#ff8b8b; text-align:center; padding:10px;'>กรุณาใส่โค้ดก่อนนะคะตัวเล็ก 🥺</div>";
+        setTimeout(() => inputWrap.classList.remove("shake"), 500);
         return;
       }
 
+      // UI Loading
       btnRedeem.disabled = true;
-      btnRedeem.innerHTML = "กำลังดำเนินการ...";
-      status.style.color = "var(--main-brown)";
-      status.innerHTML = "<span class='status-emoji'>⏳</span>กำลังตรวจสอบข้อมูลในระบบ...";
+      btnRedeem.innerHTML = "<span>รอสักครู่นะคะ ☁️</span>";
+      statusDiv.innerHTML = "<div class='status-box'>⏳ ระบบกำลังตรวจสอบโค้ดให้คุณคร้าบ...</div>";
+      resultsDiv.innerHTML = "";
 
-      const url = API_URL + "?action=redeem&text=" + encodeURIComponent(input);
-
-      fetch(url)
-        .then((res) => {
-          if (!res.ok) throw new Error("HTTP " + res.status);
-          return res.json();
-        })
-        .then((data) => {
+      fetch(API_URL + "?action=redeem&text=" + encodeURIComponent(text))
+        .then(res => res.json())
+        .then(data => {
           btnRedeem.disabled = false;
-          btnRedeem.innerHTML = "รับสินค้า ✨";
-          renderResult(data);
+          btnRedeem.innerHTML = "<span>รับสินค้าเลย ✨</span>";
+          processResponse(data);
         })
-        .catch((err) => {
-          console.error(err);
+        .catch(err => {
           btnRedeem.disabled = false;
-          btnRedeem.innerHTML = "รับสินค้า ✨";
-          status.innerHTML = "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งค่ะ";
-          status.style.color = "#e57373";
+          btnRedeem.innerHTML = "<span>รับสินค้าเลย ✨</span>";
+          statusDiv.innerHTML = "<div class='status-box' style='color:red;'>❌ เกิดข้อผิดพลาด กรุณาติดต่อแอดมินนะคะ</div>";
         });
     }
 
-    function renderResult(res) {
-      const resDiv = document.getElementById("results");
-      const status = document.getElementById("status");
-      resDiv.innerHTML = "";
-
-      if (!res) {
-        status.innerHTML = "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งค่ะ";
-        status.style.color = "#e57373";
-        return;
+    function processResponse(res) {
+      let statusHtml = "<div class='status-box'>";
+      
+      if(res.ok) {
+        statusHtml += "✅ ตรวจสอบเรียบร้อยแล้วค่ะ!<br>";
       }
+      
+      if(res.message) statusHtml += `💬 ${res.message}<br>`;
+      if(res.notFound && res.notFound.length) statusHtml += `❓ ไม่พบโค้ด: ${res.notFound.join(', ')}<br>`;
+      if(res.used && res.used.length) statusHtml += `⚠️ โค้ดถูกใช้แล้ว: ${res.used.map(u => u.code).join(', ')}<br>`;
+      
+      statusHtml += "</div>";
+      statusDiv.innerHTML = statusHtml;
 
-      let msgLines = [];
-      if (res.message) msgLines.push("💬 " + res.message);
-      if (res.overflowMessage) msgLines.push("⚠️ " + res.overflowMessage);
-      if (res.multiInLineMessage) msgLines.push("ℹ️ " + res.multiInLineMessage);
-
-      if (res.notFound && res.notFound.length) {
-        msgLines.push("<br>🔍 โค้ดที่ไม่พบในระบบ:");
-        res.notFound.forEach((c) => msgLines.push("• " + c));
-      }
-
-      if (res.used && res.used.length) {
-        msgLines.push("<br>📌 โค้ดที่ถูกใช้งานไปแล้ว:");
-        res.used.forEach((u) => {
-          let line = "• " + u.code;
-          if (u.app) line += " (" + u.app + ")";
-          if (u.usedAt) line += " — " + u.usedAt;
-          msgLines.push(line);
-        });
-      }
-
-      status.innerHTML = msgLines.join("<br>");
-      status.style.color = res.ok ? "var(--main-brown)" : "#e57373";
-
-      if (res.items && res.items.length > 0) {
-        res.items.forEach((item) => {
+      if(res.items && res.items.length > 0) {
+        res.items.forEach(item => {
           const card = document.createElement("div");
-          card.className = "result-item";
-          const safeReplyText = encodeURIComponent(item.reply);
-
+          card.className = "result-card";
           card.innerHTML = `
-            ${item.appName ? `<div class="chip-app">${item.appName}</div>` : ``}
-            <div class="item-header">REDEEMED CODE: ${item.code}</div>
-            <div class="item-body">${item.reply}</div>
-            <button class="btn-copy" data-text="${safeReplyText}">
-              📋 คัดลอกรายละเอียด
+            ${item.appName ? `<div class="tag-app">${item.appName}</div>` : ''}
+            <div class="code-title">รหัส: ${item.code}</div>
+            <div class="reply-content">${item.reply}</div>
+            <button class="btn-copy" onclick="copyText(this, \`${encodeURIComponent(item.reply)}\`)">
+               คัดลอกข้อมูล 📋
             </button>
           `;
-          resDiv.appendChild(card);
+          resultsDiv.appendChild(card);
         });
-
-        document.querySelectorAll(".btn-copy").forEach((btn) => {
-          btn.addEventListener("click", () => copyToClipboard(btn));
-        });
-
-        window.scrollTo({ top: resDiv.offsetTop - 20, behavior: "smooth" });
+        window.scrollTo({ top: resultsDiv.offsetTop - 50, behavior: 'smooth' });
       }
     }
 
-    function copyToClipboard(btn) {
-      const text = decodeURIComponent(btn.getAttribute("data-text") || "");
-      if (!navigator.clipboard) {
-        const temp = document.createElement("textarea");
-        temp.value = text;
-        document.body.appendChild(temp);
-        temp.select();
-        document.execCommand("copy");
-        document.body.removeChild(temp);
-      } else {
-        navigator.clipboard.writeText(text);
-      }
-
-      const originalText = btn.innerHTML;
-      btn.innerHTML = "คัดลอกสำเร็จแล้ว ✨";
-      btn.style.background = "#f0f4f2";
-      btn.style.color = "var(--accent-green)";
-      btn.style.borderColor = "var(--accent-green)";
-      setTimeout(() => {
-        btn.innerHTML = originalText;
-        btn.style.background = "#fff9f5";
-        btn.style.color = "var(--main-brown)";
-        btn.style.borderColor = "#f1ded0";
-      }, 2000);
+    function copyText(btn, encodedText) {
+      const text = decodeURIComponent(encodedText);
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = btn.innerHTML;
+        btn.innerHTML = "คัดลอกสำเร็จ! ✨";
+        btn.style.color = "#90beaa";
+        btn.style.borderColor = "#90beaa";
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.style.color = "";
+          btn.style.borderColor = "";
+        }, 2000);
+      });
     }
   </script>
 </body>
