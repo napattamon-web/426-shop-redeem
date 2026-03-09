@@ -2,267 +2,316 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <title>426 SHOP – Premium Redeem Center</title>
+  <title>426 SHOP – Premium Cute Redeem</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
   <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-color: #fff9f5;       
-      --main-brown: #8a6a4f;    
-      --deep-brown: #5a4637;    
-      --soft-cream: #ffffff;    
-      --accent-pink: #ffb7ce;   
-      --accent-orange: #ffcfb3;
-      --accent-green: #90beaa;  
-      --warning-red: #ff8b8b;
+      --primary-pink: #ffdae9;
+      --soft-peach: #fff0db;
+      --text-main: #6b4f3f;
+      --accent-grad: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+      --glass-bg: rgba(255, 255, 255, 0.7);
     }
 
-    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
     body {
       margin: 0; padding: 0;
-      background: radial-gradient(circle at 0% 0%, #fff0f5 0%, transparent 40%),
-                  radial-gradient(circle at 100% 100%, #fff4e6 0%, transparent 40%),
-                  var(--bg-color);
       font-family: 'Anuphan', sans-serif;
-      color: var(--deep-brown);
-      display: flex; justify-content: center; min-height: 100vh;
+      color: var(--text-main);
+      background: #fff9f5;
+      /* พื้นหลังแบบไล่สีฟุ้งๆ */
+      background-image: 
+        radial-gradient(at 0% 0%, #ffedf4 0px, transparent 50%),
+        radial-gradient(at 100% 0%, #fff4e1 0px, transparent 50%),
+        radial-gradient(at 100% 100%, #e8f5ff 0px, transparent 50%),
+        radial-gradient(at 0% 100%, #fff0f5 0px, transparent 50%);
+      min-height: 100vh;
+      display: flex; justify-content: center; overflow-x: hidden;
     }
 
-    .app-wrapper {
-      width: 100%; max-width: 440px;
-      margin: 30px 15px 60px;
-      display: flex; flex-direction: column; position: relative;
+    .container {
+      width: 100%; max-width: 450px;
+      margin: 40px 15px;
+      position: relative;
     }
 
-    /* Floating Decor */
-    .deco { position: absolute; z-index: -1; animation: float 4s ease-in-out infinite; opacity: 0.6; }
-    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+    /* ตกแต่งพื้นหลังลอยๆ */
+    .floating-deco {
+      position: absolute; z-index: -1; animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(10px, -20px) rotate(10deg); }
+    }
 
-    /* Header */
-    .header { text-align: center; margin-bottom: 20px; }
-    .logo-box {
-      width: 90px; height: 90px; background: #fff; border-radius: 30px;
-      margin: 0 auto 10px; padding: 8px; box-shadow: 0 10px 25px rgba(138, 106, 79, 0.1);
+    /* Header Design */
+    .header { text-align: center; margin-bottom: 30px; }
+    .logo-wrapper {
+      position: relative; width: 110px; height: 110px; margin: 0 auto 15px;
     }
-    .logo-inner {
-      width: 100%; height: 100%; border-radius: 22px;
-      background: linear-gradient(135deg, #ffe0ec 0%, #fff0da 100%);
-      display: flex; align-items: center; justify-content: center;
+    .logo-main {
+      width: 100%; height: 100%; background: #fff; border-radius: 40px;
+      padding: 10px; box-shadow: 0 20px 40px rgba(255, 154, 158, 0.2);
+      transform: rotate(-5deg); transition: 0.5s;
     }
-    .bear { width: 50px; height: 44px; background: #c99b7a; border-radius: 50px; position: relative; }
-    .bear::before, .bear::after { content: ''; width: 18px; height: 18px; background: #c99b7a; border-radius: 50%; position: absolute; top: -6px; }
-    .bear::before { left: 2px; } .bear::after { right: 2px; }
+    .logo-main:hover { transform: rotate(0deg) scale(1.05); }
     
-    .header h1 { font-size: 1.6rem; margin: 0; color: var(--deep-brown); letter-spacing: 1px; }
-    .header p { font-size: 0.8rem; margin: 2px 0; color: var(--main-brown); opacity: 0.6; letter-spacing: 3px; }
-
-    /* Status Bar */
-    .status-bar {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 12px; padding: 0 10px; font-size: 0.75rem; font-weight: 700;
+    .bear-head {
+      width: 100%; height: 100%; background: var(--soft-peach); border-radius: 32px;
+      display: flex; align-items: center; justify-content: center; position: relative;
     }
-    .online-indicator { display: flex; align-items: center; gap: 5px; color: var(--accent-green); }
-    .dot { width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; animation: blink 1.5s infinite; }
-    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-
-    /* Warning */
-    .warning-box {
-      background: #fff5f5; border: 1px dashed var(--warning-red);
-      border-radius: 18px; padding: 12px; margin-bottom: 15px;
-      display: flex; align-items: center; gap: 10px;
+    .bear-ear-l, .bear-ear-r {
+      width: 25px; height: 25px; background: var(--soft-peach); border-radius: 50%;
+      position: absolute; top: -5px;
     }
-    .warning-text { font-size: 0.75rem; color: #d65a5a; font-weight: 600; }
+    .bear-ear-l { left: 10px; } .bear-ear-r { right: 10px; }
 
-    /* Main Card */
-    .card-main {
-      background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);
-      border-radius: 30px; padding: 25px 20px;
-      box-shadow: 0 15px 35px rgba(138, 106, 79, 0.05);
-      border: 1px solid rgba(255,255,255,0.7);
+    .header h1 { font-size: 1.8rem; margin: 0; font-weight: 800; color: #5a4637; letter-spacing: -0.5px; }
+    .header .subtitle { font-size: 0.8rem; font-weight: 700; color: #d4a5a5; letter-spacing: 5px; text-transform: uppercase; }
+
+    /* Glass Card */
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 35px;
+      padding: 30px 25px;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 25px 50px -12px rgba(138, 106, 79, 0.1);
     }
 
-    .input-label { font-weight: 700; color: var(--main-brown); font-size: 0.95rem; margin-bottom: 5px; display: block; }
-    .input-area {
-      background: #fdfaf8; border-radius: 20px; padding: 15px;
-      border: 2px solid #f1ece8; transition: 0.3s;
+    .system-status {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      font-size: 0.8rem; font-weight: 700; color: #90beaa; margin-bottom: 20px;
     }
-    .input-area:focus-within { border-color: var(--accent-pink); background: #fff; }
+    .status-dot { width: 8px; height: 8px; background: #90beaa; border-radius: 50%; box-shadow: 0 0 10px #90beaa; animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+
+    /* Input Styling */
+    .input-group { margin-bottom: 20px; }
+    .label { font-size: 0.95rem; font-weight: 700; color: #8a6a4f; margin-left: 10px; margin-bottom: 8px; display: block; }
+    
+    .input-box {
+      background: rgba(255, 255, 255, 0.5);
+      border: 2px solid #f1ece8;
+      border-radius: 25px;
+      padding: 20px;
+      transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .input-box:focus-within {
+      background: #fff;
+      border-color: #ffb7ce;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(255, 183, 206, 0.15);
+    }
     textarea {
-      width: 100%; height: 90px; border: none; background: transparent;
-      font-family: inherit; font-size: 1rem; color: var(--deep-brown); resize: none;
+      width: 100%; height: 100px; border: none; background: transparent;
+      font-family: inherit; font-size: 1rem; color: #5a4637; resize: none;
     }
 
-    .btn-submit {
-      width: 100%; padding: 16px; margin-top: 15px; border-radius: 20px;
-      background: linear-gradient(135deg, var(--accent-pink), var(--accent-orange));
-      color: white; border: none; font-size: 1rem; font-weight: 700;
-      cursor: pointer; box-shadow: 0 8px 20px rgba(255, 183, 206, 0.4);
+    /* Button */
+    .btn-redeem {
+      width: 100%;
+      padding: 18px;
+      border-radius: 25px;
+      border: none;
+      background: var(--accent-grad);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(255, 154, 158, 0.3);
       transition: 0.3s;
     }
-    .btn-submit:active { transform: scale(0.98); }
-    .btn-submit:disabled { filter: grayscale(1); opacity: 0.7; }
+    .btn-redeem:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 30px rgba(255, 154, 158, 0.4); }
+    .btn-redeem:active { transform: translateY(0) scale(0.98); }
+    .btn-redeem:disabled { filter: grayscale(0.8); cursor: not-allowed; }
 
-    /* Result Section */
-    #status-msg { margin-top: 15px; font-size: 0.85rem; font-weight: 600; text-align: center; }
-    .result-item {
-      background: #fff; border-radius: 20px; padding: 18px; margin-top: 15px;
-      border: 1px solid #f3e2d4; animation: slideUp 0.4s ease-out;
+    /* Result Items */
+    .result-container { margin-top: 25px; }
+    .item-card {
+      background: #fff;
+      border-radius: 25px;
+      padding: 20px;
+      margin-bottom: 15px;
+      border: 1px solid #f9f0ea;
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } }
+    @keyframes popIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
 
-    .btn-copy {
-      width: 100%; padding: 10px; margin-top: 10px; border-radius: 12px;
-      border: 1px solid #eee; background: #fafafa; font-weight: 700; cursor: pointer;
-      font-size: 0.8rem; color: var(--main-brown);
+    .app-tag {
+      display: inline-block; padding: 4px 12px; border-radius: 12px;
+      background: #f0f7ff; color: #5a9fff; font-size: 0.7rem; font-weight: 800; margin-bottom: 10px;
     }
-    .btn-copy-all {
-      width: 100%; padding: 12px; margin-top: 10px; border-radius: 15px;
-      background: #fff0f3; border: 1.5px dashed var(--accent-pink);
-      color: #d65a8a; font-weight: 700; cursor: pointer; font-size: 0.85rem;
+    .code-text { font-size: 0.95rem; line-height: 1.6; white-space: pre-wrap; margin-bottom: 15px; }
+
+    .btn-copy-small {
+      width: 100%; padding: 12px; border-radius: 15px; border: 1.5px solid #f1ece8;
+      background: #fff; color: #8a6a4f; font-weight: 700; cursor: pointer; transition: 0.2s;
+    }
+    .btn-copy-small:hover { border-color: #ffb7ce; color: #ffb7ce; background: #fffafb; }
+
+    /* Warning Overlay */
+    .reload-warning {
+      background: #fff0f0; border-radius: 20px; padding: 12px; 
+      margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
     }
 
-    .tag { display: inline-block; padding: 2px 10px; border-radius: 20px; background: #f0f7ff; color: #5a9fff; font-size: 0.65rem; font-weight: 700; margin-bottom: 5px; }
+    footer { text-align: center; margin-top: 40px; }
+    .line-contact {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 25px; background: #fff; border-radius: 999px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05); color: #06c755; text-decoration: none; font-weight: 700;
+    }
 
-    footer { text-align: center; margin-top: 25px; padding-bottom: 30px; }
-    .line-btn { display: inline-flex; align-items: center; gap: 5px; color: #06c755; font-weight: 700; font-size: 0.8rem; text-decoration: none; }
-
-    .shake { animation: shake 0.4s; }
-    @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+    /* Shake animation */
+    .shake { animation: shake 0.4s ease-in-out; }
+    @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-8px); } 75% { transform: translateX(8px); } }
   </style>
 </head>
 <body>
 
-  <div class="app-wrapper">
-    <span class="deco" style="top:-10px; left:10px;">🌸</span>
-    <span class="deco" style="top:50px; right:10px; animation-delay:1s;">✨</span>
+  <div class="container">
+    <span class="floating-deco" style="top: -20px; left: -30px; font-size: 40px;">🧸</span>
+    <span class="floating-deco" style="top: 100px; right: -40px; font-size: 30px; animation-delay: 1s;">✨</span>
+    <span class="floating-deco" style="bottom: 50px; left: -40px; font-size: 25px; animation-delay: 2s;">🎀</span>
 
     <header class="header">
-      <div class="logo-box"><div class="logo-inner"><div class="bear"></div></div></div>
+      <div class="logo-wrapper">
+        <div class="logo-main">
+          <div class="bear-head">
+            <div class="bear-ear-l"></div>
+            <div class="bear-ear-r"></div>
+            <div style="width: 6px; height: 6px; background: #3b291e; border-radius: 50%; position: absolute; top: 38px; left: 30px;"></div>
+            <div style="width: 6px; height: 6px; background: #3b291e; border-radius: 50%; position: absolute; top: 38px; right: 30px;"></div>
+            <div style="width: 10px; height: 7px; background: #3b291e; border-radius: 50%; position: absolute; top: 48px;"></div>
+          </div>
+        </div>
+      </div>
       <h1>426 SHOP</h1>
-      <p>PREMIUM REDEEM</p>
+      <div class="subtitle">Premium Access</div>
     </header>
 
-    <div class="status-bar">
-      <div class="online-indicator"><span class="dot"></span> System Online</div>
-      <div style="color: #bca08e; cursor:pointer;" onclick="alert('วิธีใช้: วางโค้ด 1 บรรทัดต่อ 1 โค้ด แล้วกดปุ่มสีชมพูได้เลยค่ะ!')">ช่วยเหลือ?</div>
-    </div>
-
-    <div class="warning-box">
-      <span style="font-size: 20px;">⚠️</span>
-      <div class="warning-text">รับสินค้าแล้วให้คัดลอกทันที <b>ห้ามรีเฟรชหน้าเว็บ</b></div>
-    </div>
-
-    <main class="card-main">
-      <label class="input-label">วางรหัสรับสินค้า 🧸</label>
-      <div class="input-area" id="inputWrap">
-        <textarea id="codeInput" placeholder="วางโค้ดที่นี่..."></textarea>
+    <div class="glass-card">
+      <div class="system-status">
+        <span class="status-dot"></span>
+        <span>Redeem System Online</span>
       </div>
 
-      <button class="btn-submit" id="btnRedeem">รับสินค้าตอนนี้ ✨</button>
+      <div class="reload-warning">
+        <span style="font-size: 24px;">🚫</span>
+        <div style="font-size: 0.75rem; color: #d65a5a; font-weight: 700;">ห้ามรีเฟรชหน้าจอนะคะ <br> มิเช่นนั้นข้อมูลรหัสจะหายไปค่ะ!</div>
+      </div>
 
-      <div id="status-msg"></div>
-      <div id="results"></div>
-    </main>
+      <div class="input-group">
+        <label class="label">วางโค้ดตรงนี้เลยค่ะ ☁️</label>
+        <div class="input-box" id="boxEffect">
+          <textarea id="codeInput" placeholder="ตัวอย่าง...&#10;NFX-12345678&#10;DSN-87654321"></textarea>
+        </div>
+      </div>
+
+      <button class="btn-redeem" id="btnRedeem">รับสินค้าทันที ✨</button>
+
+      <div id="statusArea"></div>
+      <div class="result-container" id="results"></div>
+    </div>
 
     <footer>
-      <a href="https://line.me/ti/p/@467dlpti" class="line-btn">
+      <a href="https://line.me/ti/p/@467dlpti" class="line-contact">
         <span>LINE: @467dlpti</span>
       </a>
-      <div style="font-size: 0.65rem; color: #ccc; margin-top: 10px;">426 SHOP © 2024-2026</div>
+      <p style="font-size: 0.7rem; color: #bca08e; margin-top: 15px; font-weight: 700;">EST. 2024 • COZY REDEEM CENTER</p>
     </footer>
   </div>
 
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
-    
     const btn = document.getElementById("btnRedeem");
     const input = document.getElementById("codeInput");
-    const resultsDiv = document.getElementById("results");
-    const statusMsg = document.getElementById("status-msg");
+    const resultsArea = document.getElementById("results");
+    const statusArea = document.getElementById("statusArea");
 
-    // แจ้งเตือนก่อนปิดหน้าเว็บถ้ามีข้อมูลอยู่
+    // กันรีเฟรช
     window.onbeforeunload = function() {
-      if (resultsDiv.children.length > 0) return "อย่าลืมก๊อปปี้รหัสก่อนปิดนะคะ!";
+      if (resultsArea.children.length > 0) return "คุณจะเสียข้อมูลรหัสไปนะคะ ก๊อปปี้หรือยังเอ่ย?";
     };
 
     btn.addEventListener("click", async () => {
       const code = input.value.trim();
       if (!code) {
-        document.getElementById("inputWrap").classList.add("shake");
-        setTimeout(() => document.getElementById("inputWrap").classList.remove("shake"), 400);
+        document.getElementById("boxEffect").classList.add("shake");
+        setTimeout(() => document.getElementById("boxEffect").classList.remove("shake"), 400);
         return;
       }
 
       btn.disabled = true;
-      btn.innerHTML = "กำลังดึงข้อมูล... ⏳";
-      statusMsg.innerHTML = "รอสักครู่นะคะ ระบบกำลังประมวลผล...";
-      resultsDiv.innerHTML = "";
+      btn.innerHTML = "กำลังดึงข้อมูล... 🧸";
+      statusArea.innerHTML = "<div style='text-align:center; margin-top:15px; font-size:0.8rem; font-weight:700;'>⏳ รอสักครู่นะคะคนดี...</div>";
+      resultsArea.innerHTML = "";
 
       try {
-        const response = await fetch(`${API_URL}?action=redeem&text=${encodeURIComponent(code)}`);
-        const data = await response.json();
-        renderResults(data);
-      } catch (err) {
-        statusMsg.innerHTML = "<span style='color:red;'>เกิดข้อผิดพลาด ลองใหม่อีกครั้งนะคะ</span>";
+        const res = await fetch(`${API_URL}?action=redeem&text=${encodeURIComponent(code)}`);
+        const data = await res.json();
+        
+        statusArea.innerHTML = "";
+        if (data.ok) {
+          renderData(data);
+        } else {
+          statusArea.innerHTML = `<div style='color:#ff8b8b; text-align:center; margin-top:15px; font-weight:700;'>⚠️ ${data.message || 'พบข้อผิดพลาด'}</div>`;
+        }
+      } catch (e) {
+        statusArea.innerHTML = "<div style='color:red; text-align:center; margin-top:15px;'>เกิดข้อผิดพลาดในการเชื่อมต่อค่ะ</div>";
       } finally {
         btn.disabled = false;
-        btn.innerHTML = "รับสินค้าตอนนี้ ✨";
+        btn.innerHTML = "รับสินค้าทันที ✨";
       }
     });
 
-    function renderResults(res) {
-      statusMsg.innerHTML = res.ok ? "✅ ดึงข้อมูลสำเร็จแล้วค่ะ" : "❌ พบปัญหาบางประการ";
-      
-      // ปุ่ม Copy All ถ้ามีมากกว่า 1 รายการ
-      if (res.items && res.items.length > 1) {
-        const btnAll = document.createElement("button");
-        btnAll.className = "btn-copy-all";
-        btnAll.innerHTML = "📋 คัดลอกสินค้าทั้งหมดในครั้งเดียว";
-        btnAll.onclick = () => {
-          const allText = res.items.map(i => `[${i.appName || 'Product'}]\n${i.reply}`).join('\n\n---\n\n');
-          copyToClipboard(allText, btnAll, "คัดลอกทั้งหมดแล้ว! ✨");
-        };
-        resultsDiv.appendChild(btnAll);
-      }
+    function renderData(data) {
+      if (data.items && data.items.length > 0) {
+        // ปุ่ม Copy All
+        if(data.items.length > 1) {
+            const copyAll = document.createElement("button");
+            copyAll.className = "btn-redeem";
+            copyAll.style.background = "#fff";
+            copyAll.style.color = "#ff9a9e";
+            copyAll.style.border = "2px solid #ff9a9e";
+            copyAll.style.marginBottom = "20px";
+            copyAll.innerHTML = "📋 คัดลอกสินค้าทั้งหมด";
+            copyAll.onclick = () => {
+                const totalText = data.items.map(i => `[${i.appName}]\n${i.reply}`).join('\n\n---\n\n');
+                copyAction(totalText, copyAll, "คัดลอกทั้งหมดแล้ว! ✅");
+            };
+            resultsArea.appendChild(copyAll);
+        }
 
-      // แสดงรายการสินค้า
-      if (res.items) {
-        res.items.forEach(item => {
-          const div = document.createElement("div");
-          div.className = "result-item";
-          div.innerHTML = `
-            ${item.appName ? `<span class="tag">${item.appName}</span>` : ''}
-            <div style="font-size:0.7rem; color:#bca08e;">CODE: ${item.code}</div>
-            <div style="margin:8px 0; line-height:1.5; font-weight:500; white-space:pre-wrap;">${item.reply}</div>
-            <button class="btn-copy">คัดลอกเฉพาะรายการนี้</button>
+        data.items.forEach(item => {
+          const card = document.createElement("div");
+          card.className = "item-card";
+          card.innerHTML = `
+            ${item.appName ? `<span class="app-tag">${item.appName}</span>` : ''}
+            <div class="code-text">${item.reply}</div>
+            <button class="btn-copy-small">คัดลอกรายการนี้ 📋</button>
           `;
-          div.querySelector(".btn-copy").onclick = (e) => copyToClipboard(item.reply, e.target);
-          resultsDiv.appendChild(div);
+          card.querySelector("button").onclick = (e) => copyAction(item.reply, e.target);
+          resultsArea.appendChild(card);
         });
-      }
-
-      // ข้อความเพิ่มเติม (ถ้ามีโค้ดใช้ไปแล้วหรือหาไม่เจอ)
-      if ((res.used && res.used.length) || (res.notFound && res.notFound.length)) {
-        const info = document.createElement("div");
-        info.style = "font-size:0.75rem; color:#999; margin-top:15px; padding:10px; background:#f9f9f9; border-radius:10px;";
-        let infoText = "";
-        if(res.used?.length) infoText += `⚠️ โค้ดที่ใช้ไปแล้ว: ${res.used.map(u=>u.code).join(', ')}<br>`;
-        if(res.notFound?.length) infoText += `🔍 ไม่พบโค้ด: ${res.notFound.join(', ')}`;
-        info.innerHTML = infoText;
-        resultsDiv.appendChild(info);
+        window.scrollTo({ top: resultsArea.offsetTop, behavior: 'smooth' });
       }
     }
 
-    function copyToClipboard(text, btn, successMsg = "คัดลอกแล้ว! ✨") {
+    function copyAction(text, btnEl, successText = "คัดลอกแล้ว! ✨") {
       navigator.clipboard.writeText(text).then(() => {
-        const oldText = btn.innerHTML;
-        btn.innerHTML = successMsg;
-        btn.style.borderColor = "var(--accent-green)";
-        btn.style.color = "var(--accent-green)";
+        const originalText = btnEl.innerHTML;
+        btnEl.innerHTML = successText;
+        btnEl.style.color = "#90beaa";
+        btnEl.style.borderColor = "#90beaa";
         setTimeout(() => {
-          btn.innerHTML = oldText;
-          btn.style = "";
+          btnEl.innerHTML = originalText;
+          btnEl.style.color = "";
+          btnEl.style.borderColor = "";
         }, 2000);
       });
     }
