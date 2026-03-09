@@ -7,104 +7,315 @@
   <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-color: #f8f5f2;
-      --main-brown: #8d7765;
-      --deep-brown: #5d4a3e;
-      --soft-cream: #ffffff;
-      --accent-green: #9fb8ad;
+      --bg-color: #fdf7f1;       /* ครีมอมชมพูละมุน */
+      --main-brown: #8a6a4f;    /* น้ำตาลนม */
+      --deep-brown: #5a4637;    /* น้ำตาลเข้ม */
+      --soft-cream: #ffffff;    /* ขาวสะอาด */
+      --accent-pink: #f2b6c7;   /* ชมพูพาสเทล */
+      --accent-green: #a9c8b8;  /* เขียวมินต์ */
+      --chip-bg: #fff4f7;
     }
-    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+    }
+
     body {
-      margin: 0; padding: 0;
-      background-color: var(--bg-color);
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at 0 0, #ffe9f0 0, transparent 55%),
+                  radial-gradient(circle at 100% 0, #ffe5c0 0, transparent 55%),
+                  var(--bg-color);
       font-family: 'Anuphan', sans-serif;
       color: var(--deep-brown);
-      display: flex; justify-content: center;
+      display: flex;
+      justify-content: center;
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
     }
+
     .app-wrapper {
       width: 100%;
       max-width: 420px;
       margin: 40px 20px 60px;
-      display: flex; flex-direction: column;
-    }
-    .header { text-align: center; margin-bottom: 35px; }
-    .logo-box {
-      width: 90px; height: 90px;
-      margin: 0 auto 20px;
-      background: var(--soft-cream);
-      border-radius: 32px;
-      padding: 6px;
-      box-shadow: 0 10px 25px rgba(141, 119, 101, 0.1);
-      transition: transform 0.5s ease;
-    }
-    .logo-box:hover { transform: rotate(5deg) scale(1.05); }
-    .logo-box img { width: 100%; height: 100%; object-fit: cover; border-radius: 26px; }
-    .header h1 { font-size: 1.5rem; margin: 0; font-weight: 700; letter-spacing: 1.5px; }
-    .header p {
-      font-size: 0.8rem; margin-top: 6px; color: var(--main-brown);
-      font-weight: 500; text-transform: uppercase; letter-spacing: 4px; opacity: .8;
+      display: flex;
+      flex-direction: column;
+      position: relative;
     }
 
+    /* ตกแต่ง background bubble น่ารัก ๆ */
+    .bubble {
+      position: absolute;
+      border-radius: 999px;
+      opacity: 0.18;
+      z-index: -1;
+      filter: blur(0.5px);
+    }
+    .bubble.b1 {
+      width: 120px; height: 120px;
+      background: #ffe0ec;
+      top: -30px; left: -10px;
+    }
+    .bubble.b2 {
+      width: 160px; height: 160px;
+      background: #ffd9b6;
+      top: 40px; right: -40px;
+    }
+    .bubble.b3 {
+      width: 100px; height: 100px;
+      background: #e3f3ee;
+      bottom: 10px; left: 20px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .logo-box {
+      width: 92px;
+      height: 92px;
+      margin: 0 auto 14px;
+      background: var(--soft-cream);
+      border-radius: 32px;
+      padding: 7px;
+      box-shadow: 0 12px 32px rgba(138, 106, 79, 0.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #fce0ed, #ffe4c5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* หมีดุ๊กดิ๊ก */
+    .bear-face {
+      width: 56px;
+      height: 50px;
+      background: #c99b7a;
+      border-radius: 50px;
+      position: relative;
+      box-shadow: 0 4px 0 rgba(0,0,0,0.08);
+    }
+    .bear-ear {
+      width: 22px;
+      height: 22px;
+      background: #c99b7a;
+      border-radius: 999px;
+      position: absolute;
+      top: -10px;
+    }
+    .bear-ear.left { left: 4px; }
+    .bear-ear.right { right: 4px; }
+    .bear-ear-inner {
+      width: 12px;
+      height: 12px;
+      background: #f6d0b6;
+      border-radius: 999px;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+    }
+    .bear-eye {
+      width: 6px;
+      height: 6px;
+      background: #3b291e;
+      border-radius: 999px;
+      position: absolute;
+      top: 18px;
+      animation: blink 4s infinite;
+    }
+    .bear-eye.left { left: 16px; }
+    .bear-eye.right { right: 16px; }
+    .bear-nose {
+      width: 12px;
+      height: 9px;
+      background: #3b291e;
+      border-radius: 50% 50% 60% 60%;
+      position: absolute;
+      top: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .bear-mouth {
+      width: 16px;
+      height: 10px;
+      border-bottom: 2px solid #3b291e;
+      border-radius: 0 0 16px 16px;
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .bear-cheek {
+      width: 8px;
+      height: 6px;
+      background: #f3adba;
+      border-radius: 999px;
+      position: absolute;
+      top: 28px;
+    }
+    .bear-cheek.left { left: 6px; }
+    .bear-cheek.right { right: 6px; }
+
+    @keyframes blink {
+      0%, 92%, 100% { transform: scaleY(1); }
+      95% { transform: scaleY(0.1); }
+      97% { transform: scaleY(1); }
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: 1.6px;
+      color: var(--deep-brown);
+    }
+
+    .header p {
+      font-size: 0.8rem;
+      margin-top: 6px;
+      color: var(--main-brown);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      opacity: .8;
+    }
+
+    .mini-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--chip-bg);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      color: var(--main-brown);
+      margin-top: 8px;
+    }
+
+    /* Main card */
     .card-main {
       background: var(--soft-cream);
-      border-radius: 40px;
-      padding: 30px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.03);
-      border: 1px solid rgba(141, 119, 101, 0.1);
+      border-radius: 30px;
+      padding: 24px 22px 26px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(138, 106, 79, 0.12);
     }
 
     .label-hint {
-      font-size: 0.85rem; font-weight: 600; color: var(--main-brown);
-      margin-bottom: 15px; display: block; text-align: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--main-brown);
+      margin-bottom: 8px;
+      display: block;
+      text-align: left;
+    }
+    .label-sub {
+      font-size: 0.75rem;
+      color: #b99680;
+      margin-bottom: 14px;
     }
 
     .input-field {
-      background: #fafaf9;
-      border-radius: 20px;
-      padding: 18px;
+      background: #faf7f4;
+      border-radius: 18px;
+      padding: 14px 14px 4px;
       border: 1.5px solid #eee;
       transition: all .3s ease;
     }
     .input-field:focus-within {
-      border-color: var(--main-brown);
+      border-color: var(--accent-pink);
       background: #fff;
-      box-shadow: 0 0 0 4px rgba(141, 119, 101, 0.05);
+      box-shadow: 0 0 0 4px rgba(242, 182, 199, 0.18);
     }
+
     textarea {
-      width: 100%; height: 90px; border: none;
-      font-family: 'Anuphan', sans-serif; font-size: 1.1rem;
-      color: var(--deep-brown); resize: none; background: transparent;
+      width: 100%;
+      height: 80px;
+      border: none;
+      font-family: 'Anuphan', sans-serif;
+      font-size: 1rem;
+      color: var(--deep-brown);
+      resize: none;
+      background: transparent;
       line-height: 1.5;
     }
 
+    .input-hint-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 4px;
+      font-size: 0.7rem;
+      color: #b39b87;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px dashed #f0c0cf;
+    }
+
     .btn-submit {
-      width: 100%; padding: 18px; border-radius: 22px;
-      background: var(--deep-brown); color: #fff;
-      font-size: 1.1rem; font-weight: 600; border: none;
-      cursor: pointer; margin-top: 20px;
-      transition: all .3s ease;
+      width: 100%;
+      padding: 15px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent-pink), #ffcfb3);
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      margin-top: 18px;
+      transition: all .25s ease;
+      box-shadow: 0 10px 20px rgba(241, 165, 189, 0.4);
     }
     .btn-submit:hover {
-      background: var(--main-brown);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(93, 74, 62, 0.2);
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(241, 165, 189, 0.45);
     }
-    .btn-submit:active { transform: translateY(0); }
+    .btn-submit:active {
+      transform: translateY(0);
+      box-shadow: 0 6px 14px rgba(241, 165, 189, 0.25);
+    }
 
     #status {
-      text-align: center; font-size: .85rem; margin-top: 15px;
-      font-weight: 600; min-height: 20px; color: var(--main-brown);
+      text-align: left;
+      font-size: .8rem;
+      margin-top: 16px;
+      font-weight: 600;
+      min-height: 20px;
+      color: var(--main-brown);
+      line-height: 1.5;
+    }
+
+    .status-emoji {
+      margin-right: 4px;
     }
 
     .result-item {
-      margin-top: 25px;
-      background: var(--soft-cream);
-      border-radius: 40px 40px 40px 15px;
-      padding: 30px;
-      border-left: 6px solid var(--main-brown);
+      margin-top: 18px;
+      background: #fffdfa;
+      border-radius: 20px;
+      padding: 16px 16px 14px;
+      border: 1px solid #f3e2d4;
       animation: fadeIn .5s ease-out;
+      position: relative;
     }
 
     @keyframes fadeIn {
@@ -113,38 +324,88 @@
     }
 
     .item-header {
-      font-size: .75rem; font-weight: 700; color: #bca08e;
-      margin-bottom: 15px; letter-spacing: 1px;
+      font-size: .75rem;
+      font-weight: 700;
+      color: #bca08e;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
+
     .item-body {
-      font-size: 1.05rem; line-height: 2;
-      color: var(--deep-brown); margin-bottom: 25px;
-      white-space: pre-wrap; font-weight: 500;
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: var(--deep-brown);
+      margin-bottom: 12px;
+      white-space: pre-wrap;
+      font-weight: 500;
+    }
+
+    .chip-app {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #f7f1ff;
+      color: #7350aa;
+      font-size: 0.7rem;
+      margin-bottom: 4px;
+      font-weight: 600;
     }
 
     .btn-copy {
-      width: 100%; padding: 14px; border-radius: 16px;
-      background: #fdfaf8; color: var(--main-brown);
-      border: 1.5px solid #eee; font-weight: 700;
-      cursor: pointer; font-size: .9rem; transition: all .2s ease;
+      width: 100%;
+      padding: 10px;
+      border-radius: 12px;
+      background: #fff9f5;
+      color: var(--main-brown);
+      border: 1px solid #f1ded0;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: .8rem;
+      transition: all .2s ease;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
     }
-    .btn-copy:hover { border-color: var(--main-brown); background: #fff; }
+    .btn-copy:hover {
+      border-color: var(--accent-green);
+      background: #f4faf8;
+    }
 
+    /* Footer */
     .footer {
-      margin-top: 40px; text-align: center; padding-bottom: 40px;
+      margin-top: 28px;
+      text-align: center;
+      padding-bottom: 40px;
     }
     .line-contact {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: #fff; border: 1px solid #eee;
-      padding: 10px 22px; border-radius: 50px;
-      font-weight: 700; font-size: .85rem; color: #06c755;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      border: 1px solid #f0dfcf;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: .8rem;
+      color: #06c755;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.03);
     }
     .copyright {
-      margin-top: 20px; font-size: .75rem; font-weight: 600;
-      letter-spacing: 6px; color: #bca08e; text-transform: uppercase;
+      margin-top: 12px;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: 5px;
+      color: #bca08e;
+      text-transform: uppercase;
     }
 
-    .shake { animation: shake .4s; border-color: #e57373 !important; }
+    /* Error shake */
+    .shake {
+      animation: shake .4s;
+      border-color: #e57373 !important;
+    }
     @keyframes shake {
       0%,100% { transform: translateX(0); }
       25% { transform: translateX(-6px); }
@@ -154,23 +415,50 @@
 </head>
 <body>
   <div class="app-wrapper">
+    <!-- bubbles -->
+    <div class="bubble b1"></div>
+    <div class="bubble b2"></div>
+    <div class="bubble b3"></div>
+
     <header class="header">
       <div class="logo-box">
-        <img src="https://img2.imgbiz.com/imgbiz/IMG_0923.jpeg" alt="426 SHOP" />
+        <div class="logo-inner">
+          <div class="bear-face">
+            <div class="bear-ear left"><div class="bear-ear-inner"></div></div>
+            <div class="bear-ear right"><div class="bear-ear-inner"></div></div>
+            <div class="bear-eye left"></div>
+            <div class="bear-eye right"></div>
+            <div class="bear-cheek left"></div>
+            <div class="bear-cheek right"></div>
+            <div class="bear-nose"></div>
+            <div class="bear-mouth"></div>
+          </div>
+        </div>
       </div>
       <h1>426 SHOP</h1>
       <p>Premium Access</p>
+      <div class="mini-chip">
+        <span>🔐</span><span>วางโค้ดแล้วรับสินค้าได้ทันที</span>
+      </div>
     </header>
 
     <main class="card-main">
-      <span class="label-hint">กรอกรหัสรับสินค้าเพื่อเริ่มใช้งาน</span>
+      <span class="label-hint">กรอกรหัสรับสินค้า</span>
+      <div class="label-sub">วางโค้ดที่ได้รับจากแอดมิน 1 บรรทัดต่อ 1 โค้ด ได้หลายโค้ดพร้อมกัน</div>
+
       <div class="input-field">
-        <textarea id="codeInput" placeholder="วางรหัสของคุณที่นี่..."></textarea>
+        <textarea id="codeInput" placeholder="ตัวอย่างเช่น NFXA1B2 หรือ DSN9X3Y ..."></textarea>
+        <div class="input-hint-row">
+          <div class="pill">
+            <span>⭐</span><span>รองรับหลายโค้ดในครั้งเดียว</span>
+          </div>
+          <span>สูงสุด ~5 โค้ด/ครั้ง</span>
+        </div>
       </div>
 
-      <div id="status"></div>
+      <button class="btn-submit" id="btnRedeem">รับสินค้า ✨</button>
 
-      <button class="btn-submit" id="btnRedeem">รับสินค้า</button>
+      <div id="status"></div>
 
       <div id="results"></div>
     </main>
@@ -206,7 +494,7 @@
       btnRedeem.disabled = true;
       btnRedeem.innerHTML = "กำลังดำเนินการ...";
       status.style.color = "var(--main-brown)";
-      status.innerHTML = "ตรวจสอบข้อมูลในระบบน้า...";
+      status.innerHTML = "<span class='status-emoji'>⏳</span>กำลังตรวจสอบข้อมูลในระบบ...";
 
       const url = API_URL + "?action=redeem&text=" + encodeURIComponent(input);
 
@@ -217,13 +505,13 @@
         })
         .then((data) => {
           btnRedeem.disabled = false;
-          btnRedeem.innerHTML = "รับสินค้า";
+          btnRedeem.innerHTML = "รับสินค้า ✨";
           renderResult(data);
         })
         .catch((err) => {
           console.error(err);
           btnRedeem.disabled = false;
-          btnRedeem.innerHTML = "รับสินค้า";
+          btnRedeem.innerHTML = "รับสินค้า ✨";
           status.innerHTML = "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งค่ะ";
           status.style.color = "#e57373";
         });
@@ -241,17 +529,17 @@
       }
 
       let msgLines = [];
-      if (res.message) msgLines.push(res.message);
-      if (res.overflowMessage) msgLines.push(res.overflowMessage);
-      if (res.multiInLineMessage) msgLines.push(res.multiInLineMessage);
+      if (res.message) msgLines.push("💬 " + res.message);
+      if (res.overflowMessage) msgLines.push("⚠️ " + res.overflowMessage);
+      if (res.multiInLineMessage) msgLines.push("ℹ️ " + res.multiInLineMessage);
 
       if (res.notFound && res.notFound.length) {
-        msgLines.push("โค้ดที่ไม่พบในระบบ:");
+        msgLines.push("<br>🔍 โค้ดที่ไม่พบในระบบ:");
         res.notFound.forEach((c) => msgLines.push("• " + c));
       }
 
       if (res.used && res.used.length) {
-        msgLines.push("โค้ดที่ถูกใช้งานไปแล้ว:");
+        msgLines.push("<br>📌 โค้ดที่ถูกใช้งานไปแล้ว:");
         res.used.forEach((u) => {
           let line = "• " + u.code;
           if (u.app) line += " (" + u.app + ")";
@@ -270,9 +558,12 @@
           const safeReplyText = encodeURIComponent(item.reply);
 
           card.innerHTML = `
+            ${item.appName ? `<div class="chip-app">${item.appName}</div>` : ``}
             <div class="item-header">REDEEMED CODE: ${item.code}</div>
             <div class="item-body">${item.reply}</div>
-            <button class="btn-copy" data-text="${safeReplyText}">คัดลอกรายละเอียด</button>
+            <button class="btn-copy" data-text="${safeReplyText}">
+              📋 คัดลอกรายละเอียด
+            </button>
           `;
           resDiv.appendChild(card);
         });
@@ -305,9 +596,9 @@
       btn.style.borderColor = "var(--accent-green)";
       setTimeout(() => {
         btn.innerHTML = originalText;
-        btn.style.background = "#fdfaf8";
+        btn.style.background = "#fff9f5";
         btn.style.color = "var(--main-brown)";
-        btn.style.borderColor = "#eee";
+        btn.style.borderColor = "#f1ded0";
       }, 2000);
     }
   </script>
