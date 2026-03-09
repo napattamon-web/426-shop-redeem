@@ -253,7 +253,7 @@
       color: var(--text-main);
       line-height: 1.5;
       padding: 4px 0 0;
-      min-height: 160px; /* ขยายช่องใส่โค้ดให้สูงขึ้น */
+      min-height: 160px; /* ช่องใส่โค้ดใหญ่ขึ้น */
     }
 
     .input-helper-row {
@@ -430,6 +430,42 @@
       color: #2e7d32 !important;
     }
 
+    /* SUMMARY COUNTS */
+    #summary {
+      margin-top: 8px;
+      font-size: 0.78rem;
+    }
+
+    .summary-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .summary-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #f5efea;
+      border: 1px solid #e1d6ca;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .summary-pill--ok {
+      background: #e7f4ee;
+      border-color: #c3dfd2;
+    }
+    .summary-pill--used {
+      background: #f6f0ff;
+      border-color: #d9c8ff;
+    }
+    .summary-pill--nf {
+      background: #ffe9e7;
+      border-color: #f5c5bf;
+    }
+
     /* RESULT */
     #results {
       margin-top: 4px;
@@ -442,7 +478,7 @@
       border-radius: 14px;
       border: 1px solid #ebe4dc;
       background: #fdfbf9;
-      padding: 12px 12px 10px;
+      padding: 10px 10px 10px;
       animation: fadeIn 0.35s ease-out;
     }
 
@@ -451,12 +487,39 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    .item-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
     .item-header {
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: var(--text-sub);
-      margin-bottom: 6px;
+    }
+
+    .btn-eye {
+      border-radius: 999px;
+      border: 1px solid #dfd7ce;
+      background: #ffffff;
+      padding: 4px 10px;
+      font-size: 0.72rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: #7b7169;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .btn-eye:hover {
+      background: #f6f1ec;
+      border-color: #d3c8bc;
     }
 
     .item-body {
@@ -465,6 +528,19 @@
       color: var(--text-main);
       white-space: pre-wrap;
       margin-bottom: 8px;
+    }
+
+    /* เบลอรายละเอียดเริ่มต้น */
+    .item-body.blurred {
+      filter: blur(4px);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .result-item.show-detail .item-body.blurred {
+      filter: none;
+      pointer-events: auto;
+      user-select: text;
     }
 
     .btn-copy {
@@ -625,6 +701,9 @@
         <span>หลังจากกด “รับสินค้า” แล้ว <strong>ห้ามรีเฟรช / ปิดหน้านี้เด็ดขาด</strong> จนกว่าจะได้รับรหัสครบ</span>
       </div>
 
+      <!-- สรุปจำนวนโค้ด -->
+      <div id="summary"></div>
+
       <div id="status"></div>
       <div id="results"></div>
     </main>
@@ -652,11 +731,21 @@
     const lineInfo = document.getElementById("lineInfo");
     const status = document.getElementById("status");
     const resultsDiv = document.getElementById("results");
+    const summaryDiv = document.getElementById("summary");
     const toast = document.getElementById("toast");
+
+    let isLoading = false;
 
     btnRedeem.addEventListener("click", redeem);
     btnClear.addEventListener("click", clearForm);
     codeInput.addEventListener("input", updateLineInfo);
+
+    // ป้องกันปิด/รีเฟรชตอนกำลังโหลด
+    window.addEventListener("beforeunload", (e) => {
+      if (!isLoading) return;
+      e.preventDefault();
+      e.returnValue = "ระบบกำลังตรวจสอบโค้ดของคุณอยู่ หากออกจากหน้านี้อาจทำให้ไม่ได้รับโค้ดนะคะ";
+    });
 
     // โฟกัสช่องกรอกอัตโนมัติเมื่อโหลดหน้า
     window.addEventListener("load", () => {
@@ -689,6 +778,7 @@
       status.innerHTML = "";
       status.classList.remove("status-error", "status-ok");
       resultsDiv.innerHTML = "";
+      summaryDiv.innerHTML = "";
       lineInfo.textContent = "สูงสุด ~5 โค้ด/ครั้ง";
       codeInput.focus();
     }
@@ -714,6 +804,7 @@
         preWarn = `คุณกรอกโค้ด ${lines.length} รายการ ระบบจะใช้เฉพาะ ${MAX_CODES} รายการแรกค่ะ`;
       }
 
+      isLoading = true;
       btnRedeem.disabled = true;
       btnRedeem.innerHTML = `
         <span class="spinner"></span>
@@ -734,12 +825,14 @@
           return res.json();
         })
         .then((data) => {
+          isLoading = false;
           btnRedeem.disabled = false;
           btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
           renderResult(data);
         })
         .catch((err) => {
           console.error(err);
+          isLoading = false;
           btnRedeem.disabled = false;
           btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
           status.innerHTML = "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งค่ะ";
@@ -749,6 +842,7 @@
 
     function renderResult(res) {
       resultsDiv.innerHTML = "";
+      summaryDiv.innerHTML = "";
       status.classList.remove("status-error", "status-ok");
 
       if (!res) {
@@ -757,6 +851,29 @@
         return;
       }
 
+      // ==== Summary counts ====
+      const successCount = (res.items && res.items.length) || 0;
+      const usedCount = (res.used && res.used.length) || 0;
+      const nfCount = (res.notFound && res.notFound.length) || 0;
+
+      const chips = [];
+      if (successCount) {
+        chips.push(`<div class="summary-pill summary-pill--ok">✅ สำเร็จ ${successCount} โค้ด</div>`);
+      }
+      if (usedCount) {
+        chips.push(`<div class="summary-pill summary-pill--used">♻️ ใช้แล้ว ${usedCount} โค้ด</div>`);
+      }
+      if (nfCount) {
+        chips.push(`<div class="summary-pill summary-pill--nf">❌ ไม่พบ ${nfCount} โค้ด</div>`);
+      }
+
+      if (chips.length) {
+        summaryDiv.innerHTML = `<div class="summary-row">${chips.join("")}</div>`;
+      } else {
+        summaryDiv.innerHTML = "";
+      }
+
+      // ==== Status text ====
       let msgLines = [];
       if (res.message) msgLines.push("<span class='status-strong'>" + res.message + "</span>");
       if (res.overflowMessage) msgLines.push("• " + res.overflowMessage);
@@ -785,6 +902,13 @@
         status.classList.add("status-error");
       }
 
+      // ล้างช่องกรอกอัตโนมัติถ้ามีโค้ดที่ใช้ได้จริง
+      if (res.ok && successCount > 0) {
+        codeInput.value = "";
+        lineInfo.textContent = "สูงสุด ~5 โค้ด/ครั้ง";
+      }
+
+      // ==== Result cards ====
       if (res.items && res.items.length > 0) {
         res.items.forEach((item) => {
           const card = document.createElement("div");
@@ -792,13 +916,28 @@
           const safeReplyText = encodeURIComponent(item.reply || "");
 
           card.innerHTML = `
-            <div class="item-header">REDEEMED CODE: ${item.code}</div>
-            <div class="item-body">${item.reply || ""}</div>
+            <div class="item-top-row">
+              <div class="item-header">REDEEMED CODE: ${item.code}</div>
+              <button class="btn-eye" type="button"><span>👁</span><span>แสดง</span></button>
+            </div>
+            <div class="item-body blurred">${item.reply || ""}</div>
             <button class="btn-copy" data-text="${safeReplyText}">
               <span>คัดลอกรายละเอียด</span>
             </button>
           `;
           resultsDiv.appendChild(card);
+
+          // ปุ่มแสดง/ซ่อนรายละเอียด
+          const eyeBtn = card.querySelector(".btn-eye");
+          const body = card.querySelector(".item-body");
+          eyeBtn.addEventListener("click", () => {
+            const isShown = card.classList.toggle("show-detail");
+            if (isShown) {
+              eyeBtn.innerHTML = "<span>🙈</span><span>ซ่อน</span>";
+            } else {
+              eyeBtn.innerHTML = "<span>👁</span><span>แสดง</span>";
+            }
+          });
         });
 
         document.querySelectorAll(".btn-copy").forEach((btn) => {
