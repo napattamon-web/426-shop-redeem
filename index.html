@@ -2,17 +2,17 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <title>426 SHOP – Modern Experience</title>
+  <title>426 Chocolate Shop – Redeem</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
   <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f8f9fa;
-      --card-bg: rgba(255, 255, 255, 0.85);
-      --accent: #ff9fb2;
-      --accent-soft: #fff0f3;
-      --text-main: #4a3f35;
-      --text-sub: #a39387;
+      /* Palette: Sweet Chocolate */
+      --dark-choco: #5a4637;    /* ช็อกโกแลตเข้ม */
+      --milk-choco: #8a6a4f;    /* ช็อกโกแลตหน้านม */
+      --soft-cream: #fff8f0;    /* ครีมละมุน */
+      --strawberry: #f2b6c7;    /* ชมพูสตรอว์เบอร์รี */
+      --white: #ffffff;
     }
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -20,151 +20,155 @@
     body {
       margin: 0; padding: 0;
       font-family: 'Anuphan', sans-serif;
-      background: #fdfaf8;
-      /* เพิ่ม Texture พื้นหลังให้ดูพรีเมียม */
-      background-image: radial-gradient(#ffe4e9 0.8px, transparent 0.8px);
-      background-size: 24px 24px;
-      color: var(--text-main);
+      color: var(--dark-choco);
+      /* พื้นหลังลายตารางจางๆ เหมือนกระดาษห่อขนม */
+      background-color: var(--soft-cream);
+      background-image: repeating-linear-gradient(45deg, #fdf1e1 25%, transparent 25%, transparent 75%, #fdf1e1 75%, #fdf1e1), repeating-linear-gradient(45deg, #fdf1e1 25%, #fff8f0 25%, #fff8f0 75%, #fdf1e1 75%, #fdf1e1);
+      background-position: 0 0, 10px 10px;
+      background-size: 20px 20px;
       display: flex; justify-content: center; min-height: 100vh;
     }
 
-    .app-container {
-      width: 100%; max-width: 440px;
-      padding: 40px 20px;
-      display: flex; flex-direction: column; gap: 16px;
+    .app-wrapper {
+      width: 100%; max-width: 420px;
+      padding: 40px 15px;
+      display: flex; flex-direction: column; gap: 20px;
     }
 
-    /* Header Modern Style */
-    .brand-section {
+    /* Header: สไตล์ป้ายหน้าร้านขนม */
+    .shop-header {
       text-align: center; margin-bottom: 20px;
+      background: var(--white); border-radius: 30px;
+      padding: 25px; border: 4px solid var(--milk-choco);
+      box-shadow: 0 10px 0 rgba(138, 106, 79, 0.2); /* เงาแบบนูนๆ น่ารัก */
     }
-    .brand-logo {
-      width: 64px; height: 64px; background: white; border-radius: 20px;
-      margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.04);
-      font-size: 28px;
+    .shop-logo {
+      font-size: 40px; margin-bottom: 10px;
     }
-    .brand-section h1 { font-size: 1.5rem; margin: 0; font-weight: 800; letter-spacing: -0.5px; }
-    .brand-section p { font-size: 0.75rem; color: var(--text-sub); text-transform: uppercase; letter-spacing: 4px; margin-top: 4px; }
+    .shop-header h1 { 
+      font-size: 1.8rem; margin: 0; font-weight: 800; 
+      color: var(--dark-choco); letter-spacing: -0.5px;
+      text-shadow: 1px 1px 0 var(--milk-choco); /* เอฟเฟกต์นูนเล็กน้อย */
+    }
+    .shop-header p { 
+      font-size: 0.8rem; color: var(--milk-choco); 
+      margin-top: 5px; text-transform: uppercase; 
+      letter-spacing: 4px; font-weight: 700;
+    }
 
-    /* Bento Box Design */
-    .bento-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    /* Info Banner: เตือนแบบนุบนิบ */
+    .sweet-alert {
+      background: var(--strawberry); color: var(--white);
+      border-radius: 20px; padding: 15px 20px;
+      font-size: 0.85rem; font-weight: 700;
+      text-align: center; border: 3px solid var(--white);
+      box-shadow: 0 5px 0 rgba(242, 182, 199, 0.3);
+      display: flex; align-items: center; justify-content: center; gap: 10px;
     }
-    .bento-item {
-      background: var(--card-bg); backdrop-filter: blur(10px);
-      border-radius: 24px; padding: 16px;
-      border: 1px solid white; box-shadow: 0 8px 30px rgba(0,0,0,0.02);
-    }
-    .full-width { grid-column: span 2; }
 
-    /* Warning Banner - Modern Pulse */
-    .status-alert {
-      display: flex; align-items: center; gap: 10px; font-size: 0.8rem;
-      color: #e57373; font-weight: 700;
+    /* Main Card: เหมือนกล่องใส่ช็อกโกแลต */
+    .sweet-card {
+      background: var(--white); border-radius: 30px;
+      padding: 30px 25px;
+      border: 3px solid #eee;
+      box-shadow: 0 15px 30px rgba(90, 70, 55, 0.05);
     }
-    .pulse-dot {
-      width: 8px; height: 8px; background: #e57373; border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
 
-    /* Input Styling */
-    .input-group { position: relative; }
+    .label-sweet { 
+      font-size: 1rem; font-weight: 700; color: var(--dark-choco); 
+      margin-left: 5px; margin-bottom: 12px; display: block; 
+    }
+    
+    /* Input Area: ช่องวางรหัสสีครีมหน้านม */
+    .input-wrapper {
+      background: #faf7f3; border-radius: 20px; padding: 20px;
+      border: 2px solid #f3ece5; transition: 0.3s;
+    }
+    .input-wrapper:focus-within {
+      background: var(--white); border-color: var(--milk-choco);
+      box-shadow: 0 10px 20px rgba(138, 106, 79, 0.1);
+    }
     textarea {
-      width: 100%; height: 110px; border: none; background: transparent;
-      font-family: inherit; font-size: 1rem; color: var(--text-main);
+      width: 100%; height: 100px; border: none; background: transparent;
+      font-family: inherit; font-size: 1rem; color: var(--dark-choco);
       resize: none; outline: none; padding: 0;
     }
-    textarea::placeholder { color: #ccc; }
+    textarea::placeholder { color: #d4c4b5; }
 
-    .btn-action {
-      width: 100%; padding: 18px; border-radius: 22px; border: none;
-      background: var(--text-main); color: white;
-      font-size: 1rem; font-weight: 700; cursor: pointer;
+    /* Button: เหมือนช็อกโกแลตแท่ง */
+    .btn-sweet {
+      width: 100%; padding: 18px; margin-top: 20px; border-radius: 20px;
+      border: none; background: var(--dark-choco); color: var(--soft-cream);
+      font-size: 1.1rem; font-weight: 800; cursor: pointer;
       transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      display: flex; align-items: center; justify-content: center; gap: 8px;
+      border-bottom: 5px solid #3b2d23; /* เพิ่มมิติเหมือนแท่งช็อกโกแลต */
+      display: flex; align-items: center; justify-content: center; gap: 10px;
     }
-    .btn-action:hover { transform: scale(1.02); background: #000; }
-    .btn-action:active { transform: scale(0.98); }
+    .btn-sweet:hover { opacity: 0.95; transform: translateY(-2px); }
+    .btn-sweet:active { transform: translateY(2px); border-bottom-width: 2px; }
+    .btn-sweet:disabled { background: #d4c4b5; border-bottom: none; cursor: not-allowed; }
 
-    /* Result Cards */
-    .result-card {
-      background: white; border-radius: 24px; padding: 20px;
-      margin-top: 12px; border: 1px solid #f1f3f5;
-      animation: slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    /* Results: รายการสินค้าสไตล์มินิคาร์ด */
+    #results { margin-top: 20px; display: flex; flex-direction: column; gap: 15px; }
+    .result-item-sweet {
+      background: var(--white); border-radius: 25px; padding: 20px;
+      border: 2px solid #f3ece5;
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } }
+    @keyframes popIn { from { opacity: 0; transform: scale(0.8); } }
 
-    .tag-premium {
-      background: var(--accent-soft); color: var(--accent);
-      padding: 4px 10px; border-radius: 10px; font-size: 0.7rem; font-weight: 800;
+    .tag-sweet {
+      font-size: 0.7rem; font-weight: 800; color: var(--dark-choco);
+      background: #f3ece5; padding: 4px 10px; border-radius: 10px;
+      margin-bottom: 8px; display: inline-block;
+    }
+    .reply-text-sweet { 
+      font-size: 0.95rem; line-height: 1.6; color: var(--dark-choco);
+      font-weight: 500; margin-bottom: 15px; white-space: pre-wrap; 
     }
 
-    .btn-copy-modern {
-      width: 100%; padding: 12px; margin-top: 15px; border-radius: 16px;
-      border: 1.5px solid #eee; background: white; color: var(--text-main);
-      font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: 0.2s;
+    .btn-copy-sweet {
+      width: 100%; padding: 12px; border: 1px solid #f3ece5;
+      border-radius: 12px; background: #faf7f3; color: var(--milk-choco);
+      font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: 0.2s;
     }
-    .btn-copy-modern:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-copy-sweet:hover { background: #f3ece5; color: var(--dark-choco); border-color: var(--dark-choco); }
 
-    /* Footer */
-    footer { text-align: center; padding: 20px 0; margin-top: auto; }
-    .social-badge {
-      display: inline-flex; align-items: center; padding: 8px 16px;
-      background: white; border-radius: 999px; font-size: 0.8rem;
-      color: #06c755; text-decoration: none; font-weight: 700;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-    }
+    /* Footer: ลายนิ้วมือจางๆ */
+    footer { text-align: center; padding: 30px 0; margin-top: auto; opacity: 0.6; }
+    .line-link-sweet { font-size: 0.85rem; color: var(--milk-choco); text-decoration: none; font-weight: 700; }
+    .copy-right-sweet { font-size: 0.65rem; color: var(--text-light); margin-top: 8px; font-weight: 700; }
   </style>
 </head>
 <body>
 
-  <div class="app-container">
-    <header class="brand-section">
-      <div class="brand-logo">🧸</div>
-      <h1>426 SHOP</h1>
-      <p>Premium Access</p>
+  <div class="app-wrapper">
+    <header class="shop-header">
+      <div class="shop-logo">🍫🍩</div>
+      <h1>426 CHOCOLATE</h1>
+      <p>Premium Redeem</p>
     </header>
 
-    <div class="bento-grid">
-      <div class="bento-item full-width" style="padding: 12px 20px;">
-        <div class="status-alert">
-          <div class="pulse-dot"></div>
-          ⚠️ ห้ามรีเฟรชหน้าจอ ข้อมูลจะหายทันที
-        </div>
-      </div>
-
-      <div class="bento-item full-width">
-        <div class="input-group">
-          <textarea id="codeInput" placeholder="วางโค้ดสินค้าที่ได้รับจากแอดมิน..."></textarea>
-        </div>
-      </div>
-
-      <div class="full-width">
-        <button class="btn-action" id="btnRedeem">
-          <span>รับสินค้าทันที</span>
-          <span style="font-size: 18px;">✨</span>
-        </button>
-      </div>
-
-      <div class="bento-item" style="display: flex; align-items: center; justify-content: center; text-align: center;">
-        <span style="font-size: 0.7rem; font-weight: 700; color: var(--text-sub);">🔐 ปลอดภัย 100%</span>
-      </div>
-      <div class="bento-item" style="display: flex; align-items: center; justify-content: center; text-align: center;">
-        <span style="font-size: 0.7rem; font-weight: 700; color: var(--text-sub);">⚡️ รับไวใน 1 วิ</span>
-      </div>
+    <div class="sweet-alert">
+      <span>🚫 ห้ามรีเฟรชหน้าจอนะคะ ข้อมูลจะหายทันที!</span>
     </div>
+
+    <main class="sweet-card">
+      <label class="label-sweet">วางรหัสหวานๆ ตรงนี้ค่ะ ☁️</label>
+      <div class="input-wrapper">
+        <textarea id="codeInput" placeholder="ตัวอย่าง...&#10;CHOCO-1234&#10;SWEET-5678"></textarea>
+      </div>
+      <button class="btn-sweet" id="btnRedeem">
+        <span>รับความหวาน</span>
+        <span>🍪</span>
+      </button>
+    </main>
 
     <div id="results"></div>
 
     <footer>
-      <a href="https://line.me/ti/p/@467dlpti" class="social-badge">
-        Support: @467dlpti
-      </a>
-      <div style="font-size: 0.6rem; color: #ccc; margin-top: 15px; font-weight: 700; letter-spacing: 1px;">
-        EST 2024 • 426 SHOP
-      </div>
+      <a href="https://line.me/ti/p/@467dlpti" class="line-link-sweet">หวานใจ Support: @467dlpti</a>
+      <div class="copy-right-sweet">© 2024-2026 426 CHOCOLATE SHOP.</div>
     </footer>
   </div>
 
@@ -172,10 +176,10 @@
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const btn = document.getElementById("btnRedeem");
     const input = document.getElementById("codeInput");
-    const resultsArea = document.getElementById("results");
+    const results = document.getElementById("results");
 
     window.onbeforeunload = function() {
-      if (resultsArea.children.length > 0) return "ข้อมูลรหัสจะหายไปนะคะ!";
+      if (results.children.length > 0) return "ความหวานจะหายไปหากคุณรีเฟรชหน้าจอ!";
     };
 
     btn.addEventListener("click", async () => {
@@ -183,8 +187,8 @@
       if (!code) return;
 
       btn.disabled = true;
-      btn.innerHTML = "กำลังตรวจสอบ... ⏳";
-      resultsArea.innerHTML = "";
+      btn.innerHTML = "กำลังดึงความหวาน... ⏳";
+      results.innerHTML = "";
 
       try {
         const res = await fetch(`${API_URL}?action=redeem&text=${encodeURIComponent(code)}`);
@@ -192,38 +196,36 @@
         
         if (data.items && data.items.length > 0) {
           data.items.forEach(item => {
-            const card = document.createElement("div");
-            card.className = "result-card";
-            card.innerHTML = `
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-                <span class="tag-premium">${item.appName || 'Premium'}</span>
-                <span style="font-size:0.65rem; color:#ccc; font-weight:700;">#${item.code.substring(0,4)}</span>
-              </div>
-              <div style="font-weight:600; line-height:1.6; font-size:0.95rem;">${item.reply}</div>
-              <button class="btn-copy-modern">คัดลอกรายละเอียด 📋</button>
+            const div = document.createElement("div");
+            div.className = "result-item-sweet";
+            div.innerHTML = `
+              <span class="tag-sweet">${item.appName || 'Special Dessert'}</span>
+              <div class="reply-text-sweet">${item.reply}</div>
+              <button class="btn-copy-sweet">คัดลอกรหัสความหวาน</button>
             `;
-            card.querySelector("button").onclick = (e) => copyAction(item.reply, e.target);
-            resultsArea.appendChild(card);
+            div.querySelector("button").onclick = (e) => copyText(item.reply, e.target);
+            results.appendChild(div);
           });
+          window.scrollTo({ top: results.offsetTop - 20, behavior: 'smooth' });
         } else {
-          resultsArea.innerHTML = `<div style="text-align:center; padding:20px; font-size:0.8rem; color:#e57373; font-weight:700;">ไม่พบรหัสสินค้า หรือรหัสถูกใช้งานแล้วค่ะ 🥺</div>`;
+          results.innerHTML = `<div style="text-align:center; padding:20px; font-size:0.8rem; color:#e57373; font-weight:700;">ไม่พบความหวานที่คุณค้นหาค่ะ 🥺</div>`;
         }
       } catch (e) {
-        resultsArea.innerHTML = `<div style="text-align:center; padding:20px; font-size:0.8rem; color:#e57373;">เกิดข้อผิดพลาดในการเชื่อมต่อ</div>`;
+        results.innerHTML = `<div style="text-align:center; padding:20px; font-size:0.8rem; color:#e57373;">เกิดข้อผิดพลาดในการเชื่อมต่อ</div>`;
       } finally {
         btn.disabled = false;
-        btn.innerHTML = "<span>รับสินค้าทันที</span><span style='font-size: 18px;'>✨</span>";
+        btn.innerHTML = "<span>รับความหวาน</span><span>🍪</span>";
       }
     });
 
-    function copyAction(text, el) {
+    function copyText(text, el) {
       navigator.clipboard.writeText(text).then(() => {
-        const original = el.innerHTML;
-        el.innerHTML = "คัดลอกเรียบร้อย! ✨";
+        const oldText = el.innerHTML;
+        el.innerHTML = "คัดลอกสำเร็จ ✨";
         el.style.color = "#90beaa";
         el.style.borderColor = "#90beaa";
         setTimeout(() => {
-          el.innerHTML = original;
+          el.innerHTML = oldText;
           el.style = "";
         }, 2000);
       });
