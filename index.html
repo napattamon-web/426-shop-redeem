@@ -4,21 +4,31 @@
   <meta charset="UTF-8" />
   <title>426 SHOP – Redeem Code</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f5f3f0" />
   <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-color: #f8f5f2;
-      --bg-gradient: radial-gradient(circle at top, #fef7f2 0%, #f3ece5 45%, #efe5db 100%);
-      --main-brown: #8d7765;
-      --deep-brown: #4d3c32;
-      --soft-cream: #ffffff;
-      --accent-green: #9fb8ad;
-      --accent-pink: #f7c9cf;
-      --error-red: #e57373;
-      --chip-success: #e5f4ec;
-      --chip-error: #fbeaea;
-      --chip-warn: #fff6e0;
-      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.06);
+      --bg: #f5f3f0;
+      --card: #ffffff;
+      --accent: #85b8a6;
+      --accent-soft: #e3f0eb;
+      --text-main: #393532;
+      --text-sub: #8b8680;
+      --border-soft: #e2ddd7;
+      --danger: #e57373;
+      --shadow-soft: 0 18px 40px rgba(0,0,0,0.06);
+      --radius-xl: 24px;
+    }
+
+    body.theme-dark {
+      --bg: #15161a;
+      --card: #1f2024;
+      --accent: #9dd4c1;
+      --accent-soft: #223a33;
+      --text-main: #f4f5f7;
+      --text-sub: #a5a9b3;
+      --border-soft: #2d3036;
+      --shadow-soft: 0 18px 40px rgba(0,0,0,0.7);
     }
 
     * {
@@ -31,743 +41,1193 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      background: var(--bg-gradient);
-      font-family: 'Anuphan', sans-serif;
-      color: var(--deep-brown);
       display: flex;
       justify-content: center;
       align-items: stretch;
+      background:
+        radial-gradient(circle at 0 0, #f8e8dd 0, transparent 55%),
+        radial-gradient(circle at 100% 0, #e7f4ee 0, transparent 55%),
+        var(--bg);
+      font-family: "Anuphan", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-main);
       -webkit-font-smoothing: antialiased;
+      transition: background 0.25s ease;
     }
 
-    .app-wrapper {
+    body.theme-dark {
+      background:
+        radial-gradient(circle at 0 0, #222433 0, transparent 55%),
+        radial-gradient(circle at 100% 0, #243234 0, transparent 55%),
+        var(--bg);
+    }
+
+    .app {
       width: 100%;
       max-width: 480px;
-      padding: 20px 18px 28px;
+      padding: 14px 16px 18px;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 10px;
+      overflow-y: auto;
     }
 
-    /* Header */
+    /* HEADER */
     .header {
-      text-align: center;
-    }
-
-    .logo-box {
-      width: 90px;
-      height: 90px;
-      margin: 0 auto 14px;
-      background: var(--soft-cream);
-      border-radius: 32px;
-      padding: 6px;
-      box-shadow: 0 10px 25px rgba(141, 119, 101, 0.12);
-      transition: transform 0.5s ease;
-    }
-
-    .logo-box:hover {
-      transform: rotate(4deg) scale(1.04);
-    }
-
-    .logo-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 26px;
-    }
-
-    .header-top-row {
       display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
       justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand-left {
+      display: flex;
       align-items: center;
-      margin-bottom: 6px;
+      gap: 12px;
+      min-width: 0;
     }
 
-    .header-title-wrap {
-      text-align: center;
-      flex: 1;
-    }
-
-    h1 {
-      font-size: 1.5rem;
-      margin: 0;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      color: var(--deep-brown);
-    }
-
-    .tagline {
-      font-size: 0.8rem;
-      margin-top: 4px;
-      color: var(--main-brown);
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      opacity: 0.85;
-    }
-
-    /* Theme toggle */
-    .theme-toggle {
-      border: none;
-      background: rgba(255, 255, 255, 0.9);
+    .logo-circle {
+      width: 54px;
+      height: 54px;
       border-radius: 999px;
-      padding: 6px 10px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--deep-brown);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.05);
-    }
-
-    .theme-toggle span.icon {
-      font-size: 1rem;
-    }
-
-    /* Warning banner: ห้ามรีเฟรช */
-    .no-refresh-banner {
-      margin-top: 8px;
-      border-radius: 18px;
-      padding: 8px 12px;
-      font-size: 0.8rem;
-      font-weight: 700;
+      background: linear-gradient(135deg, #f8efe7, #e7f4ee);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      background: #fff0e0;
-      color: #c05321;
-      border: 1px solid rgba(255, 153, 102, 0.6);
-      text-align: center;
-      animation: flashWarn 1.1s ease-in-out infinite alternate;
-      visibility: hidden;
-      opacity: 0;
-      transform: translateY(-4px);
-      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .no-refresh-banner.show {
-      visibility: visible;
-      opacity: 1;
-      transform: translateY(0);
+    body.theme-dark .logo-circle {
+      background: linear-gradient(135deg, #2a2b38, #223234);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.8);
     }
 
-    @keyframes flashWarn {
-      from { background-color: #ffe9d6; box-shadow: 0 0 0 0 rgba(255, 153, 102, 0.35); }
-      to   { background-color: #ffd9bc; box-shadow: 0 0 0 6px rgba(255, 153, 102, 0); }
+    .logo-circle.success-bounce {
+      animation: successPop 0.55s ease-out;
     }
 
-    /* Main card */
-    .card-main {
-      background: rgba(255, 255, 255, 0.94);
-      border-radius: 32px;
-      padding: 22px 20px 22px;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(141, 119, 101, 0.08);
+    @keyframes successPop {
+      0% { transform: scale(1) translateY(0); }
+      40% { transform: scale(1.08) translateY(-3px); }
+      100% { transform: scale(1) translateY(0); }
+    }
+
+    .bear-min {
+      width: 34px;
+      height: 30px;
+      background: #c9a48b;
+      border-radius: 20px;
+      position: relative;
+    }
+    .bear-min::before,
+    .bear-min::after {
+      content: "";
+      position: absolute;
+      top: -8px;
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: #c9a48b;
+    }
+    .bear-min::before { left: 3px; }
+    .bear-min::after { right: 3px; }
+
+    .bear-eye {
+      position: absolute;
+      top: 11px;
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: #3b2a1e;
+      animation: blink 4s infinite;
+      transform-origin: center center;
+    }
+    .bear-eye.left { left: 9px; }
+    .bear-eye.right { right: 9px; }
+
+    .bear-nose {
+      position: absolute;
+      top: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 9px;
+      height: 6px;
+      border-radius: 999px;
+      background: #3b2a1e;
+    }
+
+    @keyframes blink {
+      0%, 92%, 100% { transform: scaleY(1); }
+      95% { transform: scaleY(0.15); }
+      97% { transform: scaleY(1); }
+    }
+
+    .brand-text {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 2px;
+      min-width: 0;
     }
 
-    /* Steps */
-    .steps {
+    .brand-title {
+      font-weight: 700;
+      font-size: 1.4rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .brand-sub {
+      font-size: 0.82rem;
+      color: var(--text-sub);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .badge {
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(0,0,0,0.03);
+      font-size: 0.72rem;
+      color: var(--text-sub);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      backdrop-filter: blur(6px);
+    }
+
+    body.theme-dark .badge {
+      background: rgba(31,32,36,0.95);
+      border-color: rgba(255,255,255,0.06);
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #4caf50;
+      box-shadow: 0 0 0 4px rgba(76,175,80,0.18);
+    }
+
+    .theme-toggle {
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.06);
+      background: rgba(255,255,255,0.95);
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.95rem;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+      transition: all 0.18s ease;
+      backdrop-filter: blur(6px);
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+    }
+
+    body.theme-dark .theme-toggle {
+      background: rgba(25,26,30,0.96);
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    /* STEP ROW */
+    .step-row {
       display: flex;
       gap: 6px;
-      margin-bottom: 2px;
+      font-size: 0.72rem;
+      color: var(--text-sub);
       flex-wrap: wrap;
     }
 
     .step-pill {
-      flex: 1;
-      min-width: 0;
-      font-size: 0.7rem;
-      padding: 6px 6px;
+      padding: 4px 10px;
       border-radius: 999px;
-      background: #f3ebe4;
-      color: #a08a78;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid #ded5cb;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    body.theme-dark .step-pill {
+      background: rgba(36,37,43,0.95);
+      border-color: #32343b;
+    }
+
+    .step-pill--muted {
+      opacity: 0.65;
+    }
+
+    .step-pill--active {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--text-main);
+      box-shadow: 0 0 0 3px rgba(133,184,166,0.18);
+      opacity: 1;
+    }
+
+    .step-pill--done {
+      background: #e8f6f0;
+      border-color: #b8dccc;
+      color: #356655;
+      opacity: 1;
+    }
+
+    body.theme-dark .step-pill--done {
+      background: #233a31;
+      border-color: #3e6d5b;
+      color: #c1e4d5;
+    }
+
+    /* CARD MAIN */
+    .card {
+      flex: 1;
+      background: var(--card);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border-soft);
+      padding: 18px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card-title {
+      font-size: 1.02rem;
       font-weight: 600;
-      text-align: center;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .step-pill.step-active {
-      background: #f9efe9;
-      color: var(--deep-brown);
-      box-shadow: 0 4px 10px rgba(141, 119, 101, 0.2);
+    .card-title span.icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
     }
 
-    .step-pill.step-done {
-      background: #e5f4ec;
-      color: #347e57;
+    .card-desc {
+      font-size: 0.86rem;
+      color: var(--text-sub);
+      line-height: 1.5;
     }
 
-    .label-hint {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--main-brown);
-      margin-bottom: 6px;
-      text-align: center;
-    }
-
-    /* Input */
     .input-field {
-      background: #faf9f7;
-      border-radius: 20px;
-      padding: 14px 14px 8px;
-      border: 1.5px solid #eee;
-      transition: all 0.3s ease;
+      background: #faf8f6;
+      border-radius: 16px;
+      border: 1.5px solid #e6e0da;
+      padding: 10px 12px;
+      transition: all 0.25s ease;
+    }
+
+    body.theme-dark .input-field {
+      background: #232429;
+      border-color: #32343b;
     }
 
     .input-field:focus-within {
-      border-color: var(--main-brown);
+      border-color: var(--accent);
       background: #ffffff;
-      box-shadow: 0 0 0 4px rgba(141, 119, 101, 0.08);
+      box-shadow: 0 0 0 3px rgba(133,184,166,0.16);
+    }
+
+    body.theme-dark .input-field:focus-within {
+      background: #25272d;
     }
 
     textarea {
       width: 100%;
-      height: 140px; /* ใหญ่ขึ้นตามที่ขอ */
       border: none;
-      font-family: 'Anuphan', sans-serif;
-      font-size: 1.05rem;
-      color: var(--deep-brown);
       resize: none;
       background: transparent;
-      line-height: 1.6;
+      font-family: inherit;
+      font-size: 0.98rem;
+      color: var(--text-main);
+      line-height: 1.5;
+      padding: 4px 0 0;
+      min-height: 170px; /* ช่องใส่โค้ดใหญ่ขึ้นอีกนิด */
     }
 
-    textarea::placeholder {
-      color: #c4b7ac;
-    }
-
-    .input-note {
+    .input-helper-row {
       margin-top: 4px;
-      font-size: 0.75rem;
-      color: #aa9586;
       display: flex;
       justify-content: space-between;
-      gap: 8px;
+      align-items: center;
+      font-size: 0.72rem;
+      color: var(--text-sub);
+      gap: 6px;
       flex-wrap: wrap;
     }
 
-    .input-note span.highlight {
-      color: #c05321;
-      font-weight: 700;
+    .small-tag {
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #f5efea;
+      border: 1px dashed #e0d4c8;
+      white-space: nowrap;
     }
 
-    /* Buttons */
+    body.theme-dark .small-tag {
+      background: #26272e;
+      border-color: #3a3c45;
+    }
+
+    #lineInfo {
+      text-align: right;
+      flex: 1;
+      min-height: 1.2em;
+    }
+
+    /* BUTTON ROW */
     .btn-row {
       display: flex;
-      gap: 10px;
-      margin-top: 4px;
-      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 2px;
+      align-items: stretch;
     }
 
-    .btn-submit,
-    .btn-clear {
-      border-radius: 22px;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 14px 14px;
-      transition: all 0.25s ease;
+    .btn-primary {
       flex: 1;
+      border-radius: 999px;
+      border: none;
+      padding: 14px;
+      background: radial-gradient(circle at 0 0, #a2d5c2 0, #7fae9b 55%);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+      transition: all 0.2s ease;
+      white-space: nowrap;
     }
 
-    .btn-submit {
-      background: linear-gradient(135deg, var(--deep-brown), var(--main-brown));
-      color: #fff;
-      box-shadow: 0 8px 22px rgba(77, 60, 50, 0.35);
+    body.theme-dark .btn-primary {
+      background: radial-gradient(circle at 0 0, #8fcbb7 0, #5a8a79 55%);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.6);
     }
 
-    .btn-submit:hover:not(:disabled) {
+    .btn-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 10px 26px rgba(77, 60, 50, 0.45);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.18);
     }
 
-    .btn-submit:disabled {
+    .btn-primary:active {
+      transform: translateY(0);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.14);
+    }
+
+    .btn-primary:disabled {
       opacity: 0.6;
       cursor: default;
-      box-shadow: none;
+      transform: none;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
     }
 
-    .btn-clear {
-      background: #f7f2ed;
-      color: #9a8170;
-      border: 1px solid #e3d6cc;
-    }
-
-    .btn-clear:hover {
-      background: #fdf8f3;
-    }
-
-    /* Status + hint */
-    #status {
-      text-align: left;
+    .btn-secondary {
+      border-radius: 999px;
+      border: 1px solid #dad3cc;
+      background: #f8f4f1;
+      padding: 12px 14px;
       font-size: 0.8rem;
       font-weight: 600;
-      min-height: 24px;
-      color: var(--main-brown);
+      color: var(--text-sub);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+    }
+
+    body.theme-dark .btn-secondary {
+      background: #25262b;
+      border-color: #383a40;
+    }
+
+    .btn-secondary:hover {
+      background: #f2ece6;
+      border-color: #cfc5ba;
+    }
+
+    body.theme-dark .btn-secondary:hover {
+      background: #2b2c32;
+      border-color: #444751;
+    }
+
+    /* LOADING SPINNER */
+    .btn-primary .spinner {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      border: 2px solid rgba(255,255,255,0.6);
+      border-top-color: rgba(255,255,255,1);
+      animation: spin 0.7s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* WARN TEXT */
+    .warn-text {
       margin-top: 4px;
+      font-size: 0.76rem;
+      color: #d47955;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
       line-height: 1.5;
     }
-
-    #hint {
-      margin-top: 2px;
-      font-size: 0.75rem;
-      color: #b07a4c;
+    .warn-text-icon {
+      font-size: 0.9rem;
+      margin-top: 1px;
     }
 
-    .shake {
-      animation: shake 0.4s;
-      border-color: #e57373 !important;
-    }
-
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-5px); }
-      75% { transform: translateX(5px); }
-    }
-
-    /* Summary chips */
-    .summary {
+    .warn-text--important {
       margin-top: 6px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: #fff4e7;
+      border: 1px solid #f0c2a0;
+      animation: warnPulse 1.4s ease-in-out infinite;
+    }
+
+    body.theme-dark .warn-text--important {
+      background: #3b2a21;
+      border-color: #f0c2a0;
+    }
+
+    .warn-text--important .warn-text-icon {
+      animation: warnIconPulse 1.4s ease-in-out infinite;
+    }
+
+    @keyframes warnPulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(212, 125, 76, 0.35);
+      }
+      50% {
+        box-shadow: 0 0 0 6px rgba(212, 125, 76, 0);
+      }
+    }
+
+    @keyframes warnIconPulse {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-1px) scale(1.12);
+      }
+    }
+
+    /* STATUS */
+    #status {
+      font-size: 0.8rem;
+      margin-top: 8px;
+      color: var(--text-sub);
+      line-height: 1.6;
+      min-height: 20px;
+    }
+
+    .status-strong {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .status-error {
+      color: #e57373 !important;
+    }
+
+    .status-ok {
+      color: #2e7d32 !important;
+    }
+
+    .status-time {
+      font-size: 0.76rem;
+      color: var(--text-sub);
+    }
+
+    /* SUMMARY COUNTS */
+    #summary {
+      margin-top: 8px;
+      font-size: 0.78rem;
+    }
+
+    .summary-row {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
     }
 
-    .chip {
-      border-radius: 999px;
+    .summary-pill {
       padding: 4px 10px;
-      font-size: 0.75rem;
+      border-radius: 999px;
+      background: #f5efea;
+      border: 1px solid #e1d6ca;
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      white-space: nowrap;
+    }
+
+    .summary-pill--ok {
+      background: #e7f4ee;
+      border-color: #c3dfd2;
+    }
+    .summary-pill--used {
+      background: #f6f0ff;
+      border-color: #d9c8ff;
+    }
+    .summary-pill--nf {
+      background: #ffe9e7;
+      border-color: #f5c5bf;
+    }
+
+    body.theme-dark .summary-pill {
+      background: #26272e;
+      border-color: #3a3c45;
+    }
+    body.theme-dark .summary-pill--ok {
+      background: #223831;
+      border-color: #3e6d5b;
+    }
+    body.theme-dark .summary-pill--used {
+      background: #2a2637;
+      border-color: #4b3f65;
+    }
+    body.theme-dark .summary-pill--nf {
+      background: #3b2626;
+      border-color: #5a3631;
+    }
+
+    .used-info-card {
+      margin-top: 8px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: #eef3ff;
+      border: 1px solid #cbd7ff;
+      font-size: 0.78rem;
+      line-height: 1.5;
+    }
+
+    body.theme-dark .used-info-card {
+      background: #23283a;
+      border-color: #404c7a;
+    }
+
+    .used-info-title {
       font-weight: 600;
-      border: 1px solid transparent;
+      margin-bottom: 2px;
     }
 
-    .chip.badge-success {
-      background: var(--chip-success);
-      color: #2c6d45;
-      border-color: rgba(70, 130, 100, 0.22);
-    }
-
-    .chip.badge-used {
-      background: var(--chip-warn);
-      color: #b3832b;
-      border-color: rgba(210, 162, 70, 0.28);
-    }
-
-    .chip.badge-error {
-      background: var(--chip-error);
-      color: #b44b4b;
-      border-color: rgba(221, 116, 116, 0.28);
-    }
-
-    .chip span.dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      display: inline-block;
-    }
-
-    .badge-success .dot { background: #2c6d45; }
-    .badge-used .dot { background: #b3832b; }
-    .badge-error .dot { background: #b44b4b; }
-
-    /* Alert box (เช่น ใช้โค้ดไปแล้วหลายอัน) */
-    .alert-box {
-      margin-top: 10px;
-      padding: 10px 12px;
-      border-radius: 16px;
-      background: #fff6e0;
-      border: 1px solid rgba(223, 167, 73, 0.4);
-      font-size: 0.8rem;
-      color: #9a6a1d;
-    }
-
-    /* Result cards */
+    /* RESULT */
     #results {
-      margin-top: 10px;
+      margin-top: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
     .result-item {
-      margin-top: 18px;
-      background: var(--soft-cream);
-      border-radius: 26px 26px 26px 14px;
-      padding: 16px 16px 14px;
-      border-left: 5px solid var(--main-brown);
-      animation: fadeIn 0.4s ease-out;
-      position: relative;
+      border-radius: 14px;
+      border: 1px solid #ebe4dc;
+      background: #fdfbf9;
+      padding: 10px 10px 10px;
+      animation: fadeIn 0.35s ease-out;
+    }
+
+    body.theme-dark .result-item {
+      background: #24252b;
+      border-color: #34363f;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .item-top {
+    .item-top-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 8px;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
     }
 
     .item-header {
       font-size: 0.75rem;
-      font-weight: 700;
-      color: #bca08e;
-      letter-spacing: 1px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-sub);
     }
 
-    .btn-toggle-detail {
+    .item-tag {
+      font-size: 0.72rem;
+      padding: 3px 8px;
       border-radius: 999px;
-      border: none;
-      padding: 5px 10px;
-      font-size: 0.7rem;
-      background: #f4eee9;
-      color: #8a7261;
+      background: #f1f7ff;
+      border: 1px solid #d3e2f7;
+      color: #506a92;
+      margin-left: 4px;
+      white-space: nowrap;
+    }
+
+    body.theme-dark .item-tag {
+      background: #232b3a;
+      border-color: #3f557a;
+      color: #c4d4f5;
+    }
+
+    .btn-eye {
+      border-radius: 999px;
+      border: 1px solid #dfd7ce;
+      background: #ffffff;
+      padding: 4px 10px;
+      font-size: 0.72rem;
       cursor: pointer;
-      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: #7b7169;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    body.theme-dark .btn-eye {
+      background: #26272d;
+      border-color: #3b3d45;
+      color: #d0d3da;
+    }
+
+    .btn-eye:hover {
+      background: #f6f1ec;
+      border-color: #d3c8bc;
+    }
+
+    body.theme-dark .btn-eye:hover {
+      background: #2c2e35;
+      border-color: #4a4d58;
     }
 
     .item-body {
-      font-size: 1rem;
-      line-height: 1.9;
-      color: var(--deep-brown);
-      margin-bottom: 12px;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--text-main);
       white-space: pre-wrap;
-      font-weight: 500;
-      transition: filter 0.2s ease;
+      margin-bottom: 8px;
     }
 
     .item-body.blurred {
       filter: blur(4px);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .result-item.show-detail .item-body.blurred {
+      filter: none;
+      pointer-events: auto;
+      user-select: text;
     }
 
     .btn-copy {
       width: 100%;
-      padding: 10px 12px;
-      border-radius: 16px;
-      background: #fdfaf8;
-      color: var(--main-brown);
-      border: 1.5px solid #eee;
-      font-weight: 700;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: all 0.2s ease;
-    }
-
-    .btn-copy:hover {
-      border-color: var(--main-brown);
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid #e3ddd5;
       background: #ffffff;
-    }
-
-    /* Tips bar */
-    .tips-bar {
-      margin-top: 10px;
-      padding: 8px 12px;
       font-size: 0.78rem;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.9);
-      color: #9b8371;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .tips-bar-label {
-      font-weight: 700;
-      font-size: 0.7rem;
-      padding: 3px 7px;
-      border-radius: 999px;
-      background: #f7dde4;
-      color: #b64c68;
-    }
-
-    /* Footer */
-    .footer {
-      margin-top: 6px;
-      text-align: center;
-      padding-top: 6px;
-    }
-
-    .line-contact {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 18px;
-      border-radius: 999px;
-      background: #06c755;
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 0.85rem;
-      text-decoration: none;
-      box-shadow: 0 8px 18px rgba(6,199,85,0.35);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .line-contact:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(6,199,85,0.45);
-    }
-
-    .line-logo-circle {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: #ffffff;
+      font-weight: 600;
+      color: var(--text-main);
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.62rem;
-      font-weight: 900;
-      color: #06c755;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    body.theme-dark .btn-copy {
+      background: #26272d;
+      border-color: #3b3d45;
+      color: #f2f3f6;
+    }
+
+    .btn-copy:hover {
+      border-color: var(--accent);
+      background: #f4faf7;
+    }
+
+    body.theme-dark .btn-copy:hover {
+      border-color: #9dd4c1;
+      background: #283036;
+    }
+
+    /* FOOTER */
+    .footer {
+      margin-top: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.74rem;
+      color: var(--text-sub);
+    }
+
+    .support-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid #e5dfd8;
+      backdrop-filter: blur(6px);
+    }
+
+    body.theme-dark .support-pill {
+      background: rgba(22,23,27,0.95);
+      border-color: #34363f;
+    }
+
+    .support-pill span:first-child {
+      font-weight: 600;
+      color: #7d7a76;
+    }
+
+    body.theme-dark .support-pill span:first-child {
+      color: #d0d3da;
     }
 
     .copyright {
-      margin-top: 12px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 4px;
-      color: #bca08e;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
     }
 
-    /* Toast (ข้อ 8) */
+    /* ERROR SHAKE */
+    .shake {
+      animation: shake 0.4s;
+      border-color: var(--danger) !important;
+    }
+
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+
+    /* TOAST */
     .toast {
       position: fixed;
       left: 50%;
       bottom: 18px;
-      transform: translateX(-50%) translateY(30px);
-      background: #333;
-      color: #fff;
-      padding: 10px 14px;
+      transform: translateX(-50%) translateY(40px);
+      padding: 10px 18px;
       border-radius: 999px;
+      background: rgba(57,53,50,0.96);
+      color: #fff;
       font-size: 0.8rem;
-      font-weight: 600;
+      font-weight: 500;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.25s ease, transform 0.25s ease;
-      z-index: 999;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+      transition: all 0.3s ease;
+      z-index: 9999;
+    }
+
+    body.theme-dark .toast {
+      background: rgba(10,10,11,0.96);
     }
 
     .toast.show {
       opacity: 1;
       transform: translateX(-50%) translateY(0);
-      pointer-events: auto;
     }
 
-    .toast.success {
-      background: #2f7c4a;
+    /* TIP BUBBLE */
+    .tip-bubble {
+      position: fixed;
+      left: 14px;
+      bottom: 68px;
+      max-width: 260px;
+      padding: 9px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.96);
+      border: 1px solid rgba(0,0,0,0.06);
+      font-size: 0.78rem;
+      color: var(--text-sub);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.14);
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(6px);
+      z-index: 9000;
     }
 
-    .toast.error {
-      background: #c44b4b;
+    body.theme-dark .tip-bubble {
+      background: rgba(18,19,23,0.98);
+      border-color: rgba(255,255,255,0.06);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.8);
     }
 
-    /* Responsive */
-    @media (max-width: 400px) {
-      .card-main {
-        border-radius: 26px;
-        padding: 18px 16px 20px;
+    .tip-bubble::after {
+      content: "";
+      position: absolute;
+      left: 18px;
+      bottom: -6px;
+      border-width: 6px 6px 0 6px;
+      border-style: solid;
+      border-color: rgba(255,255,255,0.96) transparent transparent transparent;
+    }
+
+    body.theme-dark .tip-bubble::after {
+      border-color: rgba(18,19,23,0.98) transparent transparent transparent;
+    }
+
+    .tip-bubble.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .tip-bubble-emoji {
+      margin-right: 4px;
+    }
+
+    @media (max-width: 480px) {
+      .app {
+        padding: 10px 12px 14px;
       }
-      .app-wrapper {
-        padding: 16px 12px 24px;
+      .card {
+        padding: 16px 14px 14px;
+      }
+      .tip-bubble {
+        left: 10px;
+        right: 10px;
+        max-width: none;
       }
     }
   </style>
 </head>
 <body>
-  <div class="app-wrapper">
+  <div class="app">
     <header class="header">
-      <div class="logo-box">
-        <img src="https://img2.imgbiz.com/imgbiz/IMG_0923.jpeg" alt="426 SHOP" />
-      </div>
-
-      <div class="header-top-row">
-        <div style="width:60px;"></div>
-        <div class="header-title-wrap">
-          <h1>426 SHOP</h1>
-          <div class="tagline">Premium Access</div>
+      <div class="brand-row">
+        <div class="brand-left">
+          <div class="logo-circle">
+            <div class="bear-min">
+              <div class="bear-eye left"></div>
+              <div class="bear-eye right"></div>
+              <div class="bear-nose"></div>
+            </div>
+          </div>
+          <div class="brand-text">
+            <div class="brand-title">426 SHOP</div>
+            <div class="brand-sub">PREMIUM ACCESS</div>
+          </div>
         </div>
-        <button class="theme-toggle" id="themeToggle" type="button">
-          <span class="icon">🌤️</span>
-          <span>Day</span>
-        </button>
+        <div class="header-right">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            <span>ระบบออนไลน์</span>
+          </div>
+          <button class="theme-toggle" id="themeToggle" type="button" aria-label="สลับโหมดกลางคืน">🌙</button>
+        </div>
       </div>
 
-      <div id="noRefreshBanner" class="no-refresh-banner">
-        ⚠️ <strong>หลังจากกด "รับสินค้า"</strong>
-        ห้ามรีเฟรชหรือปิดหน้านี้จนกว่าจะเสร็จสิ้นเด็ดขาด
+      <div class="step-row">
+        <div class="step-pill" data-step="1">① วางโค้ด</div>
+        <div class="step-pill" data-step="2">② กดรับสินค้า</div>
+        <div class="step-pill" data-step="3">③ คัดลอกรายละเอียด</div>
       </div>
     </header>
 
-    <main class="card-main">
-      <div class="steps">
-        <div class="step-pill step-active" data-step="1">1. กรอกรหัส</div>
-        <div class="step-pill" data-step="2">2. ตรวจสอบ</div>
-        <div class="step-pill" data-step="3">3. รับสินค้า</div>
+    <main class="card">
+      <div class="card-title">
+        <span class="icon">🔑</span>
+        <span>กรอกโค้ดเพื่อรับสินค้า</span>
+      </div>
+      <div class="card-desc">
+        วางโค้ดที่ได้รับจากแอดมินลงในช่องด้านล่าง&nbsp;สามารถวางได้หลายโค้ดในครั้งเดียว&nbsp;1 บรรทัดต่อ 1 โค้ด
       </div>
 
-      <span class="label-hint">กรอกรหัสรับสินค้าเพื่อเริ่มใช้งาน</span>
-
-      <div class="input-field" id="inputFieldBox">
-        <textarea id="codeInput" placeholder="วางรหัสของคุณที่นี่ (ส่งได้หลายโค้ด 1 บรรทัดต่อ 1 โค้ด)..."></textarea>
-        <div class="input-note">
-          <span>ตัวอย่าง: NFXA1B2 (ห้ามมีช่องว่างหรือขีด)</span>
-          <span class="highlight">หลังส่งแล้วอย่าปิดหน้านี้จนกว่าจะเสร็จนะคะ</span>
+      <div class="input-field">
+        <textarea id="codeInput" placeholder="เช่น NFXA1B2&#10;หรือ DSN9X3Y"></textarea>
+        <div class="input-helper-row">
+          <div class="small-tag">แนะนำ: 1 บรรทัดต่อ 1 โค้ด</div>
+          <span id="lineInfo">สูงสุด ~5 โค้ด/ครั้ง</span>
         </div>
       </div>
 
       <div class="btn-row">
-        <button class="btn-submit" id="btnRedeem" type="button">รับสินค้า</button>
-        <button class="btn-clear" id="btnClear" type="button">ล้างข้อมูล</button>
+        <button class="btn-primary" id="btnRedeem">
+          <span>รับสินค้า</span><span>↗</span>
+        </button>
+        <button class="btn-secondary" id="btnClear">
+          <span>ล้างทั้งหมด</span>
+        </button>
       </div>
+
+      <!-- ❗ คำเตือนสำคัญแบบกระพริบ -->
+      <div class="warn-text warn-text--important">
+        <span class="warn-text-icon">⚠️</span>
+        <span>หลังจากกด “รับสินค้า” แล้ว <strong>ห้ามรีเฟรช / ปิดหน้านี้เด็ดขาด</strong> จนกว่าจะได้รับรหัสครบ</span>
+      </div>
+
+      <!-- สรุปจำนวนโค้ด -->
+      <div id="summary"></div>
 
       <div id="status"></div>
-      <div id="hint"></div>
-      <div id="summary" class="summary" hidden></div>
-      <div id="extraAlert" class="alert-box" style="display:none;"></div>
-
       <div id="results"></div>
-
-      <div class="tips-bar">
-        <span class="tips-bar-label">TIP</span>
-        <span id="tipText">ส่งได้หลายโค้ด แค่เว้น 1 บรรทัดต่อ 1 โค้ดนะคะ 💕</span>
-      </div>
     </main>
 
     <footer class="footer">
-      <a
-        class="line-contact"
-        href="https://lin.ee/gAh3wAH"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span class="line-logo-circle">LINE</span>
+      <div class="support-pill">
+        <span>Support</span>
         <span>@467dlpti</span>
-      </a>
+      </div>
       <div class="copyright">426 SHOP · EST 2024</div>
     </footer>
   </div>
 
-  <!-- Toast notification (ข้อ 8) -->
-  <div id="toast" class="toast"></div>
+  <!-- Toast สำหรับแจ้งเตือน copy -->
+  <div id="toast" class="toast">คัดลอกข้อความแล้ว</div>
+
+  <!-- Bubble tips มุมล่างซ้าย -->
+  <div id="tipBubble" class="tip-bubble">
+    <span class="tip-bubble-emoji">💡</span>
+    <span id="tipText">1 บรรทัดต่อ 1 โค้ด ใช้งานง่ายสุดค่ะ</span>
+  </div>
 
   <script>
-    // 🔗 ใส่ URL Web App ของ Apps Script ที่ deploy แล้ว
+    // 🔗 URL Web App ของ Google Apps Script (ของคุณเอง)
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
+    const MAX_CODES = 5;
 
     const btnRedeem = document.getElementById("btnRedeem");
     const btnClear = document.getElementById("btnClear");
-    const statusEl = document.getElementById("status");
-    const hintEl = document.getElementById("hint");
-    const inputFieldBox = document.getElementById("inputFieldBox");
     const codeInput = document.getElementById("codeInput");
-    const summaryEl = document.getElementById("summary");
-    const extraAlert = document.getElementById("extraAlert");
-    const noRefreshBanner = document.getElementById("noRefreshBanner");
+    const lineInfo = document.getElementById("lineInfo");
+    const status = document.getElementById("status");
+    const resultsDiv = document.getElementById("results");
+    const summaryDiv = document.getElementById("summary");
+    const toast = document.getElementById("toast");
+    const logoCircle = document.querySelector(".logo-circle");
     const themeToggle = document.getElementById("themeToggle");
-    const toastEl = document.getElementById("toast");
-    const tipTextEl = document.getElementById("tipText");
-
-    const steps = document.querySelectorAll(".step-pill");
+    const tipBubble = document.getElementById("tipBubble");
+    const tipText = document.getElementById("tipText");
 
     let isLoading = false;
 
+    // === STEP STATE ===
+    function setStepState(state) {
+      const steps = document.querySelectorAll(".step-pill");
+      steps.forEach((el) => {
+        el.classList.remove("step-pill--active", "step-pill--done", "step-pill--muted");
+        el.classList.add("step-pill--muted");
+      });
+
+      const s1 = document.querySelector('.step-pill[data-step="1"]');
+      const s2 = document.querySelector('.step-pill[data-step="2"]');
+      const s3 = document.querySelector('.step-pill[data-step="3"]');
+
+      if (!s1 || !s2 || !s3) return;
+
+      if (state === "idle") {
+        s1.classList.remove("step-pill--muted");
+        s1.classList.add("step-pill--active");
+      } else if (state === "loading") {
+        s1.classList.remove("step-pill--muted");
+        s1.classList.add("step-pill--done");
+        s2.classList.remove("step-pill--muted");
+        s2.classList.add("step-pill--active");
+      } else if (state === "done") {
+        s1.classList.remove("step-pill--muted");
+        s2.classList.remove("step-pill--muted");
+        s1.classList.add("step-pill--done");
+        s2.classList.add("step-pill--done");
+        s3.classList.remove("step-pill--muted");
+        s3.classList.add("step-pill--active");
+      } else if (state === "error") {
+        s1.classList.remove("step-pill--muted");
+        s1.classList.add("step-pill--done");
+        s2.classList.remove("step-pill--muted");
+        s2.classList.add("step-pill--active");
+      }
+    }
+
+    // === THEME ===
+    function applyTheme(theme) {
+      if (theme === "dark") {
+        document.body.classList.add("theme-dark");
+        themeToggle.textContent = "☀️";
+        themeToggle.setAttribute("aria-label", "สลับเป็นโหมดสว่าง");
+      } else {
+        document.body.classList.remove("theme-dark");
+        themeToggle.textContent = "🌙";
+        themeToggle.setAttribute("aria-label", "สลับเป็นโหมดมืด");
+      }
+    }
+
+    const savedTheme = localStorage.getItem("theme") || "light";
+    applyTheme(savedTheme);
+
+    themeToggle.addEventListener("click", () => {
+      const nowDark = !document.body.classList.contains("theme-dark");
+      const newTheme = nowDark ? "dark" : "light";
+      applyTheme(newTheme);
+      localStorage.setItem("theme", newTheme);
+    });
+
+    // === BUBBLE TIPS ===
     const tips = [
-      "ส่งได้หลายโค้ด 1 บรรทัดต่อ 1 โค้ดนะคะ 💕",
-      "ห้ามมีช่องว่างหรือขีดในรหัส เช่น NFX A1B2 ❌",
-      "ถ้ากดรับสินค้าแล้ว รอจนจบ ห้ามรีเฟรชหรือปิดหน้านะคะ ✨",
-      "โค้ดที่ใช้ไปแล้ว ระบบจะแจ้งวัน-เวลาให้ดูชัดเจนค่ะ ⏰",
-      "ถ้าไม่แน่ใจ ลองเช็กโค้ดกับแอดมินทางไลน์ได้เลย 💚"
+      "1 บรรทัดต่อ 1 โค้ด ใช้งานง่ายสุดค่ะ",
+      "สามารถวางโค้ดทีเดียวหลายรหัสได้ สูงสุดประมาณ 5 โค้ด/ครั้ง ✨",
+      "ถ้ากดรับสินค้าแล้ว อย่าเพิ่งรีเฟรชหรือปิดหน้านี้นะคะ",
+      "ถ้าโค้ดใช้แล้ว ระบบจะแจ้งให้ทราบ พร้อมเวลาใช้งานเดิมค่ะ",
+      "ถ้าสงสัยโค้ดผิดหรือไม่ แคปหน้าจอผลลัพธ์ส่งให้แอดมินได้เลย 💬"
     ];
+    let tipIndex = 0;
 
-    // เปลี่ยนข้อความ TIP หมุนไปเรื่อย ๆ
-    setInterval(() => {
-      const idx = Math.floor(Math.random() * tips.length);
-      tipTextEl.textContent = tips[idx];
-    }, 7000);
+    function rotateTip() {
+      if (!tipBubble || !tipText) return;
+      tipBubble.classList.remove("show");
+      setTimeout(() => {
+        const text = tips[tipIndex] || tips[0];
+        tipText.textContent = text;
+        tipBubble.classList.add("show");
+        tipIndex = (tipIndex + 1) % tips.length;
+      }, 200);
+    }
 
-    // beforeunload guard
-    window.addEventListener("beforeunload", function (e) {
+    setTimeout(rotateTip, 600);
+    setInterval(rotateTip, 12000);
+
+    // === FORM EVENTS ===
+    btnRedeem.addEventListener("click", redeem);
+    btnClear.addEventListener("click", clearForm);
+    codeInput.addEventListener("input", updateLineInfo);
+
+    // ป้องกันปิด/รีเฟรชตอนกำลังโหลด
+    window.addEventListener("beforeunload", (e) => {
       if (!isLoading) return;
       e.preventDefault();
-      e.returnValue = "";
+      e.returnValue = "ระบบกำลังตรวจสอบโค้ดของคุณอยู่ หากออกจากหน้านี้อาจทำให้ไม่ได้รับโค้ดนะคะ";
     });
 
-    // Theme toggle (light only visual for now)
-    themeToggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-      const isDark = document.body.classList.contains("dark-mode");
-      themeToggle.querySelector("span.icon").textContent = isDark ? "🌙" : "🌤️";
-      themeToggle.querySelector("span:last-child").textContent = isDark ? "Night" : "Day";
-    });
-
-    // Auto focus ตอนโหลด
+    // โฟกัสช่องกรอกอัตโนมัติเมื่อโหลดหน้า
     window.addEventListener("load", () => {
+      setStepState("idle");
       codeInput.focus();
     });
 
-    btnRedeem.addEventListener("click", redeem);
-    btnClear.addEventListener("click", clearAll);
+    // เวลา focus ถ้ามีข้อความอยู่ ให้ select ทั้งหมด
+    codeInput.addEventListener("focus", () => {
+      if (codeInput.value.trim()) {
+        codeInput.select();
+      }
+    });
 
-    function setStep(step) {
-      steps.forEach((el) => {
-        const s = Number(el.getAttribute("data-step") || 1);
-        el.classList.remove("step-active", "step-done");
-        if (s < step) el.classList.add("step-done");
-        else if (s === step) el.classList.add("step-active");
-      });
+    function updateLineInfo() {
+      const raw = codeInput.value || "";
+      const lines = raw.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+      if (!lines.length) {
+        lineInfo.textContent = "สูงสุด ~5 โค้ด/ครั้ง";
+        return;
+      }
+      let text = `โค้ดที่กรอก: ${lines.length} รายการ`;
+      if (lines.length > MAX_CODES) {
+        text += " (ระบบจะใช้เฉพาะ 5 รายการแรก)";
+      }
+      lineInfo.textContent = text;
     }
 
-    function showToast(message, type) {
-      toastEl.textContent = message;
-      toastEl.className = "toast " + (type || "");
-      requestAnimationFrame(() => {
-        toastEl.classList.add("show");
-      });
-      setTimeout(() => {
-        toastEl.classList.remove("show");
-      }, 2600);
+    function clearForm() {
+      codeInput.value = "";
+      status.innerHTML = "";
+      status.classList.remove("status-error", "status-ok");
+      resultsDiv.innerHTML = "";
+      summaryDiv.innerHTML = "";
+      lineInfo.textContent = "สูงสุด ~5 โค้ด/ครั้ง";
+      setStepState("idle");
+      codeInput.focus();
     }
 
     function redeem() {
-      const input = codeInput.value.trim();
-      hintEl.textContent = "";
-      extraAlert.style.display = "none";
-      setStep(1);
+      const inputContainer = document.querySelector(".input-field");
+      const raw = codeInput.value;
+      const input = raw.trim();
+
+      status.classList.remove("status-error", "status-ok");
 
       if (!input) {
-        inputFieldBox.classList.add("shake");
-        statusEl.innerHTML = "กรุณาระบุรหัสสินค้าก่อนค่ะ";
-        statusEl.style.color = "#e57373";
-        showToast("ยังไม่ได้กรอกรหัสเลยน้า 💡", "error");
-        setTimeout(() => inputFieldBox.classList.remove("shake"), 500);
+        inputContainer.classList.add("shake");
+        status.innerHTML = "กรุณากรอกรหัสก่อนนะคะ";
+        status.classList.add("status-error");
+        setStepState("idle");
+        setTimeout(() => inputContainer.classList.remove("shake"), 500);
         return;
       }
 
-      btnRedeem.disabled = true;
-      isLoading = true;
-      statusEl.style.color = "var(--main-brown)";
-      statusEl.innerHTML = "กำลังตรวจสอบข้อมูลในระบบ โปรดรอสักครู่...";
-      summaryEl.hidden = true;
-      document.getElementById("results").innerHTML = "";
-      setStep(2);
-      noRefreshBanner.classList.add("show");
+      const lines = raw.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+      let preWarn = "";
+      if (lines.length > MAX_CODES) {
+        preWarn = `คุณกรอกโค้ด ${lines.length} รายการ ระบบจะใช้เฉพาะ ${MAX_CODES} รายการแรกค่ะ`;
+      }
 
-      const startTime = Date.now();
+      isLoading = true;
+      setStepState("loading");
+      btnRedeem.disabled = true;
+      btnRedeem.innerHTML = `
+        <span class="spinner"></span>
+        <span>กำลังตรวจสอบ…</span>
+      `;
+
+      status.style.color = "#8b8680";
+      status.innerHTML =
+        "ระบบกำลังตรวจสอบรหัสของคุณ...<br>" +
+        "<span style='font-size:0.78rem;color:#c27a5a;'>หลังจากส่งโค้ดแล้ว ห้ามรีเฟรช/ปิดหน้านี้จนกว่าผลจะขึ้นครบค่ะ</span>" +
+        (preWarn ? "<br><span style='font-size:0.78rem;color:#c27a5a;'>" + preWarn + "</span>" : "");
+
       const url = API_URL + "?action=redeem&text=" + encodeURIComponent(input);
+      const startTime = performance.now();
 
       fetch(url)
         .then((res) => {
@@ -775,185 +1235,189 @@
           return res.json();
         })
         .then((data) => {
-          const duration = ((Date.now() - startTime) / 1000).toFixed(2);
-          btnRedeem.disabled = false;
+          const elapsedSec = (performance.now() - startTime) / 1000;
           isLoading = false;
-          noRefreshBanner.classList.remove("show");
-          renderResult(data, duration);
+          btnRedeem.disabled = false;
+          btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
+          renderResult(data, elapsedSec);
         })
         .catch((err) => {
           console.error(err);
-          btnRedeem.disabled = false;
           isLoading = false;
-          noRefreshBanner.classList.remove("show");
-          statusEl.innerHTML = "เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้งค่ะ";
-          statusEl.style.color = "#e57373";
-          setStep(1);
-          showToast("เชื่อมต่อไม่ได้ ลองใหม่อีกครั้งนะคะ 🥺", "error");
+          btnRedeem.disabled = false;
+          btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
+          status.innerHTML = "เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้งค่ะ";
+          status.classList.add("status-error");
+          setStepState("error");
         });
     }
 
-    function clearAll() {
-      codeInput.value = "";
-      statusEl.textContent = "";
-      hintEl.textContent = "";
-      summaryEl.hidden = true;
-      extraAlert.style.display = "none";
-      document.getElementById("results").innerHTML = "";
-      noRefreshBanner.classList.remove("show");
-      setStep(1);
-      codeInput.focus();
-    }
-
-    function renderResult(res, durationSec) {
-      const resDiv = document.getElementById("results");
-      resDiv.innerHTML = "";
+    function renderResult(res, elapsedSec) {
+      resultsDiv.innerHTML = "";
+      summaryDiv.innerHTML = "";
+      status.classList.remove("status-error", "status-ok");
 
       if (!res) {
-        statusEl.innerHTML = "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งค่ะ";
-        statusEl.style.color = "#e57373";
-        setStep(1);
-        showToast("ระบบผิดพลาดกรุณาลองใหม่อีกครั้งค่ะ", "error");
+        status.innerHTML = "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งค่ะ";
+        status.classList.add("status-error");
+        setStepState("error");
         return;
       }
 
-      const successCount = (res.items || []).length;
-      const usedCount = (res.used || []).length;
-      const nfCount = (res.notFound || []).length;
+      const successCount = (res.items && res.items.length) || 0;
+      const usedCount = (res.used && res.used.length) || 0;
+      const nfCount = (res.notFound && res.notFound.length) || 0;
 
-      // สร้างข้อความ status หลัก
-      const statusLines = [];
-      if (res.message) statusLines.push(res.message);
-      if (typeof durationSec === "string") {
-        statusLines.push("⏱ ใช้เวลา " + durationSec + " วินาที");
+      // ==== Step state & success animation ====
+      if (res.ok && successCount > 0) {
+        setStepState("done");
+        triggerSuccessAnimation();
+      } else {
+        setStepState("error");
       }
-      if (res.overflowMessage) statusLines.push(res.overflowMessage);
-      if (res.multiInLineMessage) statusLines.push(res.multiInLineMessage);
+
+      // ==== Summary chips ====
+      const chips = [];
+      if (successCount) {
+        chips.push(`<div class="summary-pill summary-pill--ok">✅ สำเร็จ ${successCount} โค้ด</div>`);
+      }
+      if (usedCount) {
+        chips.push(`<div class="summary-pill summary-pill--used">♻️ ใช้แล้ว ${usedCount} โค้ด</div>`);
+      }
+      if (nfCount) {
+        chips.push(`<div class="summary-pill summary-pill--nf">❌ ไม่พบ ${nfCount} โค้ด</div>`);
+      }
+
+      if (chips.length) {
+        summaryDiv.innerHTML = `<div class="summary-row">${chips.join("")}</div>`;
+      } else {
+        summaryDiv.innerHTML = "";
+      }
+
+      // การ์ดแจ้งเตือน ถ้ามีโค้ดใช้แล้วหลายตัว
+      if (usedCount >= 2) {
+        summaryDiv.innerHTML += `
+          <div class="used-info-card">
+            <div class="used-info-title">พบโค้ดที่ถูกใช้งานแล้วหลายรายการ</div>
+            <div class="used-info-text">
+              หากไม่แน่ใจว่าโค้ดถูกใช้ไปแล้วจริงไหม แนะนำให้แคปหน้าจอนี้ แล้วส่งให้แอดมินช่วยตรวจสอบนะคะ 💬
+            </div>
+          </div>
+        `;
+      }
+
+      // ==== Status text + hints ====
+      let msgLines = [];
+      if (res.message) msgLines.push("<span class='status-strong'>" + res.message + "</span>");
+      if (res.overflowMessage) msgLines.push("• " + res.overflowMessage);
+      if (res.multiInLineMessage) msgLines.push("• " + res.multiInLineMessage);
 
       if (res.notFound && res.notFound.length) {
-        statusLines.push("โค้ดที่ไม่พบในระบบ:");
-        res.notFound.forEach((c) => statusLines.push("• " + c));
+        msgLines.push("<br>โค้ดที่ไม่พบในระบบ:");
+        res.notFound.forEach((c) => msgLines.push("• " + c));
       }
 
       if (res.used && res.used.length) {
-        statusLines.push("โค้ดที่ถูกใช้งานไปแล้ว:");
+        msgLines.push("<br>โค้ดที่ถูกใช้งานไปแล้ว:");
         res.used.forEach((u) => {
           let line = "• " + u.code;
           if (u.app) line += " (" + u.app + ")";
           if (u.usedAt) line += " — " + u.usedAt;
-          statusLines.push(line);
+          msgLines.push(line);
         });
       }
 
-      statusEl.innerHTML = statusLines.join("<br>");
-      statusEl.style.color = res.ok ? "var(--main-brown)" : "#e57373";
-
-      // Hint เพิ่มเติมถ้ารูปแบบโค้ดผิด / ไม่พบ
-      let hintMessage = "";
-      if (res.message && res.message.indexOf("รูปแบบโค้ดไม่ถูกต้อง") !== -1) {
-        hintMessage = "ตรวจสอบว่าไม่มีช่องว่าง หรือขีดกลาง และใช้ตัวอักษรภาษาอังกฤษตัวใหญ่ + ตัวเลขเท่านั้นนะคะ 😊";
-      } else if (res.message && res.message.indexOf("ไม่พบโค้ดในข้อความ") !== -1) {
-        hintMessage = "ลองเช็กอีกครั้งว่าโค้ดขึ้นต้นด้วย NFX / DSN / YTB ฯลฯ และใส่ 1 บรรทัดต่อ 1 โค้ดนะคะ";
-      } else if (!successCount && nfCount > 0) {
-        hintMessage = "หากยังมีปัญหา แนะนำแคปหน้าจอส่งให้แอดมินทางไลน์ช่วยตรวจสอบได้เลยค่ะ 💚";
+      // Hints เพิ่มเติม
+      const extraHints = [];
+      if (res.message && res.message.indexOf("รูปแบบโค้ด") !== -1) {
+        extraHints.push("ลองตรวจสอบว่ามีช่องว่างหรือขีดในโค้ด แล้วลบออกก่อนส่งใหม่นะคะ 😊");
       }
-      hintEl.textContent = hintMessage;
+      if (nfCount > 0 && successCount === 0 && usedCount === 0) {
+        extraHints.push("ถ้าเชื่อว่าโค้ดถูกต้อง แนะนำแคปหน้าจอนี้ส่งให้แอดมินช่วยตรวจสอบอีกครั้งได้เลยค่ะ");
+      }
 
-      // Summary chips
-      if (successCount || usedCount || nfCount) {
-        summaryEl.innerHTML = "";
-        if (successCount) {
-          const chip = document.createElement("div");
-          chip.className = "chip badge-success";
-          chip.innerHTML = '<span class="dot"></span> รับสินค้าแล้ว ' + successCount + " รายการ";
-          summaryEl.appendChild(chip);
-        }
-        if (usedCount) {
-          const chip = document.createElement("div");
-          chip.className = "chip badge-used";
-          chip.innerHTML = '<span class="dot"></span> โค้ดใช้ไปแล้ว ' + usedCount + " รายการ";
-          summaryEl.appendChild(chip);
-        }
-        if (nfCount) {
-          const chip = document.createElement("div");
-          chip.className = "chip badge-error";
-          chip.innerHTML = '<span class="dot"></span> ไม่พบในระบบ ' + nfCount + " รายการ";
-          summaryEl.appendChild(chip);
-        }
-        summaryEl.hidden = false;
+      if (extraHints.length) {
+        msgLines.push(
+          "<br>" +
+            extraHints
+              .map((h) => "💡 " + h)
+              .join("<br>")
+        );
+      }
+
+      // แสดงเวลาประมวลผล
+      if (typeof elapsedSec === "number" && isFinite(elapsedSec)) {
+        const prettyTime = elapsedSec < 0.1 ? "< 0.1" : elapsedSec.toFixed(1).replace(/\.0$/, "");
+        msgLines.push(
+          "<br><span class='status-time'>⏱ ระบบใช้เวลา " + prettyTime + " วินาที</span>"
+        );
+      }
+
+      status.innerHTML = msgLines.join("<br>");
+
+      if (res.ok) {
+        status.classList.add("status-ok");
       } else {
-        summaryEl.hidden = true;
+        status.classList.add("status-error");
       }
 
-      // Alert ถ้า used หลายอัน
-      if (usedCount >= 2) {
-        extraAlert.style.display = "block";
-        extraAlert.textContent =
-          "พบโค้ดที่ถูกใช้งานแล้วหลายรายการ แนะนำตรวจสอบประวัติการใช้งานหรือสอบถามแอดมินเพิ่มเติมค่ะ 💬";
-      } else {
-        extraAlert.style.display = "none";
+      // ล้างช่องกรอกอัตโนมัติถ้ามีโค้ดที่ใช้ได้จริง
+      if (res.ok && successCount > 0) {
+        codeInput.value = "";
+        lineInfo.textContent = "สูงสุด ~5 โค้ด/ครั้ง";
       }
 
-      // สร้างการ์ดผลลัพธ์
+      // ==== Result cards ====
       if (res.items && res.items.length > 0) {
         res.items.forEach((item) => {
           const card = document.createElement("div");
           card.className = "result-item";
           const safeReplyText = encodeURIComponent(item.reply || "");
-          const safeHtmlReply = escapeHtml(item.reply || "").replace(/\n/g, "<br>");
+          const appTag = (item.appName || "").trim();
 
           card.innerHTML = `
-            <div class="item-top">
-              <div class="item-header">REDEEMED CODE: ${escapeHtml(item.code || "")}</div>
-              <button class="btn-toggle-detail" type="button" data-state="hidden">แสดงรายละเอียด</button>
+            <div class="item-top-row">
+              <div>
+                <div class="item-header">
+                  REDEEMED CODE: ${item.code}
+                  ${appTag ? `<span class="item-tag">${appTag}</span>` : ""}
+                </div>
+              </div>
+              <button class="btn-eye" type="button"><span>👁</span><span>แสดง</span></button>
             </div>
-            <div class="item-body blurred">${safeHtmlReply}</div>
-            <button class="btn-copy" type="button" data-text="${safeReplyText}">คัดลอกรายละเอียด</button>
+            <div class="item-body blurred">${item.reply || ""}</div>
+            <button class="btn-copy" data-text="${safeReplyText}">
+              <span>คัดลอกรายละเอียด</span>
+            </button>
           `;
-          resDiv.appendChild(card);
-        });
+          resultsDiv.appendChild(card);
 
-        // toggle show/hide
-        resDiv.querySelectorAll(".btn-toggle-detail").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            const body = btn.closest(".result-item").querySelector(".item-body");
-            const isHidden = body.classList.contains("blurred");
-            if (isHidden) {
-              body.classList.remove("blurred");
-              btn.textContent = "ซ่อนรายละเอียด";
+          // ปุ่มแสดง/ซ่อนรายละเอียด
+          const eyeBtn = card.querySelector(".btn-eye");
+          const body = card.querySelector(".item-body");
+          eyeBtn.addEventListener("click", () => {
+            const isShown = card.classList.toggle("show-detail");
+            if (isShown) {
+              eyeBtn.innerHTML = "<span>🙈</span><span>ซ่อน</span>";
             } else {
-              body.classList.add("blurred");
-              btn.textContent = "แสดงรายละเอียด";
+              eyeBtn.innerHTML = "<span>👁</span><span>แสดง</span>";
             }
           });
         });
 
-        // copy buttons
-        resDiv.querySelectorAll(".btn-copy").forEach((btn) => {
+        document.querySelectorAll(".btn-copy").forEach((btn) => {
           btn.addEventListener("click", () => copyToClipboard(btn));
         });
 
-        window.scrollTo({ top: resDiv.offsetTop - 20, behavior: "smooth" });
-      }
-
-      // ถ้าสำเร็จ มี item อย่างน้อย 1 ให้เคลียร์ช่องกรอก
-      if (res.ok && successCount > 0) {
-        codeInput.value = "";
-        setStep(3);
-        showToast("ดึงสินค้าเรียบร้อยแล้ว " + successCount + " รายการ ✨", "success");
-      } else {
-        setStep(res.ok ? 2 : 1);
-        if (!res.ok) showToast("ตรวจพบปัญหากับรหัสที่ส่งมา ลองเช็กอีกครั้งนะคะ", "error");
+        window.scrollTo({ top: resultsDiv.offsetTop - 18, behavior: "smooth" });
       }
     }
 
-    function escapeHtml(str) {
-      return String(str || "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#39;");
+    function triggerSuccessAnimation() {
+      if (!logoCircle) return;
+      logoCircle.classList.remove("success-bounce");
+      void logoCircle.offsetWidth; // รีเซ็ต animation
+      logoCircle.classList.add("success-bounce");
     }
 
     function copyToClipboard(btn) {
@@ -970,18 +1434,21 @@
       }
 
       const originalText = btn.innerHTML;
-      btn.innerHTML = "คัดลอกสำเร็จแล้ว ✨";
-      btn.style.background = "#f0f4f2";
-      btn.style.color = "var(--accent-green)";
-      btn.style.borderColor = "var(--accent-green)";
+      btn.innerHTML = "คัดลอกแล้ว ✓";
+      btn.style.background = "#f4faf7";
+      btn.style.borderColor = "#85b8a6";
+
       setTimeout(() => {
         btn.innerHTML = originalText;
-        btn.style.background = "#fdfaf8";
-        btn.style.color = "var(--main-brown)";
-        btn.style.borderColor = "#eee";
-      }, 2000);
+        btn.style.background = "";
+        btn.style.borderColor = "";
+      }, 1800);
 
-      showToast("คัดลอกรายละเอียดเรียบร้อยแล้ว ✨", "success");
+      if (toast) {
+        toast.textContent = "คัดลอกรายละเอียดแล้ว ✨";
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 2000);
+      }
     }
   </script>
 </body>
