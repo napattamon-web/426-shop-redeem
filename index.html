@@ -253,6 +253,7 @@
       color: var(--text-main);
       line-height: 1.5;
       padding: 4px 0 0;
+      min-height: 160px; /* ขยายช่องใส่โค้ดให้สูงขึ้น */
     }
 
     .input-helper-row {
@@ -373,6 +374,38 @@
     .warn-text-icon {
       font-size: 0.9rem;
       margin-top: 1px;
+    }
+
+    /* 🔥 เตือนห้ามรีเฟรชแบบกระพริบ */
+    .warn-text--important {
+      margin-top: 6px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: #fff4e7;
+      border: 1px solid #f0c2a0;
+      animation: warnPulse 1.4s ease-in-out infinite;
+    }
+
+    .warn-text--important .warn-text-icon {
+      animation: warnIconPulse 1.4s ease-in-out infinite;
+    }
+
+    @keyframes warnPulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(212, 125, 76, 0.35);
+      }
+      50% {
+        box-shadow: 0 0 0 6px rgba(212, 125, 76, 0);
+      }
+    }
+
+    @keyframes warnIconPulse {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-1px) scale(1.12);
+      }
     }
 
     /* STATUS */
@@ -586,7 +619,8 @@
         </button>
       </div>
 
-      <div class="warn-text">
+      <!-- ❗ คำเตือนสำคัญแบบกระพริบ -->
+      <div class="warn-text warn-text--important">
         <span class="warn-text-icon">⚠️</span>
         <span>หลังจากกด “รับสินค้า” แล้ว <strong>ห้ามรีเฟรช / ปิดหน้านี้เด็ดขาด</strong> จนกว่าจะได้รับรหัสครบ</span>
       </div>
