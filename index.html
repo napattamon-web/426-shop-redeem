@@ -2,140 +2,123 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <title>426 SHOP – Official System</title>
+  <title>426 SHOP – Cute Handwritten Style</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
-  <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bear-dark: #6d4c41;   /* น้ำตาลเข้มตัวหมี */
-      --bear-milk: #bca08e;   /* น้ำตาลนม */
-      --bear-cream: #f5ebe0;  /* ครีมพาสเทล */
-      --bear-white: #ffffff;
-      --warn-red: #d68a8a;    /* แดงพาสเทล */
-      --soft-shadow: 0 10px 25px rgba(109, 76, 65, 0.1);
+      --milk-tea: #bca08e;
+      --choco: #6d4c41;
+      --cream: #fdfaf7;
+      --strawberry: #ffb7b7;
+      --white: #ffffff;
     }
 
-    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    * { 
+      box-sizing: border-box; 
+      -webkit-tap-highlight-color: transparent;
+      font-family: 'Anuphan', sans-serif; /* ฟอนต์สไตล์วัยรุ่น สะอาดตา */
+    }
 
     body {
       margin: 0; padding: 0;
-      font-family: 'Anuphan', sans-serif;
-      background-color: #faf7f2;
-      color: var(--bear-dark);
+      background-color: #fcf8f5;
+      color: var(--choco);
       display: flex; justify-content: center; min-height: 100vh;
+      background-image: radial-gradient(var(--milk-tea) 0.5px, transparent 0.5px);
+      background-size: 20px 20px; /* พื้นหลังลายจุดมินิมอล */
     }
 
     .app-container {
-      width: 100%; max-width: 420px;
-      padding: 40px 20px;
-      display: flex; flex-direction: column; gap: 20px;
+      width: 100%; max-width: 400px;
+      padding: 30px 20px;
+      display: flex; flex-direction: column; gap: 15px;
     }
 
-    /* Header & Branding */
-    .header { text-align: center; margin-bottom: 10px; }
+    /* Header ลายมือวัยรุ่น */
+    .header { text-align: center; margin-bottom: 5px; }
     .brand-name {
-      font-size: 2.2rem; font-weight: 800; letter-spacing: 1px;
-      color: var(--bear-dark); margin: 0;
+      font-size: 2.5rem; font-weight: 700; color: var(--choco);
+      letter-spacing: -1px; margin: 0;
+      transform: rotate(-2deg); /* เอียงเล็กน้อยให้ดูเหมือนลายมือ */
     }
-    .status-24h {
-      font-size: 0.75rem; font-weight: 700; color: var(--bear-milk);
-      margin-top: 8px; letter-spacing: 2px;
-    }
-
-    /* Warning Banner กระพริบ */
-    .warning-banner {
-      background: var(--bear-white);
-      border: 2px solid var(--warn-red);
-      border-radius: 20px; padding: 15px;
-      text-align: center;
-      box-shadow: var(--soft-shadow);
-      animation: blink-border 1.5s infinite;
-    }
-    .warning-text {
-      color: var(--warn-red); font-weight: 800; font-size: 0.85rem;
-      animation: blink-text 1.5s infinite;
-    }
-    @keyframes blink-text { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-    @keyframes blink-border { 0%, 100% { border-color: var(--warn-red); } 50% { border-color: transparent; } }
-
-    /* Main Card */
-    .bear-card {
-      background: var(--bear-white); border-radius: 35px;
-      padding: 30px 25px; border: 1px solid var(--bear-cream);
-      box-shadow: var(--soft-shadow);
-      position: relative;
+    .status-badge {
+      display: inline-block; background: var(--white);
+      padding: 5px 15px; border-radius: 99px;
+      font-size: 0.75rem; font-weight: 700; color: #90beaa;
+      border: 1.5px solid #90beaa; margin-top: 10px;
     }
 
-    /* ตกแต่งรูปทรงหมี (CSS Only No Emoji) */
-    .bear-ear-left, .bear-ear-right {
-      width: 40px; height: 40px; background: var(--bear-white);
-      border-radius: 50%; position: absolute; top: -15px; z-index: -1;
-      border: 1px solid var(--bear-cream);
+    /* แจ้งเตือนกระพริบดึงดูดสายตา */
+    .sticky-note {
+      background: var(--strawberry); color: var(--white);
+      padding: 12px; border-radius: 20px;
+      text-align: center; font-weight: 700; font-size: 0.85rem;
+      box-shadow: 0 5px 15px rgba(255, 183, 183, 0.4);
+      animation: pulse-warn 1.5s infinite;
     }
-    .bear-ear-left { left: 40px; } .bear-ear-right { right: 40px; }
-
-    .label-title {
-      font-size: 0.9rem; font-weight: 700; color: var(--bear-milk);
-      margin-bottom: 15px; display: block; text-align: center;
-    }
-
-    /* Input Field */
-    .input-wrapper {
-      background: var(--bear-cream); border-radius: 22px;
-      padding: 20px; border: 2px solid transparent;
-      transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .input-wrapper.active-focus {
-      background: var(--bear-white); border-color: var(--bear-milk);
-      box-shadow: 0 5px 15px rgba(188, 160, 142, 0.2);
-    }
-    textarea {
-      width: 100%; height: 90px; border: none; background: transparent;
-      font-family: inherit; font-size: 1.05rem; color: var(--bear-dark);
-      resize: none; outline: none; text-align: center;
+    @keyframes pulse-warn {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); background: #ff9999; }
     }
 
-    /* นุบนิบปุ่มกด */
-    .btn-main {
-      width: 100%; padding: 20px; margin-top: 20px; border-radius: 25px;
-      border: none; background: var(--bear-dark); color: var(--bear-cream);
-      font-size: 1.1rem; font-weight: 800; cursor: pointer;
-      box-shadow: 0 8px 0 #4e342e;
-      transition: 0.2s;
+    /* กล่องหลักทรงหมีโค้งมน */
+    .main-card {
+      background: var(--white); border-radius: 40px;
+      padding: 30px 20px; border: 3px solid var(--milk-tea);
+      box-shadow: 0 10px 0 var(--milk-tea);
+      position: relative; transition: 0.3s;
     }
-    .btn-main:hover { transform: translateY(-2px); box-shadow: 0 10px 0 #4e342e; }
-    .btn-main:active { transform: translateY(4px); box-shadow: 0 2px 0 #4e342e; }
 
-    /* Shake Effect สำหรับมือถือ */
-    .shake { animation: shake-ani 0.4s ease-in-out; border-color: var(--warn-red) !important; }
-    @keyframes shake-ani {
+    /* ช่องกรอกข้อมูล */
+    .input-box {
+      background: var(--cream); border-radius: 25px;
+      padding: 15px; border: 2.5px solid transparent;
+      margin-top: 10px; transition: 0.3s;
+    }
+    .input-box.error {
+      border-color: var(--strawberry);
+      animation: shake 0.4s ease-in-out;
+    }
+    @keyframes shake {
       0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-10px); }
-      75% { transform: translateX(10px); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
     }
 
-    /* Result Style */
-    #resultContainer { margin-top: 20px; }
-    .result-box {
-      background: var(--bear-white); border-radius: 25px;
-      padding: 20px; margin-bottom: 15px; border: 1px solid var(--bear-cream);
-      animation: slide-up 0.5s ease;
+    textarea {
+      width: 100%; height: 80px; border: none; background: transparent;
+      font-size: 1.1rem; color: var(--choco); text-align: center;
+      outline: none; font-weight: 600;
     }
-    @keyframes slide-up { from { opacity: 0; transform: translateY(20px); } }
+    textarea::placeholder { color: #d4c4b5; }
 
-    .btn-copy-bear {
-      width: 100%; padding: 12px; margin-top: 15px; border-radius: 18px;
-      border: 1.5px solid var(--bear-cream); background: var(--bear-white);
-      color: var(--bear-milk); font-weight: 700; font-size: 0.85rem; cursor: pointer;
+    /* ปุ่มกดนุบนิบ */
+    .btn-redeem {
+      width: 100%; padding: 18px; margin-top: 20px; border-radius: 25px;
+      border: none; background: var(--choco); color: var(--cream);
+      font-size: 1.2rem; font-weight: 700; cursor: pointer;
+      box-shadow: 0 6px 0 #4e342e; transition: 0.1s;
     }
-    .btn-copy-bear:hover { background: var(--bear-cream); color: var(--bear-dark); }
+    .btn-redeem:active {
+      transform: translateY(4px); box-shadow: 0 2px 0 #4e342e;
+    }
 
-    /* Footer */
-    footer { text-align: center; margin-top: auto; padding-bottom: 30px; }
-    .line-contact {
-      font-size: 0.85rem; color: var(--bear-milk); text-decoration: none;
-      font-weight: 700; border-bottom: 1.5px solid var(--bear-cream);
+    /* ระบบแจ้งเตือนผลลัพธ์ */
+    .result-bubble {
+      background: var(--white); border-radius: 30px;
+      padding: 20px; margin-top: 15px; border: 2px solid var(--milk-tea);
+      animation: pop-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
+    @keyframes pop-up { from { transform: scale(0.5); opacity: 0; } }
+
+    .copy-btn {
+      width: 100%; padding: 12px; margin-top: 12px; border-radius: 20px;
+      border: 2px solid var(--milk-tea); background: var(--white);
+      color: var(--milk-tea); font-weight: 700; cursor: pointer;
+    }
+
+    footer { text-align: center; padding: 20px; font-weight: 700; font-size: 0.8rem; color: var(--milk-tea); }
   </style>
 </head>
 <body>
@@ -143,89 +126,92 @@
   <div class="app-container">
     <header class="header">
       <h1 class="brand-name">426 SHOP</h1>
-      <div class="status-24h">ONLINE 24 HOURS</div>
+      <div class="status-badge">ONLINE 24 HOURS</div>
     </header>
 
-    <div class="warning-banner">
-      <div class="warning-text">ห้ามรีเฟรชหน้าจอเด็ดขาด ข้อมูลจะหายทันที</div>
+    <div class="sticky-note">
+      ห้ามรีเฟรชหน้าจอนะคะ ข้อมูลจะหายไปเลย!
     </div>
 
-    <main class="bear-card">
-      <div class="bear-ear-left"></div>
-      <div class="bear-ear-right"></div>
+    <main class="main-card" id="mainCard">
+      <div style="text-align: center; font-weight: 700; margin-bottom: 10px;">กรอกโค้ดรับสินค้าตรงนี้เลย</div>
       
-      <label class="label-title">ระบุโค้ดเพื่อรับสินค้า</label>
-      <div class="input-wrapper" id="inputFrame">
-        <textarea id="codeInput" placeholder="กรอกรหัสแจ้งรับสินค้าที่นี่" onfocus="this.parentElement.classList.add('active-focus')" onblur="this.parentElement.classList.remove('active-focus')"></textarea>
+      <div class="input-box" id="inputFrame">
+        <textarea id="codeInput" placeholder="วางโค้ดที่แอดมินส่งให้..."></textarea>
       </div>
 
-      <button class="btn-main" id="btnRedeem">รับสินค้าแจ้งโค้ด</button>
+      <button class="btn-redeem" id="btnGo">รับสินค้าแจ้งโค้ด</button>
+      
+      <div style="display: flex; justify-content: space-between; margin-top: 15px; padding: 0 10px;">
+        <span onclick="document.getElementById('codeInput').value=''" style="font-size: 0.75rem; font-weight: 700; color: #ccc; cursor: pointer;">ล้างโค้ด</span>
+        <span onclick="location.href='https://line.me/ti/p/@467dlpti'" style="font-size: 0.75rem; font-weight: 700; color: var(--milk-tea); cursor: pointer;">ติดต่อแอดมิน</span>
+      </div>
     </main>
 
-    <div id="resultContainer"></div>
+    <div id="resultArea"></div>
 
     <footer>
-      <a href="https://line.me/ti/p/@467dlpti" class="line-contact">LINE OFFICIAL: @467dlpti</a>
+      LINE OFFICIAL: @467dlpti
     </footer>
   </div>
 
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
-    const btn = document.getElementById("btnRedeem");
+    const btn = document.getElementById("btnGo");
     const input = document.getElementById("codeInput");
     const frame = document.getElementById("inputFrame");
-    const resultArea = document.getElementById("resultContainer");
+    const results = document.getElementById("resultArea");
 
-    // ระบบแจ้งเตือนเมื่อไม่กรอกโค้ด
+    // ระบบแจ้งเตือนกันรีเฟรช
+    window.onbeforeunload = function() {
+      if (results.children.length > 0) return "รหัสจะหายไปหากคุณออกตอนนี้!";
+    };
+
     btn.addEventListener("click", async () => {
-      const codeValue = input.value.trim();
+      const val = input.value.trim();
       
-      if (!codeValue) {
-        // ระบบสั่น (สำหรับมือถือที่รองรับ)
-        if (navigator.vibrate) {
-          navigator.vibrate([100, 50, 100]);
-        }
+      // 1. ระบบแจ้งเตือนหากไม่แจ้งโค้ด (Validation)
+      if (!val) {
+        if (navigator.vibrate) navigator.vibrate([100, 50, 100]); // สั่น
+        frame.classList.add("error");
+        btn.innerHTML = "ลืมใส่รหัสหรือเปล่าคะ?";
+        btn.style.background = "#ffb7b7";
         
-        // เอฟเฟกต์สั่นที่หน้าจอ
-        frame.classList.add("shake");
-        const originalText = btn.innerHTML;
-        btn.innerHTML = "กรุณากรอกรหัสก่อนนะคะ";
-        btn.style.background = "#d68a8a";
-
         setTimeout(() => {
-          frame.classList.remove("shake");
-          btn.innerHTML = originalText;
+          frame.classList.remove("error");
+          btn.innerHTML = "รับสินค้าแจ้งโค้ด";
           btn.style.background = "";
-        }, 1500);
+        }, 2000);
         return;
       }
 
-      // เริ่มกระบวนการรับสินค้า
+      // 2. เริ่มโหลด
       btn.disabled = true;
-      btn.innerHTML = "กำลังตรวจสอบรหัส...";
-      resultArea.innerHTML = "";
+      btn.innerHTML = "รอแป๊บนึงน้า กำลังดึงรหัส...";
+      results.innerHTML = "";
 
       try {
-        const res = await fetch(`${API_URL}?action=redeem&text=${encodeURIComponent(codeValue)}`);
+        const res = await fetch(`${API_URL}?action=redeem&text=${encodeURIComponent(val)}`);
         const data = await res.json();
         
-        if (data.items && data.items.length > 0) {
+        if (data.ok && data.items.length > 0) {
           data.items.forEach(item => {
             const div = document.createElement("div");
-            div.className = "result-box";
+            div.className = "result-bubble";
             div.innerHTML = `
-              <div style="font-size:0.7rem; font-weight:800; color:#bca08e; margin-bottom:10px; text-transform:uppercase;">Product Success</div>
-              <div style="font-weight:600; line-height:1.6;">${item.reply}</div>
-              <button class="btn-copy-bear" onclick="copyResult('${item.reply.replace(/\n/g, "\\n")}', this)">คัดลอกรหัสสินค้า</button>
+              <div style="font-size:0.7rem; font-weight:700; color:#bca08e; margin-bottom:5px;">เย้! ได้รับสินค้าแล้ว</div>
+              <div style="font-weight:600; line-height:1.5;">${item.reply}</div>
+              <button class="copy-btn" onclick="copyOk('${item.reply.replace(/\n/g, "\\n")}', this)">คัดลอกรายละเอียด</button>
             `;
-            resultArea.appendChild(div);
+            results.appendChild(div);
           });
-          window.scrollTo({ top: resultArea.offsetTop - 20, behavior: 'smooth' });
+          // เลื่อนหน้าจอลงมาให้เห็นรหัส
+          window.scrollTo({ top: results.offsetTop - 50, behavior: 'smooth' });
         } else {
-          showError("ไม่พบข้อมูลรหัสนี้ในระบบค่ะ");
+          showError("ไม่พบรหัสสินค้าในระบบค่ะ");
         }
       } catch (e) {
-        showError("การเชื่อมต่อมีปัญหา โปรดลองใหม่ค่ะ");
+        showError("ระบบขัดข้อง โปรดลองใหม่อีกครั้งค่ะ");
       } finally {
         btn.disabled = false;
         btn.innerHTML = "รับสินค้าแจ้งโค้ด";
@@ -233,27 +219,23 @@
     });
 
     function showError(msg) {
-        resultArea.innerHTML = `<div style="text-align:center; color:#d68a8a; font-weight:700; font-size:0.85rem;">${msg}</div>`;
-        if (navigator.vibrate) navigator.vibrate(200);
+      results.innerHTML = `<div style="text-align:center; padding:20px; font-weight:700; color:#ffb7b7;">${msg}</div>`;
+      if (navigator.vibrate) navigator.vibrate(200);
     }
 
-    function copyResult(text, el) {
+    function copyOk(text, el) {
       navigator.clipboard.writeText(text.replace(/\\n/g, "\n")).then(() => {
-        const old = el.innerHTML;
-        el.innerHTML = "คัดลอกเรียบร้อยแล้ว";
+        const oldText = el.innerHTML;
+        el.innerHTML = "คัดลอกสำเร็จแล้วค่า! ✨";
+        el.style.background = "#fdfaf7";
         el.style.borderColor = "#90beaa";
         el.style.color = "#90beaa";
         setTimeout(() => {
-          el.innerHTML = old;
+          el.innerHTML = oldText;
           el.style = "";
         }, 2000);
       });
     }
-
-    // กันรีเฟรชหน้าจอ
-    window.onbeforeunload = function() {
-      if (resultArea.children.length > 0) return "รหัสสินค้าจะหายไปหากคุณรีเฟรชหน้าจอ!";
-    };
   </script>
 </body>
 </html>
