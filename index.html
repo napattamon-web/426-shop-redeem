@@ -2,18 +2,16 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <title>426 PREMIUM – Cinema Experience</title>
+  <title>426 CUTE CINEMA – Premium Experience</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
   <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-dark: #0f1014;       /* ดำลึกสไตล์ Cinema */
-      --card-dark: #1a1c23;     /* เทาเข้มพรีเมียม */
-      --accent-red: #e50914;    /* แดง Netflix Style */
-      --accent-gold: #ffc107;   /* ทอง VIP */
-      --text-white: #ffffff;
-      --text-gray: #a0a0a0;
-      --glass: rgba(255, 255, 255, 0.05);
+      --cinema-pink: #ff85a1;
+      --cinema-purple: #9b5de5;
+      --bg-gradient: linear-gradient(135deg, #fff5f7 0%, #f3e8ff 100%);
+      --glass-white: rgba(255, 255, 255, 0.7);
+      --text-dark: #4a3f35;
     }
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -21,140 +19,150 @@
     body {
       margin: 0; padding: 0;
       font-family: 'Anuphan', sans-serif;
-      background-color: var(--bg-dark);
-      color: var(--text-white);
-      /* พื้นหลังไล่เฉดสีแบบสปอตไลท์หนัง */
-      background-image: radial-gradient(circle at 50% -20%, #2c1618 0%, #0f1014 60%);
+      background: var(--bg-gradient);
+      color: var(--text-dark);
       min-height: 100vh; display: flex; justify-content: center;
     }
 
-    .app-container {
-      width: 100%; max-width: 480px;
-      padding: 30px 20px;
+    .app-wrapper {
+      width: 100%; max-width: 440px;
+      padding: 30px 15px;
       display: flex; flex-direction: column; gap: 20px;
     }
 
-    /* Header: สไตล์แอป Streaming */
+    /* Modern App Header */
     .app-header {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 10px 0; border-bottom: 1px solid var(--glass);
+      padding: 10px 5px;
     }
-    .brand-logo {
+    .brand-title {
       font-size: 1.5rem; font-weight: 800; letter-spacing: -1px;
-      background: linear-gradient(90deg, var(--accent-red), #ff4d4d);
+      background: linear-gradient(to right, var(--cinema-pink), var(--cinema-purple));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-    .vip-badge {
-      background: var(--accent-gold); color: #000;
-      font-size: 0.65rem; font-weight: 800; padding: 4px 10px;
-      border-radius: 6px; text-transform: uppercase;
+    .status-badge {
+      background: #fff; padding: 5px 12px; border-radius: 99px;
+      font-size: 0.7rem; font-weight: 700; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      color: var(--cinema-pink); display: flex; align-items: center; gap: 5px;
+    }
+    .online-dot { width: 6px; height: 6px; background: #90beaa; border-radius: 50%; }
+
+    /* Main Containerสไตล์แอปสมัยใหม่ */
+    .glass-card {
+      background: var(--glass-white);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-radius: 35px; padding: 25px;
+      border: 2px solid #ffffff;
+      box-shadow: 0 20px 40px rgba(255, 133, 161, 0.1);
     }
 
-    /* Hero Section: ความสะดวกสำหรับลูกค้า */
-    .hero-card {
-      background: linear-gradient(135deg, #1e1e26 0%, #111115 100%);
-      border-radius: 24px; padding: 25px;
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    /* Warning Banner */
+    .cute-alert {
+      background: #fff; border-radius: 20px; padding: 12px 15px;
+      margin-bottom: 20px; border: 1.5px dashed var(--cinema-pink);
+      font-size: 0.75rem; color: #ff5c8a; font-weight: 700;
+      display: flex; align-items: center; gap: 8px;
     }
-    .hero-card h2 { font-size: 1.2rem; margin: 0 0 15px; font-weight: 700; }
 
-    /* Input Modern Style */
+    /* Input Styling */
+    .input-section { margin-bottom: 15px; }
+    .input-label { font-weight: 700; font-size: 0.85rem; margin-bottom: 8px; display: block; padding-left: 5px; }
+    
     .input-box {
-      background: rgba(0,0,0,0.3); border-radius: 16px;
-      padding: 15px; border: 1px solid #333; transition: 0.3s;
+      background: rgba(255, 255, 255, 0.5); border-radius: 22px;
+      padding: 18px; border: 2px solid transparent; transition: 0.3s;
     }
-    .input-box:focus-within { border-color: var(--accent-red); box-shadow: 0 0 15px rgba(229, 9, 20, 0.2); }
+    .input-box:focus-within { border-color: var(--cinema-pink); background: #fff; transform: translateY(-2px); }
     textarea {
-      width: 100%; height: 80px; border: none; background: transparent;
-      color: white; font-family: inherit; font-size: 1rem; resize: none; outline: none;
+      width: 100%; height: 90px; border: none; background: transparent;
+      font-family: inherit; font-size: 1rem; color: var(--text-dark); resize: none; outline: none;
     }
 
-    .btn-play {
-      width: 100%; padding: 18px; margin-top: 15px; border-radius: 16px;
-      border: none; background: var(--accent-red); color: white;
-      font-size: 1.1rem; font-weight: 700; cursor: pointer;
+    /* Quick Action Buttons (อำนวยความสะดวก) */
+    .action-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+    .btn-small {
+      background: #fff; border: none; padding: 12px; border-radius: 15px;
+      font-size: 0.75rem; font-weight: 700; color: #a0a0a0; cursor: pointer; transition: 0.2s;
+    }
+    .btn-small:active { background: #fdf0f3; color: var(--cinema-pink); }
+
+    /* Main Submit Button (สไตล์ป้ายหน้าร้าน) */
+    .btn-get {
+      width: 100%; padding: 18px; margin-top: 20px; border-radius: 22px;
+      border: none; background: linear-gradient(135deg, var(--cinema-pink), var(--cinema-purple));
+      color: white; font-size: 1.1rem; font-weight: 800; cursor: pointer;
+      box-shadow: 0 10px 25px rgba(155, 93, 229, 0.3); transition: 0.3s;
       display: flex; align-items: center; justify-content: center; gap: 10px;
-      transition: 0.3s;
     }
-    .btn-play:hover { background: #ff1f2d; transform: scale(1.02); }
-    .btn-play:active { transform: scale(0.98); }
+    .btn-get:active { transform: scale(0.96); opacity: 0.9; }
 
-    /* Warning Overlay */
-    .alert-banner {
-      background: rgba(229, 9, 20, 0.1); border-left: 4px solid var(--accent-red);
-      padding: 12px 15px; border-radius: 12px; font-size: 0.75rem; color: #ff8080;
-      font-weight: 600; display: flex; align-items: center; gap: 8px;
+    /* Result Cards */
+    .result-card {
+      background: #fff; border-radius: 25px; padding: 20px;
+      margin-top: 15px; border: 1px solid #f1f3f5;
+      animation: popUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
+    @keyframes popUp { from { opacity: 0; transform: scale(0.9); } }
 
-    /* Result Section: สไตล์รายการหนัง */
-    .result-item {
-      background: var(--card-dark); border-radius: 20px;
-      overflow: hidden; margin-top: 15px;
-      border: 1px solid rgba(255,255,255,0.05);
-      animation: fadeIn 0.6s ease;
-    }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } }
-
-    .item-header {
-      background: rgba(255,255,255,0.03); padding: 10px 20px;
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 0.7rem; color: var(--text-gray); font-weight: 700;
-    }
-    .item-body { padding: 20px; font-size: 0.95rem; line-height: 1.6; font-weight: 500; }
-
-    /* ปุ่มลอยด้านล่างสำหรับความสะดวก */
-    .quick-actions {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;
-    }
-    .btn-secondary {
-      background: #2a2d36; color: white; border: none; padding: 12px;
-      border-radius: 12px; font-size: 0.75rem; font-weight: 700; cursor: pointer;
+    .tag-movie {
+      background: #f3e8ff; color: var(--cinema-purple);
+      padding: 4px 12px; border-radius: 10px; font-size: 0.7rem; font-weight: 800;
     }
 
-    footer { text-align: center; margin-top: 40px; padding-bottom: 30px; }
-    .support-btn {
+    .btn-copy-cinema {
+      width: 100%; padding: 12px; margin-top: 15px; border-radius: 18px;
+      border: none; background: #f8f9fa; color: var(--text-dark);
+      font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: 0.2s;
+    }
+    .btn-copy-cinema:hover { background: #fff0f3; color: var(--cinema-pink); }
+
+    footer { text-align: center; margin-top: auto; padding: 30px 0; }
+    .line-support {
       display: inline-flex; align-items: center; gap: 8px;
-      background: #06c755; color: white; padding: 10px 25px;
-      border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 0.8rem;
+      background: #06c755; color: white; padding: 10px 22px;
+      border-radius: 99px; text-decoration: none; font-weight: 700; font-size: 0.8rem;
     }
   </style>
 </head>
 <body>
 
-  <div class="app-container">
+  <div class="app-wrapper">
     <header class="app-header">
-      <div class="brand-logo">426 CINEMA</div>
-      <div class="vip-badge">Premium Client</div>
+      <div class="brand-title">426 CUTE CINEMA</div>
+      <div class="status-badge"><span class="online-dot"></span> Online</div>
     </header>
 
-    <div class="alert-banner">
-      <span>⚠️ Warning: ห้ามรีเฟรชหน้าจอนะคะ ข้อมูลจะหายทันที!</span>
-    </div>
-
-    <main class="hero-card">
-      <h2>Redeem Now</h2>
-      <div class="input-box">
-        <textarea id="codeInput" placeholder="วางรหัสพรีเมียมที่ได้รับ..."></textarea>
+    <main class="glass-card">
+      <div class="cute-alert">
+        <span style="font-size: 1.2rem;">🎀</span>
+        <span>ห้ามรีเฟรชหน้าจอนะคะ ข้อมูลจะหายทันที!</span>
       </div>
-      <button class="btn-play" id="btnRedeem">
-        <span>GET ACCESS</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+
+      <div class="input-section">
+        <label class="input-label">วางรหัสรับสิทธิ์ 🍿</label>
+        <div class="input-box">
+          <textarea id="codeInput" placeholder="วางโค้ดที่แอดมินส่งให้..."></textarea>
+        </div>
+        
+        <div class="action-row">
+          <button class="btn-small" onclick="document.getElementById('codeInput').value=''">ล้างข้อความ</button>
+          <button class="btn-small" onclick="location.reload()">เริ่มใหม่</button>
+        </div>
+      </div>
+
+      <button class="btn-get" id="btnRedeem">
+        <span>GET MOVIE PASS</span>
+        <span style="font-size: 1.3rem;">✨</span>
       </button>
 
-      <div class="quick-actions">
-        <button class="btn-secondary" onclick="document.getElementById('codeInput').value='';">ล้างช่องกรอก</button>
-        <button class="btn-secondary" onclick="location.href='https://line.me/ti/p/@467dlpti'">แจ้งปัญหา</button>
-      </div>
+      <div id="results"></div>
     </main>
 
-    <div id="results"></div>
-
     <footer>
-      <a href="https://line.me/ti/p/@467dlpti" class="support-btn">
-        <span>Contact Concierge Line</span>
+      <a href="https://line.me/ti/p/@467dlpti" class="line-support">
+        <span>Line: @467dlpti</span>
       </a>
-      <p style="font-size: 0.6rem; color: #555; margin-top: 15px; letter-spacing: 2px;">426 ENTERTAINMENT SYSTEM v2.0</p>
+      <p style="font-size: 0.65rem; color: #bca08e; margin-top: 15px; font-weight: 700;">PREMIUM CINEMA EXPERIENCE</p>
     </footer>
   </div>
 
@@ -165,59 +173,55 @@
     const resultsArea = document.getElementById("results");
 
     window.onbeforeunload = function() {
-      if (resultsArea.children.length > 0) return "ข้อมูลการเข้าถึงจะหายไปหากคุณออกตอนนี้!";
+      if (resultsArea.children.length > 0) return "ข้อมูลรหัสหนังจะหายไปนะคะ!";
     };
 
     btn.addEventListener("click", async () => {
-      const val = input.value.trim();
-      if (!val) return;
+      const code = input.value.trim();
+      if (!code) return;
 
       btn.disabled = true;
-      btn.innerHTML = "LOADING CONTENT... ⏳";
+      btn.innerHTML = "กำลังเตรียมที่นั่ง... 🎞️";
       resultsArea.innerHTML = "";
 
       try {
-        const res = await fetch(`${API_URL}?action=redeem&text=${encodeURIComponent(val)}`);
+        const res = await fetch(`${API_URL}?action=redeem&text=${encodeURIComponent(code)}`);
         const data = await res.json();
         
         if (data.items && data.items.length > 0) {
           data.items.forEach(item => {
             const card = document.createElement("div");
-            card.className = "result-item";
+            card.className = "result-card";
             card.innerHTML = `
-              <div class="item-header">
-                <span>TITLE: ${item.appName || 'PREMIUM ACCESS'}</span>
-                <span style="color:var(--accent-gold);">★ ACTIVE</span>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <span class="tag-movie">${item.appName || 'PREMIUM'}</span>
+                <span style="font-size:0.6rem; color:#ccc;">ID: ${item.code.substring(0,5)}</span>
               </div>
-              <div class="item-body">${item.reply}</div>
-              <div style="padding:0 20px 20px;">
-                <button class="btn-play" style="padding:12px; font-size:0.85rem;" onclick="copyAccess('${item.reply.replace(/\n/g, "\\n")}', this)">
-                  COPY DETAILS
-                </button>
-              </div>
+              <div style="font-weight:600; line-height:1.6; font-size:0.95rem; white-space:pre-wrap;">${item.reply}</div>
+              <button class="btn-copy-cinema">คัดลอกรายละเอียด 📋</button>
             `;
+            card.querySelector("button").onclick = (e) => copyText(item.reply, e.target);
             resultsArea.appendChild(card);
           });
-          window.scrollTo({ top: resultsArea.offsetTop, behavior: 'smooth' });
         } else {
-          resultsArea.innerHTML = `<div style="text-align:center; padding:30px; font-size:0.8rem; color:#ff4d4d; font-weight:700;">ACCESS DENIED: ไม่พบรหัส หรือรหัสถูกใช้แล้วค่ะ</div>`;
+          resultsArea.innerHTML = `<div style="text-align:center; padding:20px; font-size:0.8rem; color:#ff85a1; font-weight:700;">ไม่พบโค้ดหนังนี้ในระบบค่ะ 🥺</div>`;
         }
       } catch (e) {
-        resultsArea.innerHTML = `<div style="text-align:center; padding:30px; font-size:0.8rem; color:#ff4d4d;">SERVER ERROR: โปรดตรวจสอบการเชื่อมต่อ</div>`;
+        resultsArea.innerHTML = `<div style="text-align:center; padding:20px; font-size:0.8rem; color:#ff85a1;">เกิดข้อผิดพลาดในการโหลดข้อมูล</div>`;
       } finally {
         btn.disabled = false;
-        btn.innerHTML = "<span>GET ACCESS</span><svg width='20' height='20' viewBox='0 0 24 24' fill='currentColor'><path d='M8 5v14l11-7z'/></svg>";
+        btn.innerHTML = "<span>GET MOVIE PASS</span><span style='font-size: 1.3rem;'>✨</span>";
       }
     });
 
-    function copyAccess(text, btnEl) {
-      navigator.clipboard.writeText(text.replace(/\\n/g, "\n")).then(() => {
-        const original = btnEl.innerHTML;
-        btnEl.innerHTML = "COPIED TO CLIPBOARD ✅";
-        btnEl.style.background = "#28a745";
+    function copyText(text, el) {
+      navigator.clipboard.writeText(text).then(() => {
+        const original = el.innerHTML;
+        el.innerHTML = "คัดลอกแล้วค่า! ✅";
+        el.style.color = "#90beaa";
         setTimeout(() => {
-          btnEl.innerHTML = original;
-          btnEl.style.background = "";
+          el.innerHTML = original;
+          el.style.color = "";
         }, 2000);
       });
     }
