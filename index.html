@@ -491,7 +491,7 @@
         <textarea id="codeInput" placeholder="เช่น NFXA1B2&#10;หรือ DSN9X3Y"></textarea>
         <div class="input-helper-row">
           <div class="small-tag">แนะนำ: วางโค้ดแยกบรรทัด</div>
-          <span>สูงสุด ~5 โค้ด/ครั้ง</span>
+          <span id="lineInfo">สูงสุด ~5 โค้ด/ครั้ง</span>
         </div>
       </div>
 
@@ -523,44 +523,71 @@
   </div>
 
   <script>
-    // 🔗 URL Web App ของ Google Apps Script
+    // 🔗 URL Web App ของ Google Apps Script (อันที่คุณ deploy มา)
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
+    const MAX_CODES = 5;
 
     const btnRedeem = document.getElementById("btnRedeem");
     const btnClear = document.getElementById("btnClear");
+    const codeInput = document.getElementById("codeInput");
+    const lineInfo = document.getElementById("lineInfo");
 
     btnRedeem.addEventListener("click", redeem);
     btnClear.addEventListener("click", clearForm);
+    codeInput.addEventListener("input", updateLineInfo);
+
+    function updateLineInfo() {
+      const raw = codeInput.value || "";
+      const lines = raw.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+      if (!lines.length) {
+        lineInfo.textContent = "สูงสุด ~5 โค้ด/ครั้ง";
+        return;
+      }
+      let text = `โค้ดที่กรอก: ${lines.length} รายการ`;
+      if (lines.length > MAX_CODES) {
+        text += " (ระบบจะใช้เฉพาะ 5 รายการแรก)";
+      }
+      lineInfo.textContent = text;
+    }
 
     function clearForm() {
       const status = document.getElementById("status");
       const resDiv = document.getElementById("results");
-      const input = document.getElementById("codeInput");
 
-      input.value = "";
+      codeInput.value = "";
       status.innerHTML = "";
       resDiv.innerHTML = "";
-      input.focus();
+      lineInfo.textContent = "สูงสุด ~5 โค้ด/ครั้ง";
+      codeInput.focus();
     }
 
     function redeem() {
       const status = document.getElementById("status");
       const inputContainer = document.querySelector(".input-field");
-      const inputElm = document.getElementById("codeInput");
-      const input = inputElm.value.trim();
+      const raw = codeInput.value;
+      const input = raw.trim();
 
       if (!input) {
         inputContainer.classList.add("shake");
         status.innerHTML = "กรุณากรอกรหัสก่อนนะคะ";
         status.style.color = "#e57373";
-        setTimeout(() => inputContainer.classList.remove("shake"), 500);
+        setTimeout(() => inputContainer.removeAttribute("class"), 500);
         return;
+      }
+
+      const lines = raw.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+      let preWarn = "";
+      if (lines.length > MAX_CODES) {
+        preWarn = `คุณกรอกโค้ด ${lines.length} รายการ ระบบจะใช้เฉพาะ ${MAX_CODES} รายการแรกค่ะ`;
       }
 
       btnRedeem.disabled = true;
       btnRedeem.innerHTML = "กำลังตรวจสอบ…";
       status.style.color = "#8b8680";
-      status.innerHTML = "ระบบกำลังตรวจสอบรหัสของคุณ...<br><span style='font-size:0.78rem;color:#c27a5a;'>หลังจากส่งโค้ดแล้ว ห้ามรีเฟรช/ปิดหน้านี้จนกว่าผลจะขึ้นครบค่ะ</span>";
+      status.innerHTML =
+        "ระบบกำลังตรวจสอบรหัสของคุณ...<br>" +
+        "<span style='font-size:0.78rem;color:#c27a5a;'>หลังจากส่งโค้ดแล้ว ห้ามรีเฟรช/ปิดหน้านี้จนกว่าผลจะขึ้นครบค่ะ</span>" +
+        (preWarn ? "<br><span style='font-size:0.78rem;color:#c27a5a;'>" + preWarn + "</span>" : "");
 
       const url = API_URL + "?action=redeem&text=" + encodeURIComponent(input);
 
