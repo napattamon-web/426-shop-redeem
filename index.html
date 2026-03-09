@@ -2,16 +2,17 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <title>426 SHOP – The Ultimate Experience</title>
+  <title>426 SHOP – Modern Experience</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
   <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --p-pink: #ffafbd;
-      --p-orange: #ffc3a0;
-      --deep-brown: #4a3728;
-      --glass: rgba(255, 255, 255, 0.45);
-      --glass-border: rgba(255, 255, 255, 0.7);
+      --bg: #f8f9fa;
+      --card-bg: rgba(255, 255, 255, 0.85);
+      --accent: #ff9fb2;
+      --accent-soft: #fff0f3;
+      --text-main: #4a3f35;
+      --text-sub: #a39387;
     }
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -19,250 +20,208 @@
     body {
       margin: 0; padding: 0;
       font-family: 'Anuphan', sans-serif;
-      color: var(--deep-brown);
-      min-height: 100vh;
-      display: flex; justify-content: center;
-      overflow-x: hidden;
-      /* Animated Mesh Gradient Background */
-      background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
-      background-attachment: fixed;
-    }
-
-    /* ตกแต่งพื้นหลังด้วยวงกลมฟุ้งๆ */
-    body::before {
-      content: ""; position: fixed; top: -10%; left: -10%; width: 50%; height: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%);
-      filter: blur(50px); z-index: -1; animation: orbit 20s infinite linear;
-    }
-
-    @keyframes orbit {
-      from { transform: rotate(0deg) translateX(50px) rotate(0deg); }
-      to { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
+      background: #fdfaf8;
+      /* เพิ่ม Texture พื้นหลังให้ดูพรีเมียม */
+      background-image: radial-gradient(#ffe4e9 0.8px, transparent 0.8px);
+      background-size: 24px 24px;
+      color: var(--text-main);
+      display: flex; justify-content: center; min-height: 100vh;
     }
 
     .app-container {
-      width: 100%; max-width: 480px;
+      width: 100%; max-width: 440px;
       padding: 40px 20px;
-      z-index: 1;
+      display: flex; flex-direction: column; gap: 16px;
     }
 
-    /* Header & Logo */
-    .header { text-align: center; margin-bottom: 35px; }
-    .logo-orbit {
-      width: 120px; height: 120px; margin: 0 auto 20px;
-      background: var(--glass);
-      backdrop-filter: blur(15px);
-      border-radius: 45px;
-      display: flex; align-items: center; justify-content: center;
-      border: 1px solid var(--glass-border);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-      animation: softBounce 3s ease-in-out infinite;
+    /* Header Modern Style */
+    .brand-section {
+      text-align: center; margin-bottom: 20px;
     }
-    
-    .bear-icon {
-      width: 65px; height: 55px; background: #c99b7a; border-radius: 50px; position: relative;
+    .brand-logo {
+      width: 64px; height: 64px; background: white; border-radius: 20px;
+      margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.04);
+      font-size: 28px;
     }
-    .bear-icon::before, .bear-icon::after {
-      content: ""; width: 22px; height: 22px; background: #c99b7a; border-radius: 50%;
-      position: absolute; top: -8px;
-    }
-    .bear-icon::before { left: 2px; } .bear-icon::after { right: 2px; }
+    .brand-section h1 { font-size: 1.5rem; margin: 0; font-weight: 800; letter-spacing: -0.5px; }
+    .brand-section p { font-size: 0.75rem; color: var(--text-sub); text-transform: uppercase; letter-spacing: 4px; margin-top: 4px; }
 
-    @keyframes softBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-
-    .header h1 { font-size: 2rem; margin: 0; font-weight: 800; letter-spacing: -1px; }
-    .header p { font-size: 0.8rem; font-weight: 700; opacity: 0.5; letter-spacing: 6px; text-transform: uppercase; margin-top: 5px; }
-
-    /* Main Glass Card */
-    .main-card {
-      background: var(--glass);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
-      border-radius: 40px;
-      padding: 35px 25px;
-      border: 1px solid var(--glass-border);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.08);
-      position: relative; overflow: hidden;
+    /* Bento Box Design */
+    .bento-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
     }
+    .bento-item {
+      background: var(--card-bg); backdrop-filter: blur(10px);
+      border-radius: 24px; padding: 16px;
+      border: 1px solid white; box-shadow: 0 8px 30px rgba(0,0,0,0.02);
+    }
+    .full-width { grid-column: span 2; }
 
-    /* Status Bar */
-    .status-indicator {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,0.5); padding: 6px 15px;
-      border-radius: 999px; font-size: 0.75rem; font-weight: 700; color: #6e8e7e;
-      margin-bottom: 25px;
+    /* Warning Banner - Modern Pulse */
+    .status-alert {
+      display: flex; align-items: center; gap: 10px; font-size: 0.8rem;
+      color: #e57373; font-weight: 700;
     }
-    .dot { width: 6px; height: 6px; background: #90beaa; border-radius: 50%; animation: pulse 1.5s infinite; }
+    .pulse-dot {
+      width: 8px; height: 8px; background: #e57373; border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
 
-    /* Input Field */
-    .input-wrapper {
-      background: rgba(255,255,255,0.6);
-      border-radius: 30px; padding: 20px;
-      border: 1px solid transparent;
-      transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      margin-bottom: 20px;
-    }
-    .input-wrapper:focus-within {
-      background: #fff;
-      transform: scale(1.02);
-      border-color: var(--p-pink);
-      box-shadow: 0 15px 30px rgba(255, 175, 189, 0.2);
-    }
+    /* Input Styling */
+    .input-group { position: relative; }
     textarea {
       width: 100%; height: 110px; border: none; background: transparent;
-      font-family: inherit; font-size: 1.05rem; color: var(--deep-brown);
-      resize: none; font-weight: 500;
+      font-family: inherit; font-size: 1rem; color: var(--text-main);
+      resize: none; outline: none; padding: 0;
+    }
+    textarea::placeholder { color: #ccc; }
+
+    .btn-action {
+      width: 100%; padding: 18px; border-radius: 22px; border: none;
+      background: var(--text-main); color: white;
+      font-size: 1rem; font-weight: 700; cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .btn-action:hover { transform: scale(1.02); background: #000; }
+    .btn-action:active { transform: scale(0.98); }
+
+    /* Result Cards */
+    .result-card {
+      background: white; border-radius: 24px; padding: 20px;
+      margin-top: 12px; border: 1px solid #f1f3f5;
+      animation: slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } }
+
+    .tag-premium {
+      background: var(--accent-soft); color: var(--accent);
+      padding: 4px 10px; border-radius: 10px; font-size: 0.7rem; font-weight: 800;
     }
 
-    /* Premium Button */
-    .btn-main {
-      width: 100%; padding: 20px; border-radius: 30px; border: none;
-      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-      color: white; font-size: 1.15rem; font-weight: 800; cursor: pointer;
-      box-shadow: 0 15px 35px rgba(255, 154, 158, 0.4);
-      transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    .btn-copy-modern {
+      width: 100%; padding: 12px; margin-top: 15px; border-radius: 16px;
+      border: 1.5px solid #eee; background: white; color: var(--text-main);
+      font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: 0.2s;
     }
-    .btn-main:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(255, 154, 158, 0.5); }
-    .btn-main:active { transform: scale(0.96); }
-
-    /* Result Animation */
-    .result-item {
-      background: #fff; border-radius: 30px; padding: 25px; margin-top: 20px;
-      border: 1px solid rgba(0,0,0,0.03);
-      animation: reveal 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
-    }
-    @keyframes reveal { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-    .copy-btn {
-      width: 100%; padding: 14px; margin-top: 15px; border-radius: 20px;
-      border: 1.5px solid #f1f1f1; background: #fff; color: #8a6a4f;
-      font-weight: 700; cursor: pointer; transition: 0.3s;
-    }
-    .copy-btn:hover { background: #fff8f9; border-color: var(--p-pink); color: var(--p-pink); }
+    .btn-copy-modern:hover { border-color: var(--accent); color: var(--accent); }
 
     /* Footer */
-    footer { text-align: center; margin-top: 40px; }
-    .line-link {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: #fff; padding: 12px 30px; border-radius: 999px;
-      color: #06c755; text-decoration: none; font-weight: 800; font-size: 0.9rem;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    footer { text-align: center; padding: 20px 0; margin-top: auto; }
+    .social-badge {
+      display: inline-flex; align-items: center; padding: 8px 16px;
+      background: white; border-radius: 999px; font-size: 0.8rem;
+      color: #06c755; text-decoration: none; font-weight: 700;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
     }
-
-    /* Floating Tags */
-    .tag { display: inline-block; padding: 4px 12px; background: #f0f7ff; color: #5a9fff; border-radius: 12px; font-size: 0.7rem; font-weight: 800; margin-bottom: 10px; }
   </style>
 </head>
 <body>
 
   <div class="app-container">
-    <header class="header">
-      <div class="logo-orbit">
-        <div class="bear-icon">
-          <div style="width: 7px; height: 7px; background: #3b291e; border-radius: 50%; position: absolute; top: 22px; left: 18px;"></div>
-          <div style="width: 7px; height: 7px; background: #3b291e; border-radius: 50%; position: absolute; top: 22px; right: 18px;"></div>
-          <div style="width: 12px; height: 8px; background: #3b291e; border-radius: 50%; position: absolute; top: 32px; left: 50%; transform: translateX(-50%);"></div>
-        </div>
-      </div>
+    <header class="brand-section">
+      <div class="brand-logo">🧸</div>
       <h1>426 SHOP</h1>
       <p>Premium Access</p>
     </header>
 
-    <main class="main-card">
-      <div class="status-indicator">
-        <span class="dot"></span> 🔐 ระบบตรวจสอบรหัสพร้อมใช้งาน
+    <div class="bento-grid">
+      <div class="bento-item full-width" style="padding: 12px 20px;">
+        <div class="status-alert">
+          <div class="pulse-dot"></div>
+          ⚠️ ห้ามรีเฟรชหน้าจอ ข้อมูลจะหายทันที
+        </div>
       </div>
 
-      <div style="font-size: 0.75rem; color: #d65a5a; font-weight: 800; text-align: center; margin-bottom: 20px; background: #fff0f0; padding: 10px; border-radius: 15px;">
-        ⚠️ ห้ามรีเฟรชหน้าจอเด็ดขาด ข้อมูลจะหายทันที!
+      <div class="bento-item full-width">
+        <div class="input-group">
+          <textarea id="codeInput" placeholder="วางโค้ดสินค้าที่ได้รับจากแอดมิน..."></textarea>
+        </div>
       </div>
 
-      <div class="input-wrapper">
-        <textarea id="codeInput" placeholder="กรอกรหัสสินค้าที่นี่..."></textarea>
+      <div class="full-width">
+        <button class="btn-action" id="btnRedeem">
+          <span>รับสินค้าทันที</span>
+          <span style="font-size: 18px;">✨</span>
+        </button>
       </div>
 
-      <button class="btn-main" id="btnGo">รับสินค้าทันที ✨</button>
+      <div class="bento-item" style="display: flex; align-items: center; justify-content: center; text-align: center;">
+        <span style="font-size: 0.7rem; font-weight: 700; color: var(--text-sub);">🔐 ปลอดภัย 100%</span>
+      </div>
+      <div class="bento-item" style="display: flex; align-items: center; justify-content: center; text-align: center;">
+        <span style="font-size: 0.7rem; font-weight: 700; color: var(--text-sub);">⚡️ รับไวใน 1 วิ</span>
+      </div>
+    </div>
 
-      <div id="status"></div>
-      <div id="results"></div>
-    </main>
+    <div id="results"></div>
 
     <footer>
-      <a href="https://line.me/ti/p/@467dlpti" class="line-link">
-        <span>Support: @467dlpti</span>
+      <a href="https://line.me/ti/p/@467dlpti" class="social-badge">
+        Support: @467dlpti
       </a>
-      <p style="font-size: 0.7rem; opacity: 0.4; margin-top: 20px; font-weight: 800; letter-spacing: 2px;">AUTHENTIC DIGITAL CONTENT</p>
+      <div style="font-size: 0.6rem; color: #ccc; margin-top: 15px; font-weight: 700; letter-spacing: 1px;">
+        EST 2024 • 426 SHOP
+      </div>
     </footer>
   </div>
 
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
-    const btn = document.getElementById("btnGo");
+    const btn = document.getElementById("btnRedeem");
     const input = document.getElementById("codeInput");
-    const results = document.getElementById("results");
-    const status = document.getElementById("status");
+    const resultsArea = document.getElementById("results");
 
-    // แจ้งเตือนรีเฟรช
     window.onbeforeunload = function() {
-      if (results.children.length > 0) return "รหัสสินค้าจะหายไปหากคุณรีเฟรช!";
+      if (resultsArea.children.length > 0) return "ข้อมูลรหัสจะหายไปนะคะ!";
     };
 
     btn.addEventListener("click", async () => {
-      const val = input.value.trim();
-      if (!val) return;
+      const code = input.value.trim();
+      if (!code) return;
 
       btn.disabled = true;
-      btn.innerHTML = "กำลังประมวลผลระบบพรีเมียม...";
-      status.innerHTML = "<p style='text-align:center; font-weight:800; font-size:0.8rem; margin-top:20px;'>⏳ กรุณารอสักครู่ ระบบกำลังดึงข้อมูลฐานข้อมูล...</p>";
-      results.innerHTML = "";
+      btn.innerHTML = "กำลังตรวจสอบ... ⏳";
+      resultsArea.innerHTML = "";
 
       try {
-        const res = await fetch(`${API_URL}?action=redeem&text=${encodeURIComponent(val)}`);
+        const res = await fetch(`${API_URL}?action=redeem&text=${encodeURIComponent(code)}`);
         const data = await res.json();
         
-        status.innerHTML = "";
-        if (data.ok) {
-          if(data.items.length > 1) {
-            const copyAll = document.createElement("button");
-            copyAll.className = "btn-main";
-            copyAll.style.background = "#fff";
-            copyAll.style.color = "#ff9a9e";
-            copyAll.style.border = "2px solid #ff9a9e";
-            copyAll.style.marginBottom = "20px";
-            copyAll.innerHTML = "📋 คัดลอกรายละเอียดทั้งหมด";
-            copyAll.onclick = () => {
-                const totalText = data.items.map(i => `[${i.appName}]\n${i.reply}`).join('\n\n---\n\n');
-                doCopy(totalText, copyAll);
-            };
-            results.appendChild(copyAll);
-          }
-
+        if (data.items && data.items.length > 0) {
           data.items.forEach(item => {
             const card = document.createElement("div");
-            card.className = "result-item";
+            card.className = "result-card";
             card.innerHTML = `
-              <span class="tag">${item.appName || 'Premium'}</span>
-              <div style="font-weight:600; line-height:1.6; color:#5a4637;">${item.reply}</div>
-              <button class="copy-btn">คัดลอกเฉพาะรายการนี้ 📋</button>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <span class="tag-premium">${item.appName || 'Premium'}</span>
+                <span style="font-size:0.65rem; color:#ccc; font-weight:700;">#${item.code.substring(0,4)}</span>
+              </div>
+              <div style="font-weight:600; line-height:1.6; font-size:0.95rem;">${item.reply}</div>
+              <button class="btn-copy-modern">คัดลอกรายละเอียด 📋</button>
             `;
-            card.querySelector("button").onclick = (e) => doCopy(item.reply, e.target);
-            results.appendChild(card);
+            card.querySelector("button").onclick = (e) => copyAction(item.reply, e.target);
+            resultsArea.appendChild(card);
           });
+        } else {
+          resultsArea.innerHTML = `<div style="text-align:center; padding:20px; font-size:0.8rem; color:#e57373; font-weight:700;">ไม่พบรหัสสินค้า หรือรหัสถูกใช้งานแล้วค่ะ 🥺</div>`;
         }
       } catch (e) {
-        status.innerHTML = "<p style='color:red; text-align:center;'>เชื่อมต่อผิดพลาด</p>";
+        resultsArea.innerHTML = `<div style="text-align:center; padding:20px; font-size:0.8rem; color:#e57373;">เกิดข้อผิดพลาดในการเชื่อมต่อ</div>`;
       } finally {
         btn.disabled = false;
-        btn.innerHTML = "รับสินค้าทันที ✨";
+        btn.innerHTML = "<span>รับสินค้าทันที</span><span style='font-size: 18px;'>✨</span>";
       }
     });
 
-    function doCopy(text, el) {
+    function copyAction(text, el) {
       navigator.clipboard.writeText(text).then(() => {
         const original = el.innerHTML;
-        el.innerHTML = "คัดลอกสำเร็จ! ✨";
-        el.style.borderColor = "#90beaa";
+        el.innerHTML = "คัดลอกเรียบร้อย! ✨";
         el.style.color = "#90beaa";
+        el.style.borderColor = "#90beaa";
         setTimeout(() => {
           el.innerHTML = original;
           el.style = "";
