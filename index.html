@@ -11,28 +11,29 @@
       --bg: #f5f3f0;
       --card: #ffffff;
       --accent: #85b8a6;
+      --accent-2: #f0c7a7;
       --accent-soft: #e3f0eb;
       --text-main: #393532;
       --text-sub: #8b8680;
       --border-soft: #e2ddd7;
       --danger: #e57373;
       --warning: #d47955;
-      --ok: #2e7d32;
       --shadow-soft: 0 18px 40px rgba(0,0,0,0.06);
       --radius-xl: 24px;
-      --overlay: rgba(15, 15, 18, 0.45);
+      --glass: rgba(255,255,255,0.76);
     }
 
     body.theme-dark {
       --bg: #15161a;
       --card: #1f2024;
       --accent: #9dd4c1;
+      --accent-2: #f0c7a7;
       --accent-soft: #223a33;
       --text-main: #f4f5f7;
       --text-sub: #a5a9b3;
       --border-soft: #2d3036;
       --shadow-soft: 0 18px 40px rgba(0,0,0,0.7);
-      --overlay: rgba(0, 0, 0, 0.62);
+      --glass: rgba(31,32,36,0.82);
     }
 
     * {
@@ -41,8 +42,8 @@
       outline: none;
     }
 
-    html, body {
-      overflow-x: hidden;
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -59,7 +60,8 @@
       font-family: "Anuphan", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--text-main);
       -webkit-font-smoothing: antialiased;
-      transition: background 0.25s ease;
+      transition: background 0.25s ease, color 0.25s ease;
+      overflow-x: hidden;
     }
 
     body.theme-dark {
@@ -79,7 +81,7 @@
     .bg-orb {
       position: fixed;
       border-radius: 999px;
-      filter: blur(30px);
+      filter: blur(34px);
       opacity: 0.55;
       pointer-events: none;
       z-index: 0;
@@ -103,12 +105,21 @@
       animation-delay: -4s;
     }
 
+    .orb-3 {
+      width: 180px;
+      height: 180px;
+      left: 20%;
+      bottom: 60px;
+      background: radial-gradient(circle, rgba(195, 210, 255, 0.28), rgba(195,210,255,0));
+      animation-delay: -7s;
+    }
+
     .bg-grid {
       position: fixed;
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      opacity: 0.12;
+      opacity: 0.1;
       background-image:
         linear-gradient(rgba(255,255,255,0.55) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.55) 1px, transparent 1px);
@@ -117,7 +128,7 @@
     }
 
     body.theme-dark .bg-grid {
-      opacity: 0.08;
+      opacity: 0.07;
       background-image:
         linear-gradient(rgba(255,255,255,0.18) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.18) 1px, transparent 1px);
@@ -150,6 +161,7 @@
       padding: 6px;
       border-radius: 26px;
       backdrop-filter: blur(10px);
+      position: relative;
     }
 
     .brand-row {
@@ -157,7 +169,6 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      padding: 2px 2px 4px;
     }
 
     .brand-left {
@@ -168,78 +179,70 @@
     }
 
     .logo-circle {
-      width: 62px;
-      height: 62px;
+      width: 58px;
+      height: 58px;
       border-radius: 999px;
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.95), rgba(240,247,244,0.9));
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.22)),
+        linear-gradient(135deg, #f8efe7, #e7f4ee);
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow:
         0 10px 24px rgba(0,0,0,0.08),
-        0 0 0 4px rgba(255,255,255,0.55);
+        inset 0 1px 0 rgba(255,255,255,0.6);
       position: relative;
       overflow: hidden;
       flex-shrink: 0;
-      border: 1px solid rgba(255,255,255,0.8);
       transition: transform 0.25s ease, box-shadow 0.25s ease;
+      isolation: isolate;
     }
 
     body.theme-dark .logo-circle {
       background:
-        linear-gradient(135deg, rgba(44,46,54,0.98), rgba(33,50,48,0.94));
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), rgba(255,255,255,0)),
+        linear-gradient(135deg, #2a2b38, #223234);
       box-shadow:
-        0 12px 26px rgba(0,0,0,0.58),
-        0 0 0 4px rgba(255,255,255,0.04);
-      border-color: rgba(255,255,255,0.08);
+        0 10px 26px rgba(0,0,0,0.8),
+        inset 0 1px 0 rgba(255,255,255,0.03);
     }
 
     .logo-circle::after {
       content: "";
       position: absolute;
       inset: 0;
-      border-radius: inherit;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.45);
+      background: linear-gradient(135deg, rgba(255,255,255,0.18), transparent 55%);
+      z-index: 2;
       pointer-events: none;
-    }
-
-    .logo-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 38%;
-      display: block;
-      transform: scale(1.08);
     }
 
     .logo-circle.success-bounce {
       animation: successPop 0.55s ease-out;
     }
 
+    .logo-img-wrap {
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+      background: #fff;
+    }
+
+    .logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.05);
+    }
+
     @keyframes successPop {
       0% { transform: scale(1) translateY(0); }
       40% { transform: scale(1.08) translateY(-3px); }
       100% { transform: scale(1) translateY(0); }
-    }
-
-    .logo-fallback {
-      background: linear-gradient(135deg, #f0ece7, #e3f0eb);
-    }
-
-    body.theme-dark .logo-fallback {
-      background: linear-gradient(135deg, #2b2d35, #223a33);
-    }
-
-    .logo-fallback-text {
-      font-weight: 800;
-      font-size: 1rem;
-      letter-spacing: 0.08em;
-      color: #6d645c;
-    }
-
-    body.theme-dark .logo-fallback-text {
-      color: #eef3f5;
     }
 
     .brand-text {
@@ -251,16 +254,16 @@
 
     .brand-title {
       font-weight: 700;
-      font-size: 1.32rem;
-      letter-spacing: 0.14em;
+      font-size: 1.4rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       white-space: nowrap;
     }
 
     .brand-sub {
-      font-size: 0.76rem;
+      font-size: 0.82rem;
       color: var(--text-sub);
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       white-space: nowrap;
     }
@@ -285,6 +288,7 @@
       gap: 6px;
       white-space: nowrap;
       backdrop-filter: blur(6px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.04);
     }
 
     body.theme-dark .badge {
@@ -298,19 +302,25 @@
       border-radius: 999px;
       background: #4caf50;
       box-shadow: 0 0 0 4px rgba(76,175,80,0.18);
+      animation: pulseDot 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulseDot {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.12); }
     }
 
     .theme-toggle {
       border-radius: 999px;
       border: 1px solid rgba(0,0,0,0.06);
       background: rgba(255,255,255,0.95);
-      width: 30px;
-      height: 30px;
+      width: 34px;
+      height: 34px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-size: 0.95rem;
+      font-size: 1rem;
       box-shadow: 0 6px 14px rgba(0,0,0,0.08);
       transition: all 0.18s ease;
       backdrop-filter: blur(6px);
@@ -319,7 +329,7 @@
     }
 
     .theme-toggle:hover {
-      transform: translateY(-1px);
+      transform: translateY(-1px) rotate(3deg);
       box-shadow: 0 10px 20px rgba(0,0,0,0.12);
     }
 
@@ -345,6 +355,7 @@
       align-items: center;
       gap: 6px;
       transition: all 0.2s ease;
+      backdrop-filter: blur(6px);
     }
 
     body.theme-dark .step-pill {
@@ -362,6 +373,7 @@
       color: var(--text-main);
       box-shadow: 0 0 0 3px rgba(133,184,166,0.18);
       opacity: 1;
+      transform: translateY(-1px);
     }
 
     .step-pill--done {
@@ -377,65 +389,9 @@
       color: #c1e4d5;
     }
 
-    .dashboard-row {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-    }
-
-    .dashboard-card {
-      border-radius: 16px;
-      padding: 10px 10px 9px;
-      background: rgba(255,255,255,0.88);
-      border: 1px solid rgba(255,255,255,0.78);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-      backdrop-filter: blur(10px);
-    }
-
-    body.theme-dark .dashboard-card {
-      background: rgba(31,32,38,0.92);
-      border-color: rgba(255,255,255,0.06);
-      box-shadow: 0 10px 26px rgba(0,0,0,0.25);
-    }
-
-    .dashboard-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 6px;
-    }
-
-    .dashboard-label {
-      font-size: 0.7rem;
-      color: var(--text-sub);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    .dashboard-icon {
-      font-size: 0.92rem;
-    }
-
-    .dashboard-value {
-      font-size: 1.15rem;
-      font-weight: 700;
-      line-height: 1;
-    }
-
-    .dashboard-sub {
-      font-size: 0.7rem;
-      color: var(--text-sub);
-      margin-top: 4px;
-    }
-
-    .dashboard-card.ready .dashboard-value { color: #4b7d6d; }
-    .dashboard-card.used .dashboard-value { color: #7a5bb7; }
-    .dashboard-card.nf .dashboard-value { color: #c26d55; }
-
     .card {
       flex: 1;
-      background: rgba(255,255,255,0.78);
+      background: var(--glass);
       border-radius: var(--radius-xl);
       box-shadow:
         0 20px 40px rgba(0,0,0,0.08),
@@ -446,11 +402,22 @@
       flex-direction: column;
       gap: 12px;
       transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
-      backdrop-filter: blur(14px);
+      backdrop-filter: blur(16px);
+      transform-style: preserve-3d;
+      will-change: transform;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, rgba(255,255,255,0.14), transparent 35%, transparent 60%, rgba(255,255,255,0.08));
+      pointer-events: none;
     }
 
     body.theme-dark .card {
-      background: rgba(31,32,36,0.82);
       border: 1px solid rgba(255,255,255,0.06);
       box-shadow:
         0 24px 40px rgba(0,0,0,0.5),
@@ -466,77 +433,38 @@
     }
 
     .card-title span.icon {
-      width: 22px;
-      height: 22px;
+      width: 24px;
+      height: 24px;
       border-radius: 999px;
       background: var(--accent-soft);
       display: inline-flex;
       align-items: center;
       justify-content: center;
       font-size: 0.9rem;
+      box-shadow: 0 4px 10px rgba(133,184,166,0.16);
     }
 
     .card-desc {
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       color: var(--text-sub);
       line-height: 1.5;
     }
 
-    .tool-row {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-    }
-
-    .tool-chip {
-      border: 1px solid #ddd5cc;
-      background: rgba(255,255,255,0.82);
-      color: var(--text-main);
-      border-radius: 999px;
-      padding: 10px 12px;
-      font-size: 0.77rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      min-height: 42px;
-      transition: all 0.18s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    body.theme-dark .tool-chip {
-      background: rgba(38,39,45,0.95);
-      border-color: #383b43;
-      color: #eef1f5;
-    }
-
-    .tool-chip:hover {
-      transform: translateY(-1px);
-      border-color: var(--accent);
-      background: #f4faf7;
-    }
-
-    body.theme-dark .tool-chip:hover {
-      background: #283036;
-      border-color: #9dd4c1;
-    }
-
     .input-field {
-      background: #faf8f6;
+      background: rgba(250,248,246,0.88);
       border-radius: 18px;
       border: 1.5px solid #e6e0da;
       padding: 10px 12px;
       transition: all 0.25s ease;
       position: relative;
       overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
     }
 
     body.theme-dark .input-field {
-      background: #232429;
+      background: rgba(35,36,41,0.88);
       border-color: #32343b;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
     }
 
     .input-field::before {
@@ -552,7 +480,9 @@
     .input-field:focus-within {
       border-color: var(--accent);
       background: #ffffff;
-      box-shadow: 0 0 0 3px rgba(133,184,166,0.16);
+      box-shadow:
+        0 0 0 3px rgba(133,184,166,0.16),
+        0 10px 20px rgba(133,184,166,0.08);
     }
 
     body.theme-dark .input-field:focus-within {
@@ -569,17 +499,16 @@
       resize: none;
       background: transparent;
       font-family: inherit;
-      font-size: 1rem;
+      font-size: 0.98rem;
       color: var(--text-main);
-      line-height: 1.5;
+      line-height: 1.55;
       padding: 4px 0 0;
-      min-height: 160px;
+      min-height: 170px;
       letter-spacing: 0.01em;
     }
 
-    textarea:disabled {
-      opacity: 0.72;
-      cursor: wait;
+    textarea::placeholder {
+      color: #b0aaa3;
     }
 
     .input-helper-row {
@@ -612,33 +541,6 @@
       min-height: 1.2em;
     }
 
-    .validation-hint {
-      margin-top: 8px;
-      font-size: 0.75rem;
-      color: var(--text-sub);
-      line-height: 1.5;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      background: rgba(255,255,255,0.45);
-      border: 1px dashed rgba(0,0,0,0.06);
-      border-radius: 12px;
-      padding: 8px 10px;
-    }
-
-    body.theme-dark .validation-hint {
-      background: rgba(255,255,255,0.03);
-      border-color: rgba(255,255,255,0.08);
-    }
-
-    .validation-bad {
-      color: var(--warning);
-    }
-
-    .validation-good {
-      color: var(--ok);
-    }
-
     .code-meter-wrap {
       margin-top: 10px;
     }
@@ -668,7 +570,7 @@
       width: 0%;
       height: 100%;
       border-radius: inherit;
-      background: linear-gradient(90deg, #85b8a6, #9bd3bf, #b7e5d5);
+      background: linear-gradient(90deg, #85b8a6, #9bd3bf, #f0d2b9);
       box-shadow: 0 0 18px rgba(133,184,166,0.35);
       transition: width 0.28s ease, filter 0.28s ease;
       position: relative;
@@ -693,12 +595,10 @@
       gap: 8px;
       margin-top: 2px;
       align-items: stretch;
-      flex-wrap: wrap;
     }
 
     .btn-primary {
       flex: 1;
-      min-width: 140px;
       border-radius: 999px;
       border: none;
       padding: 14px;
@@ -734,6 +634,16 @@
       z-index: 0;
     }
 
+    .btn-primary::after {
+      content: "";
+      position: absolute;
+      inset: auto auto 0 0;
+      width: 100%;
+      height: 50%;
+      background: linear-gradient(to top, rgba(255,255,255,0.16), transparent);
+      z-index: 0;
+    }
+
     .btn-primary > * {
       position: relative;
       z-index: 1;
@@ -754,7 +664,7 @@
     }
 
     .btn-primary:disabled {
-      opacity: 0.6;
+      opacity: 0.68;
       cursor: default;
       transform: none;
       box-shadow: 0 6px 14px rgba(0,0,0,0.1);
@@ -763,7 +673,7 @@
     .btn-secondary {
       border-radius: 999px;
       border: 1px solid #dad3cc;
-      background: #f8f4f1;
+      background: rgba(248,244,241,0.9);
       padding: 12px 14px;
       font-size: 0.8rem;
       font-weight: 600;
@@ -777,11 +687,11 @@
       white-space: nowrap;
       position: relative;
       overflow: hidden;
-      min-width: 112px;
+      backdrop-filter: blur(6px);
     }
 
     body.theme-dark .btn-secondary {
-      background: #25262b;
+      background: rgba(37,38,43,0.9);
       border-color: #383a40;
     }
 
@@ -794,12 +704,6 @@
     body.theme-dark .btn-secondary:hover {
       background: #2b2c32;
       border-color: #444751;
-    }
-
-    .btn-secondary:disabled {
-      opacity: 0.65;
-      cursor: default;
-      transform: none;
     }
 
     .btn-primary .spinner {
@@ -818,7 +722,7 @@
     .warn-text {
       margin-top: 4px;
       font-size: 0.76rem;
-      color: #d47955;
+      color: var(--warning);
       display: flex;
       align-items: flex-start;
       gap: 6px;
@@ -832,11 +736,12 @@
 
     .warn-text--important {
       margin-top: 6px;
-      padding: 8px 10px;
-      border-radius: 12px;
+      padding: 10px 12px;
+      border-radius: 14px;
       background: #fff4e7;
       border: 1px solid #f0c2a0;
       animation: warnPulse 1.4s ease-in-out infinite;
+      box-shadow: 0 8px 20px rgba(240,194,160,0.16);
     }
 
     body.theme-dark .warn-text--important {
@@ -873,11 +778,11 @@
     }
 
     .status-error {
-      color: var(--danger) !important;
+      color: #e57373 !important;
     }
 
     .status-ok {
-      color: var(--ok) !important;
+      color: #2e7d32 !important;
       text-shadow: 0 0 10px rgba(46,125,50,0.06);
     }
 
@@ -898,7 +803,7 @@
     }
 
     .summary-pill {
-      padding: 4px 10px;
+      padding: 5px 10px;
       border-radius: 999px;
       background: #f5efea;
       border: 1px solid #e1d6ca;
@@ -906,6 +811,8 @@
       align-items: center;
       gap: 6px;
       white-space: nowrap;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
     }
 
     .summary-pill--ok {
@@ -943,21 +850,15 @@
       border-color: #5a3631;
     }
 
-    .summary-actions {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
-
     .used-info-card {
       margin-top: 8px;
-      padding: 8px 10px;
-      border-radius: 12px;
+      padding: 10px 12px;
+      border-radius: 14px;
       background: #eef3ff;
       border: 1px solid #cbd7ff;
       font-size: 0.78rem;
       line-height: 1.5;
+      box-shadow: 0 10px 20px rgba(80,106,146,0.06);
     }
 
     body.theme-dark .used-info-card {
@@ -985,6 +886,16 @@
       animation: fadeIn 0.35s ease-out;
       box-shadow: 0 10px 24px rgba(0,0,0,0.05);
       transform-origin: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .result-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent 35%);
+      pointer-events: none;
     }
 
     body.theme-dark .result-item {
@@ -1028,6 +939,9 @@
       color: #506a92;
       margin-left: 4px;
       white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
 
     body.theme-dark .item-tag {
@@ -1096,7 +1010,7 @@
 
     .btn-copy {
       width: 100%;
-      padding: 8px 10px;
+      padding: 9px 10px;
       border-radius: 999px;
       border: 1px solid #e3ddd5;
       background: #ffffff;
@@ -1130,79 +1044,6 @@
       background: #283036;
     }
 
-    .history-card {
-      border-radius: 16px;
-      padding: 12px;
-      border: 1px solid var(--border-soft);
-      background: rgba(255,255,255,0.8);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.04);
-      backdrop-filter: blur(10px);
-    }
-
-    body.theme-dark .history-card {
-      background: rgba(33,34,40,0.92);
-      border-color: #34363f;
-      box-shadow: 0 10px 26px rgba(0,0,0,0.28);
-    }
-
-    .history-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .history-title {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.86rem;
-      font-weight: 700;
-    }
-
-    .history-title::before {
-      content: "🕘";
-    }
-
-    .history-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .history-item {
-      border-radius: 12px;
-      padding: 10px;
-      border: 1px solid #ebe4dc;
-      background: #fcfaf8;
-      font-size: 0.76rem;
-    }
-
-    body.theme-dark .history-item {
-      background: #27282e;
-      border-color: #393b43;
-    }
-
-    .history-time {
-      color: var(--text-sub);
-      margin-bottom: 4px;
-      font-size: 0.72rem;
-    }
-
-    .history-stats {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      margin: 6px 0;
-    }
-
-    .history-codes {
-      color: var(--text-sub);
-      line-height: 1.5;
-      word-break: break-word;
-    }
-
     .footer {
       margin-top: 4px;
       display: flex;
@@ -1222,6 +1063,7 @@
       background: rgba(255,255,255,0.9);
       border: 1px solid #e5dfd8;
       backdrop-filter: blur(6px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.04);
     }
 
     body.theme-dark .support-pill {
@@ -1241,69 +1083,6 @@
     .copyright {
       letter-spacing: 0.18em;
       text-transform: uppercase;
-    }
-
-    .mobile-action-bar {
-      position: sticky;
-      bottom: 10px;
-      z-index: 20;
-      display: none;
-      grid-template-columns: 1fr 1fr 1.5fr;
-      gap: 8px;
-      margin-top: 2px;
-      padding: 10px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.78);
-      border: 1px solid rgba(255,255,255,0.7);
-      box-shadow: 0 18px 34px rgba(0,0,0,0.12);
-      backdrop-filter: blur(14px);
-    }
-
-    body.theme-dark .mobile-action-bar {
-      background: rgba(26,27,32,0.88);
-      border-color: rgba(255,255,255,0.06);
-      box-shadow: 0 20px 36px rgba(0,0,0,0.45);
-    }
-
-    .mobile-action-btn {
-      min-height: 46px;
-      border-radius: 999px;
-      border: 1px solid #ddd5cc;
-      background: #fff;
-      color: var(--text-main);
-      font-family: inherit;
-      font-weight: 700;
-      font-size: 0.84rem;
-      cursor: pointer;
-      transition: all 0.18s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .mobile-action-btn--ghost {
-      background: rgba(255,255,255,0.88);
-    }
-
-    body.theme-dark .mobile-action-btn {
-      background: #25272d;
-      border-color: #3b3d45;
-      color: #f3f5f8;
-    }
-
-    .mobile-action-btn--primary {
-      border: none;
-      color: #fff;
-      background: radial-gradient(circle at 0 0, #a2d5c2 0, #7fae9b 55%);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.14);
-    }
-
-    body.theme-dark .mobile-action-btn--primary {
-      background: radial-gradient(circle at 0 0, #8fcbb7 0, #5a8a79 55%);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.4);
-    }
-
-    .mobile-action-btn:active {
-      transform: scale(0.98);
     }
 
     .shake {
@@ -1334,8 +1113,6 @@
       z-index: 9999;
       backdrop-filter: blur(10px);
       box-shadow: 0 14px 30px rgba(0,0,0,0.22);
-      max-width: calc(100vw - 30px);
-      text-align: center;
     }
 
     body.theme-dark .toast {
@@ -1351,9 +1128,9 @@
       position: fixed;
       left: 14px;
       bottom: 68px;
-      max-width: 260px;
-      padding: 9px 12px;
-      border-radius: 14px;
+      max-width: 270px;
+      padding: 10px 12px;
+      border-radius: 16px;
       background: rgba(255,255,255,0.96);
       border: 1px solid rgba(0,0,0,0.06);
       font-size: 0.78rem;
@@ -1363,7 +1140,7 @@
       transform: translateY(8px);
       pointer-events: none;
       transition: all 0.25s ease;
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(8px);
       z-index: 9000;
     }
 
@@ -1396,184 +1173,49 @@
       margin-right: 4px;
     }
 
-    .skeleton-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 4px;
-    }
-
-    .skeleton-card {
-      border-radius: 14px;
-      padding: 12px;
-      border: 1px solid #e8e2db;
-      background: rgba(255,255,255,0.7);
-      overflow: hidden;
-      position: relative;
-    }
-
-    body.theme-dark .skeleton-card {
-      background: rgba(37,38,44,0.92);
-      border-color: #373a42;
-    }
-
-    .sk-line {
-      height: 12px;
+    .floating-glow {
+      position: absolute;
+      right: 6px;
+      top: -6px;
+      width: 60px;
+      height: 60px;
       border-radius: 999px;
-      background: linear-gradient(90deg, rgba(0,0,0,0.06), rgba(0,0,0,0.1), rgba(0,0,0,0.06));
-      margin-bottom: 8px;
-      background-size: 200% 100%;
-      animation: skeletonShine 1.2s linear infinite;
+      background: radial-gradient(circle, rgba(133,184,166,0.18), transparent 70%);
+      pointer-events: none;
+      filter: blur(10px);
+      z-index: 0;
     }
 
-    body.theme-dark .sk-line {
-      background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.12), rgba(255,255,255,0.06));
-      background-size: 200% 100%;
-    }
-
-    .sk-line:last-child {
-      margin-bottom: 0;
-    }
-
-    .sk-line.w-35 { width: 35%; }
-    .sk-line.w-50 { width: 50%; }
-    .sk-line.w-65 { width: 65%; }
-    .sk-line.w-80 { width: 80%; }
-    .sk-line.w-92 { width: 92%; }
-
-    @keyframes skeletonShine {
-      from { background-position: 200% 0; }
-      to { background-position: -200% 0; }
-    }
-
-    .modal-backdrop {
-      position: fixed;
+    .loading-overlay {
+      position: absolute;
       inset: 0;
-      background: var(--overlay);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-      z-index: 10000;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.14), rgba(255,255,255,0.06));
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.22s ease;
+      z-index: 3;
+      overflow: hidden;
     }
 
-    .modal-backdrop.show {
+    .loading-overlay::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+      transform: translateX(-100%);
+    }
+
+    .card.loading .loading-overlay {
       opacity: 1;
-      pointer-events: auto;
     }
 
-    .modal {
-      width: min(100%, 420px);
-      border-radius: 24px;
-      background: rgba(255,255,255,0.86);
-      border: 1px solid rgba(255,255,255,0.58);
-      box-shadow: 0 24px 50px rgba(0,0,0,0.18);
-      backdrop-filter: blur(16px);
-      padding: 18px;
-      transform: translateY(14px) scale(0.98);
-      transition: transform 0.24s ease;
+    .card.loading .loading-overlay::after {
+      animation: loadingSweep 1.2s linear infinite;
     }
 
-    body.theme-dark .modal {
-      background: rgba(28,29,35,0.92);
-      border-color: rgba(255,255,255,0.06);
-      box-shadow: 0 28px 60px rgba(0,0,0,0.5);
-    }
-
-    .modal-backdrop.show .modal {
-      transform: translateY(0) scale(1);
-    }
-
-    .modal-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .modal-title {
-      font-size: 1rem;
-      font-weight: 700;
-    }
-
-    .icon-badge {
-      width: 42px;
-      height: 42px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
-    }
-
-    .modal-close {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      border: 1px solid #ddd6cf;
-      background: rgba(255,255,255,0.9);
-      cursor: pointer;
-      font-size: 1rem;
-      color: var(--text-sub);
-    }
-
-    body.theme-dark .modal-close {
-      background: #262830;
-      border-color: #3a3c45;
-      color: #d7dbe2;
-    }
-
-    .modal-desc {
-      color: var(--text-sub);
-      font-size: 0.84rem;
-      line-height: 1.6;
-      margin-bottom: 12px;
-    }
-
-    .modal-stats {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 12px;
-    }
-
-    .modal-section {
-      border-radius: 16px;
-      background: rgba(255,255,255,0.65);
-      border: 1px solid #e7dfd6;
-      padding: 12px;
-      margin-bottom: 12px;
-    }
-
-    body.theme-dark .modal-section {
-      background: rgba(37,38,44,0.92);
-      border-color: #383b43;
-    }
-
-    .modal-section-title {
-      font-weight: 700;
-      font-size: 0.82rem;
-      margin-bottom: 8px;
-    }
-
-    .modal-code-list {
-      font-size: 0.78rem;
-      line-height: 1.65;
-      color: var(--text-sub);
-      word-break: break-word;
-      white-space: pre-wrap;
-    }
-
-    .modal-actions {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
+    @keyframes loadingSweep {
+      to { transform: translateX(100%); }
     }
 
     @media (hover: hover) and (pointer: fine) {
@@ -1584,37 +1226,11 @@
 
     @media (max-width: 480px) {
       .app {
-        padding: 10px 12px 88px;
+        padding: 10px 12px 14px;
       }
 
-      .tool-row {
-        grid-template-columns: 1fr;
-      }
-
-      .btn-row {
-        display: none;
-      }
-
-      .mobile-action-bar {
-        display: grid;
-      }
-
-      .logo-circle {
-        width: 58px;
-        height: 58px;
-      }
-
-      .brand-title {
-        font-size: 1.18rem;
-      }
-
-      .brand-sub {
-        font-size: 0.7rem;
-      }
-
-      .badge {
-        font-size: 0.68rem;
-        padding: 6px 10px;
+      .card {
+        padding: 16px 14px 14px;
       }
 
       .tip-bubble {
@@ -1623,13 +1239,12 @@
         max-width: none;
       }
 
-      .summary-actions,
-      .modal-actions {
-        flex-direction: column;
+      .brand-title {
+        font-size: 1.2rem;
       }
 
-      .dashboard-row {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+      .brand-sub {
+        font-size: 0.74rem;
       }
     }
 
@@ -1640,8 +1255,18 @@
       .logo-circle.success-bounce,
       .warn-text--important,
       .warn-text--important .warn-text-icon,
-      .sk-line {
+      .badge-dot,
+      .loading-overlay::after {
         animation: none !important;
+      }
+
+      .card,
+      .btn-primary,
+      .btn-secondary,
+      .btn-copy,
+      .btn-eye,
+      .theme-toggle {
+        transition: none !important;
       }
     }
   </style>
@@ -1649,6 +1274,7 @@
 <body>
   <div class="bg-orb orb-1"></div>
   <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
   <div class="bg-grid"></div>
   <canvas id="fxCanvas"></canvas>
 
@@ -1657,14 +1283,13 @@
       <div class="brand-row">
         <div class="brand-left">
           <div class="logo-circle">
-            <img
-              class="logo-img"
-              src="https://img2.imgbiz.com/imgbiz/IMG_1140f64febd99caf8614.jpeg"
-              alt="426 SHOP Logo"
-              loading="eager"
-              referrerpolicy="no-referrer"
-              onerror="this.style.display='none'; this.parentNode.classList.add('logo-fallback'); this.parentNode.innerHTML += '<span class=&quot;logo-fallback-text&quot;>426</span>';"
-            />
+            <div class="logo-img-wrap">
+              <img
+                class="logo-img"
+                src="https://img2.imgbiz.com/imgbiz/IMG_1140f64febd99caf8614.jpeg"
+                alt="426 Shop Logo"
+              />
+            </div>
           </div>
           <div class="brand-text">
             <div class="brand-title">426 SHOP</div>
@@ -1685,36 +1310,12 @@
         <div class="step-pill" data-step="2">② กดรับสินค้า</div>
         <div class="step-pill" data-step="3">③ คัดลอกรายละเอียด</div>
       </div>
-
-      <div class="dashboard-row">
-        <div class="dashboard-card ready">
-          <div class="dashboard-top">
-            <div class="dashboard-label">พร้อมใช้</div>
-            <div class="dashboard-icon">✅</div>
-          </div>
-          <div class="dashboard-value" id="dashReady">0</div>
-          <div class="dashboard-sub">ตรวจจากรูปแบบเบื้องต้น</div>
-        </div>
-        <div class="dashboard-card used">
-          <div class="dashboard-top">
-            <div class="dashboard-label">ใช้แล้ว</div>
-            <div class="dashboard-icon">♻️</div>
-          </div>
-          <div class="dashboard-value" id="dashUsed">0</div>
-          <div class="dashboard-sub">จากผลรอบล่าสุด</div>
-        </div>
-        <div class="dashboard-card nf">
-          <div class="dashboard-top">
-            <div class="dashboard-label">ไม่พบ</div>
-            <div class="dashboard-icon">❌</div>
-          </div>
-          <div class="dashboard-value" id="dashNotFound">0</div>
-          <div class="dashboard-sub">จากผลรอบล่าสุด</div>
-        </div>
-      </div>
     </header>
 
-    <main class="card">
+    <main class="card" id="mainCard">
+      <div class="floating-glow"></div>
+      <div class="loading-overlay"></div>
+
       <div class="card-title">
         <span class="icon">🔑</span>
         <span>กรอกโค้ดเพื่อรับสินค้า</span>
@@ -1724,22 +1325,12 @@
         วางโค้ดที่ได้รับจากแอดมินลงในช่องด้านล่าง สามารถวางได้หลายโค้ดในครั้งเดียว 1 บรรทัดต่อ 1 โค้ด
       </div>
 
-      <div class="tool-row">
-        <button class="tool-chip" id="btnPaste" type="button">📋 วางจากคลิปบอร์ด</button>
-        <button class="tool-chip" id="btnCopyAll" type="button">🧾 คัดลอกทั้งหมด</button>
-        <button class="tool-chip" id="btnShowHistory" type="button">🕘 ดูประวัติล่าสุด</button>
-      </div>
-
       <div class="input-field">
         <textarea id="codeInput" placeholder="เช่น NFXA1B2&#10;หรือ DSN9X3Y"></textarea>
 
         <div class="input-helper-row">
           <div class="small-tag">แนะนำ: 1 บรรทัดต่อ 1 โค้ด</div>
           <span id="lineInfo">สูงสุด ~5 โค้ด/ครั้ง</span>
-        </div>
-
-        <div class="validation-hint" id="validationHint">
-          <div>ระบบรองรับตัวอักษรภาษาอังกฤษ A-Z / ตัวเลข 0-9</div>
         </div>
 
         <div class="code-meter-wrap">
@@ -1754,10 +1345,10 @@
       </div>
 
       <div class="btn-row">
-        <button class="btn-primary" id="btnRedeem">
+        <button class="btn-primary" id="btnRedeem" type="button">
           <span>รับสินค้า</span><span>↗</span>
         </button>
-        <button class="btn-secondary" id="btnClear">
+        <button class="btn-secondary" id="btnClear" type="button">
           <span>ล้างทั้งหมด</span>
         </button>
       </div>
@@ -1770,14 +1361,6 @@
       <div id="summary"></div>
       <div id="status"></div>
       <div id="results"></div>
-
-      <section class="history-card" id="historySection" hidden>
-        <div class="history-head">
-          <div class="history-title">ประวัติการ Redeem ล่าสุด</div>
-          <button class="btn-secondary" id="btnClearHistory" type="button">ล้างประวัติ</button>
-        </div>
-        <div class="history-list" id="historyList"></div>
-      </section>
     </main>
 
     <footer class="footer">
@@ -1787,12 +1370,6 @@
       </div>
       <div class="copyright">426 SHOP · EST 2024</div>
     </footer>
-
-    <div class="mobile-action-bar">
-      <button class="mobile-action-btn mobile-action-btn--ghost" id="btnPasteMobile" type="button">📋 วาง</button>
-      <button class="mobile-action-btn mobile-action-btn--ghost" id="btnClearMobile" type="button">🧹 ล้าง</button>
-      <button class="mobile-action-btn mobile-action-btn--primary" id="btnRedeemMobile" type="button">รับสินค้า ↗</button>
-    </div>
   </div>
 
   <div id="toast" class="toast">คัดลอกข้อความแล้ว</div>
@@ -1802,47 +1379,12 @@
     <span id="tipText">1 บรรทัดต่อ 1 โค้ด ใช้งานง่ายสุดค่ะ</span>
   </div>
 
-  <div class="modal-backdrop" id="resultModal" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <div class="modal-top">
-        <div style="display:flex;align-items:center;gap:10px;">
-          <div class="icon-badge">🎉</div>
-          <div class="modal-title" id="modalTitle">สรุปผลการรับสินค้า</div>
-        </div>
-        <button class="modal-close" id="btnCloseModal" type="button" aria-label="ปิด">✕</button>
-      </div>
-      <div class="modal-desc" id="modalDesc">ดำเนินการเสร็จเรียบร้อย</div>
-      <div class="modal-stats" id="modalStats"></div>
-      <div class="modal-section">
-        <div class="modal-section-title">โค้ดที่ส่งครั้งนี้</div>
-        <div class="modal-code-list" id="modalCodeList">-</div>
-      </div>
-      <div class="modal-actions">
-        <button class="btn-primary" id="btnModalCopyAll" type="button"><span>คัดลอกทั้งหมด</span></button>
-        <button class="btn-secondary" id="btnModalCloseAlt" type="button">ปิดหน้าต่าง</button>
-      </div>
-    </div>
-  </div>
-
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const MAX_CODES = 5;
-    const HISTORY_KEY = "redeem_history_v3";
-    const MAX_HISTORY = 5;
 
     const btnRedeem = document.getElementById("btnRedeem");
     const btnClear = document.getElementById("btnClear");
-    const btnPaste = document.getElementById("btnPaste");
-    const btnCopyAll = document.getElementById("btnCopyAll");
-    const btnShowHistory = document.getElementById("btnShowHistory");
-    const btnClearHistory = document.getElementById("btnClearHistory");
-    const btnCloseModal = document.getElementById("btnCloseModal");
-    const btnModalCloseAlt = document.getElementById("btnModalCloseAlt");
-    const btnModalCopyAll = document.getElementById("btnModalCopyAll");
-    const btnPasteMobile = document.getElementById("btnPasteMobile");
-    const btnClearMobile = document.getElementById("btnClearMobile");
-    const btnRedeemMobile = document.getElementById("btnRedeemMobile");
-
     const codeInput = document.getElementById("codeInput");
     const lineInfo = document.getElementById("lineInfo");
     const status = document.getElementById("status");
@@ -1857,23 +1399,9 @@
     const meterText = document.getElementById("meterText");
     const fxCanvas = document.getElementById("fxCanvas");
     const fxCtx = fxCanvas ? fxCanvas.getContext("2d") : null;
-    const validationHint = document.getElementById("validationHint");
-    const historySection = document.getElementById("historySection");
-    const historyList = document.getElementById("historyList");
-    const resultModal = document.getElementById("resultModal");
-    const modalDesc = document.getElementById("modalDesc");
-    const modalStats = document.getElementById("modalStats");
-    const modalCodeList = document.getElementById("modalCodeList");
-    const dashReady = document.getElementById("dashReady");
-    const dashUsed = document.getElementById("dashUsed");
-    const dashNotFound = document.getElementById("dashNotFound");
+    const mainCard = document.getElementById("mainCard");
 
     let isLoading = false;
-    let currentRequestId = 0;
-    let latestSuccessItems = [];
-    let latestModalPayload = null;
-    let historyVisible = false;
-    let lastQrScanAt = 0;
 
     function setStepState(state) {
       const steps = document.querySelectorAll(".step-pill");
@@ -1937,8 +1465,9 @@
       "1 บรรทัดต่อ 1 โค้ด ใช้งานง่ายสุดค่ะ",
       "สามารถวางโค้ดทีเดียวหลายรหัสได้ สูงสุดประมาณ 5 โค้ด/ครั้ง ✨",
       "ถ้ากดรับสินค้าแล้ว อย่าเพิ่งรีเฟรชหรือปิดหน้านี้นะคะ",
-      "กดคัดลอกทั้งหมดได้เลย ถ้ามีหลายโค้ดในครั้งเดียว 💬",
-      "รองรับวางโค้ดจากคลิปบอร์ด และสแกนจากรูปหรือ QR ได้แล้ว 📷"
+      "ถ้าโค้ดใช้แล้ว ระบบจะแจ้งให้ทราบ พร้อมเวลาใช้งานเดิมค่ะ",
+      "ถ้าสงสัยโค้ดผิดหรือไม่ แคปหน้าจอผลลัพธ์ส่งให้แอดมินได้เลย 💬",
+      "แตะปุ่มแสดงเพื่อดูรายละเอียดก่อนคัดลอกได้ค่ะ 👀"
     ];
 
     let tipIndex = 0;
@@ -1947,77 +1476,46 @@
       if (!tipBubble || !tipText) return;
       tipBubble.classList.remove("show");
       setTimeout(() => {
-        tipText.textContent = tips[tipIndex] || tips[0];
+        const text = tips[tipIndex] || tips[0];
+        tipText.textContent = text;
         tipBubble.classList.add("show");
         tipIndex = (tipIndex + 1) % tips.length;
       }, 200);
     }
 
-    function getLines(raw) {
-      return (raw || "")
-        .split(/\r?\n/)
-        .map((l) => l.trim().toUpperCase())
-        .filter(Boolean);
-    }
+    setTimeout(rotateTip, 700);
+    setInterval(rotateTip, 12000);
 
-    function validateCodes(lines) {
-      const invalid = [];
-      const valid = [];
-      const pattern = /^[A-Z0-9]+$/;
+    btnRedeem.addEventListener("click", redeem);
+    btnClear.addEventListener("click", clearForm);
+    codeInput.addEventListener("input", updateLineInfo);
 
-      lines.forEach((code) => {
-        if (!pattern.test(code)) {
-          invalid.push(code);
-        } else {
-          valid.push(code);
-        }
-      });
+    window.addEventListener("beforeunload", (e) => {
+      if (!isLoading) return;
+      e.preventDefault();
+      e.returnValue = "ระบบกำลังตรวจสอบโค้ดของคุณอยู่ หากออกจากหน้านี้อาจทำให้ไม่ได้รับโค้ดนะคะ";
+    });
 
-      return { valid, invalid };
-    }
+    window.addEventListener("load", () => {
+      setStepState("idle");
+      updateLineInfo();
+      codeInput.focus();
+      initCardTilt();
+    });
 
-    function updateMiniDashboard(readyCount, usedCount = null, nfCount = null) {
-      if (typeof readyCount === "number") dashReady.textContent = readyCount;
-      if (typeof usedCount === "number") dashUsed.textContent = usedCount;
-      if (typeof nfCount === "number") dashNotFound.textContent = nfCount;
-    }
-
-    function updateValidationHint(lines, invalid) {
-      if (!validationHint) return;
-
-      if (!lines.length) {
-        validationHint.innerHTML = `
-          <div>ระบบรองรับตัวอักษรภาษาอังกฤษ A-Z / ตัวเลข 0-9</div>
-          <div>วางจากข้อความได้ และสแกนจากรูป/QR ได้ด้วย</div>
-        `;
-        updateMiniDashboard(0);
-        return;
-      }
-
-      const validCount = Math.max(lines.length - invalid.length, 0);
-      updateMiniDashboard(validCount);
-
-      const parts = [];
-      parts.push(`<div class="${invalid.length ? "validation-bad" : "validation-good"}">โค้ดผ่านรูปแบบเบื้องต้น: ${validCount} / ${lines.length}</div>`);
-      if (invalid.length) {
-        parts.push(`<div class="validation-bad">โค้ดที่มีอักขระไม่ถูกต้อง: ${invalid.slice(0, 4).join(", ")}${invalid.length > 4 ? " ..." : ""}</div>`);
-      } else {
-        parts.push(`<div class="validation-good">ไม่พบอักขระผิดรูปแบบ</div>`);
-      }
-      validationHint.innerHTML = parts.join("");
-    }
+    codeInput.addEventListener("focus", () => {
+      if (codeInput.value.trim()) codeInput.select();
+    });
 
     function updateLineInfo() {
       const raw = codeInput.value || "";
-      const lines = getLines(raw);
-      const { invalid } = validateCodes(lines);
+      const lines = raw.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
       const count = lines.length;
 
       if (!count) {
         lineInfo.textContent = "สูงสุด ~5 โค้ด/ครั้ง";
         if (meterText) meterText.textContent = `0 / ${MAX_CODES}`;
         if (codeMeterBar) codeMeterBar.style.width = "0%";
-        updateValidationHint([], []);
         return;
       }
 
@@ -2035,28 +1533,6 @@
         codeMeterBar.style.width = percent + "%";
         codeMeterBar.style.filter = count > MAX_CODES ? "saturate(0.8)" : "none";
       }
-
-      updateValidationHint(lines, invalid);
-    }
-
-    function setLoadingState(loading) {
-      isLoading = loading;
-      btnRedeem.disabled = loading;
-      btnClear.disabled = loading;
-      btnPaste.disabled = loading;
-      codeInput.disabled = loading;
-
-      if (btnRedeemMobile) btnRedeemMobile.disabled = loading;
-      if (btnClearMobile) btnClearMobile.disabled = loading;
-      if (btnPasteMobile) btnPasteMobile.disabled = loading;
-
-      if (loading) {
-        btnRedeem.innerHTML = `<span class="spinner"></span><span>กำลังตรวจสอบ…</span>`;
-        if (btnRedeemMobile) btnRedeemMobile.textContent = "กำลังตรวจสอบ…";
-      } else {
-        btnRedeem.innerHTML = `<span>รับสินค้า</span><span>↗</span>`;
-        if (btnRedeemMobile) btnRedeemMobile.textContent = "รับสินค้า ↗";
-      }
     }
 
     function clearForm() {
@@ -2065,336 +1541,86 @@
       status.classList.remove("status-error", "status-ok");
       resultsDiv.innerHTML = "";
       summaryDiv.innerHTML = "";
-      latestSuccessItems = [];
       lineInfo.textContent = "สูงสุด ~5 โค้ด/ครั้ง";
       if (meterText) meterText.textContent = `0 / ${MAX_CODES}`;
       if (codeMeterBar) codeMeterBar.style.width = "0%";
-      updateValidationHint([], []);
-      updateMiniDashboard(0, 0, 0);
       setStepState("idle");
       codeInput.focus();
+      showToast("ล้างข้อมูลแล้ว");
     }
 
-    function showToast(message) {
-      if (!toast) return;
-      toast.textContent = message;
-      toast.classList.add("show");
-      clearTimeout(showToast._timer);
-      showToast._timer = setTimeout(() => toast.classList.remove("show"), 2200);
-    }
+    function redeem() {
+      const inputContainer = document.querySelector(".input-field");
+      const raw = codeInput.value;
+      const input = raw.trim();
 
-    async function pasteFromClipboard() {
-      try {
-        if (!navigator.clipboard || !navigator.clipboard.readText) {
-          showToast("อุปกรณ์นี้ไม่รองรับการอ่านคลิปบอร์ดอัตโนมัติ");
-          return;
-        }
-        const text = await navigator.clipboard.readText();
-        if (!text.trim()) {
-          showToast("ไม่พบข้อความในคลิปบอร์ด");
-          return;
-        }
-        codeInput.value = text;
-        updateLineInfo();
-        codeInput.focus();
-        showToast("วางโค้ดจากคลิปบอร์ดแล้ว");
-      } catch (err) {
-        console.error(err);
-        showToast("ไม่สามารถอ่านคลิปบอร์ดได้ กรุณาวางเองอีกครั้ง");
-      }
-    }
+      status.classList.remove("status-error", "status-ok");
 
-    function normalizeScannedText(text) {
-      return (text || "")
-        .replace(/[|,;]+/g, "\n")
-        .replace(/[^\w\s-]/g, " ")
-        .replace(/\s+/g, " ")
-        .trim();
-    }
-
-    function extractCodesFromText(raw) {
-      const text = normalizeScannedText(raw).toUpperCase();
-      const matches = text.match(/[A-Z0-9]{5,20}/g) || [];
-      const unique = [];
-      matches.forEach((m) => {
-        if (!unique.includes(m)) unique.push(m);
-      });
-      return unique;
-    }
-
-    async function tryDecodeQrFromImage(file) {
-      if (!("BarcodeDetector" in window)) return null;
-      try {
-        const bitmap = await createImageBitmap(file);
-        const detector = new BarcodeDetector({ formats: ["qr_code"] });
-        const codes = await detector.detect(bitmap);
-        if (!codes || !codes.length) return null;
-        return codes.map((c) => c.rawValue).filter(Boolean).join("\n");
-      } catch (err) {
-        console.error(err);
-        return null;
-      }
-    }
-
-    async function readImageAsTextFallback(file) {
-      try {
-        const url = URL.createObjectURL(file);
-        const img = new Image();
-        const loaded = new Promise((resolve, reject) => {
-          img.onload = resolve;
-          img.onerror = reject;
-        });
-        img.src = url;
-        await loaded;
-
-        const canvas = document.createElement("canvas");
-        const maxW = 1200;
-        const scale = Math.min(1, maxW / img.width);
-        canvas.width = img.width * scale;
-        canvas.height = img.height * scale;
-        const ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-        // ไม่มี OCR จริง จึงคืนค่าว่างเพื่อให้ผู้ใช้รู้ว่า scan ไม่เจอ
-        URL.revokeObjectURL(url);
-        return "";
-      } catch (err) {
-        console.error(err);
-        return "";
-      }
-    }
-
-    async function handleImageFile(file) {
-      if (!file || !file.type.startsWith("image/")) return false;
-
-      const now = Date.now();
-      if (now - lastQrScanAt < 800) return true;
-      lastQrScanAt = now;
-
-      showToast("กำลังอ่านโค้ดจากรูป...");
-      let text = await tryDecodeQrFromImage(file);
-
-      if (!text) {
-        text = await readImageAsTextFallback(file);
-      }
-
-      const codes = extractCodesFromText(text);
-      if (!codes.length) {
-        showToast("ไม่พบ QR หรือโค้ดจากรูปนี้ ลองใช้ภาพที่ชัดขึ้น");
-        return true;
-      }
-
-      codeInput.value = codes.join("\n");
-      updateLineInfo();
-      showToast(`อ่านโค้ดจากรูปได้ ${codes.length} รายการ`);
-      return true;
-    }
-
-    function setupImagePasteSupport() {
-      document.addEventListener("paste", async (e) => {
-        const items = Array.from(e.clipboardData?.items || []);
-        const imageItem = items.find((item) => item.type && item.type.startsWith("image/"));
-        if (!imageItem) return;
-
-        const file = imageItem.getAsFile();
-        if (!file) return;
-        e.preventDefault();
-        await handleImageFile(file);
-      });
-
-      const fileInput = document.createElement("input");
-      fileInput.type = "file";
-      fileInput.accept = "image/*";
-      fileInput.capture = "environment";
-      fileInput.style.display = "none";
-      document.body.appendChild(fileInput);
-
-      const scanBtn = document.createElement("button");
-      scanBtn.className = "tool-chip";
-      scanBtn.type = "button";
-      scanBtn.id = "btnScanImage";
-      scanBtn.textContent = "📷 สแกนจากรูป / QR";
-      document.querySelector(".tool-row").appendChild(scanBtn);
-
-      const mobileScanBtn = document.createElement("button");
-      mobileScanBtn.className = "mobile-action-btn mobile-action-btn--ghost";
-      mobileScanBtn.type = "button";
-      mobileScanBtn.id = "btnScanImageMobile";
-      mobileScanBtn.textContent = "📷 สแกน";
-      document.querySelector(".mobile-action-bar").prepend(mobileScanBtn);
-
-      scanBtn.addEventListener("click", () => fileInput.click());
-      mobileScanBtn.addEventListener("click", () => fileInput.click());
-
-      fileInput.addEventListener("change", async () => {
-        const file = fileInput.files && fileInput.files[0];
-        if (file) await handleImageFile(file);
-        fileInput.value = "";
-      });
-
-      addRippleEffect(scanBtn);
-      addRippleEffect(mobileScanBtn);
-    }
-
-    function renderSkeleton(count = 2) {
-      const items = Array.from({ length: count }).map(() => `
-        <div class="skeleton-card">
-          <div class="sk-line w-50"></div>
-          <div class="sk-line w-92"></div>
-          <div class="sk-line w-80"></div>
-          <div class="sk-line w-35"></div>
-        </div>
-      `).join("");
-      resultsDiv.innerHTML = `<div class="skeleton-wrap">${items}</div>`;
-    }
-
-    function formatDateTime(dateObj) {
-      try {
-        return new Intl.DateTimeFormat("th-TH", {
-          dateStyle: "medium",
-          timeStyle: "short"
-        }).format(dateObj);
-      } catch {
-        return dateObj.toLocaleString();
-      }
-    }
-
-    function getResultSummaryPayload(res, inputCodes) {
-      return {
-        ok: !!res?.ok,
-        successCount: (res?.items && res.items.length) || 0,
-        usedCount: (res?.used && res.used.length) || 0,
-        nfCount: (res?.notFound && res.notFound.length) || 0,
-        inputCodes: inputCodes || []
-      };
-    }
-
-    function saveHistory(entry) {
-      try {
-        const current = JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]");
-        current.unshift(entry);
-        const trimmed = current.slice(0, MAX_HISTORY);
-        localStorage.setItem(HISTORY_KEY, JSON.stringify(trimmed));
-      } catch (err) {
-        console.error(err);
-      }
-      renderHistory();
-    }
-
-    function getHistory() {
-      try {
-        return JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]");
-      } catch {
-        return [];
-      }
-    }
-
-    function renderHistory() {
-      const entries = getHistory();
-      if (!entries.length) {
-        historyList.innerHTML = `<div class="history-item">ยังไม่มีประวัติการใช้งาน</div>`;
+      if (!input) {
+        inputContainer.classList.add("shake");
+        status.innerHTML = "กรุณากรอกรหัสก่อนนะคะ";
+        status.classList.add("status-error");
+        setStepState("idle");
+        setTimeout(() => inputContainer.classList.remove("shake"), 500);
         return;
       }
 
-      historyList.innerHTML = entries.map((entry) => `
-        <div class="history-item">
-          <div class="history-time">${entry.timeLabel || "-"}</div>
-          <div>${entry.message || "ทำรายการแล้ว"}</div>
-          <div class="history-stats">
-            <span class="summary-pill summary-pill--ok">✅ ${entry.successCount || 0}</span>
-            <span class="summary-pill summary-pill--used">♻️ ${entry.usedCount || 0}</span>
-            <span class="summary-pill summary-pill--nf">❌ ${entry.nfCount || 0}</span>
-          </div>
-          <div class="history-codes">โค้ด: ${(entry.codes || []).join(", ") || "-"}</div>
-        </div>
-      `).join("");
-    }
-
-    function toggleHistory(force) {
-      historyVisible = typeof force === "boolean" ? force : !historyVisible;
-      historySection.hidden = !historyVisible;
-      if (historyVisible) renderHistory();
-      btnShowHistory.textContent = historyVisible ? "📕 ซ่อนประวัติล่าสุด" : "🕘 ดูประวัติล่าสุด";
-    }
-
-    function buildCopyAllText() {
-      if (!latestSuccessItems.length) return "";
-      return latestSuccessItems.map((item, index) => {
-        const tag = item.appName ? ` [${item.appName}]` : "";
-        return `${index + 1}. ${item.code}${tag}\n${item.reply || ""}`;
-      }).join("\n\n--------------------\n\n");
-    }
-
-    function copyText(text, successMsg = "คัดลอกแล้ว") {
-      if (!text) {
-        showToast("ยังไม่มีข้อมูลให้คัดลอก");
-        return;
+      const lines = raw.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+      let preWarn = "";
+      if (lines.length > MAX_CODES) {
+        preWarn = `คุณกรอกโค้ด ${lines.length} รายการ ระบบจะใช้เฉพาะ ${MAX_CODES} รายการแรกค่ะ`;
       }
 
-      if (!navigator.clipboard) {
-        const temp = document.createElement("textarea");
-        temp.value = text;
-        document.body.appendChild(temp);
-        temp.select();
-        document.execCommand("copy");
-        document.body.removeChild(temp);
-        showToast(successMsg);
-        return;
-      }
-
-      navigator.clipboard.writeText(text)
-        .then(() => showToast(successMsg))
-        .catch(() => showToast("คัดลอกไม่สำเร็จ กรุณาลองใหม่"));
-    }
-
-    function openModal(payload) {
-      latestModalPayload = payload;
-      modalDesc.textContent = payload.ok
-        ? "ระบบตรวจสอบเสร็จเรียบร้อย คุณสามารถคัดลอกรายละเอียดทั้งหมดได้ทันที"
-        : "ตรวจสอบเสร็จแล้ว แต่มีบางโค้ดที่ไม่สำเร็จ กรุณาตรวจสอบรายละเอียดด้านล่าง";
-
-      modalStats.innerHTML = `
-        <div class="summary-pill summary-pill--ok">✅ สำเร็จ ${payload.successCount}</div>
-        <div class="summary-pill summary-pill--used">♻️ ใช้แล้ว ${payload.usedCount}</div>
-        <div class="summary-pill summary-pill--nf">❌ ไม่พบ ${payload.nfCount}</div>
+      isLoading = true;
+      mainCard.classList.add("loading");
+      setStepState("loading");
+      btnRedeem.disabled = true;
+      btnRedeem.innerHTML = `
+        <span class="spinner"></span>
+        <span>กำลังตรวจสอบ…</span>
       `;
 
-      modalCodeList.textContent = payload.inputCodes.length ? payload.inputCodes.join(", ") : "-";
-      resultModal.classList.add("show");
-      resultModal.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
+      status.style.color = "#8b8680";
+      status.innerHTML =
+        "ระบบกำลังตรวจสอบรหัสของคุณ...<br>" +
+        "<span style='font-size:0.78rem;color:#c27a5a;'>หลังจากส่งโค้ดแล้ว ห้ามรีเฟรช/ปิดหน้านี้จนกว่าผลจะขึ้นครบค่ะ</span>" +
+        (preWarn ? "<br><span style='font-size:0.78rem;color:#c27a5a;'>" + preWarn + "</span>" : "");
+
+      const url = API_URL + "?action=redeem&text=" + encodeURIComponent(input);
+      const startTime = performance.now();
+
+      fetch(url)
+        .then((res) => {
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          return res.json();
+        })
+        .then((data) => {
+          const elapsedSec = (performance.now() - startTime) / 1000;
+          isLoading = false;
+          mainCard.classList.remove("loading");
+          btnRedeem.disabled = false;
+          btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
+          renderResult(data, elapsedSec);
+        })
+        .catch((err) => {
+          console.error(err);
+          isLoading = false;
+          mainCard.classList.remove("loading");
+          btnRedeem.disabled = false;
+          btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
+          status.innerHTML = "เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้งค่ะ";
+          status.classList.add("status-error");
+          setStepState("error");
+          showToast("เชื่อมต่อไม่สำเร็จ");
+        });
     }
 
-    function closeModal() {
-      resultModal.classList.remove("show");
-      resultModal.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-    }
-
-    function getErrorMessage(err) {
-      const msg = String(err?.message || "");
-      if (msg.includes("HTTP 500") || msg.includes("HTTP 502") || msg.includes("HTTP 503")) {
-        return "เซิร์ฟเวอร์ขัดข้องชั่วคราว กรุณาลองใหม่อีกครั้งค่ะ";
-      }
-      if (msg.toLowerCase().includes("timeout") || msg.includes("The operation was aborted")) {
-        return "ระบบใช้เวลานานเกินไป กรุณาลองใหม่อีกครั้งค่ะ";
-      }
-      if (!navigator.onLine) {
-        return "อุปกรณ์ของคุณไม่ได้เชื่อมต่ออินเทอร์เน็ต กรุณาตรวจสอบสัญญาณก่อนนะคะ";
-      }
-      if (msg.includes("Unexpected token") || msg.includes("JSON")) {
-        return "ระบบตอบกลับข้อมูลไม่สมบูรณ์ กรุณาลองใหม่อีกครั้งค่ะ";
-      }
-      return "เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้งค่ะ";
-    }
-
-    function renderResult(res, elapsedSec, inputCodes) {
+    function renderResult(res, elapsedSec) {
       resultsDiv.innerHTML = "";
       summaryDiv.innerHTML = "";
       status.classList.remove("status-error", "status-ok");
-      latestSuccessItems = (res?.items || []).slice();
 
-      if (!res || typeof res !== "object") {
+      if (!res) {
         status.innerHTML = "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งค่ะ";
         status.classList.add("status-error");
         setStepState("error");
@@ -2404,8 +1630,6 @@
       const successCount = (res.items && res.items.length) || 0;
       const usedCount = (res.used && res.used.length) || 0;
       const nfCount = (res.notFound && res.notFound.length) || 0;
-
-      updateMiniDashboard(Math.max(inputCodes.length - 0, 0), usedCount, nfCount);
 
       if (res.ok && successCount > 0) {
         setStepState("done");
@@ -2421,15 +1645,6 @@
 
       if (chips.length) {
         summaryDiv.innerHTML = `<div class="summary-row">${chips.join("")}</div>`;
-      }
-
-      if (successCount) {
-        summaryDiv.innerHTML += `
-          <div class="summary-actions">
-            <button class="btn-secondary" id="summaryCopyAllBtn" type="button">🧾 คัดลอกทั้งหมด</button>
-            <button class="btn-secondary" id="summaryModalBtn" type="button">🎉 ดูสรุปแบบเต็ม</button>
-          </div>
-        `;
       }
 
       if (usedCount >= 2) {
@@ -2481,7 +1696,12 @@
       }
 
       status.innerHTML = msgLines.join("<br>");
-      status.classList.add(res.ok ? "status-ok" : "status-error");
+
+      if (res.ok) {
+        status.classList.add("status-ok");
+      } else {
+        status.classList.add("status-error");
+      }
 
       if (res.ok && successCount > 0) {
         codeInput.value = "";
@@ -2489,7 +1709,7 @@
       }
 
       if (res.items && res.items.length > 0) {
-        res.items.forEach((item) => {
+        res.items.forEach((item, index) => {
           const card = document.createElement("div");
           card.className = "result-item";
           const safeReplyText = encodeURIComponent(item.reply || "");
@@ -2500,7 +1720,7 @@
               <div>
                 <div class="item-header">
                   REDEEMED CODE: ${item.code}
-                  ${appTag ? `<span class="item-tag">${appTag}</span>` : ""}
+                  ${appTag ? `<span class="item-tag">✨ ${appTag}</span>` : ""}
                 </div>
               </div>
               <button class="btn-eye" type="button"><span>👁</span><span>แสดง</span></button>
@@ -2510,6 +1730,7 @@
               <span>คัดลอกรายละเอียด</span>
             </button>
           `;
+
           resultsDiv.appendChild(card);
 
           card.animate(
@@ -2519,7 +1740,9 @@
             ],
             {
               duration: 320,
-              easing: "cubic-bezier(.2,.8,.2,1)"
+              delay: index * 60,
+              easing: "cubic-bezier(.2,.8,.2,1)",
+              fill: "both"
             }
           );
 
@@ -2536,30 +1759,8 @@
           btn.addEventListener("click", () => copyToClipboard(btn));
         });
 
-        const summaryCopyAllBtn = document.getElementById("summaryCopyAllBtn");
-        const summaryModalBtn = document.getElementById("summaryModalBtn");
-        if (summaryCopyAllBtn) {
-          summaryCopyAllBtn.addEventListener("click", () => copyText(buildCopyAllText(), "คัดลอกรายละเอียดทั้งหมดแล้ว ✨"));
-        }
-        if (summaryModalBtn) {
-          summaryModalBtn.addEventListener("click", () => openModal(getResultSummaryPayload(res, inputCodes)));
-        }
-
         window.scrollTo({ top: resultsDiv.offsetTop - 18, behavior: "smooth" });
       }
-
-      const historyEntry = {
-        time: Date.now(),
-        timeLabel: formatDateTime(new Date()),
-        successCount,
-        usedCount,
-        nfCount,
-        message: res.message || (res.ok ? "ทำรายการสำเร็จ" : "ทำรายการเสร็จสิ้น"),
-        codes: inputCodes.slice(0, MAX_CODES)
-      };
-      saveHistory(historyEntry);
-
-      openModal(getResultSummaryPayload(res, inputCodes));
     }
 
     function triggerSuccessAnimation() {
@@ -2569,46 +1770,7 @@
         logoCircle.classList.add("success-bounce");
       }
       launchConfetti();
-      vibrateIfSupported();
-      playSuccessTone();
-    }
-
-    function vibrateIfSupported() {
-      if (navigator.vibrate) {
-        navigator.vibrate([18, 30, 18]);
-      }
-    }
-
-    function playSuccessTone() {
-      try {
-        const AudioCtx = window.AudioContext || window.webkitAudioContext;
-        if (!AudioCtx) return;
-        const ctx = new AudioCtx();
-        const now = ctx.currentTime;
-
-        const osc1 = ctx.createOscillator();
-        const osc2 = ctx.createOscillator();
-        const gain = ctx.createGain();
-
-        osc1.type = "sine";
-        osc2.type = "triangle";
-        osc1.frequency.setValueAtTime(660, now);
-        osc2.frequency.setValueAtTime(880, now);
-        gain.gain.setValueAtTime(0.0001, now);
-        gain.gain.exponentialRampToValueAtTime(0.04, now + 0.02);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.25);
-
-        osc1.connect(gain);
-        osc2.connect(gain);
-        gain.connect(ctx.destination);
-
-        osc1.start(now);
-        osc2.start(now + 0.02);
-        osc1.stop(now + 0.26);
-        osc2.stop(now + 0.26);
-      } catch (err) {
-        console.error(err);
-      }
+      showToast("รับสินค้าเรียบร้อย ✨");
     }
 
     function resizeFxCanvas() {
@@ -2624,15 +1786,18 @@
       }
     }
 
+    window.addEventListener("resize", resizeFxCanvas);
+    resizeFxCanvas();
+
     function launchConfetti() {
       if (!fxCanvas || !fxCtx) return;
 
       const particles = [];
-      const colors = ["#85b8a6", "#f0c7a7", "#f6d97a", "#ffffff", "#c6eadb"];
+      const colors = ["#85b8a6", "#f0c7a7", "#f6d97a", "#ffffff", "#c6eadb", "#ffd7d7"];
 
       for (let i = 0; i < 120; i++) {
         particles.push({
-          x: window.innerWidth / 2 + (Math.random() * 120 - 60),
+          x: window.innerWidth / 2 + (Math.random() * 140 - 70),
           y: window.innerHeight * 0.25 + (Math.random() * 30 - 15),
           vx: (Math.random() - 0.5) * 7,
           vy: Math.random() * -7 - 2,
@@ -2661,7 +1826,7 @@
           fxCtx.translate(p.x, p.y);
           fxCtx.rotate(p.rot);
           fxCtx.fillStyle = p.color;
-          fxCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.7);
+          fxCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.72);
           fxCtx.restore();
         });
 
@@ -2685,7 +1850,17 @@
 
     function copyToClipboard(btn) {
       const text = decodeURIComponent(btn.getAttribute("data-text") || "");
-      copyText(text, "คัดลอกรายละเอียดแล้ว ✨");
+
+      if (!navigator.clipboard) {
+        const temp = document.createElement("textarea");
+        temp.value = text;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand("copy");
+        document.body.removeChild(temp);
+      } else {
+        navigator.clipboard.writeText(text);
+      }
 
       const originalText = btn.innerHTML;
       btn.innerHTML = "คัดลอกแล้ว ✓";
@@ -2697,6 +1872,16 @@
         btn.style.background = "";
         btn.style.borderColor = "";
       }, 1800);
+
+      showToast("คัดลอกรายละเอียดแล้ว ✨");
+    }
+
+    function showToast(message) {
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(showToast._timer);
+      showToast._timer = setTimeout(() => toast.classList.remove("show"), 2000);
     }
 
     function addRippleEffect(button) {
@@ -2720,159 +1905,6 @@
       });
     }
 
-    async function redeem() {
-      if (isLoading) return;
-
-      const inputContainer = document.querySelector(".input-field");
-      const raw = codeInput.value;
-      const lines = getLines(raw);
-      const input = lines.join("\n");
-
-      status.classList.remove("status-error", "status-ok");
-
-      if (!input) {
-        inputContainer.classList.add("shake");
-        status.innerHTML = "กรุณากรอกรหัสก่อนนะคะ";
-        status.classList.add("status-error");
-        setStepState("idle");
-        setTimeout(() => inputContainer.classList.remove("shake"), 500);
-        return;
-      }
-
-      const { invalid } = validateCodes(lines);
-      if (invalid.length) {
-        inputContainer.classList.add("shake");
-        status.innerHTML = `พบโค้ดที่มีรูปแบบไม่ถูกต้อง: ${invalid.slice(0, 4).join(", ")}${invalid.length > 4 ? " ..." : ""}`;
-        status.classList.add("status-error");
-        setStepState("idle");
-        setTimeout(() => inputContainer.classList.remove("shake"), 500);
-        return;
-      }
-
-      let preWarn = "";
-      if (lines.length > MAX_CODES) {
-        preWarn = `คุณกรอกโค้ด ${lines.length} รายการ ระบบจะใช้เฉพาะ ${MAX_CODES} รายการแรกค่ะ`;
-      }
-
-      const inputCodes = lines.slice(0, MAX_CODES);
-      const url = API_URL + "?action=redeem&text=" + encodeURIComponent(inputCodes.join("\n"));
-      const startTime = performance.now();
-      const requestId = ++currentRequestId;
-
-      setStepState("loading");
-      setLoadingState(true);
-      renderSkeleton(Math.min(Math.max(inputCodes.length, 1), 3));
-
-      status.style.color = "#8b8680";
-      status.innerHTML =
-        "ระบบกำลังตรวจสอบรหัสของคุณ...<br>" +
-        "<span style='font-size:0.78rem;color:#c27a5a;'>หลังจากส่งโค้ดแล้ว ห้ามรีเฟรช/ปิดหน้านี้จนกว่าผลจะขึ้นครบค่ะ</span>" +
-        (preWarn ? "<br><span style='font-size:0.78rem;color:#c27a5a;'>" + preWarn + "</span>" : "");
-
-      try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(new Error("timeout")), 30000);
-
-        const res = await fetch(url, { signal: controller.signal });
-        clearTimeout(timeoutId);
-
-        if (requestId !== currentRequestId) return;
-        if (!res.ok) throw new Error("HTTP " + res.status);
-
-        const data = await res.json();
-        const elapsedSec = (performance.now() - startTime) / 1000;
-
-        if (requestId !== currentRequestId) return;
-
-        setLoadingState(false);
-        renderResult(data, elapsedSec, inputCodes);
-      } catch (err) {
-        console.error(err);
-        if (requestId !== currentRequestId) return;
-
-        setLoadingState(false);
-        resultsDiv.innerHTML = "";
-        status.innerHTML = getErrorMessage(err);
-        status.classList.add("status-error");
-        setStepState("error");
-      }
-    }
-
-    function handleKeyDown(e) {
-      if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
-        e.preventDefault();
-        redeem();
-        return;
-      }
-      if (e.key === "Enter" && isLoading) {
-        e.preventDefault();
-      }
-    }
-
-    function initHistory() {
-      renderHistory();
-      toggleHistory(false);
-    }
-
-    function clearHistory() {
-      localStorage.removeItem(HISTORY_KEY);
-      renderHistory();
-      showToast("ล้างประวัติแล้ว");
-    }
-
-    setTimeout(rotateTip, 600);
-    setInterval(rotateTip, 12000);
-
-    btnRedeem.addEventListener("click", redeem);
-    btnClear.addEventListener("click", clearForm);
-    btnPaste.addEventListener("click", pasteFromClipboard);
-    btnCopyAll.addEventListener("click", () => copyText(buildCopyAllText(), "คัดลอกรายละเอียดทั้งหมดแล้ว ✨"));
-    btnShowHistory.addEventListener("click", () => toggleHistory());
-    btnClearHistory.addEventListener("click", clearHistory);
-    btnCloseModal.addEventListener("click", closeModal);
-    btnModalCloseAlt.addEventListener("click", closeModal);
-    btnModalCopyAll.addEventListener("click", () => copyText(buildCopyAllText(), "คัดลอกรายละเอียดทั้งหมดแล้ว ✨"));
-    if (btnPasteMobile) btnPasteMobile.addEventListener("click", pasteFromClipboard);
-    if (btnClearMobile) btnClearMobile.addEventListener("click", clearForm);
-    if (btnRedeemMobile) btnRedeemMobile.addEventListener("click", redeem);
-
-    codeInput.addEventListener("input", updateLineInfo);
-    codeInput.addEventListener("keydown", handleKeyDown);
-
-    resultModal.addEventListener("click", (e) => {
-      if (e.target === resultModal) closeModal();
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && resultModal.classList.contains("show")) {
-        closeModal();
-      }
-    });
-
-    window.addEventListener("beforeunload", (e) => {
-      if (!isLoading) return;
-      e.preventDefault();
-      e.returnValue = "ระบบกำลังตรวจสอบโค้ดของคุณอยู่ หากออกจากหน้านี้อาจทำให้ไม่ได้รับโค้ดนะคะ";
-    });
-
-    window.addEventListener("load", () => {
-      setStepState("idle");
-      updateLineInfo();
-      resizeFxCanvas();
-      initHistory();
-      setupImagePasteSupport();
-      updateMiniDashboard(0, 0, 0);
-      codeInput.focus();
-    });
-
-    window.addEventListener("resize", resizeFxCanvas);
-
-    codeInput.addEventListener("focus", () => {
-      if (codeInput.value.trim()) {
-        codeInput.select();
-      }
-    });
-
     const rippleStyle = document.createElement("style");
     rippleStyle.textContent = `
       @keyframes rippleFx {
@@ -2884,23 +1916,30 @@
     `;
     document.head.appendChild(rippleStyle);
 
-    [
-      btnRedeem,
-      btnClear,
-      themeToggle,
-      btnPaste,
-      btnCopyAll,
-      btnShowHistory,
-      btnClearHistory,
-      btnModalCopyAll,
-      btnModalCloseAlt,
-      btnCloseModal,
-      btnPasteMobile,
-      btnClearMobile,
-      btnRedeemMobile
-    ]
-    .filter(Boolean)
-    .forEach((el) => addRippleEffect(el));
+    [btnRedeem, btnClear, themeToggle].forEach((el) => {
+      if (el) addRippleEffect(el);
+    });
+
+    function initCardTilt() {
+      if (!mainCard) return;
+      const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      if (!finePointer) return;
+
+      mainCard.addEventListener("mousemove", (e) => {
+        const rect = mainCard.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateY = ((x - centerX) / centerX) * 2.5;
+        const rotateX = -((y - centerY) / centerY) * 2.5;
+        mainCard.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-1px)`;
+      });
+
+      mainCard.addEventListener("mouseleave", () => {
+        mainCard.style.transform = "";
+      });
+    }
   </script>
 </body>
 </html>
