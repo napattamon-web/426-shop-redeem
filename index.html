@@ -17,10 +17,10 @@
       --text-sub: #8b8680;
       --border-soft: #e2ddd7;
       --danger: #e57373;
-      --warning: #d47955;
+      --warning: #c9845d;
       --shadow-soft: 0 18px 40px rgba(0,0,0,0.06);
       --radius-xl: 24px;
-      --glass: rgba(255,255,255,0.76);
+      --glass: rgba(255,255,255,0.8);
     }
 
     body.theme-dark {
@@ -33,7 +33,7 @@
       --text-sub: #a5a9b3;
       --border-soft: #2d3036;
       --shadow-soft: 0 18px 40px rgba(0,0,0,0.7);
-      --glass: rgba(31,32,36,0.82);
+      --glass: rgba(31,32,36,0.84);
     }
 
     * {
@@ -62,6 +62,7 @@
       -webkit-font-smoothing: antialiased;
       transition: background 0.25s ease, color 0.25s ease;
       overflow-x: hidden;
+      text-align: center;
     }
 
     body.theme-dark {
@@ -141,6 +142,175 @@
       75% { transform: translateY(-10px) translateX(8px) scale(1.03); }
     }
 
+    .welcome-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 50% 10%, rgba(255,255,255,0.75), transparent 35%),
+        linear-gradient(160deg, rgba(248,239,231,0.96), rgba(231,244,238,0.96));
+      backdrop-filter: blur(8px);
+      transition: opacity 0.55s ease, visibility 0.55s ease;
+    }
+
+    body.theme-dark .welcome-screen {
+      background:
+        radial-gradient(circle at 50% 10%, rgba(255,255,255,0.05), transparent 35%),
+        linear-gradient(160deg, rgba(29,31,36,0.97), rgba(25,36,39,0.97));
+    }
+
+    .welcome-screen.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .welcome-card {
+      width: min(420px, 100%);
+      border-radius: 30px;
+      padding: 28px 22px 24px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow:
+        0 20px 50px rgba(0,0,0,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+      backdrop-filter: blur(16px);
+      position: relative;
+      overflow: hidden;
+      animation: welcomePop 0.8s cubic-bezier(.2,.8,.2,1);
+      text-align: center;
+    }
+
+    body.theme-dark .welcome-card {
+      background: rgba(31,32,36,0.82);
+      border-color: rgba(255,255,255,0.06);
+      box-shadow:
+        0 28px 60px rgba(0,0,0,0.55),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+
+    .welcome-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.22), transparent 40%, transparent 70%, rgba(255,255,255,0.12));
+      pointer-events: none;
+    }
+
+    @keyframes welcomePop {
+      from { opacity: 0; transform: translateY(18px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .welcome-logo-ring {
+      width: 92px;
+      height: 92px;
+      margin: 0 auto 16px;
+      border-radius: 999px;
+      padding: 6px;
+      background: conic-gradient(from 0deg, rgba(133,184,166,0.28), rgba(240,199,167,0.45), rgba(133,184,166,0.28));
+      animation: logoSpin 8s linear infinite;
+      box-shadow: 0 10px 30px rgba(133,184,166,0.2);
+    }
+
+    .welcome-logo-core {
+      width: 100%;
+      height: 100%;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    body.theme-dark .welcome-logo-core {
+      background: rgba(22,24,28,0.98);
+    }
+
+    .welcome-logo-core img {
+      width: 78px;
+      height: 78px;
+      object-fit: cover;
+      border-radius: 999px;
+      transform: scale(1.04);
+    }
+
+    @keyframes logoSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    .welcome-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .welcome-sub {
+      margin-top: 6px;
+      font-size: 0.82rem;
+      color: var(--text-sub);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .welcome-line {
+      margin: 16px auto 0;
+      max-width: 290px;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--text-sub);
+    }
+
+    .welcome-dots {
+      margin: 18px auto 0;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .welcome-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(133,184,166,0.28);
+      animation: dotWave 1.1s infinite ease-in-out;
+    }
+
+    .welcome-dot:nth-child(2) { animation-delay: 0.15s; }
+    .welcome-dot:nth-child(3) { animation-delay: 0.3s; }
+
+    @keyframes dotWave {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.55; }
+      50% { transform: translateY(-4px) scale(1.08); opacity: 1; }
+    }
+
+    .welcome-btn {
+      margin-top: 20px;
+      width: 100%;
+      border: none;
+      border-radius: 999px;
+      padding: 13px 16px;
+      background: radial-gradient(circle at 0 0, #a2d5c2 0, #7fae9b 55%);
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.96rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.14);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .welcome-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.16);
+    }
+
     .app {
       position: relative;
       z-index: 2;
@@ -177,7 +347,9 @@
       align-items: center;
       gap: 12px;
       min-width: 0;
-      text-align: left;
+      flex: 1;
+      justify-content: center;
+      padding-left: 34px;
     }
 
     .logo-circle {
@@ -252,6 +424,7 @@
       flex-direction: column;
       gap: 2px;
       min-width: 0;
+      text-align: center;
     }
 
     .brand-title {
@@ -273,9 +446,10 @@
     .header-right {
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
+      align-items: center;
       gap: 6px;
       flex-shrink: 0;
+      width: 34px;
     }
 
     .badge {
@@ -291,6 +465,7 @@
       white-space: nowrap;
       backdrop-filter: blur(6px);
       box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+      margin: 0 auto;
     }
 
     body.theme-dark .badge {
@@ -331,7 +506,7 @@
     }
 
     .theme-toggle:hover {
-      transform: translateY(-1px) rotate(3deg);
+      transform: translateY(-1px);
       box-shadow: 0 10px 20px rgba(0,0,0,0.12);
     }
 
@@ -400,7 +575,7 @@
         0 20px 40px rgba(0,0,0,0.08),
         inset 0 1px 0 rgba(255,255,255,0.7);
       border: 1px solid rgba(255,255,255,0.55);
-      padding: 18px 16px 16px;
+      padding: 20px 16px 16px;
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -445,48 +620,58 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.9rem;
       box-shadow: 0 4px 10px rgba(133,184,166,0.16);
+      font-size: 0;
+    }
+
+    .card-title span.icon::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      display: block;
     }
 
     .card-desc {
       font-size: 0.86rem;
       color: var(--text-sub);
-      line-height: 1.5;
-      text-align: center;
+      line-height: 1.55;
+      max-width: 300px;
+      margin: 0 auto;
     }
 
-    .cute-notice {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      align-self: center;
+    .blinking-note {
+      margin: 2px auto 0;
+      width: fit-content;
+      max-width: 100%;
       padding: 8px 14px;
       border-radius: 999px;
-      background: linear-gradient(135deg, #fff3ea, #eef9f4);
-      border: 1px solid #f0d2b9;
-      color: #8d6c55;
-      font-size: 0.78rem;
+      background: rgba(255,244,231,0.9);
+      border: 1px solid #f0c2a0;
+      color: var(--warning);
+      font-size: 0.8rem;
       font-weight: 600;
-      box-shadow: 0 8px 18px rgba(240,199,167,0.15);
-      animation: cuteBlink 1.6s ease-in-out infinite;
+      animation: cuteBlink 1.35s ease-in-out infinite;
+      box-shadow: 0 8px 18px rgba(240,194,160,0.15);
     }
 
-    body.theme-dark .cute-notice {
-      background: linear-gradient(135deg, #3b2a21, #223a33);
-      border-color: #6f5b4c;
-      color: #f3ddd0;
+    body.theme-dark .blinking-note {
+      background: rgba(59,42,33,0.92);
+      border-color: #d4a07a;
+      color: #f0c7a7;
     }
 
     @keyframes cuteBlink {
       0%, 100% {
         transform: scale(1);
-        box-shadow: 0 8px 18px rgba(240,199,167,0.15);
+        opacity: 1;
+        box-shadow: 0 8px 18px rgba(240,194,160,0.15);
       }
       50% {
-        transform: scale(1.03);
-        box-shadow: 0 0 0 8px rgba(240,199,167,0);
+        transform: scale(1.025);
+        opacity: 0.82;
+        box-shadow: 0 10px 22px rgba(240,194,160,0.28);
       }
     }
 
@@ -542,8 +727,8 @@
       font-family: inherit;
       font-size: 0.98rem;
       color: var(--text-main);
-      line-height: 1.55;
-      padding: 4px 0 0;
+      line-height: 1.6;
+      padding: 8px 0 0;
       min-height: 170px;
       letter-spacing: 0.01em;
       text-align: center;
@@ -661,6 +846,7 @@
       position: relative;
       overflow: hidden;
       isolation: isolate;
+      font-family: inherit;
     }
 
     body.theme-dark .btn-primary {
@@ -675,16 +861,6 @@
       background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,0.35) 45%, transparent 70%);
       transform: translateX(-130%);
       animation: btnShimmer 2.8s linear infinite;
-      z-index: 0;
-    }
-
-    .btn-primary::after {
-      content: "";
-      position: absolute;
-      inset: auto auto 0 0;
-      width: 100%;
-      height: 50%;
-      background: linear-gradient(to top, rgba(255,255,255,0.16), transparent);
       z-index: 0;
     }
 
@@ -732,6 +908,7 @@
       position: relative;
       overflow: hidden;
       backdrop-filter: blur(6px);
+      font-family: inherit;
     }
 
     body.theme-dark .btn-secondary {
@@ -768,16 +945,11 @@
       font-size: 0.76rem;
       color: var(--warning);
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
       gap: 6px;
       line-height: 1.5;
       text-align: center;
-    }
-
-    .warn-text-icon {
-      font-size: 0.9rem;
-      margin-top: 1px;
     }
 
     .warn-text--important {
@@ -795,18 +967,9 @@
       border-color: #f0c2a0;
     }
 
-    .warn-text--important .warn-text-icon {
-      animation: warnIconPulse 1.4s ease-in-out infinite;
-    }
-
     @keyframes warnPulse {
       0%, 100% { box-shadow: 0 0 0 0 rgba(212, 125, 76, 0.35); }
       50% { box-shadow: 0 0 0 6px rgba(212, 125, 76, 0); }
-    }
-
-    @keyframes warnIconPulse {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-1px) scale(1.12); }
     }
 
     #status {
@@ -932,7 +1095,7 @@
       border-radius: 16px;
       background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(250,247,244,0.92));
       border: 1px solid rgba(0,0,0,0.05);
-      padding: 12px;
+      padding: 12px 12px 12px;
       animation: fadeIn 0.35s ease-out;
       box-shadow: 0 10px 24px rgba(0,0,0,0.05);
       transform-origin: center;
@@ -967,6 +1130,7 @@
       gap: 8px;
       margin-bottom: 8px;
       flex-wrap: wrap;
+      text-align: center;
     }
 
     .item-header {
@@ -974,6 +1138,7 @@
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: var(--text-sub);
+      text-align: center;
     }
 
     .item-tag {
@@ -1003,6 +1168,7 @@
       white-space: pre-wrap;
       margin-bottom: 10px;
       text-align: center;
+      user-select: text;
       word-break: break-word;
     }
 
@@ -1023,6 +1189,7 @@
       transition: all 0.15s ease;
       position: relative;
       overflow: hidden;
+      font-family: inherit;
     }
 
     body.theme-dark .btn-copy {
@@ -1127,9 +1294,9 @@
     .tip-bubble {
       position: fixed;
       left: 50%;
-      transform: translateX(-50%) translateY(8px);
       bottom: 68px;
-      max-width: 300px;
+      transform: translateX(-50%) translateY(8px);
+      max-width: 280px;
       width: calc(100% - 24px);
       padding: 10px 12px;
       border-radius: 16px;
@@ -1152,28 +1319,9 @@
       box-shadow: 0 12px 30px rgba(0,0,0,0.8);
     }
 
-    .tip-bubble::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: -6px;
-      border-width: 6px 6px 0 6px;
-      border-style: solid;
-      border-color: rgba(255,255,255,0.96) transparent transparent transparent;
-    }
-
-    body.theme-dark .tip-bubble::after {
-      border-color: rgba(18,19,23,0.98) transparent transparent transparent;
-    }
-
     .tip-bubble.show {
       opacity: 1;
       transform: translateX(-50%) translateY(0);
-    }
-
-    .tip-bubble-emoji {
-      margin-right: 4px;
     }
 
     .floating-glow {
@@ -1233,7 +1381,11 @@
       }
 
       .card {
-        padding: 16px 14px 14px;
+        padding: 18px 14px 14px;
+      }
+
+      .brand-left {
+        padding-left: 34px;
       }
 
       .brand-title {
@@ -1243,11 +1395,6 @@
       .brand-sub {
         font-size: 0.74rem;
       }
-
-      .cute-notice {
-        font-size: 0.74rem;
-        padding: 7px 12px;
-      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1255,11 +1402,12 @@
       .code-meter-bar::after,
       .btn-primary::before,
       .logo-circle.success-bounce,
-      .warn-text--important,
-      .warn-text--important .warn-text-icon,
       .badge-dot,
       .loading-overlay::after,
-      .cute-notice {
+      .welcome-logo-ring,
+      .welcome-dot,
+      .blinking-note,
+      .warn-text--important {
         animation: none !important;
       }
 
@@ -1267,13 +1415,33 @@
       .btn-primary,
       .btn-secondary,
       .btn-copy,
-      .theme-toggle {
+      .theme-toggle,
+      .welcome-screen {
         transition: none !important;
       }
     }
   </style>
 </head>
 <body>
+  <div class="welcome-screen" id="welcomeScreen">
+    <div class="welcome-card">
+      <div class="welcome-logo-ring">
+        <div class="welcome-logo-core">
+          <img src="https://img2.imgbiz.com/imgbiz/IMG_1140f64febd99caf8614.jpeg" alt="426 Shop Logo" />
+        </div>
+      </div>
+      <div class="welcome-title">426 SHOP</div>
+      <div class="welcome-sub">PREMIUM ACCESS</div>
+      <div class="welcome-line">ระบบรับโค้ดแบบเรียบหรู ใช้งานง่าย และพร้อมตรวจสอบได้ทันที</div>
+      <div class="welcome-dots">
+        <div class="welcome-dot"></div>
+        <div class="welcome-dot"></div>
+        <div class="welcome-dot"></div>
+      </div>
+      <button class="welcome-btn" id="welcomeBtn" type="button">เริ่มใช้งาน</button>
+    </div>
+  </div>
+
   <div class="bg-orb orb-1"></div>
   <div class="bg-orb orb-2"></div>
   <div class="bg-orb orb-3"></div>
@@ -1298,19 +1466,21 @@
             <div class="brand-sub">PREMIUM ACCESS</div>
           </div>
         </div>
+
         <div class="header-right">
-          <div class="badge">
-            <span class="badge-dot"></span>
-            <span>ระบบออนไลน์</span>
-          </div>
-          <button class="theme-toggle" id="themeToggle" type="button" aria-label="สลับโหมดกลางคืน">🌙</button>
+          <button class="theme-toggle" id="themeToggle" type="button" aria-label="สลับธีม">◐</button>
         </div>
       </div>
 
+      <div class="badge">
+        <span class="badge-dot"></span>
+        <span>ระบบออนไลน์</span>
+      </div>
+
       <div class="step-row">
-        <div class="step-pill" data-step="1">① วางโค้ด</div>
-        <div class="step-pill" data-step="2">② กดรับสินค้า</div>
-        <div class="step-pill" data-step="3">③ คัดลอกรายละเอียด</div>
+        <div class="step-pill" data-step="1">วางโค้ด</div>
+        <div class="step-pill" data-step="2">รับสินค้า</div>
+        <div class="step-pill" data-step="3">คัดลอกข้อมูล</div>
       </div>
     </header>
 
@@ -1319,22 +1489,24 @@
       <div class="loading-overlay"></div>
 
       <div class="card-title">
-        <span class="icon">🔑</span>
+        <span class="icon"></span>
         <span>กรอกโค้ดเพื่อรับสินค้า</span>
       </div>
 
       <div class="card-desc">
-        วางโค้ดจากแอดมิน · หลายโค้ดได้ · 1 บรรทัดต่อ 1 โค้ด
+        วางหลายโค้ดได้ในครั้งเดียว
       </div>
 
-      <div class="cute-notice">✨ วางโค้ดให้ครบแล้วกดรับสินค้าเลย ✨</div>
+      <div class="blinking-note">
+        1 บรรทัดต่อ 1 โค้ด
+      </div>
 
       <div class="input-field">
         <textarea id="codeInput" placeholder="เช่น NFXA1B2&#10;หรือ DSN9X3Y"></textarea>
 
         <div class="input-helper-row">
-          <div class="small-tag">1 บรรทัด = 1 โค้ด</div>
-          <span id="lineInfo">สูงสุด ~5 โค้ด/ครั้ง</span>
+          <div class="small-tag">วางได้หลายรายการ</div>
+          <span id="lineInfo">สูงสุด 5 โค้ดต่อครั้ง</span>
         </div>
 
         <div class="code-meter-wrap">
@@ -1350,7 +1522,7 @@
 
       <div class="btn-row">
         <button class="btn-primary" id="btnRedeem" type="button">
-          <span>รับสินค้า</span><span>↗</span>
+          <span>รับสินค้า</span>
         </button>
         <button class="btn-secondary" id="btnClear" type="button">
           <span>ล้างทั้งหมด</span>
@@ -1358,8 +1530,7 @@
       </div>
 
       <div class="warn-text warn-text--important">
-        <span class="warn-text-icon">⚠️</span>
-        <span>กดแล้วอย่ารีเฟรชหรือปิดหน้านี้ จนกว่ารหัสจะขึ้นครบ</span>
+        <span>หลังจากกดรับสินค้า กรุณาอย่ารีเฟรชหรือปิดหน้านี้จนกว่าผลลัพธ์จะแสดงครบ</span>
       </div>
 
       <div id="summary"></div>
@@ -1379,8 +1550,7 @@
   <div id="toast" class="toast">คัดลอกข้อความแล้ว</div>
 
   <div id="tipBubble" class="tip-bubble">
-    <span class="tip-bubble-emoji">💡</span>
-    <span id="tipText">1 บรรทัดต่อ 1 โค้ด ใช้งานง่ายสุดค่ะ</span>
+    วางโค้ดแยกบรรทัดเพื่อให้ระบบตรวจสอบได้แม่นยำขึ้น
   </div>
 
   <script>
@@ -1398,12 +1568,13 @@
     const logoCircle = document.querySelector(".logo-circle");
     const themeToggle = document.getElementById("themeToggle");
     const tipBubble = document.getElementById("tipBubble");
-    const tipText = document.getElementById("tipText");
     const codeMeterBar = document.getElementById("codeMeterBar");
     const meterText = document.getElementById("meterText");
     const fxCanvas = document.getElementById("fxCanvas");
     const fxCtx = fxCanvas ? fxCanvas.getContext("2d") : null;
     const mainCard = document.getElementById("mainCard");
+    const welcomeScreen = document.getElementById("welcomeScreen");
+    const welcomeBtn = document.getElementById("welcomeBtn");
 
     let isLoading = false;
 
@@ -1446,12 +1617,8 @@
     function applyTheme(theme) {
       if (theme === "dark") {
         document.body.classList.add("theme-dark");
-        themeToggle.textContent = "☀️";
-        themeToggle.setAttribute("aria-label", "สลับเป็นโหมดสว่าง");
       } else {
         document.body.classList.remove("theme-dark");
-        themeToggle.textContent = "🌙";
-        themeToggle.setAttribute("aria-label", "สลับเป็นโหมดมืด");
       }
     }
 
@@ -1466,47 +1633,59 @@
     });
 
     const tips = [
-      "1 บรรทัดต่อ 1 โค้ด ใช้งานง่ายสุดค่ะ",
-      "วางหลายโค้ดได้ในครั้งเดียว สูงสุดประมาณ 5 โค้ด ✨",
-      "กดรับสินค้าแล้ว อย่าเพิ่งรีเฟรชหน้านะคะ",
-      "คัดลอกรายละเอียดได้ทันทีจากปุ่มด้านล่าง 💬"
+      "วางโค้ดแยกบรรทัดเพื่อให้ระบบตรวจสอบได้แม่นยำขึ้น",
+      "ระบบจะใช้เฉพาะ 5 โค้ดแรก หากวางเกินจำนวนที่กำหนด",
+      "เมื่อกดรับสินค้าแล้ว กรุณาอยู่ที่หน้านี้จนกว่าผลลัพธ์จะแสดงครบ",
+      "สามารถคัดลอกรายละเอียดแต่ละรายการได้ทันทีจากปุ่มด้านล่าง"
     ];
 
     let tipIndex = 0;
 
     function rotateTip() {
-      if (!tipBubble || !tipText) return;
+      if (!tipBubble) return;
       tipBubble.classList.remove("show");
       setTimeout(() => {
-        const text = tips[tipIndex] || tips[0];
-        tipText.textContent = text;
+        tipBubble.textContent = tips[tipIndex] || tips[0];
         tipBubble.classList.add("show");
         tipIndex = (tipIndex + 1) % tips.length;
       }, 200);
     }
 
-    setTimeout(rotateTip, 700);
+    setTimeout(rotateTip, 900);
     setInterval(rotateTip, 12000);
 
-    btnRedeem.addEventListener("click", redeem);
-    btnClear.addEventListener("click", clearForm);
-    codeInput.addEventListener("input", updateLineInfo);
-
-    window.addEventListener("beforeunload", (e) => {
-      if (!isLoading) return;
-      e.preventDefault();
-      e.returnValue = "ระบบกำลังตรวจสอบโค้ดของคุณอยู่ หากออกจากหน้านี้อาจทำให้ไม่ได้รับโค้ดนะคะ";
+    welcomeBtn.addEventListener("click", () => {
+      welcomeScreen.classList.add("hide");
+      localStorage.setItem("welcomeSeen426", "1");
+      setTimeout(() => {
+        codeInput.focus();
+      }, 250);
     });
 
     window.addEventListener("load", () => {
       setStepState("idle");
       updateLineInfo();
-      codeInput.focus();
       initCardTilt();
+      resizeFxCanvas();
+
+      if (localStorage.getItem("welcomeSeen426") === "1") {
+        welcomeScreen.classList.add("hide");
+        codeInput.focus();
+      }
     });
+
+    btnRedeem.addEventListener("click", redeem);
+    btnClear.addEventListener("click", clearForm);
+    codeInput.addEventListener("input", updateLineInfo);
 
     codeInput.addEventListener("focus", () => {
       if (codeInput.value.trim()) codeInput.select();
+    });
+
+    window.addEventListener("beforeunload", (e) => {
+      if (!isLoading) return;
+      e.preventDefault();
+      e.returnValue = "ระบบกำลังตรวจสอบโค้ดอยู่";
     });
 
     function updateLineInfo() {
@@ -1515,15 +1694,15 @@
       const count = lines.length;
 
       if (!count) {
-        lineInfo.textContent = "สูงสุด ~5 โค้ด/ครั้ง";
+        lineInfo.textContent = "สูงสุด 5 โค้ดต่อครั้ง";
         if (meterText) meterText.textContent = `0 / ${MAX_CODES}`;
         if (codeMeterBar) codeMeterBar.style.width = "0%";
         return;
       }
 
-      let text = `โค้ดที่กรอก: ${count} รายการ`;
+      let text = `กรอกแล้ว ${count} รายการ`;
       if (count > MAX_CODES) {
-        text += ` (ระบบจะใช้เฉพาะ ${MAX_CODES} รายการแรก)`;
+        text += ` ใช้จริง ${MAX_CODES} รายการแรก`;
       }
       lineInfo.textContent = text;
 
@@ -1533,7 +1712,7 @@
       if (meterText) meterText.textContent = `${capped} / ${MAX_CODES}`;
       if (codeMeterBar) {
         codeMeterBar.style.width = percent + "%";
-        codeMeterBar.style.filter = count > MAX_CODES ? "saturate(0.8)" : "none";
+        codeMeterBar.style.filter = count > MAX_CODES ? "saturate(0.85)" : "none";
       }
     }
 
@@ -1543,7 +1722,7 @@
       status.classList.remove("status-error", "status-ok");
       resultsDiv.innerHTML = "";
       summaryDiv.innerHTML = "";
-      lineInfo.textContent = "สูงสุด ~5 โค้ด/ครั้ง";
+      lineInfo.textContent = "สูงสุด 5 โค้ดต่อครั้ง";
       if (meterText) meterText.textContent = `0 / ${MAX_CODES}`;
       if (codeMeterBar) codeMeterBar.style.width = "0%";
       setStepState("idle");
@@ -1560,7 +1739,7 @@
 
       if (!input) {
         inputContainer.classList.add("shake");
-        status.innerHTML = "กรุณากรอกรหัสก่อนนะคะ";
+        status.innerHTML = "กรุณากรอกรหัสก่อน";
         status.classList.add("status-error");
         setStepState("idle");
         setTimeout(() => inputContainer.classList.remove("shake"), 500);
@@ -1570,7 +1749,7 @@
       const lines = raw.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
       let preWarn = "";
       if (lines.length > MAX_CODES) {
-        preWarn = `คุณกรอกโค้ด ${lines.length} รายการ ระบบจะใช้เฉพาะ ${MAX_CODES} รายการแรกค่ะ`;
+        preWarn = `คุณกรอก ${lines.length} รายการ ระบบจะใช้เฉพาะ ${MAX_CODES} รายการแรก`;
       }
 
       isLoading = true;
@@ -1579,13 +1758,13 @@
       btnRedeem.disabled = true;
       btnRedeem.innerHTML = `
         <span class="spinner"></span>
-        <span>กำลังตรวจสอบ…</span>
+        <span>กำลังตรวจสอบ</span>
       `;
 
       status.style.color = "#8b8680";
       status.innerHTML =
-        "ระบบกำลังตรวจสอบรหัสของคุณ...<br>" +
-        "<span style='font-size:0.78rem;color:#c27a5a;'>อย่ารีเฟรชหรือปิดหน้านี้จนกว่าผลจะขึ้นครบค่ะ</span>" +
+        "ระบบกำลังตรวจสอบโค้ดของคุณ<br>" +
+        "<span style='font-size:0.78rem;color:#c27a5a;'>กรุณาอย่ารีเฟรชหรือปิดหน้านี้จนกว่าผลลัพธ์จะแสดงครบ</span>" +
         (preWarn ? "<br><span style='font-size:0.78rem;color:#c27a5a;'>" + preWarn + "</span>" : "");
 
       const url = API_URL + "?action=redeem&text=" + encodeURIComponent(input);
@@ -1601,7 +1780,7 @@
           isLoading = false;
           mainCard.classList.remove("loading");
           btnRedeem.disabled = false;
-          btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
+          btnRedeem.innerHTML = "<span>รับสินค้า</span>";
           renderResult(data, elapsedSec);
         })
         .catch((err) => {
@@ -1609,8 +1788,8 @@
           isLoading = false;
           mainCard.classList.remove("loading");
           btnRedeem.disabled = false;
-          btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
-          status.innerHTML = "เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้งค่ะ";
+          btnRedeem.innerHTML = "<span>รับสินค้า</span>";
+          status.innerHTML = "เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้ง";
           status.classList.add("status-error");
           setStepState("error");
           showToast("เชื่อมต่อไม่สำเร็จ");
@@ -1623,7 +1802,7 @@
       status.classList.remove("status-error", "status-ok");
 
       if (!res) {
-        status.innerHTML = "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งค่ะ";
+        status.innerHTML = "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง";
         status.classList.add("status-error");
         setStepState("error");
         return;
@@ -1641,9 +1820,9 @@
       }
 
       const chips = [];
-      if (successCount) chips.push(`<div class="summary-pill summary-pill--ok">✅ สำเร็จ ${successCount} โค้ด</div>`);
-      if (usedCount) chips.push(`<div class="summary-pill summary-pill--used">♻️ ใช้แล้ว ${usedCount} โค้ด</div>`);
-      if (nfCount) chips.push(`<div class="summary-pill summary-pill--nf">❌ ไม่พบ ${nfCount} โค้ด</div>`);
+      if (successCount) chips.push(`<div class="summary-pill summary-pill--ok">สำเร็จ ${successCount} โค้ด</div>`);
+      if (usedCount) chips.push(`<div class="summary-pill summary-pill--used">ใช้แล้ว ${usedCount} โค้ด</div>`);
+      if (nfCount) chips.push(`<div class="summary-pill summary-pill--nf">ไม่พบ ${nfCount} โค้ด</div>`);
 
       if (chips.length) {
         summaryDiv.innerHTML = `<div class="summary-row">${chips.join("")}</div>`;
@@ -1654,7 +1833,7 @@
           <div class="used-info-card">
             <div class="used-info-title">พบโค้ดที่ถูกใช้งานแล้วหลายรายการ</div>
             <div class="used-info-text">
-              หากไม่แน่ใจว่าโค้ดถูกใช้ไปแล้วจริงไหม แนะนำให้แคปหน้าจอนี้ แล้วส่งให้แอดมินช่วยตรวจสอบนะคะ 💬
+              หากไม่แน่ใจ แนะนำให้แคปหน้าจอนี้เพื่อส่งให้แอดมินตรวจสอบต่อ
             </div>
           </div>
         `;
@@ -1666,12 +1845,12 @@
       if (res.multiInLineMessage) msgLines.push("• " + res.multiInLineMessage);
 
       if (res.notFound && res.notFound.length) {
-        msgLines.push("<br>โค้ดที่ไม่พบในระบบ:");
+        msgLines.push("<br>โค้ดที่ไม่พบในระบบ");
         res.notFound.forEach((c) => msgLines.push("• " + c));
       }
 
       if (res.used && res.used.length) {
-        msgLines.push("<br>โค้ดที่ถูกใช้งานไปแล้ว:");
+        msgLines.push("<br>โค้ดที่ถูกใช้งานไปแล้ว");
         res.used.forEach((u) => {
           let line = "• " + u.code;
           if (u.app) line += " (" + u.app + ")";
@@ -1682,19 +1861,19 @@
 
       const extraHints = [];
       if (res.message && res.message.indexOf("รูปแบบโค้ด") !== -1) {
-        extraHints.push("ลองตรวจสอบว่ามีช่องว่างหรือขีดในโค้ด แล้วลบออกก่อนส่งใหม่นะคะ 😊");
+        extraHints.push("ตรวจสอบว่ามีช่องว่างหรืออักขระเกินในโค้ดหรือไม่");
       }
       if (nfCount > 0 && successCount === 0 && usedCount === 0) {
-        extraHints.push("ถ้าเชื่อว่าโค้ดถูกต้อง แนะนำแคปหน้าจอนี้ส่งให้แอดมินช่วยตรวจสอบอีกครั้งได้เลยค่ะ");
+        extraHints.push("หากมั่นใจว่าโค้ดถูกต้อง แนะนำให้บันทึกหน้าจอนี้ส่งให้แอดมิน");
       }
 
       if (extraHints.length) {
-        msgLines.push("<br>" + extraHints.map((h) => "💡 " + h).join("<br>"));
+        msgLines.push("<br>" + extraHints.map((h) => "• " + h).join("<br>"));
       }
 
       if (typeof elapsedSec === "number" && isFinite(elapsedSec)) {
         const prettyTime = elapsedSec < 0.1 ? "< 0.1" : elapsedSec.toFixed(1).replace(/\.0$/, "");
-        msgLines.push("<br><span class='status-time'>⏱ ระบบใช้เวลา " + prettyTime + " วินาที</span>");
+        msgLines.push("<br><span class='status-time'>ใช้เวลา " + prettyTime + " วินาที</span>");
       }
 
       status.innerHTML = msgLines.join("<br>");
@@ -1721,7 +1900,7 @@
             <div class="item-top-row">
               <div class="item-header">
                 REDEEMED CODE: ${item.code}
-                ${appTag ? `<span class="item-tag">✨ ${appTag}</span>` : ""}
+                ${appTag ? `<span class="item-tag">${appTag}</span>` : ""}
               </div>
             </div>
             <div class="item-body">${item.reply || ""}</div>
@@ -1761,7 +1940,7 @@
         logoCircle.classList.add("success-bounce");
       }
       launchConfetti();
-      showToast("รับสินค้าเรียบร้อย ✨");
+      showToast("รับสินค้าเรียบร้อย");
     }
 
     function resizeFxCanvas() {
@@ -1778,7 +1957,6 @@
     }
 
     window.addEventListener("resize", resizeFxCanvas);
-    resizeFxCanvas();
 
     function launchConfetti() {
       if (!fxCanvas || !fxCtx) return;
@@ -1854,7 +2032,7 @@
       }
 
       const originalText = btn.innerHTML;
-      btn.innerHTML = "คัดลอกแล้ว ✓";
+      btn.innerHTML = "คัดลอกแล้ว";
       btn.style.background = "#f4faf7";
       btn.style.borderColor = "#85b8a6";
 
@@ -1864,7 +2042,7 @@
         btn.style.borderColor = "";
       }, 1800);
 
-      showToast("คัดลอกรายละเอียดแล้ว ✨");
+      showToast("คัดลอกรายละเอียดแล้ว");
     }
 
     function showToast(message) {
@@ -1907,7 +2085,7 @@
     `;
     document.head.appendChild(rippleStyle);
 
-    [btnRedeem, btnClear, themeToggle].forEach((el) => {
+    [btnRedeem, btnClear, themeToggle, welcomeBtn].forEach((el) => {
       if (el) addRippleEffect(el);
     });
 
