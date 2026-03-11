@@ -31,7 +31,6 @@
       --radius-xl: 30px;
       --radius-lg: 22px;
       --radius-md: 16px;
-      --line-green: #06c755;
     }
 
     body.theme-dark {
@@ -363,44 +362,6 @@
       max-width: 680px;
     }
 
-    .live-banner {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .live-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.82);
-      border: 1px solid var(--line);
-      font-size: .78rem;
-      color: var(--text-sub);
-      box-shadow: 0 8px 18px rgba(0,0,0,.03);
-    }
-
-    body.theme-dark .live-pill {
-      background: rgba(35,37,43,.92);
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #62c171;
-      box-shadow: 0 0 0 4px rgba(98,193,113,.16);
-      animation: pulseDot 1.8s ease-in-out infinite;
-    }
-
-    @keyframes pulseDot {
-      0%,100% { transform: scale(1); }
-      50% { transform: scale(1.12); }
-    }
-
     .hero-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -497,6 +458,34 @@
 
     body.theme-dark .mini-badge {
       background: rgba(36,38,43,.92);
+    }
+
+    .mini-badge-live {
+      gap: 8px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #62c171;
+      box-shadow: 0 0 0 4px rgba(98,193,113,.16);
+      animation: pulseDot 1.8s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    .live-text {
+      animation: liveBlink 1.6s ease-in-out infinite;
+    }
+
+    @keyframes pulseDot {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+    }
+
+    @keyframes liveBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .55; }
     }
 
     .input-card {
@@ -711,7 +700,7 @@
 
     .copy-btn,
     .history-btn,
-    .admin-btn {
+    .floating-admin-btn {
       border-radius: 16px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,.84);
@@ -730,13 +719,12 @@
 
     .copy-btn:hover,
     .history-btn:hover,
-    .admin-btn:hover {
+    .floating-admin-btn:hover {
       transform: translateY(-1px);
     }
 
     body.theme-dark .copy-btn,
-    body.theme-dark .history-btn,
-    body.theme-dark .admin-btn {
+    body.theme-dark .history-btn {
       background: rgba(37,39,45,.92);
       border-color: #3a3f49;
       color: var(--text-main);
@@ -1069,24 +1057,26 @@
     }
 
     .copy-all-wrap {
-      display: grid;
-      gap: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
     .copy-btn.all {
       background: linear-gradient(135deg, #fffaf6, #f3e7de);
       border-style: dashed;
       color: var(--brand-deep);
-      padding: 14px 16px;
-      font-size: .92rem;
-      border-radius: 18px;
-      box-shadow: 0 10px 20px rgba(185,143,115,.08);
+      padding: 8px 12px;
+      font-size: .76rem;
+      border-radius: 999px;
+      box-shadow: 0 6px 14px rgba(185,143,115,.08);
+      min-height: 36px;
     }
 
     .copy-all-help {
-      font-size: .73rem;
+      font-size: .72rem;
       color: var(--text-sub);
-      text-align: center;
     }
 
     body.theme-dark .copy-btn.all {
@@ -1249,27 +1239,28 @@
     .floating-admin-btn {
       border: none;
       border-radius: 999px;
-      padding: 13px 16px;
-      background: linear-gradient(135deg, #11d861, #06c755);
-      color: #fff;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 18px 34px rgba(6, 199, 85, 0.24);
+      padding: 10px 13px;
+      background: linear-gradient(135deg, #ffffff, #f8fff9);
+      color: #06c755;
+      box-shadow: 0 18px 34px rgba(6, 199, 85, 0.18);
+    }
+
+    .floating-admin-btn img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+      display: block;
+      border-radius: 999px;
+    }
+
+    .floating-admin-btn span {
+      font-size: .8rem;
       font-weight: 700;
-      font-size: .84rem;
-      cursor: pointer;
-      transition: .18s ease;
+      color: #06c755;
     }
 
-    .floating-admin-btn:hover {
-      transform: translateY(-2px) scale(1.01);
-    }
-
-    .floating-admin .line-icon {
-      width: 18px;
-      height: 18px;
-      flex-shrink: 0;
+    body.theme-dark .floating-admin-btn {
+      background: linear-gradient(135deg, #f8fff9, #ffffff);
     }
 
     .bottom-footer {
@@ -1422,8 +1413,11 @@
       }
 
       .floating-admin-btn {
-        padding: 12px 14px;
-        font-size: .8rem;
+        padding: 10px 12px;
+      }
+
+      .floating-admin-btn span {
+        font-size: .76rem;
       }
 
       .bear-wallpaper svg {
@@ -1448,6 +1442,7 @@
     @media (prefers-reduced-motion: reduce) {
       .orb,
       .status-dot,
+      .live-text,
       .meter-bar::after,
       .primary-btn::before,
       .loading-circle,
@@ -1516,10 +1511,7 @@
 
   <a class="floating-admin" href="https://lin.ee/gAh3wAH" target="_blank" rel="noopener noreferrer" aria-label="ติดต่อแอดมิน">
     <div class="floating-admin-btn">
-      <svg class="line-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M53.6 29.4c0-10.8-9.7-19.5-21.6-19.5S10.4 18.6 10.4 29.4c0 9.7 7.7 17.8 18.1 19.3l-1.2 6.8a1.7 1.7 0 0 0 2.5 1.8l8.1-4.6c.7.1 1.4.1 2.1.1 11.9 0 21.6-8.7 21.6-19.4Z" fill="white"/>
-        <path d="M24.5 23.8c-.7 0-1.3.6-1.3 1.3v8.5c0 .7.6 1.3 1.3 1.3h4.8c.7 0 1.3-.6 1.3-1.3s-.6-1.3-1.3-1.3h-3.5v-7.2c0-.7-.6-1.3-1.3-1.3Zm15.1 0c-.7 0-1.3.6-1.3 1.3v5.2l-4.4-5.9a1.3 1.3 0 0 0-1.1-.6h-.3c-.7 0-1.3.6-1.3 1.3v8.5c0 .7.6 1.3 1.3 1.3s1.3-.6 1.3-1.3v-5.2l4.4 5.9c.2.3.6.6 1.1.6h.3c.7 0 1.3-.6 1.3-1.3v-8.5c0-.7-.6-1.3-1.3-1.3Zm-22.9 0c-.7 0-1.3.6-1.3 1.3v8.5c0 .7.6 1.3 1.3 1.3s1.3-.6 1.3-1.3v-8.5c0-.7-.6-1.3-1.3-1.3Zm27.9 2.6c.7 0 1.3-.6 1.3-1.3s-.6-1.3-1.3-1.3h-4.8c-.7 0-1.3.6-1.3 1.3v8.5c0 .7.6 1.3 1.3 1.3h4.8c.7 0 1.3-.6 1.3-1.3s-.6-1.3-1.3-1.3h-3.5v-1h3.5c.7 0 1.3-.6 1.3-1.3s-.6-1.3-1.3-1.3h-3.5v-1h3.5Z" fill="#06C755"/>
-      </svg>
+      <img src="https://img2.imgbiz.com/imgbiz/IMG_1141.png" alt="LINE" />
       <span>ติดต่อแอดมิน</span>
     </div>
   </a>
@@ -1549,14 +1541,6 @@
           <div class="card-inner">
             <h1 class="hero-title">ระบบรับสินค้าอัตโนมัติสำหรับลูกค้า</h1>
             <p class="hero-desc">วางโค้ดจากแอดมิน แล้วให้ระบบตรวจสอบและแสดงรายละเอียดให้อัตโนมัติในหน้าเดียว พร้อมคัดลอกผลลัพธ์ได้สะดวก</p>
-
-            <div class="live-banner">
-              <div class="live-pill">
-                <span class="status-dot"></span>
-                <span>เปิดรับอัตโนมัติ 24 ชั่วโมง</span>
-              </div>
-              <div class="live-pill">รองรับหลายโค้ดในครั้งเดียว</div>
-            </div>
 
             <div class="hero-strip">
               <div class="hero-strip-item">
@@ -1609,9 +1593,9 @@
                 <p class="redeem-head-desc">รองรับหลายโค้ดในครั้งเดียว โดยแยก 1 บรรทัดต่อ 1 โค้ด</p>
               </div>
               <div class="head-badges">
-                <div class="mini-badge">
-                  <span class="status-dot" style="animation:none; box-shadow:0 0 0 4px rgba(98,193,113,.14)"></span>
-                  <span>ออนไลน์ 24 ชม.</span>
+                <div class="mini-badge mini-badge-live">
+                  <span class="status-dot"></span>
+                  <span class="live-text">ระบบออนไลน์ 24 ชม.</span>
                 </div>
                 <div class="mini-badge" id="lineInfo">สูงสุด ~5 โค้ด/ครั้ง</div>
               </div>
@@ -1715,7 +1699,7 @@
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const MAX_CODES = 5;
-    const HISTORY_KEY = "redeem_history_v13";
+    const HISTORY_KEY = "redeem_history_v14";
 
     const btnRedeem = document.getElementById("btnRedeem");
     const btnClear = document.getElementById("btnClear");
@@ -1800,7 +1784,7 @@
 
     const tips = [
       "วางหลายโค้ดได้ในครั้งเดียว สูงสุดประมาณ 5 โค้ด/ครั้ง",
-      "กดคัดลอกทั้งหมดได้ในปุ่มเดียว สะดวกขึ้นเยอะ",
+      "กดคัดลอกทั้งหมดได้ในปุ่มเล็ก ๆ ด้านล่างผลลัพธ์",
       "มีปุ่มติดต่อแอดมินลอยอยู่มุมล่างขวา",
       "กดรับสินค้าแล้ว อย่าเพิ่งรีเฟรชหน้านะคะ"
     ];
