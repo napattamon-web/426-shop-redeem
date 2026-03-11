@@ -21,9 +21,6 @@
       --shadow-soft: 0 18px 40px rgba(0,0,0,0.06);
       --radius-xl: 24px;
       --glass: rgba(255,255,255,0.76);
-      --net-ok: #4caf50;
-      --net-warn: #ffb74d;
-      --net-bad: #ef5350;
     }
 
     body.theme-dark {
@@ -313,76 +310,6 @@
       50% { transform: scale(1.12); }
     }
 
-    .header-live-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .live-pill {
-      flex: 1 1 0;
-      min-width: 150px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 9px 12px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.88);
-      border: 1px solid rgba(0,0,0,0.05);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.04);
-      backdrop-filter: blur(8px);
-    }
-
-    body.theme-dark .live-pill {
-      background: rgba(31,32,36,0.92);
-      border-color: rgba(255,255,255,0.06);
-    }
-
-    .live-label {
-      font-size: 0.72rem;
-      color: var(--text-sub);
-      line-height: 1.1;
-    }
-
-    .live-value {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--text-main);
-      white-space: nowrap;
-    }
-
-    .network-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .network-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 999px;
-      background: var(--net-ok);
-      box-shadow: 0 0 0 5px rgba(76,175,80,0.12);
-      transition: background 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .network-pill.is-ok .network-dot {
-      background: var(--net-ok);
-      box-shadow: 0 0 0 5px rgba(76,175,80,0.12);
-    }
-
-    .network-pill.is-slow .network-dot {
-      background: var(--net-warn);
-      box-shadow: 0 0 0 5px rgba(255,183,77,0.14);
-    }
-
-    .network-pill.is-bad .network-dot {
-      background: var(--net-bad);
-      box-shadow: 0 0 0 5px rgba(239,83,80,0.14);
-    }
-
     .theme-toggle {
       border-radius: 999px;
       border: 1px solid rgba(0,0,0,0.06);
@@ -409,6 +336,39 @@
     body.theme-dark .theme-toggle {
       background: rgba(25,26,30,0.96);
       border-color: rgba(255,255,255,0.08);
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .trust-pill {
+      padding: 8px 10px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+      backdrop-filter: blur(8px);
+      text-align: center;
+      font-size: 0.74rem;
+      color: var(--text-main);
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .trust-pill span {
+      display: block;
+      color: var(--text-sub);
+      font-size: 0.68rem;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    body.theme-dark .trust-pill {
+      background: rgba(31,32,36,0.92);
+      border-color: rgba(255,255,255,0.06);
     }
 
     .step-row {
@@ -596,6 +556,34 @@
       }
     }
 
+    .hero-notes {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .hero-note {
+      padding: 9px 10px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(0,0,0,0.05);
+      font-size: 0.76rem;
+      color: var(--text-main);
+      line-height: 1.45;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.04);
+    }
+
+    body.theme-dark .hero-note {
+      background: rgba(37,38,43,0.9);
+      border-color: rgba(255,255,255,0.05);
+    }
+
+    .hero-note strong {
+      display: block;
+      font-size: 0.78rem;
+      margin-bottom: 2px;
+    }
+
     .input-field {
       background: rgba(250,248,246,0.88);
       border-radius: 18px;
@@ -685,6 +673,69 @@
       text-align: right;
       flex: 1;
       min-height: 1.2em;
+    }
+
+    .duplicate-warning {
+      display: none;
+      margin-top: 8px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: #fff3e7;
+      border: 1px solid #f2c7a7;
+      color: #9a5d2e;
+      font-size: 0.78rem;
+      line-height: 1.5;
+    }
+
+    .duplicate-warning.show {
+      display: block;
+    }
+
+    body.theme-dark .duplicate-warning {
+      background: #3a2a21;
+      border-color: #7a5842;
+      color: #ffd9ba;
+    }
+
+    .quick-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .btn-soft {
+      flex: 1;
+      border-radius: 14px;
+      border: 1px solid #ddd6cf;
+      background: rgba(255,255,255,0.9);
+      padding: 10px 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-main);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.18s ease;
+      backdrop-filter: blur(6px);
+    }
+
+    .btn-soft:hover {
+      transform: translateY(-1px);
+      border-color: #cfc5ba;
+      background: #fff;
+    }
+
+    body.theme-dark .btn-soft {
+      background: rgba(37,38,43,0.9);
+      border-color: #3a3d45;
+      color: #f2f3f6;
+    }
+
+    body.theme-dark .btn-soft:hover {
+      background: #2c2e35;
+      border-color: #4a4d58;
     }
 
     .code-meter-wrap {
@@ -852,15 +903,13 @@
       border-color: #444751;
     }
 
-    .btn-copy-all {
+    .btn-copy-all,
+    .btn-copy-issue {
       width: 100%;
       border-radius: 16px;
-      border: 1px dashed #c9ddd4;
-      background: linear-gradient(135deg, #f7fcfa, #eef8f4);
       padding: 11px 14px;
       font-size: 0.86rem;
       font-weight: 700;
-      color: #3f6f60;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -871,15 +920,33 @@
       margin-top: 6px;
     }
 
-    .btn-copy-all:hover {
+    .btn-copy-all {
+      border: 1px dashed #c9ddd4;
+      background: linear-gradient(135deg, #f7fcfa, #eef8f4);
+      color: #3f6f60;
+    }
+
+    .btn-copy-all:hover,
+    .btn-copy-issue:hover {
       transform: translateY(-1px);
-      box-shadow: 0 10px 20px rgba(133,184,166,0.12);
+    }
+
+    .btn-copy-issue {
+      border: 1px dashed #f0c2a0;
+      background: linear-gradient(135deg, #fff7f0, #fff1e6);
+      color: #9a5d2e;
     }
 
     body.theme-dark .btn-copy-all {
       background: linear-gradient(135deg, #223831, #273a35);
       border-color: #45685b;
       color: #d8efe6;
+    }
+
+    body.theme-dark .btn-copy-issue {
+      background: linear-gradient(135deg, #3b2a21, #342722);
+      border-color: #7a5842;
+      color: #ffd9ba;
     }
 
     .btn-primary .spinner {
@@ -1047,6 +1114,48 @@
       margin-bottom: 2px;
     }
 
+    .history-wrap {
+      margin-top: 4px;
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .history-wrap.show {
+      display: flex;
+    }
+
+    .history-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .history-item {
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.04);
+      font-size: 0.76rem;
+      line-height: 1.5;
+    }
+
+    .history-item strong {
+      color: var(--text-main);
+    }
+
+    body.theme-dark .history-item {
+      background: rgba(37,38,43,0.92);
+      border-color: rgba(255,255,255,0.05);
+    }
+
     #results {
       margin-top: 4px;
       display: flex;
@@ -1054,15 +1163,56 @@
       gap: 12px;
     }
 
+    .result-section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .result-section-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-main);
+      padding: 2px 2px 0;
+    }
+
+    .section-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      display: inline-block;
+    }
+
+    .section-dot.ok { background: #7cbf9f; }
+    .section-dot.used { background: #b598ef; }
+    .section-dot.nf { background: #ee8b8b; }
+
     .result-item {
       border-radius: 18px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(250,247,244,0.98));
-      border: 1px solid rgba(227,221,215,0.95);
       padding: 12px;
       animation: fadeIn 0.35s ease-out;
       box-shadow: 0 12px 24px rgba(0,0,0,0.05);
       position: relative;
       overflow: hidden;
+    }
+
+    .result-item--ok {
+      background: linear-gradient(180deg, rgba(245,255,249,0.98), rgba(235,248,241,0.98));
+      border: 1px solid rgba(182,224,203,0.95);
+    }
+
+    .result-item--used {
+      background: linear-gradient(180deg, rgba(250,245,255,0.98), rgba(241,233,251,0.98));
+      border: 1px solid rgba(212,191,244,0.95);
+    }
+
+    .result-item--nf {
+      background: linear-gradient(180deg, rgba(255,246,246,0.98), rgba(252,236,236,0.98));
+      border: 1px solid rgba(244,200,200,0.95);
     }
 
     .result-item::before {
@@ -1073,14 +1223,34 @@
       width: 80px;
       height: 80px;
       border-radius: 999px;
-      background: radial-gradient(circle, rgba(133,184,166,0.16), transparent 70%);
       pointer-events: none;
     }
 
-    body.theme-dark .result-item {
-      background: linear-gradient(180deg, rgba(39,40,46,0.98), rgba(33,34,39,1));
-      border: 1px solid rgba(255,255,255,0.05);
-      box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+    .result-item--ok::before {
+      background: radial-gradient(circle, rgba(133,184,166,0.18), transparent 70%);
+    }
+
+    .result-item--used::before {
+      background: radial-gradient(circle, rgba(181,152,239,0.16), transparent 70%);
+    }
+
+    .result-item--nf::before {
+      background: radial-gradient(circle, rgba(238,139,139,0.16), transparent 70%);
+    }
+
+    body.theme-dark .result-item--ok {
+      background: linear-gradient(180deg, rgba(31,56,48,0.98), rgba(28,49,43,1));
+      border: 1px solid rgba(76,117,101,0.45);
+    }
+
+    body.theme-dark .result-item--used {
+      background: linear-gradient(180deg, rgba(49,39,64,0.98), rgba(43,35,56,1));
+      border: 1px solid rgba(97,80,128,0.45);
+    }
+
+    body.theme-dark .result-item--nf {
+      background: linear-gradient(180deg, rgba(60,35,35,0.98), rgba(54,30,30,1));
+      border: 1px solid rgba(126,73,73,0.45);
     }
 
     @keyframes fadeIn {
@@ -1119,9 +1289,9 @@
     }
 
     body.theme-dark .item-tag {
-      background: #232b3a;
-      border-color: #3f557a;
-      color: #c4d4f5;
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.1);
+      color: #e5e8ef;
     }
 
     .item-body {
@@ -1138,8 +1308,9 @@
     }
 
     body.theme-dark .item-body {
-      background: linear-gradient(135deg, #2a2b31, #24252b);
-      border-color: #3a3c45;
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.08);
+      color: #f2f3f6;
     }
 
     .btn-copy {
@@ -1162,8 +1333,8 @@
     }
 
     body.theme-dark .btn-copy {
-      background: #26272d;
-      border-color: #3b3d45;
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.1);
       color: #f2f3f6;
     }
 
@@ -1175,7 +1346,41 @@
 
     body.theme-dark .btn-copy:hover {
       border-color: #9dd4c1;
-      background: #283036;
+      background: rgba(255,255,255,0.12);
+    }
+
+    .support-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    .support-action {
+      border-radius: 14px;
+      border: 1px solid #dfd7ce;
+      background: rgba(255,255,255,0.92);
+      padding: 11px 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.04);
+    }
+
+    .support-action:hover {
+      transform: translateY(-1px);
+    }
+
+    body.theme-dark .support-action {
+      background: rgba(37,38,43,0.92);
+      border-color: rgba(255,255,255,0.06);
+      color: #f2f3f6;
     }
 
     .footer {
@@ -1307,64 +1512,212 @@
       margin-right: 4px;
     }
 
-    /* custom cursor */
-    .cursor-dot,
-    .cursor-ring {
+    .success-modal {
       position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 10000;
-      opacity: 0;
-      transform: translate(-50%, -50%);
-      transition: opacity 0.2s ease;
+      inset: 0;
+      z-index: 10001;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(15, 13, 12, 0.32);
+      backdrop-filter: blur(8px);
     }
 
-    .cursor-dot {
-      width: 8px;
-      height: 8px;
+    .success-modal.show {
+      display: flex;
+    }
+
+    .success-modal-card {
+      width: 100%;
+      max-width: 360px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.96);
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+      padding: 18px;
+      text-align: center;
+      animation: modalPop 0.22s ease-out;
+    }
+
+    body.theme-dark .success-modal-card {
+      background: rgba(31,32,36,0.96);
+      border-color: rgba(255,255,255,0.06);
+    }
+
+    @keyframes modalPop {
+      from { opacity: 0; transform: translateY(10px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .success-icon {
+      width: 66px;
+      height: 66px;
+      margin: 0 auto 10px;
       border-radius: 999px;
-      background: rgba(133,184,166,0.95);
-      box-shadow: 0 0 16px rgba(133,184,166,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #e8f6f0, #f8f4ea);
+      font-size: 1.8rem;
+      box-shadow: 0 10px 24px rgba(133,184,166,0.16);
     }
 
-    .cursor-ring {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      border: 1.5px solid rgba(133,184,166,0.5);
-      box-shadow: 0 0 22px rgba(133,184,166,0.12);
-      backdrop-filter: blur(2px);
+    body.theme-dark .success-icon {
+      background: linear-gradient(135deg, #223831, #312920);
     }
 
-    .cursor-ring.is-hover {
-      width: 46px;
-      height: 46px;
-      border-color: rgba(240,199,167,0.7);
-      box-shadow: 0 0 24px rgba(240,199,167,0.18);
+    .success-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      margin-bottom: 4px;
     }
 
-    .touch-glow {
+    .success-text {
+      font-size: 0.82rem;
+      color: var(--text-sub);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .success-stats {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .success-stat {
+      min-width: 84px;
+      padding: 8px 10px;
+      border-radius: 14px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+
+    .success-stat.ok {
+      background: #e7f4ee;
+      border-color: #c3dfd2;
+      color: #356655;
+    }
+
+    .success-stat.used {
+      background: #f6f0ff;
+      border-color: #d9c8ff;
+      color: #614a8c;
+    }
+
+    .success-stat.nf {
+      background: #ffe9e7;
+      border-color: #f5c5bf;
+      color: #9e4e48;
+    }
+
+    body.theme-dark .success-stat.ok {
+      background: #223831;
+      border-color: #3e6d5b;
+      color: #d5eee3;
+    }
+
+    body.theme-dark .success-stat.used {
+      background: #2a2637;
+      border-color: #4b3f65;
+      color: #e5dbff;
+    }
+
+    body.theme-dark .success-stat.nf {
+      background: #3b2626;
+      border-color: #5a3631;
+      color: #ffd8d5;
+    }
+
+    .success-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .modal-btn {
+      flex: 1;
+      border: none;
+      border-radius: 16px;
+      padding: 11px 12px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .modal-btn--primary {
+      background: linear-gradient(135deg, #8fcbb7, #6aa28f);
+      color: white;
+    }
+
+    .modal-btn--secondary {
+      background: #f5efea;
+      color: var(--text-main);
+      border: 1px solid #e1d6ca;
+    }
+
+    body.theme-dark .modal-btn--secondary {
+      background: #25262b;
+      border-color: #383a40;
+      color: #f2f3f6;
+    }
+
+    .sticky-bar {
       position: fixed;
-      width: 120px;
-      height: 120px;
-      border-radius: 999px;
-      pointer-events: none;
-      z-index: 9998;
-      background: radial-gradient(circle, rgba(133,184,166,0.18), rgba(133,184,166,0.06), transparent 70%);
-      filter: blur(10px);
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      transition: opacity 0.16s ease;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%) translateY(120%);
+      width: min(440px, calc(100vw - 24px));
+      z-index: 9997;
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.14);
+      border-radius: 18px;
+      padding: 10px;
+      display: flex;
+      gap: 8px;
+      transition: all 0.24s ease;
+      backdrop-filter: blur(10px);
     }
 
-    @media (hover: hover) and (pointer: fine) {
-      body.cursor-fancy,
-      body.cursor-fancy a,
-      body.cursor-fancy button,
-      body.cursor-fancy textarea {
-        cursor: none !important;
-      }
+    .sticky-bar.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    body.theme-dark .sticky-bar {
+      background: rgba(22,23,27,0.96);
+      border-color: rgba(255,255,255,0.07);
+    }
+
+    .sticky-btn {
+      flex: 1;
+      border-radius: 12px;
+      border: none;
+      padding: 11px 12px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .sticky-btn--main {
+      background: linear-gradient(135deg, #8fcbb7, #6aa28f);
+      color: #fff;
+    }
+
+    .sticky-btn--ghost {
+      background: #f5efea;
+      color: var(--text-main);
+      border: 1px solid #e1d6ca;
+    }
+
+    body.theme-dark .sticky-btn--ghost {
+      background: #25262b;
+      border-color: #383a40;
+      color: #f2f3f6;
     }
 
     @media (max-width: 480px) {
@@ -1390,12 +1743,15 @@
         font-size: 0.74rem;
       }
 
-      .header-live-row {
-        flex-direction: column;
+      .trust-row,
+      .hero-notes,
+      .support-actions {
+        grid-template-columns: 1fr;
       }
 
-      .live-pill {
-        width: 100%;
+      .btn-row,
+      .success-actions {
+        flex-direction: column;
       }
     }
 
@@ -1417,9 +1773,8 @@
       .btn-secondary,
       .btn-copy,
       .theme-toggle,
-      .cursor-ring,
-      .cursor-dot,
-      .touch-glow {
+      .sticky-bar,
+      .success-modal-card {
         transition: none !important;
       }
     }
@@ -1431,10 +1786,6 @@
   <div class="bg-orb orb-3"></div>
   <div class="bg-grid"></div>
   <canvas id="fxCanvas"></canvas>
-
-  <div class="cursor-dot" id="cursorDot"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
-  <div class="touch-glow" id="touchGlow"></div>
 
   <div class="app">
     <header class="header">
@@ -1457,30 +1808,24 @@
         <div class="header-right">
           <div class="badge">
             <span class="badge-dot"></span>
-            <span>ระบบออนไลน์</span>
+            <span>ระบบออนไลน์ 24 ชม.</span>
           </div>
           <button class="theme-toggle" id="themeToggle" type="button" aria-label="สลับโหมดกลางคืน">🌙</button>
         </div>
       </div>
 
-      <div class="header-live-row">
-        <div class="live-pill">
-          <div>
-            <div class="live-label">เวลาปัจจุบัน</div>
-            <div class="live-value" id="liveClock">--:--:--</div>
-          </div>
-          <div class="live-label" id="liveDate">--</div>
+      <div class="trust-row">
+        <div class="trust-pill">
+          พร้อมส่ง
+          <span>อัตโนมัติทันที</span>
         </div>
-
-        <div class="live-pill">
-          <div>
-            <div class="live-label">สถานะเครือข่าย</div>
-            <div class="live-value network-pill is-ok" id="networkPill">
-              <span class="network-dot"></span>
-              <span id="networkText">ออนไลน์</span>
-            </div>
-          </div>
-          <div class="live-label" id="networkHint">พร้อมใช้งาน</div>
+        <div class="trust-pill">
+          รองรับหลายโค้ด
+          <span>1 บรรทัดต่อ 1 โค้ด</span>
+        </div>
+        <div class="trust-pill">
+          มีปุ่มช่วยเหลือ
+          <span>คัดลอก / แจ้งปัญหา</span>
         </div>
       </div>
 
@@ -1501,8 +1846,19 @@
       </div>
 
       <div class="card-desc">
-        <strong>วางโค้ดจากแอดมินได้เลย ✨</strong>
-        หลายโค้ดในครั้งเดียว • 1 บรรทัดต่อ 1 โค้ด
+        <strong>ส่งสินค้าอัตโนมัติ 24 ชั่วโมง ✨</strong>
+        วางหลายโค้ดพร้อมกันได้ • 1 บรรทัดต่อ 1 โค้ด
+      </div>
+
+      <div class="hero-notes">
+        <div class="hero-note">
+          <strong>ได้รับผลไว</strong>
+          ระบบตรวจสอบและแสดงผลภายในไม่กี่วินาที
+        </div>
+        <div class="hero-note">
+          <strong>มีปัญหาก็ส่งต่อได้</strong>
+          คัดลอกผลลัพธ์หรือรายการมีปัญหาส่งหาแอดมินได้ทันที
+        </div>
       </div>
 
       <div class="input-field">
@@ -1511,6 +1867,19 @@
         <div class="input-helper-row">
           <div class="small-tag">แนะนำ: 1 บรรทัดต่อ 1 โค้ด</div>
           <span id="lineInfo">สูงสุด ~5 โค้ด/ครั้ง</span>
+        </div>
+
+        <div class="duplicate-warning" id="duplicateWarning"></div>
+
+        <div class="quick-actions">
+          <button class="btn-soft" id="btnPaste" type="button">
+            <span>📋</span>
+            <span>วางจากคลิปบอร์ด</span>
+          </button>
+          <button class="btn-soft" id="btnRestore" type="button">
+            <span>🕘</span>
+            <span>กู้ผลล่าสุด</span>
+          </button>
         </div>
 
         <div class="code-meter-wrap">
@@ -1526,7 +1895,7 @@
 
       <div class="btn-row">
         <button class="btn-primary" id="btnRedeem" type="button">
-          <span>รับสินค้า</span><span>↗</span>
+          <span id="redeemLabel">รับสินค้า</span><span>↗</span>
         </button>
         <button class="btn-secondary" id="btnClear" type="button">
           <span>ล้างทั้งหมด</span>
@@ -1542,6 +1911,22 @@
       <div id="status"></div>
       <div id="copyAllWrap"></div>
       <div id="results"></div>
+
+      <div class="support-actions">
+        <button class="support-action" id="btnAdminSummary" type="button">
+          <span>📝</span>
+          <span>คัดลอกข้อความส่งแอดมิน</span>
+        </button>
+        <button class="support-action" id="btnIssueOnly" type="button">
+          <span>⚠️</span>
+          <span>คัดลอกเฉพาะรายการมีปัญหา</span>
+        </button>
+      </div>
+
+      <div class="history-wrap" id="historyWrap">
+        <div class="history-title">ประวัติผลล่าสุด</div>
+        <div class="history-list" id="historyList"></div>
+      </div>
     </main>
 
     <footer class="footer">
@@ -1560,12 +1945,37 @@
     <span id="tipText">1 บรรทัดต่อ 1 โค้ด ใช้งานง่ายสุดค่ะ</span>
   </div>
 
+  <div class="success-modal" id="successModal">
+    <div class="success-modal-card">
+      <div class="success-icon">🎉</div>
+      <div class="success-title">รับสินค้าเรียบร้อย</div>
+      <div class="success-text" id="successText">ระบบประมวลผลสำเร็จแล้ว</div>
+      <div class="success-stats" id="successStats"></div>
+      <div class="success-actions">
+        <button class="modal-btn modal-btn--primary" id="modalCopyAll" type="button">คัดลอกทั้งหมด</button>
+        <button class="modal-btn modal-btn--secondary" id="modalClose" type="button">ปิด</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sticky-bar" id="stickyBar">
+    <button class="sticky-btn sticky-btn--main" id="stickyCopyAll" type="button">คัดลอกทั้งหมด</button>
+    <button class="sticky-btn sticky-btn--ghost" id="stickyIssueOnly" type="button">รายการมีปัญหา</button>
+  </div>
+
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const MAX_CODES = 5;
+    const HISTORY_KEY = "redeemHistory426";
+    const LAST_RESULT_KEY = "redeemLastResult426";
+    const LAST_INPUT_KEY = "redeemLastInput426";
 
     const btnRedeem = document.getElementById("btnRedeem");
     const btnClear = document.getElementById("btnClear");
+    const btnPaste = document.getElementById("btnPaste");
+    const btnRestore = document.getElementById("btnRestore");
+    const btnAdminSummary = document.getElementById("btnAdminSummary");
+    const btnIssueOnly = document.getElementById("btnIssueOnly");
     const codeInput = document.getElementById("codeInput");
     const lineInfo = document.getElementById("lineInfo");
     const status = document.getElementById("status");
@@ -1579,26 +1989,27 @@
     const tipText = document.getElementById("tipText");
     const codeMeterBar = document.getElementById("codeMeterBar");
     const meterText = document.getElementById("meterText");
+    const redeemLabel = document.getElementById("redeemLabel");
+    const duplicateWarning = document.getElementById("duplicateWarning");
     const fxCanvas = document.getElementById("fxCanvas");
     const fxCtx = fxCanvas ? fxCanvas.getContext("2d") : null;
     const mainCard = document.getElementById("mainCard");
-    const liveClock = document.getElementById("liveClock");
-    const liveDate = document.getElementById("liveDate");
-    const networkPill = document.getElementById("networkPill");
-    const networkText = document.getElementById("networkText");
-    const networkHint = document.getElementById("networkHint");
-    const cursorDot = document.getElementById("cursorDot");
-    const cursorRing = document.getElementById("cursorRing");
-    const touchGlow = document.getElementById("touchGlow");
+    const historyWrap = document.getElementById("historyWrap");
+    const historyList = document.getElementById("historyList");
+    const successModal = document.getElementById("successModal");
+    const successText = document.getElementById("successText");
+    const successStats = document.getElementById("successStats");
+    const modalCopyAll = document.getElementById("modalCopyAll");
+    const modalClose = document.getElementById("modalClose");
+    const stickyBar = document.getElementById("stickyBar");
+    const stickyCopyAll = document.getElementById("stickyCopyAll");
+    const stickyIssueOnly = document.getElementById("stickyIssueOnly");
 
     let isLoading = false;
     let latestCopyAllText = "";
-    let lastPointerX = window.innerWidth / 2;
-    let lastPointerY = window.innerHeight / 2;
-    let ringX = lastPointerX;
-    let ringY = lastPointerY;
-    let dotX = lastPointerX;
-    let dotY = lastPointerY;
+    let latestIssueText = "";
+    let latestAdminSummary = "";
+    let lastRenderedPayload = null;
 
     function setStepState(state) {
       const steps = document.querySelectorAll(".step-pill");
@@ -1662,7 +2073,8 @@
       "วางหลายโค้ดได้ สูงสุดประมาณ 5 โค้ด/ครั้ง ✨",
       "1 บรรทัดต่อ 1 โค้ด ใช้งานง่ายสุดค่ะ",
       "กดรับสินค้าแล้ว อย่าเพิ่งรีเฟรชหน้านะคะ",
-      "คัดลอกทั้งหมดได้ในปุ่มเดียว สะดวกขึ้นเยอะ 💖"
+      "คัดลอกผลทั้งหมดหรือเฉพาะรายการมีปัญหาได้ 💖",
+      "ถ้ามีปัญหา กดคัดลอกข้อความส่งแอดมินได้ทันที"
     ];
 
     let tipIndex = 0;
@@ -1683,7 +2095,52 @@
 
     btnRedeem.addEventListener("click", redeem);
     btnClear.addEventListener("click", clearForm);
-    codeInput.addEventListener("input", updateLineInfo);
+    btnPaste.addEventListener("click", pasteFromClipboard);
+    btnRestore.addEventListener("click", restoreLastResult);
+    btnAdminSummary.addEventListener("click", () => {
+      if (!latestAdminSummary) {
+        showToast("ยังไม่มีข้อมูลสำหรับส่งแอดมิน");
+        return;
+      }
+      copyText(latestAdminSummary);
+      showToast("คัดลอกข้อความส่งแอดมินแล้ว");
+    });
+    btnIssueOnly.addEventListener("click", () => {
+      if (!latestIssueText) {
+        showToast("ยังไม่มีรายการมีปัญหา");
+        return;
+      }
+      copyText(latestIssueText);
+      showToast("คัดลอกรายการมีปัญหาแล้ว");
+    });
+
+    modalClose.addEventListener("click", closeSuccessModal);
+    modalCopyAll.addEventListener("click", () => {
+      if (!latestCopyAllText) return;
+      copyText(latestCopyAllText);
+      showToast("คัดลอกทั้งหมดแล้ว ✨");
+    });
+
+    stickyCopyAll.addEventListener("click", () => {
+      if (!latestCopyAllText) return;
+      copyText(latestCopyAllText);
+      showToast("คัดลอกทั้งหมดแล้ว ✨");
+    });
+
+    stickyIssueOnly.addEventListener("click", () => {
+      if (!latestIssueText) {
+        showToast("ยังไม่มีรายการมีปัญหา");
+        return;
+      }
+      copyText(latestIssueText);
+      showToast("คัดลอกรายการมีปัญหาแล้ว");
+    });
+
+    successModal.addEventListener("click", (e) => {
+      if (e.target === successModal) closeSuccessModal();
+    });
+
+    codeInput.addEventListener("input", handleInputChange);
 
     window.addEventListener("beforeunload", (e) => {
       if (!isLoading) return;
@@ -1693,16 +2150,39 @@
 
     window.addEventListener("load", () => {
       setStepState("idle");
-      updateLineInfo();
+      handleInputChange();
       codeInput.focus();
-      startClock();
-      initNetworkMonitor();
-      initCursorEffects();
+      renderHistory();
+      resizeFxCanvas();
+      const savedInput = localStorage.getItem(LAST_INPUT_KEY) || "";
+      if (savedInput && !codeInput.value.trim()) {
+        codeInput.value = savedInput;
+        handleInputChange();
+      }
     });
 
-    function updateLineInfo() {
+    window.addEventListener("resize", resizeFxCanvas);
+
+    function getNormalizedLines() {
       const raw = codeInput.value || "";
-      const lines = raw.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+      const cleaned = raw
+        .replace(/[,\t]+/g, "\n")
+        .replace(/\u00A0/g, " ")
+        .split(/\r?\n/)
+        .map((l) => l.trim().replace(/\s+/g, ""))
+        .filter(Boolean);
+      return cleaned;
+    }
+
+    function handleInputChange() {
+      const lines = getNormalizedLines();
+      localStorage.setItem(LAST_INPUT_KEY, lines.join("\n"));
+      updateLineInfo(lines);
+      updateDuplicateWarning(lines);
+      updateRedeemLabel(lines);
+    }
+
+    function updateLineInfo(lines) {
       const count = lines.length;
 
       if (!count) {
@@ -1728,6 +2208,26 @@
       }
     }
 
+    function updateRedeemLabel(lines) {
+      const count = Math.min(lines.length, MAX_CODES);
+      redeemLabel.textContent = count ? `รับสินค้า (${count})` : "รับสินค้า";
+    }
+
+    function updateDuplicateWarning(lines) {
+      const map = new Map();
+      for (const code of lines) {
+        map.set(code, (map.get(code) || 0) + 1);
+      }
+      const duplicates = [...map.entries()].filter(([, count]) => count > 1).map(([code]) => code);
+      if (duplicates.length) {
+        duplicateWarning.classList.add("show");
+        duplicateWarning.innerHTML = `พบโค้ดซ้ำ ${duplicates.length} รายการ ระบบจะส่งเฉพาะรายการที่แสดงในช่องตามลำดับเดิม<br>• ${duplicates.join("<br>• ")}`;
+      } else {
+        duplicateWarning.classList.remove("show");
+        duplicateWarning.innerHTML = "";
+      }
+    }
+
     function clearForm() {
       codeInput.value = "";
       status.innerHTML = "";
@@ -1736,18 +2236,49 @@
       summaryDiv.innerHTML = "";
       copyAllWrap.innerHTML = "";
       latestCopyAllText = "";
-      lineInfo.textContent = "สูงสุด ~5 โค้ด/ครั้ง";
-      if (meterText) meterText.textContent = `0 / ${MAX_CODES}`;
-      if (codeMeterBar) codeMeterBar.style.width = "0%";
+      latestIssueText = "";
+      latestAdminSummary = "";
+      lastRenderedPayload = null;
+      stickyBar.classList.remove("show");
+      duplicateWarning.classList.remove("show");
+      localStorage.removeItem(LAST_INPUT_KEY);
       setStepState("idle");
+      handleInputChange();
       codeInput.focus();
       showToast("ล้างข้อมูลแล้ว");
     }
 
+    async function pasteFromClipboard() {
+      if (!navigator.clipboard || !navigator.clipboard.readText) {
+        showToast("อุปกรณ์นี้ยังไม่รองรับการวางจากคลิปบอร์ด");
+        return;
+      }
+      try {
+        const text = await navigator.clipboard.readText();
+        if (!text.trim()) {
+          showToast("ไม่พบข้อความในคลิปบอร์ด");
+          return;
+        }
+        const cleaned = text
+          .replace(/[,\t]+/g, "\n")
+          .replace(/\u00A0/g, " ")
+          .split(/\r?\n/)
+          .map((l) => l.trim().replace(/\s+/g, ""))
+          .filter(Boolean)
+          .join("\n");
+        codeInput.value = cleaned;
+        handleInputChange();
+        showToast("วางโค้ดจากคลิปบอร์ดแล้ว");
+      } catch (err) {
+        console.error(err);
+        showToast("ไม่สามารถอ่านคลิปบอร์ดได้");
+      }
+    }
+
     function redeem() {
       const inputContainer = document.querySelector(".input-field");
-      const raw = codeInput.value;
-      const input = raw.trim();
+      const lines = getNormalizedLines();
+      const input = lines.join("\n");
 
       status.classList.remove("status-error", "status-ok");
 
@@ -1760,7 +2291,6 @@
         return;
       }
 
-      const lines = raw.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
       let preWarn = "";
       if (lines.length > MAX_CODES) {
         preWarn = `คุณกรอกโค้ด ${lines.length} รายการ ระบบจะใช้เฉพาะ ${MAX_CODES} รายการแรกค่ะ`;
@@ -1794,20 +2324,23 @@
           isLoading = false;
           mainCard.classList.remove("loading");
           btnRedeem.disabled = false;
-          btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
+          btnRedeem.innerHTML = `<span id="redeemLabel">รับสินค้า</span><span>↗</span>`;
           renderResult(data, elapsedSec);
+          updateRedeemLabel(getNormalizedLines());
+          saveLastResult(data, elapsedSec);
+          pushHistory(data, elapsedSec);
         })
         .catch((err) => {
           console.error(err);
           isLoading = false;
           mainCard.classList.remove("loading");
           btnRedeem.disabled = false;
-          btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
+          btnRedeem.innerHTML = `<span id="redeemLabel">รับสินค้า</span><span>↗</span>`;
+          updateRedeemLabel(getNormalizedLines());
           status.innerHTML = "เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้งค่ะ";
           status.classList.add("status-error");
           setStepState("error");
           showToast("เชื่อมต่อไม่สำเร็จ");
-          setNetworkState("bad");
         });
     }
 
@@ -1816,7 +2349,11 @@
       summaryDiv.innerHTML = "";
       copyAllWrap.innerHTML = "";
       latestCopyAllText = "";
+      latestIssueText = "";
+      latestAdminSummary = "";
       status.classList.remove("status-error", "status-ok");
+      stickyBar.classList.remove("show");
+      lastRenderedPayload = res;
 
       if (!res) {
         status.innerHTML = "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งค่ะ";
@@ -1850,7 +2387,7 @@
           <div class="used-info-card">
             <div class="used-info-title">พบโค้ดที่ถูกใช้งานแล้วหลายรายการ</div>
             <div class="used-info-text">
-              หากไม่แน่ใจว่าโค้ดถูกใช้ไปแล้วจริงไหม แนะนำให้แคปหน้าจอนี้ แล้วส่งให้แอดมินช่วยตรวจสอบนะคะ 💬
+              หากไม่แน่ใจว่าโค้ดถูกใช้ไปแล้วจริงไหม แนะนำให้คัดลอกผลลัพธ์ส่งให้แอดมินตรวจสอบนะคะ 💬
             </div>
           </div>
         `;
@@ -1861,21 +2398,6 @@
       if (res.overflowMessage) msgLines.push("• " + res.overflowMessage);
       if (res.multiInLineMessage) msgLines.push("• " + res.multiInLineMessage);
 
-      if (res.notFound && res.notFound.length) {
-        msgLines.push("<br>โค้ดที่ไม่พบในระบบ:");
-        res.notFound.forEach((c) => msgLines.push("• " + c));
-      }
-
-      if (res.used && res.used.length) {
-        msgLines.push("<br>โค้ดที่ถูกใช้งานไปแล้ว:");
-        res.used.forEach((u) => {
-          let line = "• " + u.code;
-          if (u.app) line += " (" + u.app + ")";
-          if (u.usedAt) line += " — " + u.usedAt;
-          msgLines.push(line);
-        });
-      }
-
       if (typeof elapsedSec === "number" && isFinite(elapsedSec)) {
         const prettyTime = elapsedSec < 0.1 ? "< 0.1" : elapsedSec.toFixed(1).replace(/\.0$/, "");
         msgLines.push("<br><span class='status-time'>⏱ ระบบใช้เวลา " + prettyTime + " วินาที</span>");
@@ -1884,22 +2406,31 @@
       status.innerHTML = msgLines.join("<br>");
       status.classList.add(res.ok ? "status-ok" : "status-error");
 
-      if (res.ok && successCount > 0) {
-        codeInput.value = "";
-        updateLineInfo();
-      }
+      const allCopyChunks = [];
+      const issueChunks = [];
 
-      const copyAllChunks = [];
+      const makeSection = (title, dotClass) => {
+        const section = document.createElement("div");
+        section.className = "result-section";
+        section.innerHTML = `
+          <div class="result-section-title">
+            <span class="section-dot ${dotClass}"></span>
+            <span>${title}</span>
+          </div>
+        `;
+        resultsDiv.appendChild(section);
+        return section;
+      };
 
       if (res.items && res.items.length > 0) {
+        const section = makeSection("รายการสำเร็จ", "ok");
         res.items.forEach((item, index) => {
           const card = document.createElement("div");
-          card.className = "result-item";
+          card.className = "result-item result-item--ok";
           const safeReplyText = encodeURIComponent(item.reply || "");
           const appTag = (item.appName || "").trim();
-
           const sectionText = `CODE: ${item.code}${appTag ? ` (${appTag})` : ""}\n${item.reply || ""}`;
-          copyAllChunks.push(sectionText);
+          allCopyChunks.push(sectionText);
 
           card.innerHTML = `
             <div class="item-top-row">
@@ -1916,45 +2447,152 @@
             </button>
           `;
 
-          resultsDiv.appendChild(card);
-
-          card.animate(
-            [
-              { opacity: 0, transform: "translateY(16px) scale(0.98)" },
-              { opacity: 1, transform: "translateY(0) scale(1)" }
-            ],
-            {
-              duration: 320,
-              delay: index * 60,
-              easing: "cubic-bezier(.2,.8,.2,1)",
-              fill: "both"
-            }
-          );
+          section.appendChild(card);
+          animateCard(card, index);
         });
+      }
 
-        latestCopyAllText = copyAllChunks.join("\n\n--------------------\n\n");
+      if (res.used && res.used.length > 0) {
+        const section = makeSection("รายการที่ถูกใช้งานแล้ว", "used");
+        res.used.forEach((u, index) => {
+          let body = `โค้ด: ${u.code}`;
+          if (u.app) body += `\nแอป: ${u.app}`;
+          if (u.usedAt) body += `\nเวลาใช้งาน: ${u.usedAt}`;
+          const copyTextValue = `USED CODE: ${u.code}${u.app ? ` (${u.app})` : ""}${u.usedAt ? ` — ${u.usedAt}` : ""}`;
+          issueChunks.push(copyTextValue);
+          allCopyChunks.push(copyTextValue);
 
+          const card = document.createElement("div");
+          card.className = "result-item result-item--used";
+          card.innerHTML = `
+            <div class="item-top-row">
+              <div class="item-header">USED CODE: ${u.code}</div>
+            </div>
+            <div class="item-body">${body}</div>
+            <button class="btn-copy" data-text="${encodeURIComponent(copyTextValue)}">
+              <span>คัดลอกรายละเอียด</span>
+            </button>
+          `;
+          section.appendChild(card);
+          animateCard(card, index + 5);
+        });
+      }
+
+      if (res.notFound && res.notFound.length > 0) {
+        const section = makeSection("รายการที่ไม่พบในระบบ", "nf");
+        res.notFound.forEach((code, index) => {
+          const copyTextValue = `NOT FOUND: ${code}`;
+          issueChunks.push(copyTextValue);
+          allCopyChunks.push(copyTextValue);
+
+          const card = document.createElement("div");
+          card.className = "result-item result-item--nf";
+          card.innerHTML = `
+            <div class="item-top-row">
+              <div class="item-header">NOT FOUND: ${code}</div>
+            </div>
+            <div class="item-body">ไม่พบโค้ดนี้ในระบบ หากเชื่อว่าโค้ดถูกต้อง แนะนำให้คัดลอกผลนี้ส่งให้แอดมินตรวจสอบค่ะ</div>
+            <button class="btn-copy" data-text="${encodeURIComponent(copyTextValue)}">
+              <span>คัดลอกรายละเอียด</span>
+            </button>
+          `;
+          section.appendChild(card);
+          animateCard(card, index + 10);
+        });
+      }
+
+      latestCopyAllText = allCopyChunks.join("\n\n--------------------\n\n");
+      latestIssueText = issueChunks.join("\n");
+      latestAdminSummary = buildAdminSummary(res, elapsedSec);
+
+      if (latestCopyAllText) {
         copyAllWrap.innerHTML = `
           <button class="btn-copy-all" id="btnCopyAll" type="button">
             <span>📋</span>
             <span>คัดลอกทั้งหมด</span>
           </button>
+          ${latestIssueText ? `
+            <button class="btn-copy-issue" id="btnCopyIssueInline" type="button">
+              <span>⚠️</span>
+              <span>คัดลอกเฉพาะรายการมีปัญหา</span>
+            </button>
+          ` : ""}
         `;
 
-        const btnCopyAll = document.getElementById("btnCopyAll");
-        if (btnCopyAll) {
-          btnCopyAll.addEventListener("click", () => {
-            copyText(latestCopyAllText);
-            showToast("คัดลอกทั้งหมดแล้ว ✨");
-          });
-        }
-
-        document.querySelectorAll(".btn-copy").forEach((btn) => {
-          btn.addEventListener("click", () => copyToClipboard(btn));
+        document.getElementById("btnCopyAll")?.addEventListener("click", () => {
+          copyText(latestCopyAllText);
+          showToast("คัดลอกทั้งหมดแล้ว ✨");
         });
 
+        document.getElementById("btnCopyIssueInline")?.addEventListener("click", () => {
+          if (!latestIssueText) return;
+          copyText(latestIssueText);
+          showToast("คัดลอกรายการมีปัญหาแล้ว");
+        });
+
+        stickyBar.classList.add("show");
+      }
+
+      document.querySelectorAll(".btn-copy").forEach((btn) => {
+        btn.addEventListener("click", () => copyToClipboard(btn));
+      });
+
+      if (res.ok && successCount > 0) {
+        codeInput.value = "";
+        localStorage.removeItem(LAST_INPUT_KEY);
+        handleInputChange();
+        openSuccessModal(successCount, usedCount, nfCount);
+      }
+
+      if (resultsDiv.innerHTML.trim()) {
         window.scrollTo({ top: resultsDiv.offsetTop - 70, behavior: "smooth" });
       }
+    }
+
+    function animateCard(card, index) {
+      card.animate(
+        [
+          { opacity: 0, transform: "translateY(16px) scale(0.98)" },
+          { opacity: 1, transform: "translateY(0) scale(1)" }
+        ],
+        {
+          duration: 320,
+          delay: index * 50,
+          easing: "cubic-bezier(.2,.8,.2,1)",
+          fill: "both"
+        }
+      );
+    }
+
+    function buildAdminSummary(res, elapsedSec) {
+      const successCount = (res.items && res.items.length) || 0;
+      const usedCount = (res.used && res.used.length) || 0;
+      const nfCount = (res.notFound && res.notFound.length) || 0;
+      const prettyTime = typeof elapsedSec === "number" && isFinite(elapsedSec)
+        ? (elapsedSec < 0.1 ? "< 0.1" : elapsedSec.toFixed(1).replace(/\.0$/, "")) + " วินาที"
+        : "-";
+
+      const lines = [
+        "สรุปผลการรับสินค้าอัตโนมัติ",
+        `สำเร็จ: ${successCount} โค้ด`,
+        `ใช้แล้ว: ${usedCount} โค้ด`,
+        `ไม่พบ: ${nfCount} โค้ด`,
+        `เวลาประมวลผล: ${prettyTime}`
+      ];
+
+      if (res.used && res.used.length) {
+        lines.push("", "โค้ดที่ใช้แล้ว:");
+        res.used.forEach((u) => {
+          lines.push(`- ${u.code}${u.app ? ` (${u.app})` : ""}${u.usedAt ? ` — ${u.usedAt}` : ""}`);
+        });
+      }
+
+      if (res.notFound && res.notFound.length) {
+        lines.push("", "โค้ดที่ไม่พบ:");
+        res.notFound.forEach((code) => lines.push(`- ${code}`));
+      }
+
+      return lines.join("\n");
     }
 
     function triggerSuccessAnimation() {
@@ -1965,6 +2603,20 @@
       }
       launchConfetti();
       showToast("รับสินค้าเรียบร้อย ✨");
+    }
+
+    function openSuccessModal(successCount, usedCount, nfCount) {
+      successText.textContent = "ระบบประมวลผลเสร็จแล้ว คุณสามารถคัดลอกผลลัพธ์ทั้งหมดได้ทันที";
+      successStats.innerHTML = `
+        <div class="success-stat ok">สำเร็จ<br>${successCount}</div>
+        <div class="success-stat used">ใช้แล้ว<br>${usedCount}</div>
+        <div class="success-stat nf">ไม่พบ<br>${nfCount}</div>
+      `;
+      successModal.classList.add("show");
+    }
+
+    function closeSuccessModal() {
+      successModal.classList.remove("show");
     }
 
     function resizeFxCanvas() {
@@ -1979,9 +2631,6 @@
         fxCtx.scale(ratio, ratio);
       }
     }
-
-    window.addEventListener("resize", resizeFxCanvas);
-    resizeFxCanvas();
 
     function launchConfetti() {
       if (!fxCanvas || !fxCtx) return;
@@ -2081,141 +2730,88 @@
       showToast._timer = setTimeout(() => toast.classList.remove("show"), 2000);
     }
 
-    function startClock() {
-      function updateClock() {
-        const now = new Date();
-        if (liveClock) {
-          liveClock.textContent = now.toLocaleTimeString("th-TH", {
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit"
-          });
-        }
-        if (liveDate) {
-          liveDate.textContent = now.toLocaleDateString("th-TH", {
-            weekday: "short",
-            day: "2-digit",
-            month: "short",
-            year: "numeric"
-          });
-        }
-      }
-      updateClock();
-      setInterval(updateClock, 1000);
+    function saveLastResult(res, elapsedSec) {
+      const payload = {
+        data: res,
+        elapsedSec,
+        savedAt: Date.now()
+      };
+      localStorage.setItem(LAST_RESULT_KEY, JSON.stringify(payload));
     }
 
-    function setNetworkState(state) {
-      if (!networkPill || !networkText || !networkHint) return;
-      networkPill.classList.remove("is-ok", "is-slow", "is-bad");
-
-      if (state === "ok") {
-        networkPill.classList.add("is-ok");
-        networkText.textContent = "ออนไลน์";
-        networkHint.textContent = "พร้อมใช้งาน";
-      } else if (state === "slow") {
-        networkPill.classList.add("is-slow");
-        networkText.textContent = "เชื่อมต่อช้า";
-        networkHint.textContent = "ระบบอาจตอบช้ากว่าปกติ";
-      } else {
-        networkPill.classList.add("is-bad");
-        networkText.textContent = "ลองใหม่";
-        networkHint.textContent = "ตรวจพบปัญหาการเชื่อมต่อ";
+    function restoreLastResult() {
+      const raw = localStorage.getItem(LAST_RESULT_KEY);
+      if (!raw) {
+        showToast("ยังไม่มีผลล่าสุดให้กู้");
+        return;
+      }
+      try {
+        const parsed = JSON.parse(raw);
+        renderResult(parsed.data, parsed.elapsedSec);
+        showToast("กู้ผลล่าสุดแล้ว");
+      } catch (err) {
+        console.error(err);
+        showToast("ไม่สามารถกู้ผลล่าสุดได้");
       }
     }
 
-    function initNetworkMonitor() {
-      function refreshOnlineState() {
-        if (!navigator.onLine) {
-          setNetworkState("bad");
-          return;
-        }
-        setNetworkState("ok");
+    function pushHistory(res, elapsedSec) {
+      const raw = localStorage.getItem(HISTORY_KEY);
+      let history = [];
+      try {
+        history = raw ? JSON.parse(raw) : [];
+      } catch {
+        history = [];
       }
 
-      window.addEventListener("online", () => setNetworkState("ok"));
-      window.addEventListener("offline", () => setNetworkState("bad"));
-      refreshOnlineState();
+      history.unshift({
+        time: Date.now(),
+        success: (res.items && res.items.length) || 0,
+        used: (res.used && res.used.length) || 0,
+        notFound: (res.notFound && res.notFound.length) || 0,
+        elapsedSec
+      });
 
-      let connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-      if (connection) {
-        const updateFromConnection = () => {
-          if (!navigator.onLine) {
-            setNetworkState("bad");
-            return;
-          }
-
-          const effectiveType = connection.effectiveType || "";
-          const downlink = Number(connection.downlink || 0);
-          const rtt = Number(connection.rtt || 0);
-
-          if (effectiveType.includes("2g") || downlink < 1 || rtt > 500) {
-            setNetworkState("slow");
-          } else {
-            setNetworkState("ok");
-          }
-        };
-
-        connection.addEventListener("change", updateFromConnection);
-        updateFromConnection();
-      }
+      history = history.slice(0, 5);
+      localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+      renderHistory();
     }
 
-    function initCursorEffects() {
-      const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-      if (!finePointer || !cursorDot || !cursorRing || !touchGlow) return;
-
-      document.body.classList.add("cursor-fancy");
-
-      const interactiveSelector = "button, a, textarea, .result-item, .live-pill, .support-pill, .badge";
-
-      function animateCursor() {
-        dotX += (lastPointerX - dotX) * 0.35;
-        dotY += (lastPointerY - dotY) * 0.35;
-        ringX += (lastPointerX - ringX) * 0.16;
-        ringY += (lastPointerY - ringY) * 0.16;
-
-        cursorDot.style.transform = `translate(${dotX}px, ${dotY}px)`;
-        cursorRing.style.transform = `translate(${ringX}px, ${ringY}px)`;
-        touchGlow.style.transform = `translate(${lastPointerX}px, ${lastPointerY}px)`;
-
-        requestAnimationFrame(animateCursor);
+    function renderHistory() {
+      const raw = localStorage.getItem(HISTORY_KEY);
+      let history = [];
+      try {
+        history = raw ? JSON.parse(raw) : [];
+      } catch {
+        history = [];
       }
-      animateCursor();
 
-      window.addEventListener("mousemove", (e) => {
-        lastPointerX = e.clientX;
-        lastPointerY = e.clientY;
-        cursorDot.style.opacity = "1";
-        cursorRing.style.opacity = "1";
-        touchGlow.style.opacity = "1";
+      if (!history.length) {
+        historyWrap.classList.remove("show");
+        historyList.innerHTML = "";
+        return;
+      }
 
-        const target = e.target.closest(interactiveSelector);
-        if (target) {
-          cursorRing.classList.add("is-hover");
-        } else {
-          cursorRing.classList.remove("is-hover");
-        }
-      });
-
-      window.addEventListener("mousedown", () => {
-        cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) scale(0.92)`;
-      });
-
-      window.addEventListener("mouseup", () => {
-        cursorRing.style.transform = `translate(${ringX}px, ${ringY}px)`;
-      });
-
-      document.addEventListener("mouseleave", () => {
-        cursorDot.style.opacity = "0";
-        cursorRing.style.opacity = "0";
-        touchGlow.style.opacity = "0";
-      });
-
-      document.addEventListener("mouseenter", () => {
-        cursorDot.style.opacity = "1";
-        cursorRing.style.opacity = "1";
-        touchGlow.style.opacity = "1";
-      });
+      historyWrap.classList.add("show");
+      historyList.innerHTML = history.map((item) => {
+        const dt = new Date(item.time);
+        const t = dt.toLocaleString("th-TH", {
+          day: "2-digit",
+          month: "short",
+          hour: "2-digit",
+          minute: "2-digit"
+        });
+        const prettyTime = typeof item.elapsedSec === "number"
+          ? (item.elapsedSec < 0.1 ? "< 0.1" : item.elapsedSec.toFixed(1).replace(/\.0$/, "")) + " วินาที"
+          : "-";
+        return `
+          <div class="history-item">
+            <strong>${t}</strong><br>
+            สำเร็จ ${item.success} • ใช้แล้ว ${item.used} • ไม่พบ ${item.notFound}<br>
+            ใช้เวลา ${prettyTime}
+          </div>
+        `;
+      }).join("");
     }
   </script>
 </body>
