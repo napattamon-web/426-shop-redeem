@@ -475,6 +475,23 @@
       gap: 8px;
     }
 
+    .mini-badge-shop {
+      gap: 6px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .mini-badge-shop.active {
+      border-color: var(--brand);
+      color: var(--brand-deep);
+      background: #f7eee8;
+    }
+
+    body.theme-dark .mini-badge-shop.active {
+      background: #382c26;
+      color: #f1ddd0;
+    }
+
     .status-dot {
       width: 8px;
       height: 8px;
@@ -706,11 +723,13 @@
       display: flex;
       gap: 8px;
       margin-top: 12px;
+      flex-wrap: wrap;
     }
 
     .copy-btn,
     .floating-admin-btn,
-    .floating-copy-btn {
+    .floating-copy-btn,
+    .round-btn {
       border-radius: 16px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,.84);
@@ -729,12 +748,14 @@
 
     .copy-btn:hover,
     .floating-admin-btn:hover,
-    .floating-copy-btn:hover {
+    .floating-copy-btn:hover,
+    .round-btn:hover {
       transform: translateY(-1px);
     }
 
     body.theme-dark .copy-btn,
-    body.theme-dark .floating-copy-btn {
+    body.theme-dark .floating-copy-btn,
+    body.theme-dark .round-btn {
       background: rgba(37,39,45,.92);
       border-color: #3a3f49;
       color: var(--text-main);
@@ -875,6 +896,13 @@
     @keyframes noticeGlow {
       0%, 100% { box-shadow: 0 0 0 0 rgba(204, 147, 109, 0); }
       50% { box-shadow: 0 0 0 6px rgba(204, 147, 109, 0.08); }
+    }
+
+    .quick-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
     }
 
     .side-stack {
@@ -1165,6 +1193,13 @@
       background: rgba(36,38,43,.88);
     }
 
+    .result-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
     #status {
       font-size: .8rem;
       color: var(--text-sub);
@@ -1278,6 +1313,55 @@
       letter-spacing: .08em;
       color: var(--text-sub);
       font-weight: 700;
+    }
+
+    .result-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: .67rem;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+
+    .badge-success {
+      background: #eaf7ef;
+      color: #4f876e;
+      border-color: #cde5d8;
+    }
+
+    .badge-used {
+      background: #f3edff;
+      color: #7a62b7;
+      border-color: #d9ccff;
+    }
+
+    .badge-nf {
+      background: #fff0f3;
+      color: #bf6b76;
+      border-color: #f3ccd3;
+    }
+
+    body.theme-dark .badge-success {
+      background: #233830;
+      color: #cfe9dc;
+      border-color: #466b58;
+    }
+
+    body.theme-dark .badge-used {
+      background: #2b2640;
+      color: #e1d6ff;
+      border-color: #574a85;
+    }
+
+    body.theme-dark .badge-nf {
+      background: #3b272b;
+      color: #ffd2d8;
+      border-color: #7b4c53;
     }
 
     .item-tag {
@@ -1558,7 +1642,8 @@
       .secondary-btn,
       .paste-mini-btn,
       .floating-admin-btn,
-      .floating-copy-btn {
+      .floating-copy-btn,
+      .round-btn {
         transition: none !important;
       }
     }
@@ -1618,10 +1703,10 @@
     </button>
   </div>
 
-  <a class="floating-admin" href="https://lin.ee/gAh3wAH" target="_blank" rel="noopener noreferrer" aria-label="ติดต่อแอดมิน">
+  <a class="floating-admin" id="adminFloatingLink" href="https://lin.ee/gAh3wAH" target="_blank" rel="noopener noreferrer" aria-label="ติดต่อแอดมิน">
     <div class="floating-admin-btn">
-      <img src="https://img2.imgbiz.com/imgbiz/IMG_1141.png" alt="LINE" />
-      <span>ติดต่อแอดมิน</span>
+      <img id="adminFloatingImg" src="https://img2.imgbiz.com/imgbiz/IMG_1141.png" alt="LINE" />
+      <span id="adminFloatingText">ติดต่อแอดมิน</span>
     </div>
   </a>
 
@@ -1650,7 +1735,7 @@
           <div class="card-inner">
             <h1 class="hero-title">ระบบรับสินค้าอัตโนมัติสำหรับลูกค้า</h1>
 
-            <div class="hero-tip" id="heroTip">
+            <div class="hero-tip">
               <span>💡</span>
               <span id="heroTipText">วางหลายโค้ดได้ในครั้งเดียว สูงสุดประมาณ 5 โค้ด/ครั้ง</span>
             </div>
@@ -1659,8 +1744,8 @@
               <div class="hero-strip-item">
                 <div class="hero-strip-icon">⚡</div>
                 <div class="hero-strip-text">
-                  <strong>ส่งอัตโนมัติ</strong>
-                  <span>ตรวจสอบและแสดงผลทันที</span>
+                  <strong>ตรวจสอบอัตโนมัติ</strong>
+                  <span>วางโค้ดแล้วเริ่มเช็กได้เอง</span>
                 </div>
               </div>
               <div class="hero-strip-item">
@@ -1678,10 +1763,10 @@
                 </div>
               </div>
               <div class="hero-strip-item">
-                <div class="hero-strip-icon">📋</div>
+                <div class="hero-strip-icon">🛍️</div>
                 <div class="hero-strip-text">
-                  <strong>คัดลอกสะดวก</strong>
-                  <span>คัดลอกผลลัพธ์ได้ทันที</span>
+                  <strong>ร้านใช้งานเองได้</strong>
+                  <span>คัดลอกพร้อมส่งลูกค้า</span>
                 </div>
               </div>
             </div>
@@ -1727,6 +1812,10 @@
                   <span class="status-dot"></span>
                   <span class="live-text">ระบบออนไลน์ 24 ชม.</span>
                 </div>
+                <button class="mini-badge mini-badge-shop" id="shopModeBtn" type="button">
+                  <span>🛍️</span>
+                  <span id="shopModeText">โหมดร้าน: ปิด</span>
+                </button>
               </div>
             </div>
 
@@ -1736,13 +1825,14 @@
                 <span id="meterText">0 / 5</span>
               </div>
 
-              <div class="input-box">
+              <div class="input-box" id="inputBox">
                 <button class="paste-mini-btn" id="btnPaste" type="button">📋 วางโค้ด</button>
 
                 <textarea id="codeInput" placeholder="ตัวอย่าง&#10;ABC12345&#10;DEF67890&#10;GHI24680"></textarea>
 
                 <div class="input-meta">
                   <div class="meta-pill">แนะนำ: 1 บรรทัดต่อ 1 โค้ด</div>
+                  <div class="meta-pill" id="draftState">ระบบจำโค้ดชั่วคราว</div>
                 </div>
 
                 <div class="inline-warnings" id="inlineWarnings"></div>
@@ -1750,7 +1840,7 @@
                 <div class="meter-wrap">
                   <div class="meter-head">
                     <span>จำนวนโค้ดที่พร้อมตรวจสอบ</span>
-                    <span>ระบบออนไลน์</span>
+                    <span id="autoCheckState">ตรวจสอบอัตโนมัติ</span>
                   </div>
                   <div class="meter-track">
                     <div class="meter-bar" id="codeMeterBar"></div>
@@ -1765,6 +1855,8 @@
                 <button class="secondary-btn" id="btnClear" type="button">ล้างทั้งหมด</button>
               </div>
 
+              <div class="quick-actions" id="postSuccessActions"></div>
+
               <div class="notice notice-important">
                 <span class="notice-icon">⚠️</span>
                 <span class="notice-text">หลังจากกด “รับสินค้า” แล้ว ห้ามรีเฟรช / ปิดหน้านี้เด็ดขาด จนกว่าจะได้รับรหัสครบ</span>
@@ -1773,6 +1865,7 @@
 
             <div id="summary"></div>
             <div id="status"></div>
+            <div id="resultActions"></div>
             <div id="results"></div>
           </div>
         </section>
@@ -1794,14 +1887,14 @@
                 <div class="status-card-badge">2</div>
                 <div class="status-card-text">
                   <strong>กดรับสินค้า</strong>
-                  <span>ระบบตรวจสอบให้อัตโนมัติ</span>
+                  <span>หรือรอเช็กอัตโนมัติ</span>
                 </div>
               </div>
               <div class="status-card" data-step-card="3">
                 <div class="status-card-badge">3</div>
                 <div class="status-card-text">
                   <strong>คัดลอกข้อมูล</strong>
-                  <span>เลือกคัดลอกได้ทันที</span>
+                  <span>เลือกเฉพาะสำเร็จได้</span>
                 </div>
               </div>
             </div>
@@ -1827,7 +1920,10 @@
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const MAX_CODES = 5;
-    const HISTORY_KEY = "redeem_history_v24";
+    const HISTORY_KEY = "redeem_history_v30";
+    const DRAFT_KEY = "redeem_draft_v30";
+    const SHOP_MODE_KEY = "redeem_shop_mode_v30";
+    const ADMIN_LINK = "https://lin.ee/gAh3wAH";
 
     const btnRedeem = document.getElementById("btnRedeem");
     const btnClear = document.getElementById("btnClear");
@@ -1838,6 +1934,7 @@
     const inlineWarnings = document.getElementById("inlineWarnings");
     const status = document.getElementById("status");
     const summaryDiv = document.getElementById("summary");
+    const resultActions = document.getElementById("resultActions");
     const resultsDiv = document.getElementById("results");
     const historyBox = document.getElementById("historyBox");
     const toast = document.getElementById("toast");
@@ -1848,12 +1945,23 @@
     const meterText = document.getElementById("meterText");
     const mainCard = document.getElementById("mainCard");
     const loadingSub = document.getElementById("loadingSub");
+    const postSuccessActions = document.getElementById("postSuccessActions");
+    const shopModeBtn = document.getElementById("shopModeBtn");
+    const shopModeText = document.getElementById("shopModeText");
+    const adminFloatingText = document.getElementById("adminFloatingText");
+    const adminFloatingLink = document.getElementById("adminFloatingLink");
+    const draftState = document.getElementById("draftState");
+    const autoCheckState = document.getElementById("autoCheckState");
+    const inputBox = document.getElementById("inputBox");
     const fxCanvas = document.getElementById("fxCanvas");
     const fxCtx = fxCanvas ? fxCanvas.getContext("2d") : null;
 
     let isLoading = false;
     let latestCopyAllText = "";
+    let latestSuccessOnlyText = "";
     let loadingMsgIndex = 0;
+    let autoRedeemTimer = null;
+    let isShopMode = localStorage.getItem(SHOP_MODE_KEY) === "1";
 
     function setStepState(state) {
       const cards = document.querySelectorAll(".status-card");
@@ -1912,11 +2020,26 @@
       localStorage.setItem("theme", next);
     });
 
+    function applyShopModeUI() {
+      shopModeBtn.classList.toggle("active", isShopMode);
+      shopModeText.textContent = isShopMode ? "โหมดร้าน: เปิด" : "โหมดร้าน: ปิด";
+    }
+
+    applyShopModeUI();
+
+    shopModeBtn.addEventListener("click", () => {
+      isShopMode = !isShopMode;
+      localStorage.setItem(SHOP_MODE_KEY, isShopMode ? "1" : "0");
+      applyShopModeUI();
+      showToast(isShopMode ? "เปิดโหมดร้านแล้ว" : "ปิดโหมดร้านแล้ว");
+      renderExtraActions();
+    });
+
     const tips = [
       "วางหลายโค้ดได้ในครั้งเดียว สูงสุดประมาณ 5 โค้ด/ครั้ง",
+      "วางโค้ดแล้ว ระบบจะตรวจสอบอัตโนมัติหลังหยุดพิมพ์",
       "ถ้าสำเร็จตั้งแต่ 2 โค้ดขึ้นไป จะมีปุ่มคัดลอกทั้งหมดลอยขึ้นมา",
-      "มีปุ่มติดต่อแอดมินลอยอยู่มุมล่างขวา",
-      "กดรับสินค้าแล้ว อย่าเพิ่งรีเฟรชหน้านะคะ"
+      "ถ้ามีโค้ดไม่พบหรือใช้แล้ว ปุ่มแอดมินจะเปลี่ยนข้อความให้อ่านง่ายขึ้น"
     ];
 
     const loadingMessages = [
@@ -1942,7 +2065,7 @@
       loadingSub.textContent = loadingMessages[loadingMsgIndex];
     }, 1600);
 
-    btnRedeem.addEventListener("click", redeem);
+    btnRedeem.addEventListener("click", () => redeem("manual"));
     btnClear.addEventListener("click", clearForm);
     btnPaste.addEventListener("click", pasteFromClipboard);
     btnCopyAllFloating.addEventListener("click", () => {
@@ -1950,7 +2073,12 @@
       copyText(latestCopyAllText);
       showToast("คัดลอกทั้งหมดแล้ว");
     });
-    codeInput.addEventListener("input", updateLineInfo);
+
+    codeInput.addEventListener("input", () => {
+      updateLineInfo();
+      saveDraft();
+      scheduleAutoRedeem();
+    });
 
     window.addEventListener("beforeunload", (e) => {
       if (!isLoading) return;
@@ -1959,6 +2087,7 @@
     });
 
     window.addEventListener("load", () => {
+      restoreDraft();
       setStepState("idle");
       updateLineInfo();
       renderHistory();
@@ -1985,7 +2114,6 @@
 
       if (formatInvalid > 0) warnings.push(`รูปแบบโค้ดน่าสงสัย ${formatInvalid} รายการ`);
       if (lines.length > MAX_CODES) warnings.push(`ระบบจะใช้เฉพาะ ${MAX_CODES} รายการแรก`);
-
       return { warnings, formatInvalid };
     }
 
@@ -2011,7 +2139,43 @@
       meterText.textContent = `${capped} / ${MAX_CODES}`;
       codeMeterBar.style.width = `${(capped / MAX_CODES) * 100}%`;
       codeMeterBar.style.filter = lines.length > MAX_CODES ? "saturate(.85)" : "none";
+      autoCheckState.textContent = lines.length ? "พร้อมเช็กอัตโนมัติ" : "ตรวจสอบอัตโนมัติ";
       updateRedeemButtonState();
+    }
+
+    function saveDraft() {
+      localStorage.setItem(DRAFT_KEY, codeInput.value || "");
+      draftState.textContent = codeInput.value.trim() ? "บันทึกโค้ดชั่วคราวแล้ว" : "ระบบจำโค้ดชั่วคราว";
+    }
+
+    function restoreDraft() {
+      const draft = localStorage.getItem(DRAFT_KEY) || "";
+      if (draft.trim()) {
+        codeInput.value = draft;
+        draftState.textContent = "กู้คืนโค้ดล่าสุดแล้ว";
+      } else {
+        draftState.textContent = "ระบบจำโค้ดชั่วคราว";
+      }
+    }
+
+    function clearDraft() {
+      localStorage.removeItem(DRAFT_KEY);
+      draftState.textContent = "ระบบจำโค้ดชั่วคราว";
+    }
+
+    function scheduleAutoRedeem() {
+      clearTimeout(autoRedeemTimer);
+      const input = codeInput.value.trim();
+      const lines = normalizeLines(codeInput.value || "");
+      const { formatInvalid } = getValidationState(lines);
+
+      if (!input || isLoading || formatInvalid > 0) return;
+
+      autoRedeemTimer = setTimeout(() => {
+        if (!isLoading && codeInput.value.trim()) {
+          redeem("auto");
+        }
+      }, 1400);
     }
 
     async function pasteFromClipboard() {
@@ -2025,6 +2189,8 @@
           ? `${codeInput.value.trim()}\n${text.trim()}`
           : text.trim();
         updateLineInfo();
+        saveDraft();
+        scheduleAutoRedeem();
         codeInput.focus();
         showToast("วางโค้ดเรียบร้อย");
       } catch {
@@ -2040,33 +2206,52 @@
         return;
       }
 
+      clearTimeout(autoRedeemTimer);
       codeInput.value = "";
       status.innerHTML = "";
       status.classList.remove("status-error", "status-ok");
       resultsDiv.innerHTML = "";
       summaryDiv.innerHTML = "";
+      resultActions.innerHTML = "";
+      postSuccessActions.innerHTML = "";
       inlineWarnings.innerHTML = "";
       latestCopyAllText = "";
+      latestSuccessOnlyText = "";
       meterText.textContent = `0 / ${MAX_CODES}`;
       codeMeterBar.style.width = "0%";
       hideFloatingCopy();
+      clearDraft();
       setStepState("idle");
       codeInput.focus();
       updateRedeemButtonState();
+      resetAdminButton();
       showToast("ล้างข้อมูลแล้ว");
     }
 
-    function redeem() {
+    function triggerInputError(message) {
+      inputBox.classList.add("shake");
+      status.innerHTML = message;
+      status.classList.add("status-error");
+      setTimeout(() => inputBox.classList.remove("shake"), 500);
+    }
+
+    function redeem(source = "manual") {
+      clearTimeout(autoRedeemTimer);
+
       const input = codeInput.value.trim();
-      const inputContainer = document.querySelector(".input-box");
+      const linesForValidation = normalizeLines(codeInput.value || "");
+      const { formatInvalid } = getValidationState(linesForValidation);
       status.classList.remove("status-error", "status-ok");
 
       if (!input) {
-        inputContainer.classList.add("shake");
-        status.innerHTML = "กรุณากรอกรหัสก่อนนะคะ";
-        status.classList.add("status-error");
+        triggerInputError("กรุณากรอกรหัสก่อนนะคะ");
         setStepState("idle");
-        setTimeout(() => inputContainer.classList.remove("shake"), 500);
+        return;
+      }
+
+      if (formatInvalid > 0) {
+        triggerInputError("พบโค้ดบางรายการมีรูปแบบไม่ถูกต้อง กรุณาตรวจสอบอีกครั้งค่ะ");
+        setStepState("idle");
         return;
       }
 
@@ -2084,7 +2269,7 @@
       btnRedeem.innerHTML = `<span class="spinner"></span><span>กำลังตรวจสอบ…</span>`;
       setStepState("loading");
       loadingMsgIndex = 0;
-      if (loadingSub) loadingSub.textContent = loadingMessages[0];
+      if (loadingSub) loadingSub.textContent = source === "auto" ? "กำลังตรวจสอบอัตโนมัติค่ะ" : loadingMessages[0];
 
       status.style.color = "#8e8178";
       status.innerHTML =
@@ -2123,12 +2308,77 @@
         });
     }
 
+    function renderExtraActions() {
+      resultActions.innerHTML = "";
+      const actions = [];
+
+      if (latestSuccessOnlyText) {
+        actions.push(`<button class="round-btn" id="btnCopySuccessOnly" type="button">✅ คัดลอกเฉพาะสำเร็จ</button>`);
+      }
+      if (isShopMode && latestCopyAllText) {
+        actions.push(`<button class="round-btn" id="btnCopyForCustomer" type="button">🛍️ คัดลอกพร้อมส่งลูกค้า</button>`);
+      }
+
+      if (!actions.length) return;
+
+      resultActions.innerHTML = `<div class="result-actions">${actions.join("")}</div>`;
+
+      const btnCopySuccessOnly = document.getElementById("btnCopySuccessOnly");
+      const btnCopyForCustomer = document.getElementById("btnCopyForCustomer");
+
+      if (btnCopySuccessOnly) {
+        btnCopySuccessOnly.addEventListener("click", () => {
+          copyText(latestSuccessOnlyText);
+          showToast("คัดลอกเฉพาะสำเร็จแล้ว");
+        });
+      }
+
+      if (btnCopyForCustomer) {
+        btnCopyForCustomer.addEventListener("click", () => {
+          copyText(latestSuccessOnlyText || latestCopyAllText);
+          showToast("คัดลอกพร้อมส่งลูกค้าแล้ว");
+        });
+      }
+    }
+
+    function renderPostSuccessButtons(successCount) {
+      postSuccessActions.innerHTML = "";
+      if (!successCount) return;
+
+      postSuccessActions.innerHTML = `
+        <button class="round-btn" id="btnNewRound" type="button">🔄 รับรอบใหม่</button>
+      `;
+
+      document.getElementById("btnNewRound").addEventListener("click", () => {
+        clearForm();
+        codeInput.focus();
+      });
+    }
+
+    function updateAdminButton(mode) {
+      if (mode === "issue") {
+        adminFloatingText.textContent = "ส่งภาพให้แอดมิน";
+        adminFloatingLink.setAttribute("aria-label", "ส่งภาพให้แอดมิน");
+      } else {
+        resetAdminButton();
+      }
+    }
+
+    function resetAdminButton() {
+      adminFloatingText.textContent = "ติดต่อแอดมิน";
+      adminFloatingLink.setAttribute("aria-label", "ติดต่อแอดมิน");
+    }
+
     function renderResult(res, elapsedSec) {
       resultsDiv.innerHTML = "";
       summaryDiv.innerHTML = "";
+      resultActions.innerHTML = "";
+      postSuccessActions.innerHTML = "";
       latestCopyAllText = "";
+      latestSuccessOnlyText = "";
       status.classList.remove("status-error", "status-ok");
       hideFloatingCopy();
+      resetAdminButton();
 
       if (!res) {
         status.innerHTML = "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งค่ะ";
@@ -2146,6 +2396,10 @@
         triggerSuccessAnimation();
       } else {
         setStepState("error");
+      }
+
+      if (usedCount > 0 || nfCount > 0) {
+        updateAdminButton("issue");
       }
 
       const chips = [];
@@ -2185,6 +2439,7 @@
       status.classList.add(res.ok ? "status-ok" : "status-error");
 
       const copyAllChunks = [];
+      const successOnlyChunks = [];
 
       if (res.items && res.items.length > 0) {
         res.items.forEach((item, index) => {
@@ -2197,6 +2452,7 @@
 
           const sectionText = `CODE: ${item.code}${appTag ? ` (${appTag})` : ""}\n${item.reply || ""}`;
           copyAllChunks.push(sectionText);
+          successOnlyChunks.push(sectionText);
 
           card.innerHTML = `
             <div class="item-top-row">
@@ -2204,6 +2460,7 @@
                 ✅ REDEEMED CODE: ${item.code}
                 ${appTag ? `<span class="item-tag">${appTag}</span>` : ""}
               </div>
+              <div class="result-badge badge-success">SUCCESS</div>
             </div>
             <div class="item-body">${item.reply || ""}</div>
             <button class="copy-btn" data-text="${safeReplyText}">
@@ -2228,6 +2485,7 @@
           card.innerHTML = `
             <div class="item-top-row">
               <div class="item-header">♻️ USED CODE: ${u.code}</div>
+              <div class="result-badge badge-used">USED</div>
             </div>
             <div class="item-body">${body}</div>
           `;
@@ -2244,6 +2502,7 @@
           card.innerHTML = `
             <div class="item-top-row">
               <div class="item-header">❌ NOT FOUND CODE: ${code}</div>
+              <div class="result-badge badge-nf">NOT FOUND</div>
             </div>
             <div class="item-body">ไม่พบโค้ดนี้ในระบบ กรุณาตรวจสอบการคัดลอก หรือติดต่อแอดมินเพื่อช่วยเช็กอีกครั้ง</div>
           `;
@@ -2253,10 +2512,14 @@
       }
 
       latestCopyAllText = copyAllChunks.join("\n\n--------------------\n\n");
+      latestSuccessOnlyText = successOnlyChunks.join("\n\n--------------------\n\n");
 
       if (successCount >= 2 && latestCopyAllText) {
         showFloatingCopy();
       }
+
+      renderExtraActions();
+      renderPostSuccessButtons(successCount);
 
       document.querySelectorAll(".copy-btn[data-text]").forEach((btn) => {
         btn.addEventListener("click", () => copyToClipboard(btn));
@@ -2271,6 +2534,7 @@
         });
         renderHistory();
         codeInput.value = "";
+        clearDraft();
         updateLineInfo();
       }
 
