@@ -691,7 +691,6 @@
     }
 
     .copy-btn,
-    .history-btn,
     .floating-admin-btn {
       border-radius: 16px;
       border: 1px solid var(--line);
@@ -710,13 +709,11 @@
     }
 
     .copy-btn:hover,
-    .history-btn:hover,
     .floating-admin-btn:hover {
       transform: translateY(-1px);
     }
 
-    body.theme-dark .copy-btn,
-    body.theme-dark .history-btn {
+    body.theme-dark .copy-btn {
       background: rgba(37,39,45,.92);
       border-color: #3a3f49;
       color: var(--text-main);
@@ -1137,18 +1134,10 @@
     }
 
     @keyframes bearHeadBob {
-      0%, 100% {
-        transform: translateY(0) rotate(0deg) scale(1);
-      }
-      25% {
-        transform: translateY(-2px) rotate(-3deg) scale(1.02);
-      }
-      50% {
-        transform: translateY(-5px) rotate(0deg) scale(1.03);
-      }
-      75% {
-        transform: translateY(-2px) rotate(3deg) scale(1.02);
-      }
+      0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+      25% { transform: translateY(-2px) rotate(-3deg) scale(1.02); }
+      50% { transform: translateY(-5px) rotate(0deg) scale(1.03); }
+      75% { transform: translateY(-2px) rotate(3deg) scale(1.02); }
     }
 
     @keyframes earWiggleLeft {
@@ -1680,7 +1669,6 @@
       .copy-btn,
       .primary-btn,
       .secondary-btn,
-      .history-btn,
       .paste-mini-btn,
       .floating-admin-btn {
         transition: none !important;
@@ -1953,7 +1941,7 @@
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const MAX_CODES = 5;
-    const HISTORY_KEY = "redeem_history_v17";
+    const HISTORY_KEY = "redeem_history_v18";
 
     const btnRedeem = document.getElementById("btnRedeem");
     const btnClear = document.getElementById("btnClear");
@@ -2559,7 +2547,7 @@
       }
 
       historyBox.className = "history-list";
-      historyBox.innerHTML = list.map((item, index) => {
+      historyBox.innerHTML = list.map((item) => {
         const date = new Date(item.time);
         const dateText = isNaN(date.getTime())
           ? "-"
@@ -2578,20 +2566,9 @@
               <div class="history-sub">${dateText}</div>
               <div class="history-sub">${escapeHtml(item.preview || "")}</div>
             </div>
-            <button class="history-btn" data-idx="${index}" type="button">คัดลอก</button>
           </div>
         `;
       }).join("");
-
-      historyBox.querySelectorAll(".history-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const idx = Number(btn.getAttribute("data-idx"));
-          const item = loadHistory()[idx];
-          if (!item || !item.copyText) return;
-          copyText(item.copyText);
-          showToast("คัดลอกประวัติล่าสุดแล้ว");
-        });
-      });
     }
 
     function escapeHtml(str) {
