@@ -291,7 +291,7 @@
 
     .layout {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 240px;
+      grid-template-columns: minmax(0, 1fr) 250px;
       gap: 14px;
       align-items: start;
     }
@@ -299,7 +299,7 @@
     .main-col,
     .side-col {
       display: grid;
-      gap: 12px;
+      gap: 14px;
     }
 
     .card {
@@ -326,12 +326,11 @@
 
     .hero-card .card-inner {
       display: grid;
-      gap: 10px;
-      padding: 14px 16px;
+      gap: 12px;
     }
 
     .hero-title {
-      font-size: 1.18rem;
+      font-size: 1.22rem;
       font-weight: 700;
       line-height: 1.25;
       margin: 0;
@@ -340,9 +339,9 @@
     .hero-desc {
       margin: 0;
       color: var(--text-sub);
-      font-size: .84rem;
-      line-height: 1.6;
-      max-width: 620px;
+      font-size: .87rem;
+      line-height: 1.62;
+      max-width: 680px;
     }
 
     .hero-strip {
@@ -353,10 +352,10 @@
 
     .hero-strip-item {
       border-radius: 16px;
-      padding: 10px;
+      padding: 10px 11px;
       background: rgba(255,255,255,.74);
       border: 1px solid var(--line);
-      min-height: 58px;
+      min-height: 60px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -369,7 +368,7 @@
     .hero-strip-icon {
       width: 34px;
       height: 34px;
-      border-radius: 11px;
+      border-radius: 12px;
       flex-shrink: 0;
       display: inline-flex;
       align-items: center;
@@ -390,9 +389,13 @@
 
     .hero-strip-text span {
       display: block;
-      font-size: .71rem;
+      font-size: .72rem;
       color: var(--text-sub);
       line-height: 1.4;
+    }
+
+    .redeem-card {
+      min-height: 540px;
     }
 
     .redeem-head {
@@ -400,7 +403,7 @@
       justify-content: space-between;
       align-items: flex-start;
       gap: 12px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       flex-wrap: wrap;
     }
 
@@ -504,44 +507,40 @@
       transform: translateX(120%);
     }
 
-    .mini-tools {
+    .paste-mini-btn {
       position: absolute;
       top: 10px;
       right: 10px;
-      display: flex;
-      gap: 6px;
-      z-index: 3;
-    }
-
-    .mini-tool-btn {
-      border: 1px solid #e4d7cb;
-      background: rgba(255,255,255,.92);
-      color: var(--brand-deep);
       border-radius: 999px;
-      padding: 6px 10px;
-      font-size: .7rem;
+      border: 1px solid #decdc1;
+      background: rgba(255,255,255,.96);
+      color: var(--brand-deep);
+      padding: 7px 10px;
+      font-size: .72rem;
       font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      box-shadow: 0 6px 14px rgba(0,0,0,.05);
+      gap: 5px;
+      box-shadow: 0 6px 14px rgba(0,0,0,.04);
       transition: .18s ease;
+      z-index: 2;
     }
 
-    .mini-tool-btn:hover {
+    .paste-mini-btn:hover {
       transform: translateY(-1px);
+      background: #fffaf6;
     }
 
-    body.theme-dark .mini-tool-btn {
-      background: rgba(40,42,48,.96);
-      border-color: #4a4e59;
-      color: #ead6ca;
+    body.theme-dark .paste-mini-btn {
+      background: rgba(48,41,36,.96);
+      border-color: #5a483f;
+      color: #edd6ca;
     }
 
     textarea {
       width: 100%;
-      min-height: 220px;
+      min-height: 210px;
       resize: none;
       border: none;
       background: transparent;
@@ -549,7 +548,7 @@
       font-size: .98rem;
       color: var(--text-main);
       line-height: 1.58;
-      padding: 40px 0 0;
+      padding: 34px 0 0;
     }
 
     textarea::placeholder {
@@ -657,6 +656,42 @@
       margin-top: 12px;
     }
 
+    .soft-btn,
+    .help-btn,
+    .copy-btn,
+    .history-btn {
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.82);
+      padding: 11px 12px;
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: .18s ease;
+    }
+
+    .soft-btn:hover,
+    .help-btn:hover,
+    .copy-btn:hover,
+    .history-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    body.theme-dark .soft-btn,
+    body.theme-dark .help-btn,
+    body.theme-dark .copy-btn,
+    body.theme-dark .history-btn {
+      background: rgba(37,39,45,.92);
+      border-color: #3a3f49;
+      color: var(--text-main);
+    }
+
     .primary-btn {
       flex: 1;
       border: none;
@@ -762,12 +797,17 @@
       border-color: #805844;
     }
 
-    .small-card .card-inner {
-      padding: 12px 13px;
+    .side-stack {
+      display: grid;
+      gap: 12px;
+    }
+
+    .compact-card .card-inner {
+      padding: 14px;
     }
 
     .side-title {
-      font-size: .82rem;
+      font-size: .85rem;
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -777,24 +817,24 @@
 
     .help-grid {
       display: grid;
-      gap: 7px;
+      gap: 8px;
     }
 
     .help-btn {
       justify-content: flex-start;
-      min-height: 40px;
-      padding: 10px 12px;
+      padding-left: 13px;
+      min-height: 42px;
       font-size: .78rem;
     }
 
     .status-list {
       display: grid;
-      gap: 7px;
+      gap: 8px;
     }
 
     .status-card {
-      border-radius: 15px;
-      padding: 10px;
+      border-radius: 16px;
+      padding: 10px 11px;
       background: rgba(255,255,255,.74);
       border: 1px solid var(--line);
       display: flex;
@@ -807,15 +847,15 @@
     }
 
     .status-card-badge {
-      width: 28px;
-      height: 28px;
-      border-radius: 10px;
+      width: 30px;
+      height: 30px;
+      border-radius: 11px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
       background: linear-gradient(135deg, rgba(233,216,203,.95), rgba(185,143,115,.18));
-      font-size: .72rem;
+      font-size: .76rem;
       font-weight: 700;
     }
 
@@ -826,14 +866,14 @@
     .status-card-text strong {
       display: block;
       font-size: .76rem;
-      margin-bottom: 1px;
+      margin-bottom: 2px;
     }
 
     .status-card-text span {
       display: block;
-      font-size: .7rem;
+      font-size: .71rem;
       color: var(--text-sub);
-      line-height: 1.4;
+      line-height: 1.45;
     }
 
     .loading-overlay {
@@ -1136,7 +1176,7 @@
 
     .history-empty {
       color: var(--text-sub);
-      font-size: .78rem;
+      font-size: .82rem;
     }
 
     .history-list {
@@ -1146,8 +1186,8 @@
     }
 
     .history-item {
-      border-radius: 16px;
-      padding: 9px 10px;
+      border-radius: 18px;
+      padding: 10px 12px;
       background: rgba(255,255,255,.72);
       border: 1px solid var(--line);
       display: flex;
@@ -1168,12 +1208,12 @@
     }
 
     .history-title {
-      font-size: .78rem;
+      font-size: .82rem;
       font-weight: 700;
     }
 
     .history-sub {
-      font-size: .71rem;
+      font-size: .74rem;
       color: var(--text-sub);
     }
 
@@ -1290,6 +1330,14 @@
       .layout {
         grid-template-columns: 1fr;
       }
+
+      .side-col {
+        order: 2;
+      }
+
+      .main-col {
+        order: 1;
+      }
     }
 
     @media (max-width: 760px) {
@@ -1300,20 +1348,28 @@
       .hero-strip {
         grid-template-columns: 1fr 1fr;
       }
+
+      .layout {
+        gap: 12px;
+      }
     }
 
     @media (max-width: 520px) {
+      .topbar-row,
+      .redeem-head {
+        align-items: flex-start;
+      }
+
+      .copy-actions {
+        grid-template-columns: 1fr 1fr;
+      }
+
       .brand-title {
         font-size: 1.28rem;
       }
 
       .hero-title {
-        font-size: 1.08rem;
-      }
-
-      .tool-row,
-      .copy-actions {
-        grid-template-columns: 1fr 1fr;
+        font-size: 1.14rem;
       }
 
       .tip-bubble {
@@ -1325,21 +1381,31 @@
 
     @media (max-width: 400px) {
       .hero-strip,
-      .tool-row,
       .copy-actions,
       .action-row {
         display: grid;
         grid-template-columns: 1fr;
       }
+    }
 
-      .mini-tools {
-        position: static;
-        margin-bottom: 8px;
-        justify-content: flex-end;
+    @media (prefers-reduced-motion: reduce) {
+      .orb,
+      .status-dot,
+      .meter-bar::after,
+      .primary-btn::before,
+      .loading-circle {
+        animation: none !important;
       }
 
-      textarea {
-        padding-top: 8px;
+      .icon-btn,
+      .soft-btn,
+      .help-btn,
+      .copy-btn,
+      .primary-btn,
+      .secondary-btn,
+      .history-btn,
+      .paste-mini-btn {
+        transition: none !important;
       }
     }
   </style>
@@ -1403,7 +1469,7 @@
                 <div class="hero-strip-icon">🔐</div>
                 <div class="hero-strip-text">
                   <strong>อ่านง่าย</strong>
-                  <span>ผลลัพธ์แยกสถานะชัดเจน</span>
+                  <span>แยกผลลัพธ์เป็นหมวดชัดเจน</span>
                 </div>
               </div>
               <div class="hero-strip-item">
@@ -1444,10 +1510,7 @@
               </div>
 
               <div class="input-box">
-                <div class="mini-tools">
-                  <button class="mini-tool-btn" id="btnPaste" type="button">📋 วางโค้ด</button>
-                  <button class="mini-tool-btn" id="btnDedup" type="button">🧹 ลบโค้ดซ้ำ</button>
-                </div>
+                <button class="paste-mini-btn" id="btnPaste" type="button">📋 วางโค้ด</button>
 
                 <textarea id="codeInput" placeholder="เช่น NFXA1B2&#10;หรือ DSN9X3Y"></textarea>
 
@@ -1497,8 +1560,8 @@
         </footer>
       </main>
 
-      <aside class="side-col">
-        <section class="card small-card glass">
+      <aside class="side-col side-stack">
+        <section class="card compact-card glass">
           <div class="card-inner">
             <div class="side-title">ช่วยเหลือ</div>
             <div class="help-grid">
@@ -1509,7 +1572,7 @@
           </div>
         </section>
 
-        <section class="card small-card glass">
+        <section class="card compact-card glass">
           <div class="card-inner">
             <div class="side-title">ขั้นตอน</div>
             <div class="status-list">
@@ -1517,28 +1580,28 @@
                 <div class="status-card-badge">1</div>
                 <div class="status-card-text">
                   <strong>วางโค้ด</strong>
-                  <span>แยก 1 บรรทัดต่อ 1 โค้ด</span>
+                  <span>แยกคนละบรรทัด</span>
                 </div>
               </div>
               <div class="status-card" data-step-card="2">
                 <div class="status-card-badge">2</div>
                 <div class="status-card-text">
                   <strong>กดรับสินค้า</strong>
-                  <span>ระบบจะตรวจสอบทันที</span>
+                  <span>ระบบตรวจสอบให้อัตโนมัติ</span>
                 </div>
               </div>
               <div class="status-card" data-step-card="3">
                 <div class="status-card-badge">3</div>
                 <div class="status-card-text">
                   <strong>คัดลอกข้อมูล</strong>
-                  <span>เลือกคัดลอกตามต้องการ</span>
+                  <span>เลือกคัดลอกได้ทันที</span>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="card small-card glass">
+        <section class="card compact-card glass">
           <div class="card-inner">
             <div class="side-title">รายการล่าสุด</div>
             <div id="historyBox" class="history-empty">ยังไม่มีประวัติการรับสินค้าล่าสุด</div>
@@ -1560,7 +1623,6 @@
     const btnRedeem = document.getElementById("btnRedeem");
     const btnClear = document.getElementById("btnClear");
     const btnPaste = document.getElementById("btnPaste");
-    const btnDedup = document.getElementById("btnDedup");
     const codeInput = document.getElementById("codeInput");
     const lineInfo = document.getElementById("lineInfo");
     const inlineWarnings = document.getElementById("inlineWarnings");
@@ -1605,8 +1667,9 @@
         el.style.boxShadow = "0 0 0 3px rgba(185,143,115,.12)";
         el.style.background = "rgba(255,255,255,.88)";
       };
+
       const done = (el) => {
-        el.style.borderColor = "rgba(125,165,141,.45)";
+        el.style.borderColor = "rgba(169,200,183,.55)";
         el.style.background = "var(--accent-ok-soft)";
       };
 
@@ -1657,7 +1720,7 @@
 
     const tips = [
       "วางหลายโค้ดได้ในครั้งเดียว สูงสุดประมาณ 5 โค้ด/ครั้ง",
-      "กดคัดลอกทั้งหมดได้ในปุ่มเดียว",
+      "กดคัดลอกทั้งหมดได้ในปุ่มเดียว สะดวกขึ้นเยอะ",
       "ถ้ามีปัญหา แคปหน้าจอแล้วติดต่อแอดมินได้เลย",
       "กดรับสินค้าแล้ว อย่าเพิ่งรีเฟรชหน้านะคะ"
     ];
@@ -1678,7 +1741,6 @@
     btnRedeem.addEventListener("click", redeem);
     btnClear.addEventListener("click", clearForm);
     btnPaste.addEventListener("click", pasteFromClipboard);
-    btnDedup.addEventListener("click", deduplicateInput);
     codeInput.addEventListener("input", updateLineInfo);
 
     helpIssue.addEventListener("click", () => {
@@ -1686,6 +1748,7 @@
     });
 
     helpHowto.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
       showToast("วางโค้ด แล้วกดรับสินค้าได้เลยค่ะ");
     });
 
@@ -1711,23 +1774,17 @@
 
     function getValidationState(lines) {
       const warnings = [];
-      const seen = new Set();
-      let duplicates = 0;
       let formatInvalid = 0;
       const allowedPattern = /^[A-Za-z0-9_-]{4,60}$/;
 
       lines.forEach((line) => {
-        const key = line.toUpperCase();
-        if (seen.has(key)) duplicates++;
-        seen.add(key);
         if (!allowedPattern.test(line)) formatInvalid++;
       });
 
-      if (duplicates > 0) warnings.push(`พบโค้ดซ้ำ ${duplicates} รายการ`);
       if (formatInvalid > 0) warnings.push(`รูปแบบโค้ดน่าสงสัย ${formatInvalid} รายการ`);
       if (lines.length > MAX_CODES) warnings.push(`ระบบจะใช้เฉพาะ ${MAX_CODES} รายการแรก`);
 
-      return { warnings, duplicates, formatInvalid };
+      return { warnings, formatInvalid };
     }
 
     function updateInlineWarnings(lines) {
@@ -1775,27 +1832,6 @@
       }
     }
 
-    function deduplicateInput() {
-      const lines = normalizeLines(codeInput.value || "");
-      if (!lines.length) {
-        showToast("ยังไม่มีโค้ดให้ลบซ้ำ");
-        return;
-      }
-      const unique = [];
-      const seen = new Set();
-      lines.forEach((line) => {
-        const key = line.toUpperCase();
-        if (!seen.has(key)) {
-          seen.add(key);
-          unique.push(line);
-        }
-      });
-      codeInput.value = unique.join("\n");
-      updateLineInfo();
-      playSound("click");
-      showToast(lines.length === unique.length ? "ไม่พบโค้ดซ้ำ" : "ลบโค้ดซ้ำแล้ว");
-    }
-
     function clearForm() {
       codeInput.value = "";
       status.innerHTML = "";
@@ -1830,22 +1866,10 @@
       }
 
       const originalLines = normalizeLines(codeInput.value);
-      const uniqueLines = [];
-      const seen = new Set();
-
-      originalLines.forEach((line) => {
-        const key = line.toUpperCase();
-        if (!seen.has(key)) {
-          seen.add(key);
-          uniqueLines.push(line);
-        }
-      });
-
-      const trimmedLines = uniqueLines.slice(0, MAX_CODES);
+      const trimmedLines = originalLines.slice(0, MAX_CODES);
       const validation = getValidationState(originalLines);
 
       let preWarn = "";
-      if (validation.duplicates > 0) preWarn += `ระบบลบโค้ดซ้ำให้อัตโนมัติแล้ว ${validation.duplicates} รายการ `;
       if (originalLines.length > MAX_CODES) preWarn += `ระบบจะใช้เฉพาะ ${MAX_CODES} รายการแรกค่ะ`;
 
       isLoading = true;
