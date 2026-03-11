@@ -31,7 +31,6 @@
       --radius-xl: 30px;
       --radius-lg: 22px;
       --radius-md: 16px;
-      --line-green: #06c755;
     }
 
     body.theme-dark {
@@ -487,108 +486,6 @@
       50% { transform: scale(1.12); }
     }
 
-    .shop-cta-wrap {
-      margin-bottom: 12px;
-    }
-
-    .shop-cta-btn {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      padding: 13px 16px;
-      border-radius: 20px;
-      text-decoration: none;
-      color: #fff;
-      font-weight: 700;
-      font-size: .92rem;
-      background: linear-gradient(135deg, #d9b8a0 0%, #b98f73 55%, #a9775d 100%);
-      box-shadow: 0 12px 24px rgba(185, 143, 115, 0.22);
-      overflow: hidden;
-      isolation: isolate;
-      animation: ctaPulse 1.5s ease-in-out infinite;
-    }
-
-    .shop-cta-btn::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, transparent 15%, rgba(255,255,255,.32) 45%, transparent 75%);
-      transform: translateX(-130%);
-      animation: ctaShine 2.2s linear infinite;
-      z-index: 0;
-    }
-
-    .shop-cta-btn > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    .shop-cta-btn:hover {
-      transform: translateY(-1px) scale(1.01);
-    }
-
-    .shop-cta-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: #7dff9f;
-      box-shadow: 0 0 0 0 rgba(125, 255, 159, .45);
-      animation: dotBlink 1.2s ease-in-out infinite;
-      flex-shrink: 0;
-    }
-
-    .shop-cta-text {
-      letter-spacing: .01em;
-    }
-
-    .shop-cta-badge {
-      padding: 4px 9px;
-      border-radius: 999px;
-      font-size: .68rem;
-      font-weight: 700;
-      background: rgba(255,255,255,.18);
-      border: 1px solid rgba(255,255,255,.22);
-      backdrop-filter: blur(6px);
-      white-space: nowrap;
-    }
-
-    @keyframes ctaPulse {
-      0%, 100% {
-        box-shadow: 0 12px 24px rgba(185, 143, 115, 0.22);
-        transform: scale(1);
-      }
-      50% {
-        box-shadow: 0 16px 30px rgba(185, 143, 115, 0.30);
-        transform: scale(1.01);
-      }
-    }
-
-    @keyframes ctaShine {
-      from { transform: translateX(-130%); }
-      to { transform: translateX(130%); }
-    }
-
-    @keyframes dotBlink {
-      0%, 100% {
-        opacity: 1;
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(125, 255, 159, .45);
-      }
-      50% {
-        opacity: .55;
-        transform: scale(1.18);
-        box-shadow: 0 0 0 8px rgba(125, 255, 159, 0);
-      }
-    }
-
-    body.theme-dark .shop-cta-btn {
-      background: linear-gradient(135deg, #c2997f 0%, #9b725a 55%, #7f5b48 100%);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.30);
-    }
-
     .input-card {
       border-radius: 22px;
       background: rgba(255,255,255,.74);
@@ -710,7 +607,7 @@
     .input-meta {
       margin-top: 8px;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       gap: 8px;
       align-items: center;
       flex-wrap: wrap;
@@ -731,44 +628,6 @@
     body.theme-dark .meta-pill {
       background: #2b2e35;
       border-color: #3f444d;
-    }
-
-    .ready-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: #4f8a67;
-      font-weight: 600;
-      animation: readyBlink 1.2s ease-in-out infinite;
-    }
-
-    body.theme-dark .ready-status {
-      color: #8fbea3;
-    }
-
-    .ready-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #62c171;
-      box-shadow: 0 0 0 4px rgba(98, 193, 113, 0.16);
-      animation: readyDotPulse 1.2s ease-in-out infinite;
-    }
-
-    @keyframes readyBlink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.45; }
-    }
-
-    @keyframes readyDotPulse {
-      0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(98, 193, 113, 0.28);
-      }
-      50% {
-        transform: scale(1.18);
-        box-shadow: 0 0 0 6px rgba(98, 193, 113, 0);
-      }
     }
 
     .inline-warnings {
@@ -1563,16 +1422,6 @@
         width: 420px;
         left: -110px;
       }
-
-      .shop-cta-btn {
-        font-size: .88rem;
-        padding: 12px 14px;
-      }
-
-      .shop-cta-badge {
-        font-size: .64rem;
-        padding: 4px 8px;
-      }
     }
 
     @media (max-width: 400px) {
@@ -1589,12 +1438,7 @@
       .meter-bar::after,
       .primary-btn::before,
       .loading-circle,
-      .bear-stars span,
-      .shop-cta-btn,
-      .shop-cta-btn::before,
-      .shop-cta-dot,
-      .ready-status,
-      .ready-dot {
+      .bear-stars span {
         animation: none !important;
       }
 
@@ -1742,14 +1586,6 @@
               </div>
             </div>
 
-            <div class="shop-cta-wrap">
-              <a class="shop-cta-btn" href="https://426shop.rexzy.xyz/home" target="_blank" rel="noopener noreferrer">
-                <span class="shop-cta-dot"></span>
-                <span class="shop-cta-text">ซื้อออนไลน์ 24 ชั่วโมง</span>
-                <span class="shop-cta-badge">เปิดอยู่</span>
-              </a>
-            </div>
-
             <div class="input-card">
               <div class="input-title-row">
                 <strong>วางโค้ดของคุณ</strong>
@@ -1763,7 +1599,6 @@
 
                 <div class="input-meta">
                   <div class="meta-pill">แนะนำ: 1 บรรทัดต่อ 1 โค้ด</div>
-                  <span class="ready-status"><span class="ready-dot"></span>พร้อมตรวจสอบ</span>
                 </div>
 
                 <div class="inline-warnings" id="inlineWarnings"></div>
@@ -1943,7 +1778,7 @@
     const tips = [
       "วางหลายโค้ดได้ในครั้งเดียว สูงสุดประมาณ 5 โค้ด/ครั้ง",
       "กดคัดลอกทั้งหมดได้ในปุ่มเดียว สะดวกขึ้นเยอะ",
-      "มีปุ่มซื้อออนไลน์ 24 ชั่วโมง อยู่เหนือช่องกรอกโค้ด",
+      "มีปุ่มติดต่อแอดมินอยู่ล่างสุดของหน้า",
       "กดรับสินค้าแล้ว อย่าเพิ่งรีเฟรชหน้านะคะ"
     ];
 
