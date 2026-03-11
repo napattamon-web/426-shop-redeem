@@ -1251,11 +1251,6 @@
       min-height: 36px;
     }
 
-    .copy-all-help {
-      font-size: .72rem;
-      color: var(--text-sub);
-    }
-
     body.theme-dark .copy-btn.all {
       background: linear-gradient(135deg, #3b2d26, #49372f);
       color: #f1ddd0;
@@ -1910,7 +1905,7 @@
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const MAX_CODES = 5;
-    const HISTORY_KEY = "redeem_history_v19";
+    const HISTORY_KEY = "redeem_history_v20";
 
     const btnRedeem = document.getElementById("btnRedeem");
     const btnClear = document.getElementById("btnClear");
@@ -1997,7 +1992,7 @@
 
     const tips = [
       "วางหลายโค้ดได้ในครั้งเดียว สูงสุดประมาณ 5 โค้ด/ครั้ง",
-      "กดคัดลอกทั้งหมดได้ในปุ่มเล็ก ๆ ด้านล่างผลลัพธ์",
+      "ถ้าส่งมา 2 โค้ดขึ้นไป จะมีปุ่มคัดลอกทั้งหมด",
       "มีปุ่มติดต่อแอดมินลอยอยู่มุมล่างขวา",
       "กดรับสินค้าแล้ว อย่าเพิ่งรีเฟรชหน้านะคะ"
     ];
@@ -2224,7 +2219,7 @@
       if (chips.length) summaryDiv.innerHTML = `<div class="summary-row">${chips.join("")}</div>`;
 
       if (res.ok && successCount > 0) {
-        summaryDiv.innerHTML += `<div class="success-banner">รับสินค้าเรียบร้อยแล้ว สามารถคัดลอกทั้งหมดได้ทันที</div>`;
+        summaryDiv.innerHTML += `<div class="success-banner">รับสินค้าเรียบร้อยแล้ว สามารถคัดลอกรายละเอียดด้านล่างได้ทันที</div>`;
       }
 
       if (usedCount >= 2) {
@@ -2325,7 +2320,7 @@
 
       latestCopyAllText = copyAllChunks.join("\n\n--------------------\n\n");
 
-      if (latestCopyAllText) {
+      if (successCount >= 2 && latestCopyAllText) {
         copyActions.innerHTML = `
           <div class="copy-actions">
             <div class="copy-all-wrap">
@@ -2333,7 +2328,6 @@
                 <span>📋</span>
                 <span>คัดลอกทั้งหมด</span>
               </button>
-              <div class="copy-all-help">ใช้ส่งให้ลูกค้าหรือเก็บข้อมูลได้ทันที</div>
             </div>
           </div>
         `;
