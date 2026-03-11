@@ -10,7 +10,7 @@
     :root {
       --bg: #f4ede7;
       --bg-soft: #fbf7f3;
-      --card: rgba(255, 251, 247, 0.90);
+      --card: rgba(255, 251, 247, 0.92);
       --card-strong: #fffaf6;
       --text-main: #4a403a;
       --text-sub: #8e8178;
@@ -19,24 +19,25 @@
       --brand-deep: #9f765d;
       --brand-soft: #ead8cb;
       --brand-soft-2: #f3e7de;
-      --accent-ok: #7da58d;
+      --accent-ok: #6f9f84;
       --accent-ok-soft: #edf6f1;
-      --accent-used: #8573c6;
+      --accent-used: #8b74c9;
       --accent-used-soft: #f4f0ff;
-      --accent-nf: #d67d7b;
-      --accent-nf-soft: #fff0ef;
+      --accent-nf: #d67d86;
+      --accent-nf-soft: #fff1f3;
       --accent-warn: #cc936d;
       --accent-warn-soft: #fff4ea;
       --shadow: 0 18px 40px rgba(94, 71, 56, 0.08);
       --radius-xl: 30px;
       --radius-lg: 22px;
       --radius-md: 16px;
+      --line-green: #06c755;
     }
 
     body.theme-dark {
       --bg: #18181c;
       --bg-soft: #202126;
-      --card: rgba(34, 35, 40, 0.90);
+      --card: rgba(34, 35, 40, 0.92);
       --card-strong: #25272d;
       --text-main: #f2f1ee;
       --text-sub: #aca7a2;
@@ -45,12 +46,12 @@
       --brand-deep: #8d6753;
       --brand-soft: #47352c;
       --brand-soft-2: #362922;
-      --accent-ok: #8fbea3;
+      --accent-ok: #9bd1b2;
       --accent-ok-soft: #24342d;
-      --accent-used: #ae9af0;
+      --accent-used: #c0aef7;
       --accent-used-soft: #2c263d;
-      --accent-nf: #ec9c97;
-      --accent-nf-soft: #3a2726;
+      --accent-nf: #f2a2ab;
+      --accent-nf-soft: #3a272b;
       --accent-warn: #d6a27d;
       --accent-warn-soft: #3b2c24;
       --shadow: 0 24px 46px rgba(0, 0, 0, 0.42);
@@ -62,9 +63,7 @@
       outline: none;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -133,9 +132,7 @@
       opacity: .12;
     }
 
-    body.theme-dark .bear-wallpaper {
-      opacity: .08;
-    }
+    body.theme-dark .bear-wallpaper { opacity: .08; }
 
     .bear-wallpaper svg {
       position: absolute;
@@ -205,9 +202,7 @@
       backdrop-filter: blur(16px);
     }
 
-    body.theme-dark .glass {
-      border-color: rgba(255,255,255,.06);
-    }
+    body.theme-dark .glass { border-color: rgba(255,255,255,.06); }
 
     .topbar {
       border-radius: var(--radius-xl);
@@ -275,9 +270,7 @@
       transform: scale(1.04);
     }
 
-    .brand-copy {
-      min-width: 0;
-    }
+    .brand-copy { min-width: 0; }
 
     .brand-title {
       font-size: 1.46rem;
@@ -317,9 +310,7 @@
       box-shadow: 0 8px 18px rgba(0,0,0,.06);
     }
 
-    .icon-btn:hover {
-      transform: translateY(-1px);
-    }
+    .icon-btn:hover { transform: translateY(-1px); }
 
     body.theme-dark .icon-btn {
       background: rgba(35,37,43,.96);
@@ -372,6 +363,44 @@
       max-width: 680px;
     }
 
+    .live-banner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .live-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      font-size: .78rem;
+      color: var(--text-sub);
+      box-shadow: 0 8px 18px rgba(0,0,0,.03);
+    }
+
+    body.theme-dark .live-pill {
+      background: rgba(35,37,43,.92);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #62c171;
+      box-shadow: 0 0 0 4px rgba(98,193,113,.16);
+      animation: pulseDot 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulseDot {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+    }
+
     .hero-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -422,9 +451,7 @@
       line-height: 1.35;
     }
 
-    .redeem-card {
-      min-height: 540px;
-    }
+    .redeem-card { min-height: 540px; }
 
     .redeem-head {
       display: flex;
@@ -472,20 +499,6 @@
       background: rgba(36,38,43,.92);
     }
 
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #62c171;
-      box-shadow: 0 0 0 4px rgba(98,193,113,.16);
-      animation: pulseDot 1.8s ease-in-out infinite;
-    }
-
-    @keyframes pulseDot {
-      0%,100% { transform: scale(1); }
-      50% { transform: scale(1.12); }
-    }
-
     .input-card {
       border-radius: 22px;
       background: rgba(255,255,255,.74);
@@ -508,9 +521,7 @@
       margin-bottom: 10px;
     }
 
-    .input-title-row strong {
-      font-size: .84rem;
-    }
+    .input-title-row strong { font-size: .84rem; }
 
     .input-title-row span {
       font-size: .73rem;
@@ -548,13 +559,9 @@
       background: #fff;
     }
 
-    body.theme-dark .input-box:focus-within {
-      background: #24272d;
-    }
+    body.theme-dark .input-box:focus-within { background: #24272d; }
 
-    .input-box:focus-within::before {
-      transform: translateX(120%);
-    }
+    .input-box:focus-within::before { transform: translateX(120%); }
 
     .paste-mini-btn {
       position: absolute;
@@ -589,19 +596,20 @@
 
     textarea {
       width: 100%;
-      min-height: 210px;
+      min-height: 230px;
       resize: none;
       border: none;
       background: transparent;
       font-family: "Noto Sans Thai", system-ui, sans-serif;
       font-size: .98rem;
       color: var(--text-main);
-      line-height: 1.58;
+      line-height: 1.68;
       padding: 34px 0 0;
     }
 
     textarea::placeholder {
       color: #b4aaa2;
+      line-height: 1.8;
     }
 
     .input-meta {
@@ -651,9 +659,7 @@
       color: #f2cfbc;
     }
 
-    .meter-wrap {
-      margin-top: 10px;
-    }
+    .meter-wrap { margin-top: 10px; }
 
     .meter-head {
       display: flex;
@@ -671,9 +677,7 @@
       overflow: hidden;
     }
 
-    body.theme-dark .meter-track {
-      background: rgba(255,255,255,.08);
-    }
+    body.theme-dark .meter-track { background: rgba(255,255,255,.08); }
 
     .meter-bar {
       width: 0%;
@@ -769,14 +773,9 @@
       z-index: 0;
     }
 
-    .primary-btn > * {
-      position: relative;
-      z-index: 1;
-    }
+    .primary-btn > * { position: relative; z-index: 1; }
 
-    .primary-btn:hover {
-      transform: translateY(-2px) scale(1.01);
-    }
+    .primary-btn:hover { transform: translateY(-2px) scale(1.01); }
 
     .primary-btn:disabled {
       opacity: .68;
@@ -811,9 +810,7 @@
       color: #cfd4dc;
     }
 
-    .secondary-btn:hover {
-      transform: translateY(-1px);
-    }
+    .secondary-btn:hover { transform: translateY(-1px); }
 
     .spinner {
       width: 14px;
@@ -824,9 +821,7 @@
       animation: spin .7s linear infinite;
     }
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     .notice {
       margin-top: 12px;
@@ -839,18 +834,14 @@
       line-height: 1.55;
     }
 
-    body.theme-dark .notice {
-      border-color: #805844;
-    }
+    body.theme-dark .notice { border-color: #805844; }
 
     .side-stack {
       display: grid;
       gap: 12px;
     }
 
-    .compact-card .card-inner {
-      padding: 13px;
-    }
+    .compact-card .card-inner { padding: 13px; }
 
     .side-title {
       font-size: .84rem;
@@ -945,9 +936,7 @@
       box-shadow: 0 18px 30px rgba(0,0,0,.08);
     }
 
-    body.theme-dark .loading-box {
-      border-color: #3b4049;
-    }
+    body.theme-dark .loading-box { border-color: #3b4049; }
 
     .loading-circle {
       width: 56px;
@@ -993,9 +982,7 @@
       line-height: 1.55;
     }
 
-    #summary {
-      margin-top: 14px;
-    }
+    #summary { margin-top: 14px; }
 
     .summary-row {
       display: flex;
@@ -1029,7 +1016,7 @@
 
     .summary-pill.nf {
       background: var(--accent-nf-soft);
-      border-color: #f1cbc8;
+      border-color: #f4c9d0;
       color: var(--accent-nf);
     }
 
@@ -1066,13 +1053,8 @@
       color: var(--text-main);
     }
 
-    .status-ok {
-      color: var(--accent-ok) !important;
-    }
-
-    .status-error {
-      color: var(--accent-nf) !important;
-    }
+    .status-ok { color: var(--accent-ok) !important; }
+    .status-error { color: var(--accent-nf) !important; }
 
     .status-time {
       font-size: .76rem;
@@ -1086,10 +1068,25 @@
       margin-top: 12px;
     }
 
+    .copy-all-wrap {
+      display: grid;
+      gap: 6px;
+    }
+
     .copy-btn.all {
       background: linear-gradient(135deg, #fffaf6, #f3e7de);
       border-style: dashed;
       color: var(--brand-deep);
+      padding: 14px 16px;
+      font-size: .92rem;
+      border-radius: 18px;
+      box-shadow: 0 10px 20px rgba(185,143,115,.08);
+    }
+
+    .copy-all-help {
+      font-size: .73rem;
+      color: var(--text-sub);
+      text-align: center;
     }
 
     body.theme-dark .copy-btn.all {
@@ -1126,7 +1123,8 @@
     }
 
     .result-item.success-card {
-      border-color: #dcccbe;
+      border-color: #cfe6d8;
+      background: linear-gradient(180deg, #f9fffb, #edf8f2);
     }
 
     .result-item.used-card {
@@ -1135,8 +1133,8 @@
     }
 
     .result-item.notfound-card {
-      border-color: #f3d0cd;
-      background: linear-gradient(180deg, #fff7f6, #fff1ef);
+      border-color: #f4c8d0;
+      background: linear-gradient(180deg, #fff8f9, #fff0f3);
     }
 
     body.theme-dark .result-item {
@@ -1240,38 +1238,47 @@
       color: var(--text-sub);
     }
 
-    .bottom-footer {
-      margin-top: 18px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-      padding-bottom: 6px;
-      color: var(--text-sub);
+    .floating-admin {
+      position: fixed;
+      right: 14px;
+      bottom: 22px;
+      z-index: 9500;
+      text-decoration: none;
     }
 
-    .admin-btn {
+    .floating-admin-btn {
+      border: none;
       border-radius: 999px;
-      padding: 12px 18px;
+      padding: 13px 16px;
       background: linear-gradient(135deg, #11d861, #06c755);
       color: #fff;
-      border: none;
-      box-shadow: 0 12px 24px rgba(6, 199, 85, 0.20);
-      font-size: .86rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 18px 34px rgba(6, 199, 85, 0.24);
       font-weight: 700;
+      font-size: .84rem;
+      cursor: pointer;
+      transition: .18s ease;
     }
 
-    .admin-btn:hover {
+    .floating-admin-btn:hover {
       transform: translateY(-2px) scale(1.01);
-      box-shadow: 0 14px 28px rgba(6, 199, 85, 0.24);
     }
 
-    .admin-btn .line-icon {
+    .floating-admin .line-icon {
       width: 18px;
       height: 18px;
-      display: inline-block;
       flex-shrink: 0;
+    }
+
+    .bottom-footer {
+      margin-top: 22px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 6px;
+      color: var(--text-sub);
     }
 
     .footer-brand {
@@ -1329,7 +1336,7 @@
     .toast {
       position: fixed;
       left: 50%;
-      bottom: 88px;
+      bottom: 92px;
       transform: translateX(-50%) translateY(40px);
       padding: 10px 18px;
       border-radius: 999px;
@@ -1350,6 +1357,28 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    .success-banner {
+      margin-top: 10px;
+      padding: 11px 12px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #f4fcf7, #ebf8f0);
+      border: 1px solid #cfe6d8;
+      color: var(--accent-ok);
+      font-size: .8rem;
+      font-weight: 700;
+      animation: popIn .35s ease;
+    }
+
+    body.theme-dark .success-banner {
+      background: linear-gradient(135deg, #223831, #263b35);
+      border-color: #3f6f59;
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: translateY(8px) scale(.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
     .shake {
       animation: shake .4s;
       border-color: var(--accent-nf) !important;
@@ -1362,55 +1391,39 @@
     }
 
     @media (max-width: 980px) {
-      .layout {
-        grid-template-columns: 1fr;
-      }
-
-      .side-col {
-        order: 2;
-      }
-
-      .main-col {
-        order: 1;
-      }
-
-      .bottom-footer {
-        padding-bottom: 8px;
-      }
+      .layout { grid-template-columns: 1fr; }
+      .side-col { order: 2; }
+      .main-col { order: 1; }
     }
 
     @media (max-width: 760px) {
-      .app {
-        padding: 12px;
-      }
-
-      .hero-strip {
-        grid-template-columns: 1fr 1fr;
-      }
+      .app { padding: 12px; }
+      .hero-strip { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 520px) {
       .topbar-row,
-      .redeem-head {
-        align-items: flex-start;
-      }
+      .redeem-head { align-items: flex-start; }
 
-      .topbar-actions {
-        align-items: flex-end;
-      }
+      .topbar-actions { align-items: flex-end; }
 
-      .brand-title {
-        font-size: 1.28rem;
-      }
-
-      .hero-title {
-        font-size: 1.08rem;
-      }
+      .brand-title { font-size: 1.28rem; }
+      .hero-title { font-size: 1.08rem; }
 
       .tip-bubble {
         left: 10px;
         right: 10px;
         max-width: none;
+      }
+
+      .floating-admin {
+        right: 10px;
+        bottom: 16px;
+      }
+
+      .floating-admin-btn {
+        padding: 12px 14px;
+        font-size: .8rem;
       }
 
       .bear-wallpaper svg {
@@ -1448,7 +1461,7 @@
       .secondary-btn,
       .history-btn,
       .paste-mini-btn,
-      .admin-btn {
+      .floating-admin-btn {
         transition: none !important;
       }
     }
@@ -1501,6 +1514,16 @@
 
   <canvas id="fxCanvas"></canvas>
 
+  <a class="floating-admin" href="https://lin.ee/gAh3wAH" target="_blank" rel="noopener noreferrer" aria-label="ติดต่อแอดมิน">
+    <div class="floating-admin-btn">
+      <svg class="line-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M53.6 29.4c0-10.8-9.7-19.5-21.6-19.5S10.4 18.6 10.4 29.4c0 9.7 7.7 17.8 18.1 19.3l-1.2 6.8a1.7 1.7 0 0 0 2.5 1.8l8.1-4.6c.7.1 1.4.1 2.1.1 11.9 0 21.6-8.7 21.6-19.4Z" fill="white"/>
+        <path d="M24.5 23.8c-.7 0-1.3.6-1.3 1.3v8.5c0 .7.6 1.3 1.3 1.3h4.8c.7 0 1.3-.6 1.3-1.3s-.6-1.3-1.3-1.3h-3.5v-7.2c0-.7-.6-1.3-1.3-1.3Zm15.1 0c-.7 0-1.3.6-1.3 1.3v5.2l-4.4-5.9a1.3 1.3 0 0 0-1.1-.6h-.3c-.7 0-1.3.6-1.3 1.3v8.5c0 .7.6 1.3 1.3 1.3s1.3-.6 1.3-1.3v-5.2l4.4 5.9c.2.3.6.6 1.1.6h.3c.7 0 1.3-.6 1.3-1.3v-8.5c0-.7-.6-1.3-1.3-1.3Zm-22.9 0c-.7 0-1.3.6-1.3 1.3v8.5c0 .7.6 1.3 1.3 1.3s1.3-.6 1.3-1.3v-8.5c0-.7-.6-1.3-1.3-1.3Zm27.9 2.6c.7 0 1.3-.6 1.3-1.3s-.6-1.3-1.3-1.3h-4.8c-.7 0-1.3.6-1.3 1.3v8.5c0 .7.6 1.3 1.3 1.3h4.8c.7 0 1.3-.6 1.3-1.3s-.6-1.3-1.3-1.3h-3.5v-1h3.5c.7 0 1.3-.6 1.3-1.3s-.6-1.3-1.3-1.3h-3.5v-1h3.5Z" fill="#06C755"/>
+      </svg>
+      <span>ติดต่อแอดมิน</span>
+    </div>
+  </a>
+
   <div class="app">
     <header class="topbar glass">
       <div class="topbar-row">
@@ -1526,6 +1549,14 @@
           <div class="card-inner">
             <h1 class="hero-title">ระบบรับสินค้าอัตโนมัติสำหรับลูกค้า</h1>
             <p class="hero-desc">วางโค้ดจากแอดมิน แล้วให้ระบบตรวจสอบและแสดงรายละเอียดให้อัตโนมัติในหน้าเดียว พร้อมคัดลอกผลลัพธ์ได้สะดวก</p>
+
+            <div class="live-banner">
+              <div class="live-pill">
+                <span class="status-dot"></span>
+                <span>เปิดรับอัตโนมัติ 24 ชั่วโมง</span>
+              </div>
+              <div class="live-pill">รองรับหลายโค้ดในครั้งเดียว</div>
+            </div>
 
             <div class="hero-strip">
               <div class="hero-strip-item">
@@ -1595,7 +1626,7 @@
               <div class="input-box">
                 <button class="paste-mini-btn" id="btnPaste" type="button">📋 วางโค้ด</button>
 
-                <textarea id="codeInput" placeholder="เช่น NFXA1B2&#10;หรือ DSN9X3Y"></textarea>
+                <textarea id="codeInput" placeholder="ตัวอย่าง&#10;ABC12345&#10;DEF67890&#10;GHI24680"></textarea>
 
                 <div class="input-meta">
                   <div class="meta-pill">แนะนำ: 1 บรรทัดต่อ 1 โค้ด</div>
@@ -1674,14 +1705,6 @@
     </div>
 
     <div class="bottom-footer">
-      <a class="admin-btn" href="https://lin.ee/gAh3wAH" target="_blank" rel="noopener noreferrer">
-        <svg class="line-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M53.6 29.4c0-10.8-9.7-19.5-21.6-19.5S10.4 18.6 10.4 29.4c0 9.7 7.7 17.8 18.1 19.3l-1.2 6.8a1.7 1.7 0 0 0 2.5 1.8l8.1-4.6c.7.1 1.4.1 2.1.1 11.9 0 21.6-8.7 21.6-19.4Z" fill="white"/>
-          <path d="M24.5 23.8c-.7 0-1.3.6-1.3 1.3v8.5c0 .7.6 1.3 1.3 1.3h4.8c.7 0 1.3-.6 1.3-1.3s-.6-1.3-1.3-1.3h-3.5v-7.2c0-.7-.6-1.3-1.3-1.3Zm15.1 0c-.7 0-1.3.6-1.3 1.3v5.2l-4.4-5.9a1.3 1.3 0 0 0-1.1-.6h-.3c-.7 0-1.3.6-1.3 1.3v8.5c0 .7.6 1.3 1.3 1.3s1.3-.6 1.3-1.3v-5.2l4.4 5.9c.2.3.6.6 1.1.6h.3c.7 0 1.3-.6 1.3-1.3v-8.5c0-.7-.6-1.3-1.3-1.3Zm-22.9 0c-.7 0-1.3.6-1.3 1.3v8.5c0 .7.6 1.3 1.3 1.3s1.3-.6 1.3-1.3v-8.5c0-.7-.6-1.3-1.3-1.3Zm27.9 2.6c.7 0 1.3-.6 1.3-1.3s-.6-1.3-1.3-1.3h-4.8c-.7 0-1.3.6-1.3 1.3v8.5c0 .7.6 1.3 1.3 1.3h4.8c.7 0 1.3-.6 1.3-1.3s-.6-1.3-1.3-1.3h-3.5v-1h3.5c.7 0 1.3-.6 1.3-1.3s-.6-1.3-1.3-1.3h-3.5v-1h3.5Z" fill="#06C755"/>
-        </svg>
-        <span>ติดต่อแอดมิน</span>
-      </a>
-
       <div class="footer-brand">426 SHOP · EST 2024</div>
     </div>
   </div>
@@ -1692,7 +1715,7 @@
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const MAX_CODES = 5;
-    const HISTORY_KEY = "redeem_history_v12";
+    const HISTORY_KEY = "redeem_history_v13";
 
     const btnRedeem = document.getElementById("btnRedeem");
     const btnClear = document.getElementById("btnClear");
@@ -1778,7 +1801,7 @@
     const tips = [
       "วางหลายโค้ดได้ในครั้งเดียว สูงสุดประมาณ 5 โค้ด/ครั้ง",
       "กดคัดลอกทั้งหมดได้ในปุ่มเดียว สะดวกขึ้นเยอะ",
-      "มีปุ่มติดต่อแอดมินอยู่ล่างสุดของหน้า",
+      "มีปุ่มติดต่อแอดมินลอยอยู่มุมล่างขวา",
       "กดรับสินค้าแล้ว อย่าเพิ่งรีเฟรชหน้านะคะ"
     ];
 
@@ -1988,6 +2011,10 @@
       if (nfCount) chips.push(`<div class="summary-pill nf">❌ ไม่พบ ${nfCount} โค้ด</div>`);
       if (chips.length) summaryDiv.innerHTML = `<div class="summary-row">${chips.join("")}</div>`;
 
+      if (res.ok && successCount > 0) {
+        summaryDiv.innerHTML += `<div class="success-banner">รับสินค้าเรียบร้อยแล้ว สามารถคัดลอกทั้งหมดได้ทันที</div>`;
+      }
+
       if (usedCount >= 2) {
         summaryDiv.innerHTML += `
           <div class="info-card">
@@ -2089,10 +2116,13 @@
       if (latestCopyAllText) {
         copyActions.innerHTML = `
           <div class="copy-actions">
-            <button class="copy-btn all" id="btnCopyAll" type="button">
-              <span>📋</span>
-              <span>คัดลอกทั้งหมด</span>
-            </button>
+            <div class="copy-all-wrap">
+              <button class="copy-btn all" id="btnCopyAll" type="button">
+                <span>📋</span>
+                <span>คัดลอกทั้งหมด</span>
+              </button>
+              <div class="copy-all-help">ใช้ส่งให้ลูกค้าหรือเก็บข้อมูลได้ทันที</div>
+            </div>
           </div>
         `;
 
