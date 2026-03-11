@@ -8,32 +8,39 @@
   <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f5f3f0;
+      --bg: #f7f2ee;
       --card: #ffffff;
-      --accent: #85b8a6;
-      --accent-2: #f0c7a7;
-      --accent-soft: #e3f0eb;
-      --text-main: #393532;
-      --text-sub: #8b8680;
-      --border-soft: #e2ddd7;
-      --danger: #e57373;
-      --warning: #d47955;
-      --shadow-soft: 0 18px 40px rgba(0,0,0,0.06);
+      --accent: #86bba8;
+      --accent-2: #f2cdb2;
+      --accent-3: #d9e8ff;
+      --accent-soft: #e9f5ef;
+      --text-main: #3d3734;
+      --text-sub: #8c857f;
+      --border-soft: #e9e1d8;
+      --danger: #eb7f7f;
+      --warning: #d98c63;
+      --ok: #3f8b62;
+      --used: #8061c2;
+      --nf: #c96363;
+      --glass: rgba(255,255,255,0.80);
+      --shadow-soft: 0 18px 42px rgba(0,0,0,0.07);
       --radius-xl: 24px;
-      --glass: rgba(255,255,255,0.76);
+      --radius-lg: 18px;
+      --radius-md: 14px;
     }
 
     body.theme-dark {
-      --bg: #15161a;
-      --card: #1f2024;
-      --accent: #9dd4c1;
-      --accent-2: #f0c7a7;
-      --accent-soft: #223a33;
-      --text-main: #f4f5f7;
-      --text-sub: #a5a9b3;
-      --border-soft: #2d3036;
-      --shadow-soft: 0 18px 40px rgba(0,0,0,0.7);
-      --glass: rgba(31,32,36,0.82);
+      --bg: #15171b;
+      --card: #1f2227;
+      --accent: #9ed3c1;
+      --accent-2: #f2cdb2;
+      --accent-3: #8ea7d8;
+      --accent-soft: #223933;
+      --text-main: #f5f6f8;
+      --text-sub: #a7abb5;
+      --border-soft: #32353c;
+      --glass: rgba(31,34,39,0.84);
+      --shadow-soft: 0 18px 42px rgba(0,0,0,0.65);
     }
 
     * {
@@ -42,23 +49,19 @@
       outline: none;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      padding: 0;
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: stretch;
       background:
-        radial-gradient(circle at 0 0, #f8e8dd 0, transparent 55%),
-        radial-gradient(circle at 100% 0, #e7f4ee 0, transparent 55%),
+        radial-gradient(circle at 0 0, #fde8dd 0, transparent 52%),
+        radial-gradient(circle at 100% 0, #eaf7f1 0, transparent 52%),
         var(--bg);
-      font-family: "Anuphan", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--text-main);
+      font-family: "Anuphan", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       -webkit-font-smoothing: antialiased;
       transition: background 0.25s ease, color 0.25s ease;
       overflow-x: hidden;
@@ -66,8 +69,8 @@
 
     body.theme-dark {
       background:
-        radial-gradient(circle at 0 0, #222433 0, transparent 55%),
-        radial-gradient(circle at 100% 0, #243234 0, transparent 55%),
+        radial-gradient(circle at 0 0, #23273a 0, transparent 52%),
+        radial-gradient(circle at 100% 0, #213337 0, transparent 52%),
         var(--bg);
     }
 
@@ -81,36 +84,36 @@
     .bg-orb {
       position: fixed;
       border-radius: 999px;
-      filter: blur(34px);
-      opacity: 0.55;
       pointer-events: none;
       z-index: 0;
+      filter: blur(34px);
+      opacity: 0.55;
       animation: orbFloat 14s ease-in-out infinite;
     }
 
     .orb-1 {
       width: 220px;
       height: 220px;
-      left: -60px;
+      left: -70px;
       top: 80px;
-      background: radial-gradient(circle, rgba(255,190,150,0.55), rgba(255,190,150,0));
+      background: radial-gradient(circle, rgba(242,205,178,0.60), rgba(242,205,178,0));
     }
 
     .orb-2 {
-      width: 260px;
-      height: 260px;
-      right: -70px;
-      top: 140px;
-      background: radial-gradient(circle, rgba(133,184,166,0.5), rgba(133,184,166,0));
+      width: 270px;
+      height: 270px;
+      right: -80px;
+      top: 150px;
+      background: radial-gradient(circle, rgba(134,187,168,0.50), rgba(134,187,168,0));
       animation-delay: -4s;
     }
 
     .orb-3 {
       width: 180px;
       height: 180px;
-      left: 20%;
-      bottom: 60px;
-      background: radial-gradient(circle, rgba(195, 210, 255, 0.28), rgba(195,210,255,0));
+      left: 22%;
+      bottom: 80px;
+      background: radial-gradient(circle, rgba(187,206,255,0.35), rgba(187,206,255,0));
       animation-delay: -7s;
     }
 
@@ -119,39 +122,38 @@
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      opacity: 0.1;
+      opacity: 0.08;
       background-image:
-        linear-gradient(rgba(255,255,255,0.55) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.55) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,0.65) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.65) 1px, transparent 1px);
       background-size: 28px 28px;
-      mask-image: radial-gradient(circle at center, black 35%, transparent 90%);
+      mask-image: radial-gradient(circle at center, black 34%, transparent 88%);
     }
 
     body.theme-dark .bg-grid {
-      opacity: 0.07;
+      opacity: 0.06;
       background-image:
         linear-gradient(rgba(255,255,255,0.18) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.18) 1px, transparent 1px);
     }
 
     @keyframes orbFloat {
-      0%, 100% { transform: translateY(0) translateX(0) scale(1); }
-      25% { transform: translateY(-18px) translateX(10px) scale(1.04); }
-      50% { transform: translateY(8px) translateX(-12px) scale(0.98); }
-      75% { transform: translateY(-10px) translateX(8px) scale(1.03); }
+      0%,100% { transform: translateY(0) translateX(0) scale(1); }
+      25% { transform: translateY(-16px) translateX(10px) scale(1.04); }
+      50% { transform: translateY(10px) translateX(-12px) scale(0.98); }
+      75% { transform: translateY(-8px) translateX(8px) scale(1.03); }
     }
 
     .app {
+      width: 100%;
+      max-width: 500px;
+      min-height: 100vh;
+      padding: 14px 16px 120px;
       position: relative;
       z-index: 2;
-      width: 100%;
-      max-width: 480px;
-      padding: 14px 16px 18px;
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      overflow-y: auto;
+      gap: 12px;
     }
 
     .header {
@@ -159,9 +161,8 @@
       flex-direction: column;
       gap: 10px;
       padding: 6px;
-      border-radius: 26px;
+      border-radius: 28px;
       backdrop-filter: blur(10px);
-      position: relative;
     }
 
     .brand-row {
@@ -179,41 +180,30 @@
     }
 
     .logo-circle {
-      width: 58px;
-      height: 58px;
+      width: 60px;
+      height: 60px;
       border-radius: 999px;
       background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.22)),
-        linear-gradient(135deg, #f8efe7, #e7f4ee);
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.2)),
+        linear-gradient(135deg, #faefe8, #e7f6ef);
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow:
         0 10px 24px rgba(0,0,0,0.08),
-        inset 0 1px 0 rgba(255,255,255,0.6);
-      position: relative;
+        inset 0 1px 0 rgba(255,255,255,0.7);
       overflow: hidden;
+      position: relative;
       flex-shrink: 0;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      isolation: isolate;
     }
 
     body.theme-dark .logo-circle {
       background:
         radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), rgba(255,255,255,0)),
-        linear-gradient(135deg, #2a2b38, #223234);
+        linear-gradient(135deg, #2a2d38, #223433);
       box-shadow:
-        0 10px 26px rgba(0,0,0,0.8),
+        0 12px 28px rgba(0,0,0,0.75),
         inset 0 1px 0 rgba(255,255,255,0.03);
-    }
-
-    .logo-circle::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.18), transparent 55%);
-      z-index: 2;
-      pointer-events: none;
     }
 
     .logo-circle.success-bounce {
@@ -221,14 +211,14 @@
     }
 
     .logo-img-wrap {
-      width: 46px;
-      height: 46px;
+      width: 48px;
+      height: 48px;
       border-radius: 999px;
       overflow: hidden;
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
       position: relative;
       z-index: 1;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-      background: #fff;
     }
 
     .logo-img {
@@ -237,6 +227,14 @@
       object-fit: cover;
       display: block;
       transform: scale(1.05);
+    }
+
+    .logo-circle::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18), transparent 55%);
+      pointer-events: none;
     }
 
     @keyframes successPop {
@@ -254,14 +252,14 @@
 
     .brand-title {
       font-weight: 700;
-      font-size: 1.4rem;
+      font-size: 1.38rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       white-space: nowrap;
     }
 
     .brand-sub {
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       color: var(--text-sub);
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -279,20 +277,19 @@
     .badge {
       padding: 6px 12px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.92);
       border: 1px solid rgba(0,0,0,0.03);
       font-size: 0.72rem;
       color: var(--text-sub);
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      white-space: nowrap;
       backdrop-filter: blur(6px);
       box-shadow: 0 6px 16px rgba(0,0,0,0.04);
     }
 
     body.theme-dark .badge {
-      background: rgba(31,32,36,0.95);
+      background: rgba(31,34,39,0.95);
       border-color: rgba(255,255,255,0.06);
     }
 
@@ -307,68 +304,67 @@
 
     @keyframes pulseDot {
       0%,100% { transform: scale(1); }
-      50% { transform: scale(1.12); }
+      50% { transform: scale(1.14); }
     }
 
     .theme-toggle {
-      border-radius: 999px;
+      width: 36px;
+      height: 36px;
       border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 999px;
       background: rgba(255,255,255,0.95);
-      width: 34px;
-      height: 34px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
       font-size: 1rem;
+      cursor: pointer;
       box-shadow: 0 6px 14px rgba(0,0,0,0.08);
       transition: all 0.18s ease;
-      backdrop-filter: blur(6px);
       position: relative;
       overflow: hidden;
     }
 
     .theme-toggle:hover {
       transform: translateY(-1px) rotate(3deg);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
     }
 
     body.theme-dark .theme-toggle {
-      background: rgba(25,26,30,0.96);
+      background: rgba(24,26,30,0.96);
       border-color: rgba(255,255,255,0.08);
     }
 
-    .trust-row {
+    .stats-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 8px;
     }
 
-    .trust-pill {
-      padding: 8px 10px;
+    .stat-card {
+      padding: 10px 8px;
       border-radius: 16px;
-      background: rgba(255,255,255,0.88);
-      border: 1px solid rgba(0,0,0,0.05);
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(255,255,255,0.6);
       box-shadow: 0 8px 18px rgba(0,0,0,0.04);
       backdrop-filter: blur(8px);
       text-align: center;
-      font-size: 0.74rem;
-      color: var(--text-main);
-      font-weight: 700;
-      line-height: 1.35;
     }
 
-    .trust-pill span {
-      display: block;
-      color: var(--text-sub);
-      font-size: 0.68rem;
-      font-weight: 500;
-      margin-top: 2px;
-    }
-
-    body.theme-dark .trust-pill {
-      background: rgba(31,32,36,0.92);
+    body.theme-dark .stat-card {
+      background: rgba(31,34,39,0.88);
       border-color: rgba(255,255,255,0.06);
+    }
+
+    .stat-num {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 2px;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      color: var(--text-sub);
+      line-height: 1.35;
     }
 
     .step-row {
@@ -388,56 +384,46 @@
       align-items: center;
       gap: 6px;
       transition: all 0.2s ease;
-      backdrop-filter: blur(6px);
     }
 
     body.theme-dark .step-pill {
-      background: rgba(36,37,43,0.95);
-      border-color: #32343b;
+      background: rgba(36,39,45,0.95);
+      border-color: #32353c;
     }
 
-    .step-pill--muted {
-      opacity: 0.65;
-    }
-
+    .step-pill--muted { opacity: 0.65; }
     .step-pill--active {
       border-color: var(--accent);
       background: var(--accent-soft);
       color: var(--text-main);
-      box-shadow: 0 0 0 3px rgba(133,184,166,0.18);
+      box-shadow: 0 0 0 3px rgba(134,187,168,0.18);
       opacity: 1;
       transform: translateY(-1px);
     }
-
     .step-pill--done {
-      background: #e8f6f0;
-      border-color: #b8dccc;
-      color: #356655;
+      background: #e8f6ef;
+      border-color: #bfe0d0;
+      color: #376854;
       opacity: 1;
     }
-
     body.theme-dark .step-pill--done {
-      background: #233a31;
-      border-color: #3e6d5b;
-      color: #c1e4d5;
+      background: #243a33;
+      border-color: #42685b;
+      color: #cae8dc;
     }
 
     .card {
-      flex: 1;
+      position: relative;
+      overflow: hidden;
       background: var(--glass);
       border-radius: var(--radius-xl);
-      box-shadow:
-        0 20px 40px rgba(0,0,0,0.08),
-        inset 0 1px 0 rgba(255,255,255,0.7);
-      border: 1px solid rgba(255,255,255,0.55);
+      border: 1px solid rgba(255,255,255,0.56);
+      box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255,255,255,0.7);
+      backdrop-filter: blur(16px);
       padding: 18px 16px 16px;
       display: flex;
       flex-direction: column;
       gap: 12px;
-      transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
-      backdrop-filter: blur(16px);
-      position: relative;
-      overflow: hidden;
     }
 
     .card::before {
@@ -449,23 +435,20 @@
     }
 
     body.theme-dark .card {
-      border: 1px solid rgba(255,255,255,0.06);
-      box-shadow:
-        0 24px 40px rgba(0,0,0,0.5),
-        inset 0 1px 0 rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.06);
+      box-shadow: 0 24px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.04);
     }
 
     .floating-glow {
       position: absolute;
       right: 6px;
       top: -6px;
-      width: 60px;
-      height: 60px;
+      width: 62px;
+      height: 62px;
       border-radius: 999px;
-      background: radial-gradient(circle, rgba(133,184,166,0.18), transparent 70%);
-      pointer-events: none;
+      background: radial-gradient(circle, rgba(134,187,168,0.18), transparent 70%);
       filter: blur(10px);
-      z-index: 0;
+      pointer-events: none;
     }
 
     .loading-overlay {
@@ -476,7 +459,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.22s ease;
-      z-index: 3;
+      z-index: 4;
       overflow: hidden;
     }
 
@@ -508,7 +491,7 @@
       gap: 8px;
     }
 
-    .card-title span.icon {
+    .card-title .icon {
       width: 24px;
       height: 24px;
       border-radius: 999px;
@@ -517,25 +500,25 @@
       align-items: center;
       justify-content: center;
       font-size: 0.9rem;
-      box-shadow: 0 4px 10px rgba(133,184,166,0.16);
+      box-shadow: 0 4px 10px rgba(134,187,168,0.16);
     }
 
     .card-desc {
       text-align: center;
       font-size: 0.9rem;
-      color: var(--text-main);
       line-height: 1.5;
+      color: var(--text-main);
       padding: 10px 14px;
       border-radius: 16px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.72), rgba(227,240,235,0.9));
-      border: 1px solid rgba(133,184,166,0.22);
-      box-shadow: 0 8px 18px rgba(133,184,166,0.08);
+      background: linear-gradient(135deg, rgba(255,255,255,0.74), rgba(233,245,239,0.9));
+      border: 1px solid rgba(134,187,168,0.22);
+      box-shadow: 0 8px 18px rgba(134,187,168,0.08);
       animation: cuteBlink 1.8s ease-in-out infinite;
     }
 
     body.theme-dark .card-desc {
-      background: linear-gradient(135deg, rgba(34,58,51,0.95), rgba(31,32,36,0.95));
-      border-color: rgba(157,212,193,0.18);
+      background: linear-gradient(135deg, rgba(34,57,51,0.95), rgba(31,34,39,0.95));
+      border-color: rgba(158,211,193,0.18);
       color: #edf4f1;
     }
 
@@ -546,58 +529,30 @@
     }
 
     @keyframes cuteBlink {
-      0%, 100% {
+      0%,100% {
         transform: scale(1);
-        box-shadow: 0 8px 18px rgba(133,184,166,0.08);
+        box-shadow: 0 8px 18px rgba(134,187,168,0.08);
       }
       50% {
         transform: scale(1.015);
-        box-shadow: 0 10px 22px rgba(240,199,167,0.18);
+        box-shadow: 0 10px 22px rgba(242,205,178,0.18);
       }
     }
 
-    .hero-notes {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-    }
-
-    .hero-note {
-      padding: 9px 10px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.78);
-      border: 1px solid rgba(0,0,0,0.05);
-      font-size: 0.76rem;
-      color: var(--text-main);
-      line-height: 1.45;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.04);
-    }
-
-    body.theme-dark .hero-note {
-      background: rgba(37,38,43,0.9);
-      border-color: rgba(255,255,255,0.05);
-    }
-
-    .hero-note strong {
-      display: block;
-      font-size: 0.78rem;
-      margin-bottom: 2px;
-    }
-
     .input-field {
-      background: rgba(250,248,246,0.88);
+      background: rgba(250,248,246,0.9);
+      border: 1.5px solid #e7dfd7;
       border-radius: 18px;
-      border: 1.5px solid #e6e0da;
       padding: 10px 12px;
-      transition: all 0.25s ease;
       position: relative;
       overflow: hidden;
+      transition: all 0.25s ease;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
     }
 
     body.theme-dark .input-field {
-      background: rgba(35,36,41,0.88);
-      border-color: #32343b;
+      background: rgba(35,38,43,0.88);
+      border-color: #32353c;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
     }
 
@@ -614,13 +569,11 @@
     .input-field:focus-within {
       border-color: var(--accent);
       background: #ffffff;
-      box-shadow:
-        0 0 0 3px rgba(133,184,166,0.16),
-        0 10px 20px rgba(133,184,166,0.08);
+      box-shadow: 0 0 0 3px rgba(134,187,168,0.16), 0 10px 20px rgba(134,187,168,0.08);
     }
 
     body.theme-dark .input-field:focus-within {
-      background: #25272d;
+      background: #26292f;
     }
 
     .input-field:focus-within::before {
@@ -629,6 +582,7 @@
 
     textarea {
       width: 100%;
+      min-height: 160px;
       border: none;
       resize: none;
       background: transparent;
@@ -637,105 +591,41 @@
       color: var(--text-main);
       line-height: 1.55;
       padding: 4px 0 0;
-      min-height: 170px;
       letter-spacing: 0.01em;
     }
 
     textarea::placeholder {
-      color: #b0aaa3;
+      color: #b3ada7;
     }
 
     .input-helper-row {
-      margin-top: 4px;
+      margin-top: 6px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.72rem;
-      color: var(--text-sub);
       gap: 6px;
       flex-wrap: wrap;
+      font-size: 0.72rem;
+      color: var(--text-sub);
     }
 
     .small-tag {
       padding: 3px 8px;
       border-radius: 999px;
-      background: #f5efea;
-      border: 1px dashed #e0d4c8;
+      background: #f7f0ea;
+      border: 1px dashed #dfd3c6;
       white-space: nowrap;
     }
 
     body.theme-dark .small-tag {
-      background: #26272e;
-      border-color: #3a3c45;
+      background: #272a31;
+      border-color: #40434a;
     }
 
     #lineInfo {
+      min-height: 1.2em;
       text-align: right;
       flex: 1;
-      min-height: 1.2em;
-    }
-
-    .duplicate-warning {
-      display: none;
-      margin-top: 8px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: #fff3e7;
-      border: 1px solid #f2c7a7;
-      color: #9a5d2e;
-      font-size: 0.78rem;
-      line-height: 1.5;
-    }
-
-    .duplicate-warning.show {
-      display: block;
-    }
-
-    body.theme-dark .duplicate-warning {
-      background: #3a2a21;
-      border-color: #7a5842;
-      color: #ffd9ba;
-    }
-
-    .quick-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: 8px;
-    }
-
-    .btn-soft {
-      flex: 1;
-      border-radius: 14px;
-      border: 1px solid #ddd6cf;
-      background: rgba(255,255,255,0.9);
-      padding: 10px 12px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--text-main);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: all 0.18s ease;
-      backdrop-filter: blur(6px);
-    }
-
-    .btn-soft:hover {
-      transform: translateY(-1px);
-      border-color: #cfc5ba;
-      background: #fff;
-    }
-
-    body.theme-dark .btn-soft {
-      background: rgba(37,38,43,0.9);
-      border-color: #3a3d45;
-      color: #f2f3f6;
-    }
-
-    body.theme-dark .btn-soft:hover {
-      background: #2c2e35;
-      border-color: #4a4d58;
     }
 
     .code-meter-wrap {
@@ -767,8 +657,8 @@
       width: 0%;
       height: 100%;
       border-radius: inherit;
-      background: linear-gradient(90deg, #85b8a6, #9bd3bf, #f0d2b9);
-      box-shadow: 0 0 18px rgba(133,184,166,0.35);
+      background: linear-gradient(90deg, #86bba8, #9dd3bf, #f2d4bc);
+      box-shadow: 0 0 18px rgba(134,187,168,0.35);
       transition: width 0.28s ease, filter 0.28s ease;
       position: relative;
       overflow: hidden;
@@ -788,36 +678,39 @@
     }
 
     .btn-row {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 8px;
-      margin-top: 2px;
-      align-items: stretch;
     }
 
-    .btn-primary {
-      flex: 1;
+    .btn-primary,
+    .btn-secondary,
+    .btn-paste {
       border-radius: 999px;
-      border: none;
-      padding: 14px;
-      background: radial-gradient(circle at 0 0, #a2d5c2 0, #7fae9b 55%);
-      color: #ffffff;
+      padding: 13px 12px;
       font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
+      font-size: 0.86rem;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-      transition: all 0.2s ease;
-      white-space: nowrap;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.18s ease;
       position: relative;
       overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      border: none;
+      background: radial-gradient(circle at 0 0, #a5d8c4 0, #7eae9a 55%);
+      color: #fff;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
       isolation: isolate;
     }
 
     body.theme-dark .btn-primary {
-      background: radial-gradient(circle at 0 0, #8fcbb7 0, #5a8a79 55%);
+      background: radial-gradient(circle at 0 0, #94ceb9 0, #5d8d7c 55%);
       box-shadow: 0 12px 30px rgba(0,0,0,0.6);
     }
 
@@ -831,122 +724,36 @@
       z-index: 0;
     }
 
-    .btn-primary::after {
-      content: "";
-      position: absolute;
-      inset: auto auto 0 0;
-      width: 100%;
-      height: 50%;
-      background: linear-gradient(to top, rgba(255,255,255,0.16), transparent);
-      z-index: 0;
-    }
-
-    .btn-primary > * {
-      position: relative;
-      z-index: 1;
-    }
+    .btn-primary > * { position: relative; z-index: 1; }
 
     @keyframes btnShimmer {
       to { transform: translateX(130%); }
     }
 
-    .btn-primary:hover {
-      transform: translateY(-2px) scale(1.01);
-      box-shadow: 0 14px 32px rgba(0,0,0,0.18);
+    .btn-secondary,
+    .btn-paste {
+      border: 1px solid #dad2c9;
+      background: rgba(248,244,241,0.92);
+      color: var(--text-sub);
+      backdrop-filter: blur(6px);
     }
 
-    .btn-primary:active {
-      transform: translateY(0);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.14);
+    body.theme-dark .btn-secondary,
+    body.theme-dark .btn-paste {
+      background: rgba(38,41,48,0.92);
+      border-color: #3a3d44;
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .btn-paste:hover {
+      transform: translateY(-1px);
     }
 
     .btn-primary:disabled {
       opacity: 0.68;
       cursor: default;
       transform: none;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
-    }
-
-    .btn-secondary {
-      border-radius: 999px;
-      border: 1px solid #dad3cc;
-      background: rgba(248,244,241,0.9);
-      padding: 12px 14px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--text-sub);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      transition: all 0.18s ease;
-      white-space: nowrap;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(6px);
-    }
-
-    body.theme-dark .btn-secondary {
-      background: rgba(37,38,43,0.9);
-      border-color: #383a40;
-    }
-
-    .btn-secondary:hover {
-      background: #f2ece6;
-      border-color: #cfc5ba;
-      transform: translateY(-1px);
-    }
-
-    body.theme-dark .btn-secondary:hover {
-      background: #2b2c32;
-      border-color: #444751;
-    }
-
-    .btn-copy-all,
-    .btn-copy-issue {
-      width: 100%;
-      border-radius: 16px;
-      padding: 11px 14px;
-      font-size: 0.86rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: all 0.18s ease;
-      box-shadow: 0 8px 18px rgba(133,184,166,0.08);
-      margin-top: 6px;
-    }
-
-    .btn-copy-all {
-      border: 1px dashed #c9ddd4;
-      background: linear-gradient(135deg, #f7fcfa, #eef8f4);
-      color: #3f6f60;
-    }
-
-    .btn-copy-all:hover,
-    .btn-copy-issue:hover {
-      transform: translateY(-1px);
-    }
-
-    .btn-copy-issue {
-      border: 1px dashed #f0c2a0;
-      background: linear-gradient(135deg, #fff7f0, #fff1e6);
-      color: #9a5d2e;
-    }
-
-    body.theme-dark .btn-copy-all {
-      background: linear-gradient(135deg, #223831, #273a35);
-      border-color: #45685b;
-      color: #d8efe6;
-    }
-
-    body.theme-dark .btn-copy-issue {
-      background: linear-gradient(135deg, #3b2a21, #342722);
-      border-color: #7a5842;
-      color: #ffd9ba;
     }
 
     .btn-primary .spinner {
@@ -954,7 +761,7 @@
       height: 14px;
       border-radius: 999px;
       border: 2px solid rgba(255,255,255,0.6);
-      border-top-color: rgba(255,255,255,1);
+      border-top-color: #fff;
       animation: spin 0.7s linear infinite;
     }
 
@@ -963,13 +770,28 @@
     }
 
     .warn-text {
-      margin-top: 4px;
-      font-size: 0.76rem;
-      color: var(--warning);
       display: flex;
       align-items: flex-start;
       gap: 6px;
+      font-size: 0.76rem;
       line-height: 1.5;
+      color: var(--warning);
+      margin-top: 4px;
+    }
+
+    .warn-text--important {
+      margin-top: 6px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: #fff4e8;
+      border: 1px solid #f0c5a4;
+      box-shadow: 0 8px 20px rgba(240,197,164,0.16);
+      animation: warnPulse 1.4s ease-in-out infinite;
+    }
+
+    body.theme-dark .warn-text--important {
+      background: #3b2b22;
+      border-color: #f0c5a4;
     }
 
     .warn-text-icon {
@@ -977,65 +799,22 @@
       margin-top: 1px;
     }
 
-    .warn-text--important {
-      margin-top: 6px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: #fff4e7;
-      border: 1px solid #f0c2a0;
-      animation: warnPulse 1.4s ease-in-out infinite;
-      box-shadow: 0 8px 20px rgba(240,194,160,0.16);
-    }
-
-    body.theme-dark .warn-text--important {
-      background: #3b2a21;
-      border-color: #f0c2a0;
-    }
-
     .warn-text--important .warn-text-icon {
       animation: warnIconPulse 1.4s ease-in-out infinite;
     }
 
     @keyframes warnPulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(212, 125, 76, 0.35); }
-      50% { box-shadow: 0 0 0 6px rgba(212, 125, 76, 0); }
+      0%,100% { box-shadow: 0 0 0 0 rgba(217,140,99,0.35); }
+      50% { box-shadow: 0 0 0 6px rgba(217,140,99,0); }
     }
 
     @keyframes warnIconPulse {
-      0%, 100% { transform: translateY(0) scale(1); }
+      0%,100% { transform: translateY(0) scale(1); }
       50% { transform: translateY(-1px) scale(1.12); }
     }
 
-    #status {
-      font-size: 0.8rem;
-      margin-top: 8px;
-      color: var(--text-sub);
-      line-height: 1.6;
-      min-height: 20px;
-      padding: 4px 2px 0;
-    }
-
-    .status-strong {
-      font-weight: 600;
-      color: var(--text-main);
-    }
-
-    .status-error {
-      color: #e57373 !important;
-    }
-
-    .status-ok {
-      color: #2e7d32 !important;
-      text-shadow: 0 0 10px rgba(46,125,50,0.06);
-    }
-
-    .status-time {
-      font-size: 0.76rem;
-      color: var(--text-sub);
-    }
-
     #summary {
-      margin-top: 8px;
+      margin-top: 6px;
       font-size: 0.78rem;
     }
 
@@ -1048,87 +827,354 @@
     .summary-pill {
       padding: 5px 10px;
       border-radius: 999px;
-      background: #f5efea;
-      border: 1px solid #e1d6ca;
       display: inline-flex;
       align-items: center;
       gap: 6px;
       white-space: nowrap;
-      backdrop-filter: blur(6px);
+      border: 1px solid #e3d9cf;
+      background: #f7f1eb;
       box-shadow: 0 4px 10px rgba(0,0,0,0.03);
     }
 
     .summary-pill--ok {
-      background: #e7f4ee;
-      border-color: #c3dfd2;
+      background: #e7f5ee;
+      border-color: #c3dfd0;
     }
 
     .summary-pill--used {
-      background: #f6f0ff;
-      border-color: #d9c8ff;
+      background: #f4efff;
+      border-color: #d6c9ff;
     }
 
     .summary-pill--nf {
-      background: #ffe9e7;
-      border-color: #f5c5bf;
+      background: #ffeceb;
+      border-color: #f1c3bf;
     }
 
     body.theme-dark .summary-pill {
-      background: #26272e;
-      border-color: #3a3c45;
+      background: #272a31;
+      border-color: #3b3f46;
     }
 
     body.theme-dark .summary-pill--ok {
       background: #223831;
-      border-color: #3e6d5b;
+      border-color: #3f6d5d;
     }
 
     body.theme-dark .summary-pill--used {
-      background: #2a2637;
-      border-color: #4b3f65;
+      background: #2a2538;
+      border-color: #4a3f67;
     }
 
     body.theme-dark .summary-pill--nf {
-      background: #3b2626;
-      border-color: #5a3631;
+      background: #382526;
+      border-color: #5b3633;
     }
 
-    .used-info-card {
-      margin-top: 8px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: #eef3ff;
-      border: 1px solid #cbd7ff;
-      font-size: 0.78rem;
-      line-height: 1.5;
-      box-shadow: 0 10px 20px rgba(80,106,146,0.06);
+    #status {
+      min-height: 20px;
+      font-size: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-sub);
+      padding: 4px 2px 0;
     }
 
-    body.theme-dark .used-info-card {
-      background: #23283a;
-      border-color: #404c7a;
-    }
-
-    .used-info-title {
+    .status-strong {
       font-weight: 600;
-      margin-bottom: 2px;
-    }
-
-    .history-wrap {
-      margin-top: 4px;
-      display: none;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .history-wrap.show {
-      display: flex;
-    }
-
-    .history-title {
-      font-size: 0.82rem;
-      font-weight: 700;
       color: var(--text-main);
+    }
+
+    .status-ok { color: var(--ok) !important; }
+    .status-error { color: var(--danger) !important; }
+    .status-time {
+      font-size: 0.76rem;
+      color: var(--text-sub);
+    }
+
+    .btn-copy-all {
+      width: 100%;
+      margin-top: 6px;
+      padding: 11px 14px;
+      border-radius: 16px;
+      border: 1px dashed #c9ddd4;
+      background: linear-gradient(135deg, #f8fcfa, #eef8f4);
+      color: #3f6f60;
+      font-size: 0.86rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(134,187,168,0.08);
+      transition: all 0.18s ease;
+    }
+
+    .btn-copy-all:hover { transform: translateY(-1px); }
+
+    body.theme-dark .btn-copy-all {
+      background: linear-gradient(135deg, #223831, #273a35);
+      border-color: #45685b;
+      color: #d8efe6;
+    }
+
+    #results {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .result-item {
+      border-radius: 18px;
+      padding: 12px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(227,221,215,0.95);
+      background: linear-gradient(180deg, rgba(255,255,255,0.97), rgba(250,247,244,0.99));
+    }
+
+    .result-item::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 84px;
+      height: 84px;
+      border-radius: 999px;
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    body.theme-dark .result-item {
+      border-color: rgba(255,255,255,0.05);
+      background: linear-gradient(180deg, rgba(39,42,48,0.98), rgba(33,36,42,1));
+      box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+    }
+
+    .result-item.status-success {
+      border-color: #c8e2d6;
+      background: linear-gradient(180deg, #fcfffd, #f0faf5);
+    }
+
+    .result-item.status-success::before {
+      background: radial-gradient(circle, rgba(134,187,168,0.18), transparent 72%);
+    }
+
+    .result-item.status-used {
+      border-color: #ddd1ff;
+      background: linear-gradient(180deg, #fffefe, #f7f2ff);
+    }
+
+    .result-item.status-used::before {
+      background: radial-gradient(circle, rgba(128,97,194,0.16), transparent 72%);
+    }
+
+    .result-item.status-notfound {
+      border-color: #f1c8c3;
+      background: linear-gradient(180deg, #fffefe, #fff2f0);
+    }
+
+    .result-item.status-notfound::before {
+      background: radial-gradient(circle, rgba(201,99,99,0.14), transparent 72%);
+    }
+
+    body.theme-dark .result-item.status-success {
+      background: linear-gradient(180deg, #24342e, #223029);
+      border-color: #3d6757;
+    }
+
+    body.theme-dark .result-item.status-used {
+      background: linear-gradient(180deg, #2b2639, #272232);
+      border-color: #4b3f68;
+    }
+
+    body.theme-dark .result-item.status-notfound {
+      background: linear-gradient(180deg, #382627, #332223);
+      border-color: #5a3634;
+    }
+
+    .result-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .result-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .result-badge.ok {
+      background: #e7f5ee;
+      color: #3f8b62;
+      border: 1px solid #c4dfd1;
+    }
+
+    .result-badge.used {
+      background: #f3eeff;
+      color: #6a56b7;
+      border: 1px solid #d6c9ff;
+    }
+
+    .result-badge.nf {
+      background: #ffeaea;
+      color: #c45a5a;
+      border: 1px solid #f1c2c2;
+    }
+
+    body.theme-dark .result-badge.ok {
+      background: #294439;
+      color: #d4f0e2;
+      border-color: #42685a;
+    }
+
+    body.theme-dark .result-badge.used {
+      background: #332b49;
+      color: #e4ddff;
+      border-color: #4d4270;
+    }
+
+    body.theme-dark .result-badge.nf {
+      background: #4a2b2b;
+      color: #ffd3d3;
+      border-color: #694141;
+    }
+
+    .item-header {
+      font-size: 0.76rem;
+      letter-spacing: 0.1em;
+      color: var(--text-sub);
+      font-weight: 700;
+    }
+
+    .item-tag {
+      margin-left: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.72rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      white-space: nowrap;
+      background: #f1f7ff;
+      border: 1px solid #d3e2f7;
+      color: #506a92;
+    }
+
+    body.theme-dark .item-tag {
+      background: #232b3a;
+      border-color: #3f557a;
+      color: #c4d4f5;
+    }
+
+    .item-body {
+      padding: 12px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #fffdfa, #f8f5f1);
+      border: 1px solid #eee5db;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+
+    body.theme-dark .item-body {
+      background: linear-gradient(135deg, #2a2d33, #24272d);
+      border-color: #3a3d45;
+    }
+
+    .btn-copy {
+      width: 100%;
+      padding: 10px;
+      border-radius: 14px;
+      border: 1px solid #e3ddd5;
+      background: #fff;
+      color: var(--text-main);
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-copy:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+      background: #f4faf7;
+    }
+
+    body.theme-dark .btn-copy {
+      background: #282b31;
+      border-color: #3b3f46;
+      color: #f2f3f6;
+    }
+
+    body.theme-dark .btn-copy:hover {
+      background: #2b3336;
+      border-color: #9ed3c1;
+    }
+
+    .history-card,
+    .faq-card,
+    .contact-card {
+      background: var(--glass);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.56);
+      box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255,255,255,0.7);
+      backdrop-filter: blur(14px);
+      padding: 14px;
+    }
+
+    body.theme-dark .history-card,
+    body.theme-dark .faq-card,
+    body.theme-dark .contact-card {
+      border-color: rgba(255,255,255,0.06);
+      box-shadow: 0 18px 38px rgba(0,0,0,0.46), inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+
+    .section-title {
+      font-size: 0.94rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .section-title .dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent-soft);
+      font-size: 0.8rem;
+    }
+
+    .history-empty,
+    .faq-empty {
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      line-height: 1.5;
     }
 
     .history-list {
@@ -1140,251 +1186,117 @@
     .history-item {
       padding: 10px 12px;
       border-radius: 14px;
-      background: rgba(255,255,255,0.86);
-      border: 1px solid rgba(0,0,0,0.05);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.04);
-      font-size: 0.76rem;
-      line-height: 1.5;
-    }
-
-    .history-item strong {
-      color: var(--text-main);
+      background: rgba(255,255,255,0.72);
+      border: 1px solid #ece2d9;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: center;
     }
 
     body.theme-dark .history-item {
-      background: rgba(37,38,43,0.92);
-      border-color: rgba(255,255,255,0.05);
+      background: rgba(38,41,47,0.86);
+      border-color: #393d45;
     }
 
-    #results {
-      margin-top: 4px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+    .history-meta {
+      min-width: 0;
     }
 
-    .result-section {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 6px;
-    }
-
-    .result-section-title {
+    .history-title {
       font-size: 0.82rem;
       font-weight: 700;
-      display: inline-flex;
-      align-items: center;
+      margin-bottom: 2px;
+    }
+
+    .history-sub {
+      font-size: 0.72rem;
+      color: var(--text-sub);
+      line-height: 1.4;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
       gap: 8px;
-      color: var(--text-main);
-      padding: 2px 2px 0;
     }
 
-    .section-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      display: inline-block;
-    }
-
-    .section-dot.ok { background: #7cbf9f; }
-    .section-dot.used { background: #b598ef; }
-    .section-dot.nf { background: #ee8b8b; }
-
-    .result-item {
-      border-radius: 18px;
-      padding: 12px;
-      animation: fadeIn 0.35s ease-out;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.05);
-      position: relative;
+    .faq-item {
+      border-radius: 14px;
+      background: rgba(255,255,255,0.74);
+      border: 1px solid #ece2d9;
       overflow: hidden;
     }
 
-    .result-item--ok {
-      background: linear-gradient(180deg, rgba(245,255,249,0.98), rgba(235,248,241,0.98));
-      border: 1px solid rgba(182,224,203,0.95);
+    body.theme-dark .faq-item {
+      background: rgba(38,41,47,0.86);
+      border-color: #393d45;
     }
 
-    .result-item--used {
-      background: linear-gradient(180deg, rgba(250,245,255,0.98), rgba(241,233,251,0.98));
-      border: 1px solid rgba(212,191,244,0.95);
-    }
-
-    .result-item--nf {
-      background: linear-gradient(180deg, rgba(255,246,246,0.98), rgba(252,236,236,0.98));
-      border: 1px solid rgba(244,200,200,0.95);
-    }
-
-    .result-item::before {
-      content: "";
-      position: absolute;
-      top: -20px;
-      right: -20px;
-      width: 80px;
-      height: 80px;
-      border-radius: 999px;
-      pointer-events: none;
-    }
-
-    .result-item--ok::before {
-      background: radial-gradient(circle, rgba(133,184,166,0.18), transparent 70%);
-    }
-
-    .result-item--used::before {
-      background: radial-gradient(circle, rgba(181,152,239,0.16), transparent 70%);
-    }
-
-    .result-item--nf::before {
-      background: radial-gradient(circle, rgba(238,139,139,0.16), transparent 70%);
-    }
-
-    body.theme-dark .result-item--ok {
-      background: linear-gradient(180deg, rgba(31,56,48,0.98), rgba(28,49,43,1));
-      border: 1px solid rgba(76,117,101,0.45);
-    }
-
-    body.theme-dark .result-item--used {
-      background: linear-gradient(180deg, rgba(49,39,64,0.98), rgba(43,35,56,1));
-      border: 1px solid rgba(97,80,128,0.45);
-    }
-
-    body.theme-dark .result-item--nf {
-      background: linear-gradient(180deg, rgba(60,35,35,0.98), rgba(54,30,30,1));
-      border: 1px solid rgba(126,73,73,0.45);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .item-top-row {
+    .faq-q {
+      width: 100%;
+      border: none;
+      background: transparent;
+      text-align: left;
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 12px;
+      cursor: pointer;
       display: flex;
       justify-content: space-between;
-      align-items: center;
       gap: 8px;
-      margin-bottom: 8px;
-      flex-wrap: wrap;
+      align-items: center;
     }
 
-    .item-header {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
+    .faq-a {
+      display: none;
+      padding: 0 12px 12px;
+      font-size: 0.78rem;
       color: var(--text-sub);
-      font-weight: 700;
+      line-height: 1.6;
     }
 
-    .item-tag {
-      font-size: 0.72rem;
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: #f1f7ff;
-      border: 1px solid #d3e2f7;
-      color: #506a92;
-      margin-left: 4px;
-      white-space: nowrap;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
+    .faq-item.open .faq-a {
+      display: block;
     }
 
-    body.theme-dark .item-tag {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.1);
-      color: #e5e8ef;
-    }
-
-    .item-body {
-      font-size: 0.92rem;
-      line-height: 1.72;
-      color: var(--text-main);
-      white-space: pre-wrap;
-      margin-bottom: 10px;
-      padding: 12px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #fffdfa, #f8f5f1);
-      border: 1px solid #eee5db;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
-    }
-
-    body.theme-dark .item-body {
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(255,255,255,0.08);
-      color: #f2f3f6;
-    }
-
-    .btn-copy {
-      width: 100%;
-      padding: 10px 10px;
-      border-radius: 14px;
-      border: 1px solid #e3ddd5;
-      background: #ffffff;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--text-main);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: all 0.15s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    body.theme-dark .btn-copy {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.1);
-      color: #f2f3f6;
-    }
-
-    .btn-copy:hover {
-      border-color: var(--accent);
-      background: #f4faf7;
-      transform: translateY(-1px);
-    }
-
-    body.theme-dark .btn-copy:hover {
-      border-color: #9dd4c1;
-      background: rgba(255,255,255,0.12);
-    }
-
-    .support-actions {
+    .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 8px;
-      margin-top: 2px;
     }
 
-    .support-action {
-      border-radius: 14px;
-      border: 1px solid #dfd7ce;
-      background: rgba(255,255,255,0.92);
-      padding: 11px 12px;
-      font-size: 0.8rem;
-      font-weight: 700;
+    .contact-btn {
+      padding: 12px;
+      border-radius: 16px;
+      border: 1px solid #e4dbd2;
+      background: rgba(255,255,255,0.78);
       color: var(--text-main);
+      font-weight: 700;
+      font-size: 0.82rem;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
+      text-decoration: none;
       cursor: pointer;
-      transition: all 0.18s ease;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.04);
+      transition: all 0.16s ease;
     }
 
-    .support-action:hover {
+    .contact-btn:hover {
       transform: translateY(-1px);
     }
 
-    body.theme-dark .support-action {
-      background: rgba(37,38,43,0.92);
-      border-color: rgba(255,255,255,0.06);
-      color: #f2f3f6;
+    body.theme-dark .contact-btn {
+      background: rgba(38,41,47,0.86);
+      border-color: #393d45;
+      color: #f3f4f6;
     }
 
     .footer {
-      margin-top: 4px;
+      margin-top: 2px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -1406,33 +1318,13 @@
     }
 
     body.theme-dark .support-pill {
-      background: rgba(22,23,27,0.95);
-      border-color: #34363f;
-    }
-
-    .support-pill span:first-child {
-      font-weight: 600;
-      color: #7d7a76;
-    }
-
-    body.theme-dark .support-pill span:first-child {
-      color: #d0d3da;
+      background: rgba(22,24,28,0.95);
+      border-color: #343840;
     }
 
     .copyright {
       letter-spacing: 0.18em;
       text-transform: uppercase;
-    }
-
-    .shake {
-      animation: shake 0.4s;
-      border-color: var(--danger) !important;
-    }
-
-    @keyframes shake {
-      0%,100% { transform: translateX(0); }
-      25% { transform: translateX(-5px); }
-      75% { transform: translateX(5px); }
     }
 
     .toast {
@@ -1466,7 +1358,7 @@
     .tip-bubble {
       position: fixed;
       left: 14px;
-      bottom: 68px;
+      bottom: 82px;
       max-width: 270px;
       padding: 10px 12px;
       border-radius: 16px;
@@ -1508,274 +1400,181 @@
       transform: translateY(0);
     }
 
-    .tip-bubble-emoji {
-      margin-right: 4px;
-    }
-
-    .success-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 10001;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-      background: rgba(15, 13, 12, 0.32);
-      backdrop-filter: blur(8px);
-    }
-
-    .success-modal.show {
-      display: flex;
-    }
-
-    .success-modal-card {
-      width: 100%;
-      max-width: 360px;
-      border-radius: 24px;
-      background: rgba(255,255,255,0.96);
-      border: 1px solid rgba(0,0,0,0.05);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.18);
-      padding: 18px;
-      text-align: center;
-      animation: modalPop 0.22s ease-out;
-    }
-
-    body.theme-dark .success-modal-card {
-      background: rgba(31,32,36,0.96);
-      border-color: rgba(255,255,255,0.06);
-    }
-
-    @keyframes modalPop {
-      from { opacity: 0; transform: translateY(10px) scale(0.96); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    .success-icon {
-      width: 66px;
-      height: 66px;
-      margin: 0 auto 10px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #e8f6f0, #f8f4ea);
-      font-size: 1.8rem;
-      box-shadow: 0 10px 24px rgba(133,184,166,0.16);
-    }
-
-    body.theme-dark .success-icon {
-      background: linear-gradient(135deg, #223831, #312920);
-    }
-
-    .success-title {
-      font-size: 1.02rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .success-text {
-      font-size: 0.82rem;
-      color: var(--text-sub);
-      margin-bottom: 12px;
-      line-height: 1.5;
-    }
-
-    .success-stats {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 12px;
-    }
-
-    .success-stat {
-      min-width: 84px;
-      padding: 8px 10px;
-      border-radius: 14px;
-      font-size: 0.76rem;
-      font-weight: 700;
-      border: 1px solid transparent;
-    }
-
-    .success-stat.ok {
-      background: #e7f4ee;
-      border-color: #c3dfd2;
-      color: #356655;
-    }
-
-    .success-stat.used {
-      background: #f6f0ff;
-      border-color: #d9c8ff;
-      color: #614a8c;
-    }
-
-    .success-stat.nf {
-      background: #ffe9e7;
-      border-color: #f5c5bf;
-      color: #9e4e48;
-    }
-
-    body.theme-dark .success-stat.ok {
-      background: #223831;
-      border-color: #3e6d5b;
-      color: #d5eee3;
-    }
-
-    body.theme-dark .success-stat.used {
-      background: #2a2637;
-      border-color: #4b3f65;
-      color: #e5dbff;
-    }
-
-    body.theme-dark .success-stat.nf {
-      background: #3b2626;
-      border-color: #5a3631;
-      color: #ffd8d5;
-    }
-
-    .success-actions {
-      display: flex;
-      gap: 8px;
-    }
-
-    .modal-btn {
-      flex: 1;
-      border: none;
-      border-radius: 16px;
-      padding: 11px 12px;
-      font-size: 0.84rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.18s ease;
-    }
-
-    .modal-btn--primary {
-      background: linear-gradient(135deg, #8fcbb7, #6aa28f);
-      color: white;
-    }
-
-    .modal-btn--secondary {
-      background: #f5efea;
-      color: var(--text-main);
-      border: 1px solid #e1d6ca;
-    }
-
-    body.theme-dark .modal-btn--secondary {
-      background: #25262b;
-      border-color: #383a40;
-      color: #f2f3f6;
-    }
-
     .sticky-bar {
       position: fixed;
       left: 50%;
-      bottom: 18px;
-      transform: translateX(-50%) translateY(120%);
-      width: min(440px, calc(100vw - 24px));
-      z-index: 9997;
-      background: rgba(255,255,255,0.94);
-      border: 1px solid rgba(0,0,0,0.06);
-      box-shadow: 0 16px 36px rgba(0,0,0,0.14);
-      border-radius: 18px;
-      padding: 10px;
-      display: flex;
-      gap: 8px;
-      transition: all 0.24s ease;
-      backdrop-filter: blur(10px);
-    }
-
-    .sticky-bar.show {
-      transform: translateX(-50%) translateY(0);
+      transform: translateX(-50%);
+      bottom: 14px;
+      width: min(500px, calc(100vw - 20px));
+      padding: 8px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(255,255,255,0.65);
+      box-shadow: 0 16px 30px rgba(0,0,0,0.12);
+      backdrop-filter: blur(14px);
+      z-index: 8000;
     }
 
     body.theme-dark .sticky-bar {
-      background: rgba(22,23,27,0.96);
-      border-color: rgba(255,255,255,0.07);
+      background: rgba(27,29,34,0.9);
+      border-color: rgba(255,255,255,0.06);
+      box-shadow: 0 18px 32px rgba(0,0,0,0.5);
+    }
+
+    .sticky-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
     }
 
     .sticky-btn {
-      flex: 1;
-      border-radius: 12px;
       border: none;
-      padding: 11px 12px;
-      font-size: 0.82rem;
+      border-radius: 16px;
+      padding: 12px 10px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(244,249,246,0.96));
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 0.78rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.16s ease;
+      white-space: nowrap;
+    }
+
+    .sticky-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    body.theme-dark .sticky-btn {
+      background: linear-gradient(135deg, #2a2d33, #25282d);
+      color: #f2f4f7;
+    }
+
+    .sticky-btn.primary {
+      background: linear-gradient(135deg, #8bc1ad, #74a792);
+      color: #fff;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      padding: 18px;
+    }
+
+    .modal-backdrop.show {
+      display: flex;
+    }
+
+    .modal-card {
+      width: 100%;
+      max-width: 360px;
+      border-radius: 24px;
+      padding: 20px 18px 18px;
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(255,255,255,0.66);
+      box-shadow: 0 22px 50px rgba(0,0,0,0.18);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    body.theme-dark .modal-card {
+      background: rgba(31,34,39,0.96);
+      border-color: rgba(255,255,255,0.06);
+    }
+
+    .modal-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 999px;
+      margin: 0 auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, #e9f5ef, #fff3ea);
+      box-shadow: 0 10px 24px rgba(134,187,168,0.16);
+    }
+
+    body.theme-dark .modal-icon {
+      background: linear-gradient(135deg, #244036, #3a3028);
+    }
+
+    .modal-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .modal-desc {
+      font-size: 0.84rem;
+      color: var(--text-sub);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .modal-btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #8bc1ad, #74a792);
+      color: #fff;
       font-weight: 700;
       cursor: pointer;
     }
 
-    .sticky-btn--main {
-      background: linear-gradient(135deg, #8fcbb7, #6aa28f);
-      color: #fff;
+    .shake {
+      animation: shake 0.4s;
+      border-color: var(--danger) !important;
     }
 
-    .sticky-btn--ghost {
-      background: #f5efea;
-      color: var(--text-main);
-      border: 1px solid #e1d6ca;
-    }
-
-    body.theme-dark .sticky-btn--ghost {
-      background: #25262b;
-      border-color: #383a40;
-      color: #f2f3f6;
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
     }
 
     @media (max-width: 480px) {
       .app {
-        padding: 10px 12px 14px;
+        padding: 10px 12px 120px;
       }
 
-      .card {
-        padding: 16px 14px 14px;
-      }
+      .brand-title { font-size: 1.2rem; }
+      .brand-sub { font-size: 0.72rem; }
 
       .tip-bubble {
         left: 10px;
         right: 10px;
         max-width: none;
       }
-
-      .brand-title {
-        font-size: 1.2rem;
-      }
-
-      .brand-sub {
-        font-size: 0.74rem;
-      }
-
-      .trust-row,
-      .hero-notes,
-      .support-actions {
-        grid-template-columns: 1fr;
-      }
-
-      .btn-row,
-      .success-actions {
-        flex-direction: column;
-      }
     }
 
     @media (prefers-reduced-motion: reduce) {
       .bg-orb,
+      .badge-dot,
+      .card-desc,
       .code-meter-bar::after,
       .btn-primary::before,
-      .logo-circle.success-bounce,
       .warn-text--important,
       .warn-text--important .warn-text-icon,
-      .badge-dot,
       .loading-overlay::after,
-      .card-desc {
+      .logo-circle.success-bounce {
         animation: none !important;
       }
 
-      .card,
-      .btn-primary,
-      .btn-secondary,
-      .btn-copy,
-      .theme-toggle,
-      .sticky-bar,
-      .success-modal-card {
+      * {
         transition: none !important;
+        scroll-behavior: auto !important;
       }
     }
   </style>
@@ -1802,30 +1601,30 @@
           </div>
           <div class="brand-text">
             <div class="brand-title">426 SHOP</div>
-            <div class="brand-sub">PREMIUM ACCESS</div>
+            <div class="brand-sub">AUTO DELIVERY 24/7</div>
           </div>
         </div>
         <div class="header-right">
           <div class="badge">
             <span class="badge-dot"></span>
-            <span>ระบบออนไลน์ 24 ชม.</span>
+            <span>ส่งอัตโนมัติ 24 ชั่วโมง</span>
           </div>
           <button class="theme-toggle" id="themeToggle" type="button" aria-label="สลับโหมดกลางคืน">🌙</button>
         </div>
       </div>
 
-      <div class="trust-row">
-        <div class="trust-pill">
-          พร้อมส่ง
-          <span>อัตโนมัติทันที</span>
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-num">24 ชม.</div>
+          <div class="stat-label">เปิดรับตลอดเวลา</div>
         </div>
-        <div class="trust-pill">
-          รองรับหลายโค้ด
-          <span>1 บรรทัดต่อ 1 โค้ด</span>
+        <div class="stat-card">
+          <div class="stat-num">10–30 วิ</div>
+          <div class="stat-label">เวลาส่งเฉลี่ย</div>
         </div>
-        <div class="trust-pill">
-          มีปุ่มช่วยเหลือ
-          <span>คัดลอก / แจ้งปัญหา</span>
+        <div class="stat-card">
+          <div class="stat-num">อัตโนมัติ</div>
+          <div class="stat-label">ไม่ต้องรอแอดมิน</div>
         </div>
       </div>
 
@@ -1846,19 +1645,8 @@
       </div>
 
       <div class="card-desc">
-        <strong>ส่งสินค้าอัตโนมัติ 24 ชั่วโมง ✨</strong>
-        วางหลายโค้ดพร้อมกันได้ • 1 บรรทัดต่อ 1 โค้ด
-      </div>
-
-      <div class="hero-notes">
-        <div class="hero-note">
-          <strong>ได้รับผลไว</strong>
-          ระบบตรวจสอบและแสดงผลภายในไม่กี่วินาที
-        </div>
-        <div class="hero-note">
-          <strong>มีปัญหาก็ส่งต่อได้</strong>
-          คัดลอกผลลัพธ์หรือรายการมีปัญหาส่งหาแอดมินได้ทันที
-        </div>
+        <strong>วางโค้ดจากแอดมินได้เลย ✨</strong>
+        หลายโค้ดในครั้งเดียว • 1 บรรทัดต่อ 1 โค้ด
       </div>
 
       <div class="input-field">
@@ -1867,19 +1655,6 @@
         <div class="input-helper-row">
           <div class="small-tag">แนะนำ: 1 บรรทัดต่อ 1 โค้ด</div>
           <span id="lineInfo">สูงสุด ~5 โค้ด/ครั้ง</span>
-        </div>
-
-        <div class="duplicate-warning" id="duplicateWarning"></div>
-
-        <div class="quick-actions">
-          <button class="btn-soft" id="btnPaste" type="button">
-            <span>📋</span>
-            <span>วางจากคลิปบอร์ด</span>
-          </button>
-          <button class="btn-soft" id="btnRestore" type="button">
-            <span>🕘</span>
-            <span>กู้ผลล่าสุด</span>
-          </button>
         </div>
 
         <div class="code-meter-wrap">
@@ -1894,11 +1669,14 @@
       </div>
 
       <div class="btn-row">
+        <button class="btn-paste" id="btnPaste" type="button">
+          <span>📋</span><span>วาง</span>
+        </button>
         <button class="btn-primary" id="btnRedeem" type="button">
-          <span id="redeemLabel">รับสินค้า</span><span>↗</span>
+          <span>รับสินค้า</span><span>↗</span>
         </button>
         <button class="btn-secondary" id="btnClear" type="button">
-          <span>ล้างทั้งหมด</span>
+          <span>ล้าง</span>
         </button>
       </div>
 
@@ -1911,23 +1689,60 @@
       <div id="status"></div>
       <div id="copyAllWrap"></div>
       <div id="results"></div>
-
-      <div class="support-actions">
-        <button class="support-action" id="btnAdminSummary" type="button">
-          <span>📝</span>
-          <span>คัดลอกข้อความส่งแอดมิน</span>
-        </button>
-        <button class="support-action" id="btnIssueOnly" type="button">
-          <span>⚠️</span>
-          <span>คัดลอกเฉพาะรายการมีปัญหา</span>
-        </button>
-      </div>
-
-      <div class="history-wrap" id="historyWrap">
-        <div class="history-title">ประวัติผลล่าสุด</div>
-        <div class="history-list" id="historyList"></div>
-      </div>
     </main>
+
+    <section class="history-card">
+      <div class="section-title">
+        <span class="dot">🕘</span>
+        <span>ประวัติล่าสุดในเครื่องนี้</span>
+      </div>
+      <div id="historyBox" class="history-empty">ยังไม่มีประวัติการรับสินค้าในเครื่องนี้</div>
+    </section>
+
+    <section class="faq-card">
+      <div class="section-title">
+        <span class="dot">❔</span>
+        <span>คำถามที่พบบ่อย</span>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            <span>กดรับสินค้าแล้วไม่ได้รหัส ต้องทำยังไง?</span>
+            <span>＋</span>
+          </button>
+          <div class="faq-a">อย่าเพิ่งรีเฟรชหน้า แคปหน้าจอผลลัพธ์ แล้วส่งให้แอดมินตรวจสอบได้เลยค่ะ</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            <span>วางหลายโค้ดพร้อมกันได้ไหม?</span>
+            <span>＋</span>
+          </button>
+          <div class="faq-a">ได้ค่ะ แนะนำ 1 บรรทัดต่อ 1 โค้ด และสูงสุดประมาณ 5 โค้ดต่อครั้งเพื่อความเสถียร</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            <span>ถ้าขึ้นว่าใช้แล้ว แปลว่าอะไร?</span>
+            <span>＋</span>
+          </button>
+          <div class="faq-a">หมายถึงโค้ดนั้นถูกใช้งานไปก่อนหน้านี้แล้ว ระบบจะแจ้งเวลาและข้อมูลเดิมให้ดูประกอบ</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-card">
+      <div class="section-title">
+        <span class="dot">💬</span>
+        <span>ช่วยเหลือ / ติดต่อร้าน</span>
+      </div>
+      <div class="contact-grid">
+        <a class="contact-btn" id="contactAdminBtn" href="https://t.me/467dlpti" target="_blank" rel="noopener noreferrer">
+          <span>💬</span><span>ติดต่อแอดมิน</span>
+        </a>
+        <button class="contact-btn" id="sendResultBtn" type="button">
+          <span>📨</span><span>ส่งผลลัพธ์ให้แอดมิน</span>
+        </button>
+      </div>
+    </section>
 
     <footer class="footer">
       <div class="support-pill">
@@ -1938,78 +1753,78 @@
     </footer>
   </div>
 
-  <div id="toast" class="toast">คัดลอกข้อความแล้ว</div>
-
-  <div id="tipBubble" class="tip-bubble">
-    <span class="tip-bubble-emoji">💡</span>
-    <span id="tipText">1 บรรทัดต่อ 1 โค้ด ใช้งานง่ายสุดค่ะ</span>
-  </div>
-
-  <div class="success-modal" id="successModal">
-    <div class="success-modal-card">
-      <div class="success-icon">🎉</div>
-      <div class="success-title">รับสินค้าเรียบร้อย</div>
-      <div class="success-text" id="successText">ระบบประมวลผลสำเร็จแล้ว</div>
-      <div class="success-stats" id="successStats"></div>
-      <div class="success-actions">
-        <button class="modal-btn modal-btn--primary" id="modalCopyAll" type="button">คัดลอกทั้งหมด</button>
-        <button class="modal-btn modal-btn--secondary" id="modalClose" type="button">ปิด</button>
-      </div>
+  <div class="sticky-bar">
+    <div class="sticky-grid">
+      <button class="sticky-btn" id="stickyPaste" type="button">
+        <span>📋</span><span>วาง</span>
+      </button>
+      <button class="sticky-btn primary" id="stickyRedeem" type="button">
+        <span>⚡</span><span>รับสินค้า</span>
+      </button>
+      <button class="sticky-btn" id="stickyCopyAll" type="button">
+        <span>🧾</span><span>คัดลอกทั้งหมด</span>
+      </button>
     </div>
   </div>
 
-  <div class="sticky-bar" id="stickyBar">
-    <button class="sticky-btn sticky-btn--main" id="stickyCopyAll" type="button">คัดลอกทั้งหมด</button>
-    <button class="sticky-btn sticky-btn--ghost" id="stickyIssueOnly" type="button">รายการมีปัญหา</button>
+  <div id="toast" class="toast">คัดลอกข้อความแล้ว</div>
+
+  <div id="tipBubble" class="tip-bubble">
+    <span>💡</span>
+    <span id="tipText">1 บรรทัดต่อ 1 โค้ด ใช้งานง่ายสุดค่ะ</span>
+  </div>
+
+  <div class="modal-backdrop" id="successModal">
+    <div class="modal-card">
+      <div class="modal-icon">🎉</div>
+      <div class="modal-title" id="modalTitle">รับสินค้าเรียบร้อย</div>
+      <div class="modal-desc" id="modalDesc">ระบบส่งข้อมูลให้แล้ว สามารถคัดลอกรายละเอียดด้านล่างได้เลยค่ะ</div>
+      <button class="modal-btn" id="closeModalBtn" type="button">ตกลง</button>
+    </div>
   </div>
 
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const MAX_CODES = 5;
-    const HISTORY_KEY = "redeemHistory426";
-    const LAST_RESULT_KEY = "redeemLastResult426";
-    const LAST_INPUT_KEY = "redeemLastInput426";
+    const HISTORY_KEY = "shop426_recent_history_v2";
+    const SUPPORT_HANDLE = "@467dlpti";
+    const SUPPORT_LINK = "https://t.me/467dlpti";
 
     const btnRedeem = document.getElementById("btnRedeem");
     const btnClear = document.getElementById("btnClear");
     const btnPaste = document.getElementById("btnPaste");
-    const btnRestore = document.getElementById("btnRestore");
-    const btnAdminSummary = document.getElementById("btnAdminSummary");
-    const btnIssueOnly = document.getElementById("btnIssueOnly");
+    const stickyRedeem = document.getElementById("stickyRedeem");
+    const stickyPaste = document.getElementById("stickyPaste");
+    const stickyCopyAll = document.getElementById("stickyCopyAll");
+    const sendResultBtn = document.getElementById("sendResultBtn");
+
     const codeInput = document.getElementById("codeInput");
     const lineInfo = document.getElementById("lineInfo");
+    const meterText = document.getElementById("meterText");
+    const codeMeterBar = document.getElementById("codeMeterBar");
     const status = document.getElementById("status");
-    const resultsDiv = document.getElementById("results");
     const summaryDiv = document.getElementById("summary");
     const copyAllWrap = document.getElementById("copyAllWrap");
+    const resultsDiv = document.getElementById("results");
+    const historyBox = document.getElementById("historyBox");
     const toast = document.getElementById("toast");
-    const logoCircle = document.querySelector(".logo-circle");
-    const themeToggle = document.getElementById("themeToggle");
-    const tipBubble = document.getElementById("tipBubble");
     const tipText = document.getElementById("tipText");
-    const codeMeterBar = document.getElementById("codeMeterBar");
-    const meterText = document.getElementById("meterText");
-    const redeemLabel = document.getElementById("redeemLabel");
-    const duplicateWarning = document.getElementById("duplicateWarning");
+    const tipBubble = document.getElementById("tipBubble");
+    const themeToggle = document.getElementById("themeToggle");
+    const logoCircle = document.querySelector(".logo-circle");
+    const mainCard = document.getElementById("mainCard");
     const fxCanvas = document.getElementById("fxCanvas");
     const fxCtx = fxCanvas ? fxCanvas.getContext("2d") : null;
-    const mainCard = document.getElementById("mainCard");
-    const historyWrap = document.getElementById("historyWrap");
-    const historyList = document.getElementById("historyList");
+
     const successModal = document.getElementById("successModal");
-    const successText = document.getElementById("successText");
-    const successStats = document.getElementById("successStats");
-    const modalCopyAll = document.getElementById("modalCopyAll");
-    const modalClose = document.getElementById("modalClose");
-    const stickyBar = document.getElementById("stickyBar");
-    const stickyCopyAll = document.getElementById("stickyCopyAll");
-    const stickyIssueOnly = document.getElementById("stickyIssueOnly");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDesc = document.getElementById("modalDesc");
 
     let isLoading = false;
     let latestCopyAllText = "";
-    let latestIssueText = "";
-    let latestAdminSummary = "";
-    let lastRenderedPayload = null;
+    let latestShareText = "";
+    let latestResultStats = { success: 0, used: 0, nf: 0 };
 
     function setStepState(state) {
       const steps = document.querySelectorAll(".step-pill");
@@ -2064,225 +1879,113 @@
 
     themeToggle.addEventListener("click", () => {
       const nowDark = !document.body.classList.contains("theme-dark");
-      const newTheme = nowDark ? "dark" : "light";
-      applyTheme(newTheme);
-      localStorage.setItem("theme", newTheme);
+      const next = nowDark ? "dark" : "light";
+      applyTheme(next);
+      localStorage.setItem("theme", next);
     });
 
     const tips = [
       "วางหลายโค้ดได้ สูงสุดประมาณ 5 โค้ด/ครั้ง ✨",
       "1 บรรทัดต่อ 1 โค้ด ใช้งานง่ายสุดค่ะ",
       "กดรับสินค้าแล้ว อย่าเพิ่งรีเฟรชหน้านะคะ",
-      "คัดลอกผลทั้งหมดหรือเฉพาะรายการมีปัญหาได้ 💖",
-      "ถ้ามีปัญหา กดคัดลอกข้อความส่งแอดมินได้ทันที"
+      "คัดลอกทั้งหมดได้ในปุ่มเดียว สะดวกขึ้นเยอะ 💖",
+      "ถ้ามีปัญหา สามารถส่งผลลัพธ์ให้แอดมินได้ทันที 💬"
     ];
-
     let tipIndex = 0;
 
     function rotateTip() {
       if (!tipBubble || !tipText) return;
       tipBubble.classList.remove("show");
       setTimeout(() => {
-        const text = tips[tipIndex] || tips[0];
-        tipText.textContent = text;
+        tipText.textContent = tips[tipIndex] || tips[0];
         tipBubble.classList.add("show");
         tipIndex = (tipIndex + 1) % tips.length;
-      }, 200);
+      }, 180);
     }
 
-    setTimeout(rotateTip, 700);
-    setInterval(rotateTip, 12000);
-
-    btnRedeem.addEventListener("click", redeem);
-    btnClear.addEventListener("click", clearForm);
-    btnPaste.addEventListener("click", pasteFromClipboard);
-    btnRestore.addEventListener("click", restoreLastResult);
-    btnAdminSummary.addEventListener("click", () => {
-      if (!latestAdminSummary) {
-        showToast("ยังไม่มีข้อมูลสำหรับส่งแอดมิน");
-        return;
-      }
-      copyText(latestAdminSummary);
-      showToast("คัดลอกข้อความส่งแอดมินแล้ว");
-    });
-    btnIssueOnly.addEventListener("click", () => {
-      if (!latestIssueText) {
-        showToast("ยังไม่มีรายการมีปัญหา");
-        return;
-      }
-      copyText(latestIssueText);
-      showToast("คัดลอกรายการมีปัญหาแล้ว");
-    });
-
-    modalClose.addEventListener("click", closeSuccessModal);
-    modalCopyAll.addEventListener("click", () => {
-      if (!latestCopyAllText) return;
-      copyText(latestCopyAllText);
-      showToast("คัดลอกทั้งหมดแล้ว ✨");
-    });
-
-    stickyCopyAll.addEventListener("click", () => {
-      if (!latestCopyAllText) return;
-      copyText(latestCopyAllText);
-      showToast("คัดลอกทั้งหมดแล้ว ✨");
-    });
-
-    stickyIssueOnly.addEventListener("click", () => {
-      if (!latestIssueText) {
-        showToast("ยังไม่มีรายการมีปัญหา");
-        return;
-      }
-      copyText(latestIssueText);
-      showToast("คัดลอกรายการมีปัญหาแล้ว");
-    });
-
-    successModal.addEventListener("click", (e) => {
-      if (e.target === successModal) closeSuccessModal();
-    });
-
-    codeInput.addEventListener("input", handleInputChange);
-
-    window.addEventListener("beforeunload", (e) => {
-      if (!isLoading) return;
-      e.preventDefault();
-      e.returnValue = "ระบบกำลังตรวจสอบโค้ดของคุณอยู่ หากออกจากหน้านี้อาจทำให้ไม่ได้รับโค้ดนะคะ";
-    });
-
-    window.addEventListener("load", () => {
-      setStepState("idle");
-      handleInputChange();
-      codeInput.focus();
-      renderHistory();
-      resizeFxCanvas();
-      const savedInput = localStorage.getItem(LAST_INPUT_KEY) || "";
-      if (savedInput && !codeInput.value.trim()) {
-        codeInput.value = savedInput;
-        handleInputChange();
-      }
-    });
-
-    window.addEventListener("resize", resizeFxCanvas);
-
-    function getNormalizedLines() {
+    function updateLineInfo() {
       const raw = codeInput.value || "";
-      const cleaned = raw
-        .replace(/[,\t]+/g, "\n")
-        .replace(/\u00A0/g, " ")
-        .split(/\r?\n/)
-        .map((l) => l.trim().replace(/\s+/g, ""))
-        .filter(Boolean);
-      return cleaned;
-    }
+      const lines = raw.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+      const deduped = [...new Set(lines)];
 
-    function handleInputChange() {
-      const lines = getNormalizedLines();
-      localStorage.setItem(LAST_INPUT_KEY, lines.join("\n"));
-      updateLineInfo(lines);
-      updateDuplicateWarning(lines);
-      updateRedeemLabel(lines);
-    }
-
-    function updateLineInfo(lines) {
-      const count = lines.length;
-
-      if (!count) {
+      if (!lines.length) {
         lineInfo.textContent = "สูงสุด ~5 โค้ด/ครั้ง";
-        if (meterText) meterText.textContent = `0 / ${MAX_CODES}`;
-        if (codeMeterBar) codeMeterBar.style.width = "0%";
+        meterText.textContent = `0 / ${MAX_CODES}`;
+        codeMeterBar.style.width = "0%";
         return;
       }
 
-      let text = `โค้ดที่กรอก: ${count} รายการ`;
-      if (count > MAX_CODES) {
-        text += ` (ระบบจะใช้เฉพาะ ${MAX_CODES} รายการแรก)`;
+      let text = `โค้ดที่กรอก: ${lines.length} รายการ`;
+      if (deduped.length !== lines.length) {
+        text += ` • ซ้ำ ${lines.length - deduped.length} รายการ`;
+      }
+      if (lines.length > MAX_CODES) {
+        text += ` • ใช้เฉพาะ ${MAX_CODES} รายการแรก`;
       }
       lineInfo.textContent = text;
 
-      const capped = Math.min(count, MAX_CODES);
-      const percent = (capped / MAX_CODES) * 100;
-
-      if (meterText) meterText.textContent = `${capped} / ${MAX_CODES}`;
-      if (codeMeterBar) {
-        codeMeterBar.style.width = percent + "%";
-        codeMeterBar.style.filter = count > MAX_CODES ? "saturate(0.8)" : "none";
-      }
-    }
-
-    function updateRedeemLabel(lines) {
-      const count = Math.min(lines.length, MAX_CODES);
-      redeemLabel.textContent = count ? `รับสินค้า (${count})` : "รับสินค้า";
-    }
-
-    function updateDuplicateWarning(lines) {
-      const map = new Map();
-      for (const code of lines) {
-        map.set(code, (map.get(code) || 0) + 1);
-      }
-      const duplicates = [...map.entries()].filter(([, count]) => count > 1).map(([code]) => code);
-      if (duplicates.length) {
-        duplicateWarning.classList.add("show");
-        duplicateWarning.innerHTML = `พบโค้ดซ้ำ ${duplicates.length} รายการ ระบบจะส่งเฉพาะรายการที่แสดงในช่องตามลำดับเดิม<br>• ${duplicates.join("<br>• ")}`;
-      } else {
-        duplicateWarning.classList.remove("show");
-        duplicateWarning.innerHTML = "";
-      }
+      const capped = Math.min(lines.length, MAX_CODES);
+      meterText.textContent = `${capped} / ${MAX_CODES}`;
+      codeMeterBar.style.width = ((capped / MAX_CODES) * 100) + "%";
+      codeMeterBar.style.filter = lines.length > MAX_CODES ? "saturate(0.8)" : "none";
     }
 
     function clearForm() {
       codeInput.value = "";
       status.innerHTML = "";
-      status.classList.remove("status-error", "status-ok");
-      resultsDiv.innerHTML = "";
+      status.classList.remove("status-ok", "status-error");
       summaryDiv.innerHTML = "";
       copyAllWrap.innerHTML = "";
+      resultsDiv.innerHTML = "";
       latestCopyAllText = "";
-      latestIssueText = "";
-      latestAdminSummary = "";
-      lastRenderedPayload = null;
-      stickyBar.classList.remove("show");
-      duplicateWarning.classList.remove("show");
-      localStorage.removeItem(LAST_INPUT_KEY);
+      latestShareText = "";
+      latestResultStats = { success: 0, used: 0, nf: 0 };
+      updateLineInfo();
       setStepState("idle");
-      handleInputChange();
       codeInput.focus();
       showToast("ล้างข้อมูลแล้ว");
     }
 
     async function pasteFromClipboard() {
-      if (!navigator.clipboard || !navigator.clipboard.readText) {
-        showToast("อุปกรณ์นี้ยังไม่รองรับการวางจากคลิปบอร์ด");
-        return;
-      }
       try {
+        if (!navigator.clipboard) throw new Error("clipboard unavailable");
         const text = await navigator.clipboard.readText();
-        if (!text.trim()) {
-          showToast("ไม่พบข้อความในคลิปบอร์ด");
+        if (!text) {
+          showToast("ไม่มีข้อความในคลิปบอร์ด");
           return;
         }
-        const cleaned = text
-          .replace(/[,\t]+/g, "\n")
-          .replace(/\u00A0/g, " ")
-          .split(/\r?\n/)
-          .map((l) => l.trim().replace(/\s+/g, ""))
-          .filter(Boolean)
-          .join("\n");
-        codeInput.value = cleaned;
-        handleInputChange();
-        showToast("วางโค้ดจากคลิปบอร์ดแล้ว");
-      } catch (err) {
-        console.error(err);
-        showToast("ไม่สามารถอ่านคลิปบอร์ดได้");
+        codeInput.value = text.trim();
+        updateLineInfo();
+        showToast("วางข้อความแล้ว");
+      } catch (e) {
+        showToast("ไม่สามารถวางอัตโนมัติได้");
       }
+    }
+
+    function normalizeInput(raw) {
+      const lines = raw.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+      const seen = new Set();
+      const unique = [];
+      for (const line of lines) {
+        if (!seen.has(line)) {
+          seen.add(line);
+          unique.push(line);
+        }
+      }
+      return {
+        lines,
+        unique,
+        finalLines: unique.slice(0, MAX_CODES)
+      };
     }
 
     function redeem() {
       const inputContainer = document.querySelector(".input-field");
-      const lines = getNormalizedLines();
-      const input = lines.join("\n");
+      const raw = codeInput.value.trim();
 
-      status.classList.remove("status-error", "status-ok");
+      status.classList.remove("status-ok", "status-error");
 
-      if (!input) {
+      if (!raw) {
         inputContainer.classList.add("shake");
         status.innerHTML = "กรุณากรอกรหัสก่อนนะคะ";
         status.classList.add("status-error");
@@ -2291,26 +1994,31 @@
         return;
       }
 
-      let preWarn = "";
-      if (lines.length > MAX_CODES) {
-        preWarn = `คุณกรอกโค้ด ${lines.length} รายการ ระบบจะใช้เฉพาะ ${MAX_CODES} รายการแรกค่ะ`;
+      const parsed = normalizeInput(codeInput.value);
+      let preWarn = [];
+
+      if (parsed.lines.length !== parsed.unique.length) {
+        preWarn.push(`พบโค้ดซ้ำ ${parsed.lines.length - parsed.unique.length} รายการ ระบบตัดซ้ำให้อัตโนมัติ`);
+      }
+      if (parsed.unique.length > MAX_CODES) {
+        preWarn.push(`ระบบจะใช้เฉพาะ ${MAX_CODES} รายการแรกค่ะ`);
       }
 
       isLoading = true;
       mainCard.classList.add("loading");
       setStepState("loading");
       btnRedeem.disabled = true;
-      btnRedeem.innerHTML = `
-        <span class="spinner"></span>
-        <span>กำลังตรวจสอบ…</span>
-      `;
+      stickyRedeem.disabled = true;
+      btnRedeem.innerHTML = `<span class="spinner"></span><span>กำลังตรวจสอบ…</span>`;
+      stickyRedeem.innerHTML = `⏳ กำลังตรวจ`;
 
-      status.style.color = "#8b8680";
+      status.style.color = "#8c857f";
       status.innerHTML =
         "ระบบกำลังตรวจสอบรหัสของคุณ...<br>" +
         "<span style='font-size:0.78rem;color:#c27a5a;'>หลังจากส่งโค้ดแล้ว ห้ามรีเฟรช/ปิดหน้านี้จนกว่าผลจะขึ้นครบค่ะ</span>" +
-        (preWarn ? "<br><span style='font-size:0.78rem;color:#c27a5a;'>" + preWarn + "</span>" : "");
+        (preWarn.length ? "<br><span style='font-size:0.78rem;color:#c27a5a;'>" + preWarn.join(" • ") + "</span>" : "");
 
+      const input = parsed.finalLines.join("\n");
       const url = API_URL + "?action=redeem&text=" + encodeURIComponent(input);
       const startTime = performance.now();
 
@@ -2324,19 +2032,19 @@
           isLoading = false;
           mainCard.classList.remove("loading");
           btnRedeem.disabled = false;
-          btnRedeem.innerHTML = `<span id="redeemLabel">รับสินค้า</span><span>↗</span>`;
+          stickyRedeem.disabled = false;
+          btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
+          stickyRedeem.innerHTML = `<span>⚡</span><span>รับสินค้า</span>`;
           renderResult(data, elapsedSec);
-          updateRedeemLabel(getNormalizedLines());
-          saveLastResult(data, elapsedSec);
-          pushHistory(data, elapsedSec);
         })
         .catch((err) => {
           console.error(err);
           isLoading = false;
           mainCard.classList.remove("loading");
           btnRedeem.disabled = false;
-          btnRedeem.innerHTML = `<span id="redeemLabel">รับสินค้า</span><span>↗</span>`;
-          updateRedeemLabel(getNormalizedLines());
+          stickyRedeem.disabled = false;
+          btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
+          stickyRedeem.innerHTML = `<span>⚡</span><span>รับสินค้า</span>`;
           status.innerHTML = "เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้งค่ะ";
           status.classList.add("status-error");
           setStepState("error");
@@ -2344,16 +2052,66 @@
         });
     }
 
+    function renderSummary(successCount, usedCount, nfCount) {
+      const chips = [];
+      if (successCount) chips.push(`<div class="summary-pill summary-pill--ok">✅ สำเร็จ ${successCount} โค้ด</div>`);
+      if (usedCount) chips.push(`<div class="summary-pill summary-pill--used">♻️ ใช้แล้ว ${usedCount} โค้ด</div>`);
+      if (nfCount) chips.push(`<div class="summary-pill summary-pill--nf">❌ ไม่พบ ${nfCount} โค้ด</div>`);
+      summaryDiv.innerHTML = chips.length ? `<div class="summary-row">${chips.join("")}</div>` : "";
+    }
+
+    function buildCopyAll(items, used, notFound) {
+      const chunks = [];
+
+      if (items && items.length) {
+        items.forEach((item) => {
+          chunks.push(`CODE: ${item.code}${item.appName ? ` (${item.appName})` : ""}\n${item.reply || ""}`);
+        });
+      }
+
+      if (used && used.length) {
+        used.forEach((u) => {
+          let line = `USED CODE: ${u.code}`;
+          if (u.app) line += ` (${u.app})`;
+          if (u.usedAt) line += ` — ${u.usedAt}`;
+          chunks.push(line);
+        });
+      }
+
+      if (notFound && notFound.length) {
+        chunks.push("NOT FOUND:\n" + notFound.join("\n"));
+      }
+
+      return chunks.join("\n\n--------------------\n\n");
+    }
+
+    function buildShareText(res) {
+      const parts = ["ผลลัพธ์จาก 426 SHOP"];
+      if (res.message) parts.push(res.message);
+
+      if (res.items && res.items.length) {
+        parts.push(`สำเร็จ ${res.items.length} โค้ด`);
+      }
+      if (res.used && res.used.length) {
+        parts.push(`ใช้แล้ว ${res.used.length} โค้ด`);
+      }
+      if (res.notFound && res.notFound.length) {
+        parts.push(`ไม่พบ ${res.notFound.length} โค้ด`);
+      }
+
+      const details = buildCopyAll(res.items || [], res.used || [], res.notFound || []);
+      if (details) parts.push("\n" + details);
+
+      return parts.join("\n");
+    }
+
     function renderResult(res, elapsedSec) {
       resultsDiv.innerHTML = "";
       summaryDiv.innerHTML = "";
       copyAllWrap.innerHTML = "";
       latestCopyAllText = "";
-      latestIssueText = "";
-      latestAdminSummary = "";
-      status.classList.remove("status-error", "status-ok");
-      stickyBar.classList.remove("show");
-      lastRenderedPayload = res;
+      latestShareText = "";
+      status.classList.remove("status-ok", "status-error");
 
       if (!res) {
         status.innerHTML = "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งค่ะ";
@@ -2365,38 +2123,36 @@
       const successCount = (res.items && res.items.length) || 0;
       const usedCount = (res.used && res.used.length) || 0;
       const nfCount = (res.notFound && res.notFound.length) || 0;
+      latestResultStats = { success: successCount, used: usedCount, nf: nfCount };
+
+      renderSummary(successCount, usedCount, nfCount);
 
       if (res.ok && successCount > 0) {
         setStepState("done");
-        triggerSuccessAnimation();
+        triggerSuccessAnimation(successCount);
       } else {
         setStepState("error");
-      }
-
-      const chips = [];
-      if (successCount) chips.push(`<div class="summary-pill summary-pill--ok">✅ สำเร็จ ${successCount} โค้ด</div>`);
-      if (usedCount) chips.push(`<div class="summary-pill summary-pill--used">♻️ ใช้แล้ว ${usedCount} โค้ด</div>`);
-      if (nfCount) chips.push(`<div class="summary-pill summary-pill--nf">❌ ไม่พบ ${nfCount} โค้ด</div>`);
-
-      if (chips.length) {
-        summaryDiv.innerHTML = `<div class="summary-row">${chips.join("")}</div>`;
-      }
-
-      if (usedCount >= 2) {
-        summaryDiv.innerHTML += `
-          <div class="used-info-card">
-            <div class="used-info-title">พบโค้ดที่ถูกใช้งานแล้วหลายรายการ</div>
-            <div class="used-info-text">
-              หากไม่แน่ใจว่าโค้ดถูกใช้ไปแล้วจริงไหม แนะนำให้คัดลอกผลลัพธ์ส่งให้แอดมินตรวจสอบนะคะ 💬
-            </div>
-          </div>
-        `;
       }
 
       let msgLines = [];
       if (res.message) msgLines.push("<span class='status-strong'>" + res.message + "</span>");
       if (res.overflowMessage) msgLines.push("• " + res.overflowMessage);
       if (res.multiInLineMessage) msgLines.push("• " + res.multiInLineMessage);
+
+      if (res.notFound && res.notFound.length) {
+        msgLines.push("<br>โค้ดที่ไม่พบในระบบ:");
+        res.notFound.forEach((c) => msgLines.push("• " + c));
+      }
+
+      if (res.used && res.used.length) {
+        msgLines.push("<br>โค้ดที่ถูกใช้งานไปแล้ว:");
+        res.used.forEach((u) => {
+          let line = "• " + u.code;
+          if (u.app) line += " (" + u.app + ")";
+          if (u.usedAt) line += " — " + u.usedAt;
+          msgLines.push(line);
+        });
+      }
 
       if (typeof elapsedSec === "number" && isFinite(elapsedSec)) {
         const prettyTime = elapsedSec < 0.1 ? "< 0.1" : elapsedSec.toFixed(1).replace(/\.0$/, "");
@@ -2406,104 +2162,8 @@
       status.innerHTML = msgLines.join("<br>");
       status.classList.add(res.ok ? "status-ok" : "status-error");
 
-      const allCopyChunks = [];
-      const issueChunks = [];
-
-      const makeSection = (title, dotClass) => {
-        const section = document.createElement("div");
-        section.className = "result-section";
-        section.innerHTML = `
-          <div class="result-section-title">
-            <span class="section-dot ${dotClass}"></span>
-            <span>${title}</span>
-          </div>
-        `;
-        resultsDiv.appendChild(section);
-        return section;
-      };
-
-      if (res.items && res.items.length > 0) {
-        const section = makeSection("รายการสำเร็จ", "ok");
-        res.items.forEach((item, index) => {
-          const card = document.createElement("div");
-          card.className = "result-item result-item--ok";
-          const safeReplyText = encodeURIComponent(item.reply || "");
-          const appTag = (item.appName || "").trim();
-          const sectionText = `CODE: ${item.code}${appTag ? ` (${appTag})` : ""}\n${item.reply || ""}`;
-          allCopyChunks.push(sectionText);
-
-          card.innerHTML = `
-            <div class="item-top-row">
-              <div>
-                <div class="item-header">
-                  REDEEMED CODE: ${item.code}
-                  ${appTag ? `<span class="item-tag">✨ ${appTag}</span>` : ""}
-                </div>
-              </div>
-            </div>
-            <div class="item-body">${item.reply || ""}</div>
-            <button class="btn-copy" data-text="${safeReplyText}">
-              <span>คัดลอกรายละเอียด</span>
-            </button>
-          `;
-
-          section.appendChild(card);
-          animateCard(card, index);
-        });
-      }
-
-      if (res.used && res.used.length > 0) {
-        const section = makeSection("รายการที่ถูกใช้งานแล้ว", "used");
-        res.used.forEach((u, index) => {
-          let body = `โค้ด: ${u.code}`;
-          if (u.app) body += `\nแอป: ${u.app}`;
-          if (u.usedAt) body += `\nเวลาใช้งาน: ${u.usedAt}`;
-          const copyTextValue = `USED CODE: ${u.code}${u.app ? ` (${u.app})` : ""}${u.usedAt ? ` — ${u.usedAt}` : ""}`;
-          issueChunks.push(copyTextValue);
-          allCopyChunks.push(copyTextValue);
-
-          const card = document.createElement("div");
-          card.className = "result-item result-item--used";
-          card.innerHTML = `
-            <div class="item-top-row">
-              <div class="item-header">USED CODE: ${u.code}</div>
-            </div>
-            <div class="item-body">${body}</div>
-            <button class="btn-copy" data-text="${encodeURIComponent(copyTextValue)}">
-              <span>คัดลอกรายละเอียด</span>
-            </button>
-          `;
-          section.appendChild(card);
-          animateCard(card, index + 5);
-        });
-      }
-
-      if (res.notFound && res.notFound.length > 0) {
-        const section = makeSection("รายการที่ไม่พบในระบบ", "nf");
-        res.notFound.forEach((code, index) => {
-          const copyTextValue = `NOT FOUND: ${code}`;
-          issueChunks.push(copyTextValue);
-          allCopyChunks.push(copyTextValue);
-
-          const card = document.createElement("div");
-          card.className = "result-item result-item--nf";
-          card.innerHTML = `
-            <div class="item-top-row">
-              <div class="item-header">NOT FOUND: ${code}</div>
-            </div>
-            <div class="item-body">ไม่พบโค้ดนี้ในระบบ หากเชื่อว่าโค้ดถูกต้อง แนะนำให้คัดลอกผลนี้ส่งให้แอดมินตรวจสอบค่ะ</div>
-            <button class="btn-copy" data-text="${encodeURIComponent(copyTextValue)}">
-              <span>คัดลอกรายละเอียด</span>
-            </button>
-          `;
-          section.appendChild(card);
-          animateCard(card, index + 10);
-        });
-      }
-
-      latestCopyAllText = allCopyChunks.join("\n\n--------------------\n\n");
-      latestIssueText = issueChunks.join("\n");
-      latestAdminSummary = buildAdminSummary(res, elapsedSec);
+      latestCopyAllText = buildCopyAll(res.items || [], res.used || [], res.notFound || []);
+      latestShareText = buildShareText(res);
 
       if (latestCopyAllText) {
         copyAllWrap.innerHTML = `
@@ -2511,26 +2171,109 @@
             <span>📋</span>
             <span>คัดลอกทั้งหมด</span>
           </button>
-          ${latestIssueText ? `
-            <button class="btn-copy-issue" id="btnCopyIssueInline" type="button">
-              <span>⚠️</span>
-              <span>คัดลอกเฉพาะรายการมีปัญหา</span>
-            </button>
-          ` : ""}
         `;
-
-        document.getElementById("btnCopyAll")?.addEventListener("click", () => {
+        document.getElementById("btnCopyAll").addEventListener("click", () => {
           copyText(latestCopyAllText);
           showToast("คัดลอกทั้งหมดแล้ว ✨");
         });
+      }
 
-        document.getElementById("btnCopyIssueInline")?.addEventListener("click", () => {
-          if (!latestIssueText) return;
-          copyText(latestIssueText);
-          showToast("คัดลอกรายการมีปัญหาแล้ว");
+      if (res.items && res.items.length > 0) {
+        res.items.forEach((item, index) => {
+          const card = document.createElement("div");
+          card.className = "result-item status-success";
+          const safeReplyText = encodeURIComponent(item.reply || "");
+          const appTag = (item.appName || "").trim();
+
+          card.innerHTML = `
+            <div class="result-top">
+              <div class="item-header">
+                REDEEMED CODE: ${item.code}
+                ${appTag ? `<span class="item-tag">✨ ${appTag}</span>` : ""}
+              </div>
+              <div class="result-badge ok">✅ สำเร็จ</div>
+            </div>
+            <div class="item-body">${item.reply || ""}</div>
+            <button class="btn-copy" data-text="${safeReplyText}">
+              <span>คัดลอกรายละเอียด</span>
+            </button>
+          `;
+
+          resultsDiv.appendChild(card);
+          card.animate(
+            [
+              { opacity: 0, transform: "translateY(16px) scale(0.98)" },
+              { opacity: 1, transform: "translateY(0) scale(1)" }
+            ],
+            {
+              duration: 320,
+              delay: index * 60,
+              easing: "cubic-bezier(.2,.8,.2,1)",
+              fill: "both"
+            }
+          );
         });
+      }
 
-        stickyBar.classList.add("show");
+      if (res.used && res.used.length > 0) {
+        res.used.forEach((u, idx) => {
+          const card = document.createElement("div");
+          card.className = "result-item status-used";
+          let detail = `โค้ดนี้ถูกใช้งานไปแล้ว`;
+          if (u.app) detail += `\nสินค้า: ${u.app}`;
+          if (u.usedAt) detail += `\nเวลาใช้งานเดิม: ${u.usedAt}`;
+
+          card.innerHTML = `
+            <div class="result-top">
+              <div class="item-header">
+                USED CODE: ${u.code}
+                ${u.app ? `<span class="item-tag">♻️ ${u.app}</span>` : ""}
+              </div>
+              <div class="result-badge used">♻️ ใช้แล้ว</div>
+            </div>
+            <div class="item-body">${detail}</div>
+          `;
+          resultsDiv.appendChild(card);
+          card.animate(
+            [
+              { opacity: 0, transform: "translateY(16px) scale(0.98)" },
+              { opacity: 1, transform: "translateY(0) scale(1)" }
+            ],
+            {
+              duration: 320,
+              delay: (successCount + idx) * 60,
+              easing: "cubic-bezier(.2,.8,.2,1)",
+              fill: "both"
+            }
+          );
+        });
+      }
+
+      if (res.notFound && res.notFound.length > 0) {
+        res.notFound.forEach((code, idx) => {
+          const card = document.createElement("div");
+          card.className = "result-item status-notfound";
+          card.innerHTML = `
+            <div class="result-top">
+              <div class="item-header">NOT FOUND: ${code}</div>
+              <div class="result-badge nf">❌ ไม่พบ</div>
+            </div>
+            <div class="item-body">ไม่พบโค้ดนี้ในระบบ กรุณาตรวจสอบการคัดลอก หรือส่งผลลัพธ์นี้ให้แอดมินช่วยตรวจสอบต่อได้เลยค่ะ</div>
+          `;
+          resultsDiv.appendChild(card);
+          card.animate(
+            [
+              { opacity: 0, transform: "translateY(16px) scale(0.98)" },
+              { opacity: 1, transform: "translateY(0) scale(1)" }
+            ],
+            {
+              duration: 320,
+              delay: (successCount + usedCount + idx) * 60,
+              easing: "cubic-bezier(.2,.8,.2,1)",
+              fill: "both"
+            }
+          );
+        });
       }
 
       document.querySelectorAll(".btn-copy").forEach((btn) => {
@@ -2539,84 +2282,84 @@
 
       if (res.ok && successCount > 0) {
         codeInput.value = "";
-        localStorage.removeItem(LAST_INPUT_KEY);
-        handleInputChange();
-        openSuccessModal(successCount, usedCount, nfCount);
+        updateLineInfo();
       }
 
-      if (resultsDiv.innerHTML.trim()) {
+      saveHistory({
+        time: new Date().toLocaleString("th-TH"),
+        success: successCount,
+        used: usedCount,
+        nf: nfCount,
+        message: res.message || ""
+      });
+
+      renderHistory();
+
+      if (resultsDiv.innerHTML) {
         window.scrollTo({ top: resultsDiv.offsetTop - 70, behavior: "smooth" });
       }
     }
 
-    function animateCard(card, index) {
-      card.animate(
-        [
-          { opacity: 0, transform: "translateY(16px) scale(0.98)" },
-          { opacity: 1, transform: "translateY(0) scale(1)" }
-        ],
-        {
-          duration: 320,
-          delay: index * 50,
-          easing: "cubic-bezier(.2,.8,.2,1)",
-          fill: "both"
-        }
-      );
+    function copyText(text) {
+      if (!navigator.clipboard) {
+        const temp = document.createElement("textarea");
+        temp.value = text;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand("copy");
+        document.body.removeChild(temp);
+      } else {
+        navigator.clipboard.writeText(text);
+      }
     }
 
-    function buildAdminSummary(res, elapsedSec) {
-      const successCount = (res.items && res.items.length) || 0;
-      const usedCount = (res.used && res.used.length) || 0;
-      const nfCount = (res.notFound && res.notFound.length) || 0;
-      const prettyTime = typeof elapsedSec === "number" && isFinite(elapsedSec)
-        ? (elapsedSec < 0.1 ? "< 0.1" : elapsedSec.toFixed(1).replace(/\.0$/, "")) + " วินาที"
-        : "-";
+    function copyToClipboard(btn) {
+      const text = decodeURIComponent(btn.getAttribute("data-text") || "");
+      copyText(text);
 
-      const lines = [
-        "สรุปผลการรับสินค้าอัตโนมัติ",
-        `สำเร็จ: ${successCount} โค้ด`,
-        `ใช้แล้ว: ${usedCount} โค้ด`,
-        `ไม่พบ: ${nfCount} โค้ด`,
-        `เวลาประมวลผล: ${prettyTime}`
-      ];
+      const old = btn.innerHTML;
+      btn.innerHTML = "คัดลอกแล้ว ✓";
+      btn.style.background = "#f4faf7";
+      btn.style.borderColor = "#86bba8";
 
-      if (res.used && res.used.length) {
-        lines.push("", "โค้ดที่ใช้แล้ว:");
-        res.used.forEach((u) => {
-          lines.push(`- ${u.code}${u.app ? ` (${u.app})` : ""}${u.usedAt ? ` — ${u.usedAt}` : ""}`);
-        });
-      }
+      setTimeout(() => {
+        btn.innerHTML = old;
+        btn.style.background = "";
+        btn.style.borderColor = "";
+      }, 1800);
 
-      if (res.notFound && res.notFound.length) {
-        lines.push("", "โค้ดที่ไม่พบ:");
-        res.notFound.forEach((code) => lines.push(`- ${code}`));
-      }
-
-      return lines.join("\n");
+      showToast("คัดลอกรายละเอียดแล้ว ✨");
     }
 
-    function triggerSuccessAnimation() {
-      if (logoCircle) {
-        logoCircle.classList.remove("success-bounce");
-        void logoCircle.offsetWidth;
-        logoCircle.classList.add("success-bounce");
-      }
-      launchConfetti();
-      showToast("รับสินค้าเรียบร้อย ✨");
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(showToast._timer);
+      showToast._timer = setTimeout(() => toast.classList.remove("show"), 2000);
     }
 
-    function openSuccessModal(successCount, usedCount, nfCount) {
-      successText.textContent = "ระบบประมวลผลเสร็จแล้ว คุณสามารถคัดลอกผลลัพธ์ทั้งหมดได้ทันที";
-      successStats.innerHTML = `
-        <div class="success-stat ok">สำเร็จ<br>${successCount}</div>
-        <div class="success-stat used">ใช้แล้ว<br>${usedCount}</div>
-        <div class="success-stat nf">ไม่พบ<br>${nfCount}</div>
-      `;
+    function openSuccessModal(successCount) {
+      modalTitle.textContent = "รับสินค้าเรียบร้อย 🎉";
+      modalDesc.textContent = `ระบบส่งสำเร็จ ${successCount} โค้ดแล้ว สามารถคัดลอกข้อมูลหรือส่งผลลัพธ์ให้แอดมินต่อได้เลยค่ะ`;
       successModal.classList.add("show");
     }
 
     function closeSuccessModal() {
       successModal.classList.remove("show");
+    }
+
+    closeModalBtn.addEventListener("click", closeSuccessModal);
+    successModal.addEventListener("click", (e) => {
+      if (e.target === successModal) closeSuccessModal();
+    });
+
+    function triggerSuccessAnimation(successCount) {
+      logoCircle.classList.remove("success-bounce");
+      void logoCircle.offsetWidth;
+      logoCircle.classList.add("success-bounce");
+      launchConfetti();
+      showToast("รับสินค้าเรียบร้อย ✨");
+      openSuccessModal(successCount);
     }
 
     function resizeFxCanvas() {
@@ -2636,7 +2379,7 @@
       if (!fxCanvas || !fxCtx) return;
 
       const particles = [];
-      const colors = ["#85b8a6", "#f0c7a7", "#f6d97a", "#ffffff", "#c6eadb", "#ffd7d7"];
+      const colors = ["#86bba8", "#f2cdb2", "#f6da7c", "#ffffff", "#cdeade", "#ffd6d6"];
 
       for (let i = 0; i < 120; i++) {
         particles.push({
@@ -2674,7 +2417,6 @@
         });
 
         frame++;
-
         for (let i = particles.length - 1; i >= 0; i--) {
           if (particles[i].life <= 0 || particles[i].y > window.innerHeight + 30) {
             particles.splice(i, 1);
@@ -2691,128 +2433,140 @@
       draw();
     }
 
-    function copyText(text) {
-      if (!navigator.clipboard) {
-        const temp = document.createElement("textarea");
-        temp.value = text;
-        document.body.appendChild(temp);
-        temp.select();
-        document.execCommand("copy");
-        document.body.removeChild(temp);
-      } else {
-        navigator.clipboard.writeText(text);
-      }
-    }
+    function addRippleEffect(button) {
+      if (!button) return;
+      button.addEventListener("click", function (e) {
+        const circle = document.createElement("span");
+        const diameter = Math.max(this.clientWidth, this.clientHeight);
+        const rect = this.getBoundingClientRect();
 
-    function copyToClipboard(btn) {
-      const text = decodeURIComponent(btn.getAttribute("data-text") || "");
-      copyText(text);
+        circle.style.width = circle.style.height = diameter + "px";
+        circle.style.position = "absolute";
+        circle.style.left = (e.clientX - rect.left - diameter / 2) + "px";
+        circle.style.top = (e.clientY - rect.top - diameter / 2) + "px";
+        circle.style.borderRadius = "999px";
+        circle.style.background = "rgba(255,255,255,0.35)";
+        circle.style.transform = "scale(0)";
+        circle.style.pointerEvents = "none";
+        circle.style.animation = "rippleFx 0.6s ease-out forwards";
 
-      const originalText = btn.innerHTML;
-      btn.innerHTML = "คัดลอกแล้ว ✓";
-      btn.style.background = "#f4faf7";
-      btn.style.borderColor = "#85b8a6";
-
-      setTimeout(() => {
-        btn.innerHTML = originalText;
-        btn.style.background = "";
-        btn.style.borderColor = "";
-      }, 1800);
-
-      showToast("คัดลอกรายละเอียดแล้ว ✨");
-    }
-
-    function showToast(message) {
-      if (!toast) return;
-      toast.textContent = message;
-      toast.classList.add("show");
-      clearTimeout(showToast._timer);
-      showToast._timer = setTimeout(() => toast.classList.remove("show"), 2000);
-    }
-
-    function saveLastResult(res, elapsedSec) {
-      const payload = {
-        data: res,
-        elapsedSec,
-        savedAt: Date.now()
-      };
-      localStorage.setItem(LAST_RESULT_KEY, JSON.stringify(payload));
-    }
-
-    function restoreLastResult() {
-      const raw = localStorage.getItem(LAST_RESULT_KEY);
-      if (!raw) {
-        showToast("ยังไม่มีผลล่าสุดให้กู้");
-        return;
-      }
-      try {
-        const parsed = JSON.parse(raw);
-        renderResult(parsed.data, parsed.elapsedSec);
-        showToast("กู้ผลล่าสุดแล้ว");
-      } catch (err) {
-        console.error(err);
-        showToast("ไม่สามารถกู้ผลล่าสุดได้");
-      }
-    }
-
-    function pushHistory(res, elapsedSec) {
-      const raw = localStorage.getItem(HISTORY_KEY);
-      let history = [];
-      try {
-        history = raw ? JSON.parse(raw) : [];
-      } catch {
-        history = [];
-      }
-
-      history.unshift({
-        time: Date.now(),
-        success: (res.items && res.items.length) || 0,
-        used: (res.used && res.used.length) || 0,
-        notFound: (res.notFound && res.notFound.length) || 0,
-        elapsedSec
+        this.appendChild(circle);
+        setTimeout(() => circle.remove(), 650);
       });
+    }
 
-      history = history.slice(0, 5);
-      localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
-      renderHistory();
+    const rippleStyle = document.createElement("style");
+    rippleStyle.textContent = `
+      @keyframes rippleFx {
+        to {
+          transform: scale(2.8);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(rippleStyle);
+
+    function saveHistory(item) {
+      try {
+        const current = JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]");
+        current.unshift(item);
+        const trimmed = current.slice(0, 5);
+        localStorage.setItem(HISTORY_KEY, JSON.stringify(trimmed));
+      } catch (e) {}
     }
 
     function renderHistory() {
-      const raw = localStorage.getItem(HISTORY_KEY);
-      let history = [];
       try {
-        history = raw ? JSON.parse(raw) : [];
-      } catch {
-        history = [];
-      }
+        const items = JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]");
+        if (!items.length) {
+          historyBox.className = "history-empty";
+          historyBox.textContent = "ยังไม่มีประวัติการรับสินค้าในเครื่องนี้";
+          return;
+        }
 
-      if (!history.length) {
-        historyWrap.classList.remove("show");
-        historyList.innerHTML = "";
+        historyBox.className = "history-list";
+        historyBox.innerHTML = items.map((item) => `
+          <div class="history-item">
+            <div class="history-meta">
+              <div class="history-title">${item.message || "ทำรายการล่าสุด"}</div>
+              <div class="history-sub">${item.time}</div>
+            </div>
+            <div class="history-sub">✅ ${item.success} • ♻️ ${item.used} • ❌ ${item.nf}</div>
+          </div>
+        `).join("");
+      } catch (e) {
+        historyBox.className = "history-empty";
+        historyBox.textContent = "ไม่สามารถโหลดประวัติได้";
+      }
+    }
+
+    function sendResultToAdmin() {
+      if (!latestShareText) {
+        showToast("ยังไม่มีผลลัพธ์สำหรับส่ง");
         return;
       }
-
-      historyWrap.classList.add("show");
-      historyList.innerHTML = history.map((item) => {
-        const dt = new Date(item.time);
-        const t = dt.toLocaleString("th-TH", {
-          day: "2-digit",
-          month: "short",
-          hour: "2-digit",
-          minute: "2-digit"
-        });
-        const prettyTime = typeof item.elapsedSec === "number"
-          ? (item.elapsedSec < 0.1 ? "< 0.1" : item.elapsedSec.toFixed(1).replace(/\.0$/, "")) + " วินาที"
-          : "-";
-        return `
-          <div class="history-item">
-            <strong>${t}</strong><br>
-            สำเร็จ ${item.success} • ใช้แล้ว ${item.used} • ไม่พบ ${item.notFound}<br>
-            ใช้เวลา ${prettyTime}
-          </div>
-        `;
-      }).join("");
+      const text = encodeURIComponent(latestShareText + `\n\nติดต่อร้าน: ${SUPPORT_HANDLE}`);
+      window.open(`${SUPPORT_LINK}?text=${text}`, "_blank");
     }
+
+    document.querySelectorAll(".faq-q").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const item = btn.closest(".faq-item");
+        const isOpen = item.classList.contains("open");
+        document.querySelectorAll(".faq-item").forEach((x) => {
+          x.classList.remove("open");
+          const icon = x.querySelector(".faq-q span:last-child");
+          if (icon) icon.textContent = "＋";
+        });
+        if (!isOpen) {
+          item.classList.add("open");
+          const icon = item.querySelector(".faq-q span:last-child");
+          if (icon) icon.textContent = "－";
+        }
+      });
+    });
+
+    btnRedeem.addEventListener("click", redeem);
+    stickyRedeem.addEventListener("click", redeem);
+
+    btnClear.addEventListener("click", clearForm);
+    btnPaste.addEventListener("click", pasteFromClipboard);
+    stickyPaste.addEventListener("click", pasteFromClipboard);
+
+    stickyCopyAll.addEventListener("click", () => {
+      if (!latestCopyAllText) {
+        showToast("ยังไม่มีข้อมูลให้คัดลอก");
+        return;
+      }
+      copyText(latestCopyAllText);
+      showToast("คัดลอกทั้งหมดแล้ว ✨");
+    });
+
+    sendResultBtn.addEventListener("click", sendResultToAdmin);
+
+    codeInput.addEventListener("input", updateLineInfo);
+
+    window.addEventListener("beforeunload", (e) => {
+      if (!isLoading) return;
+      e.preventDefault();
+      e.returnValue = "ระบบกำลังตรวจสอบโค้ดของคุณอยู่ หากออกจากหน้านี้อาจทำให้ไม่ได้รับโค้ดนะคะ";
+    });
+
+    window.addEventListener("resize", resizeFxCanvas);
+
+    window.addEventListener("load", () => {
+      setStepState("idle");
+      updateLineInfo();
+      resizeFxCanvas();
+      renderHistory();
+      rotateTip();
+      setInterval(rotateTip, 12000);
+      codeInput.focus();
+    });
+
+    document.getElementById("contactAdminBtn").setAttribute("href", SUPPORT_LINK);
+
+    [btnRedeem, btnClear, btnPaste, stickyRedeem, stickyPaste, stickyCopyAll, themeToggle, sendResultBtn].forEach(addRippleEffect);
   </script>
 </body>
 </html>
