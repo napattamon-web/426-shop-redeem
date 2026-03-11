@@ -949,80 +949,163 @@
 
     .loading-bear-wrap {
       position: relative;
-      width: 120px;
-      height: 92px;
+      width: 132px;
+      height: 110px;
       margin: 0 auto 12px;
     }
 
-    .loading-bear {
+    .cute-bear {
       position: absolute;
-      left: 6px;
-      bottom: 8px;
-      width: 66px;
-      height: 58px;
-      animation: bearBounce 1.4s ease-in-out infinite;
+      left: 4px;
+      bottom: 2px;
+      width: 82px;
+      height: 96px;
+      animation: bearWiggle 1.8s ease-in-out infinite;
+      transform-origin: center bottom;
     }
 
-    .bear-ear {
+    .cute-bear-ear {
       position: absolute;
-      top: -10px;
-      width: 20px;
-      height: 20px;
+      top: 2px;
+      width: 24px;
+      height: 24px;
       border-radius: 999px;
       background: #c89c7d;
+      z-index: 1;
     }
 
-    .bear-ear.left { left: 6px; }
-    .bear-ear.right { right: 6px; }
+    .cute-bear-ear.left { left: 10px; }
+    .cute-bear-ear.right { right: 10px; }
 
-    .bear-face {
-      position: absolute;
-      inset: 0;
-      border-radius: 28px;
-      background: linear-gradient(180deg, #cfa688, #b98969);
-      box-shadow: inset 0 2px 0 rgba(255,255,255,.25);
-    }
-
-    .bear-face::before {
+    .cute-bear-ear::after {
       content: "";
       position: absolute;
-      left: 50%;
-      top: 22px;
-      transform: translateX(-50%);
-      width: 28px;
-      height: 22px;
+      inset: 5px;
       border-radius: 999px;
-      background: #f4e2d3;
+      background: #efd7c8;
     }
 
-    .bear-eye {
+    .cute-bear-head {
       position: absolute;
-      top: 22px;
-      width: 5px;
-      height: 7px;
-      border-radius: 999px;
-      background: #4a403a;
-      animation: bearBlink 3.2s ease-in-out infinite;
+      top: 10px;
+      left: 7px;
+      width: 68px;
+      height: 62px;
+      border-radius: 30px;
+      background: linear-gradient(180deg, #d4ab8e, #b98969);
+      box-shadow: inset 0 2px 0 rgba(255,255,255,.22);
+      z-index: 2;
+      animation: bearHeadBob 1.4s ease-in-out infinite;
     }
 
-    .bear-eye.left { left: 20px; }
-    .bear-eye.right { right: 20px; }
-
-    .bear-mouth {
+    .cute-bear-eye {
       position: absolute;
-      left: 50%;
+      top: 22px;
+      width: 6px;
+      height: 8px;
+      border-radius: 999px;
+      background: #493b34;
+      animation: bearBlink 3s ease-in-out infinite;
+    }
+
+    .cute-bear-eye.left { left: 18px; }
+    .cute-bear-eye.right { right: 18px; }
+
+    .cute-bear-cheek {
+      position: absolute;
       top: 30px;
-      transform: translateX(-50%);
       width: 10px;
       height: 6px;
+      border-radius: 999px;
+      background: rgba(236, 147, 147, .45);
+    }
+
+    .cute-bear-cheek.left { left: 10px; }
+    .cute-bear-cheek.right { right: 10px; }
+
+    .cute-bear-muzzle {
+      position: absolute;
+      left: 50%;
+      top: 31px;
+      transform: translateX(-50%);
+      width: 28px;
+      height: 20px;
+      border-radius: 999px;
+      background: #f5e2d5;
+    }
+
+    .cute-bear-nose {
+      position: absolute;
+      left: 50%;
+      top: 4px;
+      transform: translateX(-50%);
+      width: 9px;
+      height: 7px;
+      border-radius: 999px;
+      background: #5b463c;
+    }
+
+    .cute-bear-mouth {
+      position: absolute;
+      left: 50%;
+      top: 11px;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 7px;
       border-bottom: 2px solid #6e5548;
       border-radius: 0 0 10px 10px;
     }
 
+    .cute-bear-body {
+      position: absolute;
+      bottom: 0;
+      left: 11px;
+      width: 60px;
+      height: 42px;
+      border-radius: 24px 24px 18px 18px;
+      background: linear-gradient(180deg, #cfa688, #b78767);
+      z-index: 1;
+    }
+
+    .cute-bear-hand {
+      position: absolute;
+      top: 8px;
+      width: 16px;
+      height: 22px;
+      border-radius: 999px;
+      background: #c79878;
+    }
+
+    .cute-bear-hand.left {
+      left: -4px;
+      transform: rotate(18deg);
+      animation: handWaveL 1.3s ease-in-out infinite;
+      transform-origin: top center;
+    }
+
+    .cute-bear-hand.right {
+      right: -4px;
+      transform: rotate(-18deg);
+      animation: handWaveR 1.3s ease-in-out infinite;
+      transform-origin: top center;
+    }
+
+    .cute-bear-foot {
+      position: absolute;
+      bottom: -4px;
+      width: 18px;
+      height: 12px;
+      border-radius: 999px;
+      background: #b98969;
+    }
+
+    .cute-bear-foot.left { left: 10px; }
+    .cute-bear-foot.right { right: 10px; }
+
     .loading-gift {
       position: absolute;
       right: 2px;
-      bottom: 10px;
+      bottom: 12px;
       width: 42px;
       height: 42px;
       border-radius: 12px;
@@ -1132,9 +1215,31 @@
       animation: progressMove 1.4s ease-in-out infinite;
     }
 
-    @keyframes bearBounce {
+    @keyframes bearWiggle {
+      0%, 100% { transform: rotate(0deg) translateY(0); }
+      25% { transform: rotate(-3deg) translateY(-2px); }
+      50% { transform: rotate(0deg) translateY(-4px); }
+      75% { transform: rotate(3deg) translateY(-2px); }
+    }
+
+    @keyframes bearHeadBob {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
+      50% { transform: translateY(-2px); }
+    }
+
+    @keyframes bearBlink {
+      0%, 44%, 100% { transform: scaleY(1); }
+      46%, 50% { transform: scaleY(.15); }
+    }
+
+    @keyframes handWaveL {
+      0%, 100% { transform: rotate(18deg); }
+      50% { transform: rotate(35deg); }
+    }
+
+    @keyframes handWaveR {
+      0%, 100% { transform: rotate(-18deg); }
+      50% { transform: rotate(-35deg); }
     }
 
     @keyframes giftFloat {
@@ -1160,11 +1265,6 @@
     @keyframes warningPulse {
       0%, 100% { box-shadow: 0 0 0 0 rgba(204,147,109,0); }
       50% { box-shadow: 0 0 0 6px rgba(204,147,109,0.08); }
-    }
-
-    @keyframes bearBlink {
-      0%, 45%, 100% { transform: scaleY(1); }
-      48%, 52% { transform: scaleY(.15); }
     }
 
     #summary { margin-top: 14px; }
@@ -1642,8 +1742,10 @@
       .live-text,
       .meter-bar::after,
       .primary-btn::before,
-      .bear-eye,
-      .loading-bear,
+      .cute-bear,
+      .cute-bear-head,
+      .cute-bear-eye,
+      .cute-bear-hand,
       .loading-gift,
       .loading-dots span,
       .loading-progress-bar,
@@ -1784,13 +1886,26 @@
           <div class="loading-overlay" id="loadingOverlay">
             <div class="loading-box">
               <div class="loading-bear-wrap">
-                <div class="loading-bear">
-                  <div class="bear-ear left"></div>
-                  <div class="bear-ear right"></div>
-                  <div class="bear-face">
-                    <div class="bear-eye left"></div>
-                    <div class="bear-eye right"></div>
-                    <div class="bear-mouth"></div>
+                <div class="cute-bear">
+                  <div class="cute-bear-ear left"></div>
+                  <div class="cute-bear-ear right"></div>
+
+                  <div class="cute-bear-head">
+                    <div class="cute-bear-eye left"></div>
+                    <div class="cute-bear-eye right"></div>
+                    <div class="cute-bear-cheek left"></div>
+                    <div class="cute-bear-cheek right"></div>
+                    <div class="cute-bear-muzzle">
+                      <div class="cute-bear-nose"></div>
+                      <div class="cute-bear-mouth"></div>
+                    </div>
+                  </div>
+
+                  <div class="cute-bear-body">
+                    <div class="cute-bear-hand left"></div>
+                    <div class="cute-bear-hand right"></div>
+                    <div class="cute-bear-foot left"></div>
+                    <div class="cute-bear-foot right"></div>
                   </div>
                 </div>
 
@@ -1937,7 +2052,7 @@
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const MAX_CODES = 5;
-    const HISTORY_KEY = "redeem_history_v16";
+    const HISTORY_KEY = "redeem_history_v17";
 
     const btnRedeem = document.getElementById("btnRedeem");
     const btnClear = document.getElementById("btnClear");
@@ -2031,8 +2146,8 @@
 
     const loadingMessages = [
       "กำลังตรวจสอบโค้ดค่ะ",
-      "กำลังเตรียมข้อมูลให้ค่ะ",
-      "อย่ารีเฟรชหน้านะคะ"
+      "กำลังเตรียมข้อมูลค่ะ",
+      "ใกล้เสร็จแล้วนะคะ"
     ];
 
     let tipIndex = 0;
