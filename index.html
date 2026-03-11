@@ -1566,28 +1566,6 @@
       transform: translateX(-50%) translateY(0);
     }
 
-    .success-banner {
-      margin-top: 10px;
-      padding: 11px 12px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, #f4fcf7, #ebf8f0);
-      border: 1px solid #cfe6d8;
-      color: var(--accent-ok);
-      font-size: .8rem;
-      font-weight: 700;
-      animation: popIn .35s ease;
-    }
-
-    body.theme-dark .success-banner {
-      background: linear-gradient(135deg, #223831, #263b35);
-      border-color: #3f6f59;
-    }
-
-    @keyframes popIn {
-      from { opacity: 0; transform: translateY(8px) scale(.98); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
     .shake {
       animation: shake .4s;
       border-color: var(--accent-nf) !important;
@@ -1959,7 +1937,7 @@
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const MAX_CODES = 5;
-    const HISTORY_KEY = "redeem_history_v21";
+    const HISTORY_KEY = "redeem_history_v22";
 
     const btnRedeem = document.getElementById("btnRedeem");
     const btnClear = document.getElementById("btnClear");
@@ -2302,10 +2280,6 @@
       if (usedCount) chips.push(`<div class="summary-pill used">♻️ ใช้แล้ว ${usedCount} โค้ด</div>`);
       if (nfCount) chips.push(`<div class="summary-pill nf">❌ ไม่พบ ${nfCount} โค้ด</div>`);
       if (chips.length) summaryDiv.innerHTML = `<div class="summary-row">${chips.join("")}</div>`;
-
-      if (res.ok && successCount > 0) {
-        summaryDiv.innerHTML += `<div class="success-banner">ส่งสินค้าเรียบร้อยแล้ว คัดลอกรายละเอียดด้านล่าง</div>`;
-      }
 
       if (usedCount >= 2) {
         summaryDiv.innerHTML += `
