@@ -150,7 +150,7 @@
       z-index: 2;
       width: 100%;
       max-width: 480px;
-      padding: 14px 16px 100px;
+      padding: 14px 16px 18px;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -758,7 +758,6 @@
     .btn-copy-all,
     .btn-copy-success,
     .help-btn,
-    .cta-btn,
     .history-btn {
       position: relative;
       overflow: hidden;
@@ -1273,8 +1272,7 @@
     }
 
     .faq-card,
-    .history-card,
-    .cta-card {
+    .history-card {
       border-radius: 18px;
       padding: 14px;
       background: rgba(255,255,255,0.82);
@@ -1283,8 +1281,7 @@
     }
 
     body.theme-dark .faq-card,
-    body.theme-dark .history-card,
-    body.theme-dark .cta-card {
+    body.theme-dark .history-card {
       background: rgba(36,37,43,0.88);
       border-color: #343740;
     }
@@ -1396,114 +1393,6 @@
       color: #f2f3f6;
     }
 
-    .cta-card {
-      display: grid;
-      gap: 10px;
-    }
-
-    .cta-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
-    .cta-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 12px;
-      border-radius: 14px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.84rem;
-      border: 1px solid #e2dbd3;
-      background: rgba(255,255,255,0.8);
-      color: var(--text-main);
-    }
-
-    .cta-btn.primary {
-      background: linear-gradient(135deg, #f8fffc, #eef8f4);
-      border-color: #cfe3da;
-      color: #355f53;
-    }
-
-    .cta-btn.secondary {
-      background: linear-gradient(135deg, #fffaf6, #fff1e8);
-      border-color: #efd3bd;
-      color: #8d5a3f;
-    }
-
-    body.theme-dark .cta-btn {
-      background: rgba(37,38,43,0.92);
-      border-color: #3a3d46;
-      color: #f2f4f7;
-    }
-
-    .footer {
-      margin-top: 4px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.74rem;
-      color: var(--text-sub);
-    }
-
-    .support-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.9);
-      border: 1px solid #e5dfd8;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.04);
-    }
-
-    body.theme-dark .support-pill {
-      background: rgba(22,23,27,0.95);
-      border-color: #34363f;
-    }
-
-    .support-pill span:first-child {
-      font-weight: 600;
-      color: #7d7a76;
-    }
-
-    body.theme-dark .support-pill span:first-child {
-      color: #d0d3da;
-    }
-
-    .copyright {
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .sticky-actions {
-      position: fixed;
-      left: 50%;
-      bottom: 12px;
-      transform: translateX(-50%);
-      width: min(460px, calc(100% - 20px));
-      z-index: 40;
-      background: rgba(255,255,255,0.88);
-      border: 1px solid rgba(0,0,0,0.06);
-      border-radius: 18px;
-      padding: 8px;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 8px;
-      box-shadow: 0 16px 30px rgba(0,0,0,0.12);
-      backdrop-filter: blur(14px);
-    }
-
-    body.theme-dark .sticky-actions {
-      background: rgba(25,26,30,0.95);
-      border-color: rgba(255,255,255,0.06);
-    }
-
     .shake {
       animation: shake 0.4s;
       border-color: var(--danger) !important;
@@ -1594,7 +1483,7 @@
 
     @media (max-width: 480px) {
       .app {
-        padding: 10px 12px 110px;
+        padding: 10px 12px 14px;
       }
 
       .card {
@@ -1622,8 +1511,7 @@
       .service-strip,
       .tool-row,
       .help-row,
-      .copy-actions,
-      .cta-row {
+      .copy-actions {
         grid-template-columns: 1fr 1fr;
       }
     }
@@ -1632,9 +1520,7 @@
       .service-strip,
       .help-row,
       .tool-row,
-      .copy-actions,
-      .cta-row,
-      .sticky-actions {
+      .copy-actions {
         grid-template-columns: 1fr;
       }
     }
@@ -1772,7 +1658,7 @@
       </div>
 
       <div class="help-row">
-        <a class="help-btn" href="#" id="helpContact">💬 ติดต่อแอดมิน</a>
+        <a class="help-btn" href="https://lin.ee/gAh3wAH" id="helpContact" target="_blank" rel="noopener noreferrer">💬 ติดต่อแอดมิน</a>
         <button class="help-btn" id="helpIssue" type="button">⚠️ แจ้งปัญหา</button>
         <button class="help-btn" id="helpHowto" type="button">📘 วิธีใช้งาน</button>
       </div>
@@ -1811,14 +1697,6 @@
       <div id="historyBox" class="history-empty">ยังไม่มีประวัติการรับสินค้าล่าสุด</div>
     </section>
 
-    <section class="cta-card">
-      <div class="section-title">🛍️ ไปต่อได้เลย</div>
-      <div class="cta-row">
-        <a class="cta-btn primary" href="#" id="btnBuyMore">✨ สั่งซื้อเพิ่ม</a>
-        <a class="cta-btn secondary" href="#" id="btnGoProducts">🧸 หน้าสินค้า</a>
-      </div>
-    </section>
-
     <footer class="footer">
       <div class="support-pill">
         <span>Support</span>
@@ -1826,15 +1704,6 @@
       </div>
       <div class="copyright">426 SHOP · EST 2024</div>
     </footer>
-  </div>
-
-  <div class="sticky-actions">
-    <button class="btn-primary" id="btnRedeemSticky" type="button">
-      <span>รับสินค้าเลย</span><span>⚡</span>
-    </button>
-    <button class="btn-secondary" id="btnPasteSticky" type="button">
-      <span>วางโค้ด</span>
-    </button>
   </div>
 
   <div id="toast" class="toast">คัดลอกข้อความแล้ว</div>
@@ -1847,13 +1716,10 @@
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const MAX_CODES = 5;
-    const ADMIN_HANDLE = "@467dlpti";
     const HISTORY_KEY = "redeem_history_v2";
     const SOUND_KEY = "redeem_sound_on";
 
     const btnRedeem = document.getElementById("btnRedeem");
-    const btnRedeemSticky = document.getElementById("btnRedeemSticky");
-    const btnPasteSticky = document.getElementById("btnPasteSticky");
     const btnClear = document.getElementById("btnClear");
     const btnPaste = document.getElementById("btnPaste");
     const btnDedup = document.getElementById("btnDedup");
@@ -1877,20 +1743,13 @@
     const fxCtx = fxCanvas ? fxCanvas.getContext("2d") : null;
     const mainCard = document.getElementById("mainCard");
 
-    const helpContact = document.getElementById("helpContact");
     const helpIssue = document.getElementById("helpIssue");
     const helpHowto = document.getElementById("helpHowto");
-    const btnBuyMore = document.getElementById("btnBuyMore");
-    const btnGoProducts = document.getElementById("btnGoProducts");
 
     let isLoading = false;
     let latestCopyAllText = "";
     let latestCopySuccessText = "";
     let soundEnabled = localStorage.getItem(SOUND_KEY) !== "off";
-
-    helpContact.href = "#";
-    btnBuyMore.href = "#";
-    btnGoProducts.href = "#";
 
     function setStepState(state) {
       const steps = document.querySelectorAll(".step-pill");
@@ -1968,7 +1827,7 @@
       "1 บรรทัดต่อ 1 โค้ด ใช้งานง่ายสุดค่ะ",
       "กดรับสินค้าแล้ว อย่าเพิ่งรีเฟรชหน้านะคะ",
       "กดคัดลอกทั้งหมดได้ในปุ่มเดียว สะดวกขึ้นเยอะ 💖",
-      "ถ้ามีปัญหา แคปหน้าจอแล้วส่งให้แอดมินได้เลย"
+      "ถ้ามีปัญหา แคปหน้าจอแล้วกดติดต่อแอดมินได้เลย"
     ];
 
     let tipIndex = 0;
@@ -1986,15 +1845,13 @@
     setInterval(rotateTip, 12000);
 
     btnRedeem.addEventListener("click", redeem);
-    btnRedeemSticky.addEventListener("click", redeem);
     btnClear.addEventListener("click", clearForm);
     btnPaste.addEventListener("click", pasteFromClipboard);
-    btnPasteSticky.addEventListener("click", pasteFromClipboard);
     btnDedup.addEventListener("click", deduplicateInput);
     codeInput.addEventListener("input", updateLineInfo);
 
     helpIssue.addEventListener("click", () => {
-      showToast("หากมีปัญหา แคปหน้าจอผลลัพธ์แล้วส่งให้แอดมินได้เลย");
+      showToast("หากมีปัญหา แคปหน้าจอผลลัพธ์แล้วกดติดต่อแอดมินได้เลย");
     });
 
     helpHowto.addEventListener("click", () => {
@@ -2179,9 +2036,7 @@
       mainCard.classList.add("loading");
       setStepState("loading");
       btnRedeem.disabled = true;
-      btnRedeemSticky.disabled = true;
       btnRedeem.innerHTML = `<span class="spinner"></span><span>กำลังตรวจสอบ…</span>`;
-      btnRedeemSticky.innerHTML = `<span class="spinner"></span><span>กำลังส่ง…</span>`;
 
       status.style.color = "#8b8680";
       status.innerHTML =
@@ -2202,9 +2057,7 @@
           isLoading = false;
           mainCard.classList.remove("loading");
           btnRedeem.disabled = false;
-          btnRedeemSticky.disabled = false;
           btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
-          btnRedeemSticky.innerHTML = "<span>รับสินค้าเลย</span><span>⚡</span>";
           renderResult(data, elapsedSec, trimmedLines);
         })
         .catch((err) => {
@@ -2212,9 +2065,7 @@
           isLoading = false;
           mainCard.classList.remove("loading");
           btnRedeem.disabled = false;
-          btnRedeemSticky.disabled = false;
           btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
-          btnRedeemSticky.innerHTML = "<span>รับสินค้าเลย</span><span>⚡</span>";
           status.innerHTML = "เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้งค่ะ";
           status.classList.add("status-error");
           setStepState("error");
