@@ -5,7 +5,7 @@
   <title>426 SHOP – Redeem Code</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#f4ede7" />
-  <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #f4ede7;
@@ -69,7 +69,7 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: "Anuphan", system-ui, sans-serif;
+      font-family: "Noto Sans Thai", system-ui, sans-serif;
       color: var(--text-main);
       background:
         radial-gradient(circle at top left, rgba(234, 216, 203, 0.90), transparent 28%),
@@ -302,39 +302,6 @@
       gap: 8px;
     }
 
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.86);
-      border: 1px solid rgba(0,0,0,.03);
-      font-size: .74rem;
-      color: var(--text-sub);
-      box-shadow: 0 8px 18px rgba(0,0,0,.04);
-      white-space: nowrap;
-    }
-
-    body.theme-dark .status-pill {
-      background: rgba(36,38,43,.96);
-      border-color: rgba(255,255,255,.06);
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #62c171;
-      box-shadow: 0 0 0 4px rgba(98,193,113,.16);
-      animation: pulseDot 1.8s ease-in-out infinite;
-    }
-
-    @keyframes pulseDot {
-      0%,100% { transform: scale(1); }
-      50% { transform: scale(1.12); }
-    }
-
     .icon-btn {
       width: 38px;
       height: 38px;
@@ -505,6 +472,20 @@
       background: rgba(36,38,43,.92);
     }
 
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #62c171;
+      box-shadow: 0 0 0 4px rgba(98,193,113,.16);
+      animation: pulseDot 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulseDot {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+    }
+
     .input-card {
       border-radius: 22px;
       background: rgba(255,255,255,.74);
@@ -612,7 +593,7 @@
       resize: none;
       border: none;
       background: transparent;
-      font-family: inherit;
+      font-family: "Noto Sans Thai", system-ui, sans-serif;
       font-size: .98rem;
       color: var(--text-main);
       line-height: 1.58;
@@ -724,7 +705,6 @@
       margin-top: 12px;
     }
 
-    .help-btn,
     .copy-btn,
     .history-btn {
       border-radius: 16px;
@@ -743,13 +723,11 @@
       transition: .18s ease;
     }
 
-    .help-btn:hover,
     .copy-btn:hover,
     .history-btn:hover {
       transform: translateY(-1px);
     }
 
-    body.theme-dark .help-btn,
     body.theme-dark .copy-btn,
     body.theme-dark .history-btn {
       background: rgba(37,39,45,.92);
@@ -1273,39 +1251,17 @@
     .bottom-footer {
       margin-top: 18px;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      color: var(--text-sub);
-    }
-
-    .line-footer {
-      display: inline-flex;
-      align-items: center;
       justify-content: center;
-      width: 48px;
-      height: 48px;
-      border-radius: 999px;
-      background: #06c755;
-      box-shadow: 0 10px 20px rgba(6, 199, 85, 0.18);
-      text-decoration: none;
-      transition: .18s ease;
-    }
-
-    .line-footer:hover {
-      transform: translateY(-1px) scale(1.02);
-    }
-
-    .line-footer svg {
-      width: 26px;
-      height: 26px;
-      display: block;
+      align-items: center;
+      padding-bottom: 6px;
+      color: var(--text-sub);
     }
 
     .footer-brand {
       letter-spacing: .18em;
       text-transform: uppercase;
       font-size: .74rem;
+      text-align: center;
     }
 
     .tip-bubble {
@@ -1475,13 +1431,11 @@
       }
 
       .icon-btn,
-      .help-btn,
       .copy-btn,
       .primary-btn,
       .secondary-btn,
       .history-btn,
-      .paste-mini-btn,
-      .line-footer {
+      .paste-mini-btn {
         transition: none !important;
       }
     }
@@ -1669,12 +1623,6 @@
         </section>
 
         <div class="bottom-footer">
-          <a class="line-footer" href="https://lin.ee/gAh3wAH" target="_blank" rel="noopener noreferrer" aria-label="ติดต่อทาง LINE">
-            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M53.6 29.4c0-10.8-9.7-19.5-21.6-19.5S10.4 18.6 10.4 29.4c0 9.7 7.7 17.8 18.1 19.3l-1.2 6.8a1.7 1.7 0 0 0 2.5 1.8l8.1-4.6c.7.1 1.4.1 2.1.1 11.9 0 21.6-8.7 21.6-19.4Z" fill="white"/>
-              <path d="M24.5 23.8c-.7 0-1.3.6-1.3 1.3v8.5c0 .7.6 1.3 1.3 1.3h4.8c.7 0 1.3-.6 1.3-1.3s-.6-1.3-1.3-1.3h-3.5v-7.2c0-.7-.6-1.3-1.3-1.3Zm15.1 0c-.7 0-1.3.6-1.3 1.3v5.2l-4.4-5.9a1.3 1.3 0 0 0-1.1-.6h-.3c-.7 0-1.3.6-1.3 1.3v8.5c0 .7.6 1.3 1.3 1.3s1.3-.6 1.3-1.3v-5.2l4.4 5.9c.2.3.6.6 1.1.6h.3c.7 0 1.3-.6 1.3-1.3v-8.5c0-.7-.6-1.3-1.3-1.3Zm-22.9 0c-.7 0-1.3.6-1.3 1.3v8.5c0 .7.6 1.3 1.3 1.3s1.3-.6 1.3-1.3v-8.5c0-.7-.6-1.3-1.3-1.3Zm27.9 2.6c.7 0 1.3-.6 1.3-1.3s-.6-1.3-1.3-1.3h-4.8c-.7 0-1.3.6-1.3 1.3v8.5c0 .7.6 1.3 1.3 1.3h4.8c.7 0 1.3-.6 1.3-1.3s-.6-1.3-1.3-1.3h-3.5v-1h3.5c.7 0 1.3-.6 1.3-1.3s-.6-1.3-1.3-1.3h-3.5v-1h3.5Z" fill="#06C755"/>
-            </svg>
-          </a>
           <div class="footer-brand">426 SHOP · EST 2024</div>
         </div>
       </main>
@@ -1725,7 +1673,7 @@
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const MAX_CODES = 5;
-    const HISTORY_KEY = "redeem_history_v8";
+    const HISTORY_KEY = "redeem_history_v9";
     const SOUND_KEY = "redeem_sound_on";
 
     const btnRedeem = document.getElementById("btnRedeem");
