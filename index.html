@@ -4,56 +4,56 @@
   <meta charset="UTF-8" />
   <title>426 SHOP – Redeem Code</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#f4ede7" />
+  <meta name="theme-color" content="#f5eee8" />
   <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f4ede7;
-      --bg-soft: #fbf7f3;
-      --card: rgba(255, 251, 247, 0.9);
+      --bg: #f5eee8;
+      --bg-soft: #fcf8f4;
+      --card: rgba(255, 251, 247, 0.88);
       --card-strong: #fffaf6;
-      --text-main: #4a403a;
-      --text-sub: #8e8178;
-      --line: #e6d8cb;
-      --brand: #b98f73;
-      --brand-deep: #9f765d;
-      --brand-soft: #ead8cb;
-      --brand-soft-2: #f3e7de;
-      --accent-ok: #7da58d;
-      --accent-ok-soft: #edf6f1;
-      --accent-used: #8573c6;
-      --accent-used-soft: #f4f0ff;
-      --accent-nf: #d67d7b;
-      --accent-nf-soft: #fff0ef;
-      --accent-warn: #cc936d;
-      --accent-warn-soft: #fff4ea;
-      --shadow: 0 18px 40px rgba(94, 71, 56, 0.08);
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-      --radius-md: 15px;
+      --text-main: #4d413a;
+      --text-sub: #91837a;
+      --line: #e8d9cd;
+      --brand: #bb9177;
+      --brand-deep: #9d745d;
+      --brand-soft: #efdfd2;
+      --brand-soft-2: #f7ede5;
+      --mint: #92b7a2;
+      --mint-soft: #edf6f1;
+      --used: #8573c6;
+      --used-soft: #f4f0ff;
+      --nf: #d77f7d;
+      --nf-soft: #fff1ef;
+      --warn: #cb956f;
+      --warn-soft: #fff5ec;
+      --shadow: 0 20px 44px rgba(98, 73, 58, 0.08);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
     }
 
     body.theme-dark {
-      --bg: #18181c;
-      --bg-soft: #202126;
+      --bg: #18191d;
+      --bg-soft: #202228;
       --card: rgba(34, 35, 40, 0.9);
-      --card-strong: #25272d;
-      --text-main: #f2f1ee;
+      --card-strong: #26282f;
+      --text-main: #f3f1ee;
       --text-sub: #aca7a2;
-      --line: #393c44;
-      --brand: #b58c72;
+      --line: #3b3e46;
+      --brand: #b68d74;
       --brand-deep: #8d6753;
-      --brand-soft: #47352c;
-      --brand-soft-2: #362922;
-      --accent-ok: #8fbea3;
-      --accent-ok-soft: #24342d;
-      --accent-used: #ae9af0;
-      --accent-used-soft: #2c263d;
-      --accent-nf: #ec9c97;
-      --accent-nf-soft: #3a2726;
-      --accent-warn: #d6a27d;
-      --accent-warn-soft: #3b2c24;
-      --shadow: 0 24px 46px rgba(0, 0, 0, 0.4);
+      --brand-soft: #48362d;
+      --brand-soft-2: #382b24;
+      --mint: #94bca7;
+      --mint-soft: #24352e;
+      --used: #ae9af0;
+      --used-soft: #2c263d;
+      --nf: #ef9c98;
+      --nf-soft: #3a2726;
+      --warn: #d6a27d;
+      --warn-soft: #3b2d24;
+      --shadow: 0 24px 48px rgba(0, 0, 0, 0.42);
     }
 
     * {
@@ -72,8 +72,8 @@
       font-family: "Anuphan", system-ui, sans-serif;
       color: var(--text-main);
       background:
-        radial-gradient(circle at top left, rgba(234, 216, 203, 0.8), transparent 28%),
-        radial-gradient(circle at top right, rgba(185, 143, 115, 0.12), transparent 26%),
+        radial-gradient(circle at top left, rgba(239, 223, 210, 0.95), transparent 28%),
+        radial-gradient(circle at top right, rgba(187, 145, 119, 0.12), transparent 26%),
         linear-gradient(180deg, var(--bg-soft), var(--bg));
       overflow-x: hidden;
       transition: background .25s ease, color .25s ease;
@@ -90,40 +90,77 @@
     .orb {
       position: absolute;
       border-radius: 999px;
-      filter: blur(34px);
-      opacity: .55;
+      filter: blur(36px);
+      opacity: .52;
       animation: floaty 16s ease-in-out infinite;
     }
 
     .orb.one {
-      width: 230px;
-      height: 230px;
-      top: -40px;
-      left: -70px;
-      background: radial-gradient(circle, rgba(185,143,115,.34), transparent 72%);
+      width: 240px;
+      height: 240px;
+      top: -50px;
+      left: -80px;
+      background: radial-gradient(circle, rgba(187,145,119,.34), transparent 72%);
     }
 
     .orb.two {
-      width: 250px;
-      height: 250px;
+      width: 260px;
+      height: 260px;
       top: 120px;
-      right: -80px;
-      background: radial-gradient(circle, rgba(234,216,203,.65), transparent 74%);
+      right: -90px;
+      background: radial-gradient(circle, rgba(239,223,210,.8), transparent 74%);
       animation-delay: -5s;
     }
 
     .orb.three {
-      width: 170px;
-      height: 170px;
+      width: 180px;
+      height: 180px;
       bottom: 40px;
       left: 18%;
-      background: radial-gradient(circle, rgba(255,236,222,.8), transparent 72%);
+      background: radial-gradient(circle, rgba(255,240,228,.9), transparent 72%);
       animation-delay: -8s;
     }
 
     @keyframes floaty {
       0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
       50% { transform: translate3d(8px, -14px, 0) scale(1.04); }
+    }
+
+    .bear-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .14;
+    }
+
+    body.theme-dark .bear-bg {
+      opacity: .08;
+    }
+
+    .bear-bg svg {
+      position: absolute;
+      width: 540px;
+      max-width: none;
+      right: -120px;
+      top: 40px;
+      transform: rotate(-8deg);
+    }
+
+    .bear-bg.bottom svg {
+      width: 420px;
+      left: -110px;
+      right: auto;
+      top: auto;
+      bottom: -70px;
+      transform: rotate(12deg);
+    }
+
+    .bear-bg.center svg {
+      width: 360px;
+      left: 50%;
+      top: 48%;
+      transform: translate(-50%, -50%) rotate(-2deg);
+      opacity: .8;
     }
 
     #fxCanvas {
@@ -136,10 +173,13 @@
     .app {
       position: relative;
       z-index: 2;
-      max-width: 960px;
+      max-width: 940px;
       margin: 0 auto;
       padding: 18px;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
     }
 
     .glass {
@@ -156,7 +196,6 @@
     .topbar {
       border-radius: var(--radius-xl);
       padding: 14px 16px;
-      margin-bottom: 14px;
     }
 
     .topbar-row {
@@ -175,15 +214,15 @@
     }
 
     .logo-box {
-      width: 74px;
-      height: 74px;
+      width: 76px;
+      height: 76px;
       border-radius: 22px;
       overflow: hidden;
       background: linear-gradient(145deg, #fff6ef, #f0e3d8);
       border: 1px solid rgba(255,255,255,.7);
       box-shadow:
         inset 0 1px 0 rgba(255,255,255,.78),
-        0 10px 22px rgba(112,84,66,.08);
+        0 12px 24px rgba(112,84,66,.08);
       flex-shrink: 0;
       display: flex;
       align-items: center;
@@ -224,11 +263,11 @@
       text-transform: uppercase;
     }
 
-    .topbar-actions {
+    .topbar-right {
       display: flex;
       align-items: center;
       gap: 8px;
-      flex-wrap: wrap;
+      margin-left: auto;
     }
 
     .status-pill {
@@ -265,8 +304,8 @@
     }
 
     .icon-btn {
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       border-radius: 999px;
       border: 1px solid rgba(0,0,0,.06);
       background: rgba(255,255,255,.9);
@@ -289,26 +328,15 @@
       color: var(--text-main);
     }
 
-    .layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 250px;
-      gap: 14px;
-      align-items: start;
-    }
-
-    .main-col,
-    .side-col {
-      display: grid;
-      gap: 14px;
-    }
-
-    .card {
+    .hero-card,
+    .redeem-card {
       border-radius: var(--radius-xl);
       overflow: hidden;
       position: relative;
     }
 
-    .card::before {
+    .hero-card::before,
+    .redeem-card::before {
       content: "";
       position: absolute;
       inset: 0;
@@ -321,7 +349,7 @@
     .card-inner {
       position: relative;
       z-index: 1;
-      padding: 16px;
+      padding: 18px;
     }
 
     .hero-card .card-inner {
@@ -330,18 +358,19 @@
     }
 
     .hero-title {
-      font-size: 1.22rem;
+      font-size: 1.18rem;
       font-weight: 700;
       line-height: 1.25;
       margin: 0;
+      max-width: 720px;
     }
 
     .hero-desc {
       margin: 0;
       color: var(--text-sub);
-      font-size: .87rem;
+      font-size: .86rem;
       line-height: 1.62;
-      max-width: 680px;
+      max-width: 700px;
     }
 
     .hero-strip {
@@ -355,7 +384,7 @@
       padding: 10px 11px;
       background: rgba(255,255,255,.74);
       border: 1px solid var(--line);
-      min-height: 60px;
+      min-height: 58px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -392,10 +421,6 @@
       font-size: .72rem;
       color: var(--text-sub);
       line-height: 1.4;
-    }
-
-    .redeem-card {
-      min-height: 540px;
     }
 
     .redeem-head {
@@ -540,7 +565,7 @@
 
     textarea {
       width: 100%;
-      min-height: 210px;
+      min-height: 220px;
       resize: none;
       border: none;
       background: transparent;
@@ -592,7 +617,7 @@
       font-size: .72rem;
       padding: 5px 9px;
       border-radius: 999px;
-      background: var(--accent-warn-soft);
+      background: var(--warn-soft);
       border: 1px solid #f0c8aa;
       color: #aa6748;
     }
@@ -656,8 +681,6 @@
       margin-top: 12px;
     }
 
-    .soft-btn,
-    .help-btn,
     .copy-btn,
     .history-btn {
       border-radius: 16px;
@@ -676,15 +699,11 @@
       transition: .18s ease;
     }
 
-    .soft-btn:hover,
-    .help-btn:hover,
     .copy-btn:hover,
     .history-btn:hover {
       transform: translateY(-1px);
     }
 
-    body.theme-dark .soft-btn,
-    body.theme-dark .help-btn,
     body.theme-dark .copy-btn,
     body.theme-dark .history-btn {
       background: rgba(37,39,45,.92);
@@ -786,94 +805,15 @@
       margin-top: 12px;
       padding: 12px 13px;
       border-radius: 18px;
-      background: var(--accent-warn-soft);
+      background: var(--warn-soft);
       border: 1px solid #f0ceb4;
-      color: var(--accent-warn);
+      color: var(--warn);
       font-size: .77rem;
       line-height: 1.55;
     }
 
     body.theme-dark .notice {
       border-color: #805844;
-    }
-
-    .side-stack {
-      display: grid;
-      gap: 12px;
-    }
-
-    .compact-card .card-inner {
-      padding: 14px;
-    }
-
-    .side-title {
-      font-size: .85rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    .help-grid {
-      display: grid;
-      gap: 8px;
-    }
-
-    .help-btn {
-      justify-content: flex-start;
-      padding-left: 13px;
-      min-height: 42px;
-      font-size: .78rem;
-    }
-
-    .status-list {
-      display: grid;
-      gap: 8px;
-    }
-
-    .status-card {
-      border-radius: 16px;
-      padding: 10px 11px;
-      background: rgba(255,255,255,.74);
-      border: 1px solid var(--line);
-      display: flex;
-      gap: 8px;
-      align-items: flex-start;
-    }
-
-    body.theme-dark .status-card {
-      background: rgba(35,37,43,.88);
-    }
-
-    .status-card-badge {
-      width: 30px;
-      height: 30px;
-      border-radius: 11px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      background: linear-gradient(135deg, rgba(233,216,203,.95), rgba(185,143,115,.18));
-      font-size: .76rem;
-      font-weight: 700;
-    }
-
-    body.theme-dark .status-card-badge {
-      background: linear-gradient(135deg, rgba(81,61,51,.95), rgba(138,102,80,.35));
-    }
-
-    .status-card-text strong {
-      display: block;
-      font-size: .76rem;
-      margin-bottom: 2px;
-    }
-
-    .status-card-text span {
-      display: block;
-      font-size: .71rem;
-      color: var(--text-sub);
-      line-height: 1.45;
     }
 
     .loading-overlay {
@@ -982,21 +922,21 @@
     }
 
     .summary-pill.ok {
-      background: var(--accent-ok-soft);
+      background: var(--mint-soft);
       border-color: #cbe5d8;
-      color: var(--accent-ok);
+      color: var(--mint);
     }
 
     .summary-pill.used {
-      background: var(--accent-used-soft);
+      background: var(--used-soft);
       border-color: #dacfff;
-      color: var(--accent-used);
+      color: var(--used);
     }
 
     .summary-pill.nf {
-      background: var(--accent-nf-soft);
+      background: var(--nf-soft);
       border-color: #f1cbc8;
-      color: var(--accent-nf);
+      color: var(--nf);
     }
 
     body.theme-dark .summary-pill {
@@ -1033,11 +973,11 @@
     }
 
     .status-ok {
-      color: var(--accent-ok) !important;
+      color: var(--mint) !important;
     }
 
     .status-error {
-      color: var(--accent-nf) !important;
+      color: var(--nf) !important;
     }
 
     .status-time {
@@ -1061,7 +1001,7 @@
     .copy-btn.success {
       background: linear-gradient(135deg, #f8fcfa, #eef5f1);
       border-style: dashed;
-      color: var(--accent-ok);
+      color: var(--mint);
     }
 
     body.theme-dark .copy-btn.all {
@@ -1174,6 +1114,25 @@
       border-color: #3b4049;
     }
 
+    .history-wrap {
+      margin-top: 14px;
+      border-radius: 22px;
+      padding: 14px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--line);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.65);
+    }
+
+    body.theme-dark .history-wrap {
+      background: rgba(35,37,43,.82);
+    }
+
+    .history-title-bar {
+      font-size: .86rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
     .history-empty {
       color: var(--text-sub);
       font-size: .82rem;
@@ -1218,27 +1177,32 @@
     }
 
     .footer {
+      margin-top: auto;
+      padding-top: 4px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       color: var(--text-sub);
       font-size: .74rem;
     }
 
-    .support-pill {
-      padding: 7px 12px;
+    .line-logo-wrap {
+      width: 46px;
+      height: 46px;
       border-radius: 999px;
-      display: inline-flex;
-      gap: 6px;
+      background: #06c755;
+      display: flex;
       align-items: center;
-      background: rgba(255,255,255,.9);
-      border: 1px solid var(--line);
-      box-shadow: 0 6px 14px rgba(0,0,0,.04);
+      justify-content: center;
+      box-shadow: 0 10px 24px rgba(6,199,85,.22);
+      text-decoration: none;
     }
 
-    body.theme-dark .support-pill {
-      background: rgba(22,24,29,.96);
+    .line-logo-wrap svg {
+      width: 24px;
+      height: 24px;
+      display: block;
     }
 
     .copyright {
@@ -1317,27 +1281,13 @@
 
     .shake {
       animation: shake .4s;
-      border-color: var(--accent-nf) !important;
+      border-color: var(--nf) !important;
     }
 
     @keyframes shake {
       0%,100% { transform: translateX(0); }
       25% { transform: translateX(-5px); }
       75% { transform: translateX(5px); }
-    }
-
-    @media (max-width: 980px) {
-      .layout {
-        grid-template-columns: 1fr;
-      }
-
-      .side-col {
-        order: 2;
-      }
-
-      .main-col {
-        order: 1;
-      }
     }
 
     @media (max-width: 760px) {
@@ -1347,10 +1297,6 @@
 
       .hero-strip {
         grid-template-columns: 1fr 1fr;
-      }
-
-      .layout {
-        gap: 12px;
       }
     }
 
@@ -1369,7 +1315,7 @@
       }
 
       .hero-title {
-        font-size: 1.14rem;
+        font-size: 1.08rem;
       }
 
       .tip-bubble {
@@ -1398,8 +1344,6 @@
       }
 
       .icon-btn,
-      .soft-btn,
-      .help-btn,
       .copy-btn,
       .primary-btn,
       .secondary-btn,
@@ -1415,6 +1359,55 @@
     <div class="orb one"></div>
     <div class="orb two"></div>
     <div class="orb three"></div>
+
+    <div class="bear-bg">
+      <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+        <circle cx="210" cy="210" r="96" fill="#BB9177"/>
+        <circle cx="134" cy="132" r="42" fill="#BB9177"/>
+        <circle cx="286" cy="132" r="42" fill="#BB9177"/>
+        <circle cx="134" cy="132" r="22" fill="#EFD8C8"/>
+        <circle cx="286" cy="132" r="22" fill="#EFD8C8"/>
+        <ellipse cx="210" cy="246" rx="50" ry="34" fill="#F5E6DC"/>
+        <ellipse cx="172" cy="202" rx="8" ry="10" fill="#4D413A"/>
+        <ellipse cx="248" cy="202" rx="8" ry="10" fill="#4D413A"/>
+        <ellipse cx="210" cy="230" rx="14" ry="10" fill="#4D413A"/>
+        <path d="M194 248C200 256 206 260 210 260C214 260 220 256 226 248" stroke="#4D413A" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="92" cy="296" r="28" fill="#BB9177"/>
+        <circle cx="328" cy="296" r="28" fill="#BB9177"/>
+      </svg>
+    </div>
+
+    <div class="bear-bg bottom">
+      <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+        <circle cx="210" cy="210" r="96" fill="#BB9177"/>
+        <circle cx="134" cy="132" r="42" fill="#BB9177"/>
+        <circle cx="286" cy="132" r="42" fill="#BB9177"/>
+        <circle cx="134" cy="132" r="22" fill="#EFD8C8"/>
+        <circle cx="286" cy="132" r="22" fill="#EFD8C8"/>
+        <ellipse cx="210" cy="246" rx="50" ry="34" fill="#F5E6DC"/>
+        <ellipse cx="172" cy="202" rx="8" ry="10" fill="#4D413A"/>
+        <ellipse cx="248" cy="202" rx="8" ry="10" fill="#4D413A"/>
+        <ellipse cx="210" cy="230" rx="14" ry="10" fill="#4D413A"/>
+        <path d="M194 248C200 256 206 260 210 260C214 260 220 256 226 248" stroke="#4D413A" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="92" cy="296" r="28" fill="#BB9177"/>
+        <circle cx="328" cy="296" r="28" fill="#BB9177"/>
+      </svg>
+    </div>
+
+    <div class="bear-bg center">
+      <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+        <circle cx="210" cy="210" r="96" fill="#BB9177"/>
+        <circle cx="134" cy="132" r="42" fill="#BB9177"/>
+        <circle cx="286" cy="132" r="42" fill="#BB9177"/>
+        <circle cx="134" cy="132" r="22" fill="#EFD8C8"/>
+        <circle cx="286" cy="132" r="22" fill="#EFD8C8"/>
+        <ellipse cx="210" cy="246" rx="50" ry="34" fill="#F5E6DC"/>
+        <ellipse cx="172" cy="202" rx="8" ry="10" fill="#4D413A"/>
+        <ellipse cx="248" cy="202" rx="8" ry="10" fill="#4D413A"/>
+        <ellipse cx="210" cy="230" rx="14" ry="10" fill="#4D413A"/>
+        <path d="M194 248C200 256 206 260 210 260C214 260 220 256 226 248" stroke="#4D413A" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+    </div>
   </div>
 
   <canvas id="fxCanvas"></canvas>
@@ -1432,7 +1425,7 @@
           </div>
         </div>
 
-        <div class="topbar-actions">
+        <div class="topbar-right">
           <div class="status-pill">
             <span class="status-dot"></span>
             <span>ออนไลน์ 24 ชม.</span>
@@ -1443,172 +1436,126 @@
       </div>
     </header>
 
-    <div class="layout">
-      <main class="main-col">
-        <section class="card hero-card glass">
-          <div class="card-inner">
-            <h1 class="hero-title">ระบบรับสินค้าอัตโนมัติสำหรับลูกค้า</h1>
-            <p class="hero-desc">วางโค้ดจากแอดมิน แล้วให้ระบบตรวจสอบและแสดงรายละเอียดให้อัตโนมัติในหน้าเดียว พร้อมคัดลอกผลลัพธ์ได้สะดวก</p>
+    <section class="hero-card glass">
+      <div class="card-inner">
+        <h1 class="hero-title">ระบบรับสินค้าอัตโนมัติสำหรับลูกค้า</h1>
+        <p class="hero-desc">วางโค้ดจากแอดมิน แล้วให้ระบบตรวจสอบและแสดงรายละเอียดให้อัตโนมัติในหน้าเดียว พร้อมคัดลอกผลลัพธ์ได้สะดวก</p>
 
-            <div class="hero-strip">
-              <div class="hero-strip-item">
-                <div class="hero-strip-icon">⚡</div>
-                <div class="hero-strip-text">
-                  <strong>ส่งอัตโนมัติ</strong>
-                  <span>ตรวจสอบและแสดงผลทันที</span>
-                </div>
+        <div class="hero-strip">
+          <div class="hero-strip-item">
+            <div class="hero-strip-icon">⚡</div>
+            <div class="hero-strip-text">
+              <strong>ส่งอัตโนมัติ</strong>
+              <span>ตรวจสอบและแสดงผลทันที</span>
+            </div>
+          </div>
+          <div class="hero-strip-item">
+            <div class="hero-strip-icon">📱</div>
+            <div class="hero-strip-text">
+              <strong>รองรับมือถือ</strong>
+              <span>ใช้งานง่ายทุกอุปกรณ์</span>
+            </div>
+          </div>
+          <div class="hero-strip-item">
+            <div class="hero-strip-icon">🔐</div>
+            <div class="hero-strip-text">
+              <strong>อ่านง่าย</strong>
+              <span>แยกผลลัพธ์เป็นหมวดชัดเจน</span>
+            </div>
+          </div>
+          <div class="hero-strip-item">
+            <div class="hero-strip-icon">📋</div>
+            <div class="hero-strip-text">
+              <strong>คัดลอกสะดวก</strong>
+              <span>รองรับคัดลอกทีละรายการหรือทั้งหมด</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="redeem-card glass" id="mainCard">
+      <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-box">
+          <div class="loading-circle">
+            <div class="loading-spinner"></div>
+          </div>
+          <div class="loading-title">รอสักครู่นะคะ</div>
+          <div class="loading-sub">ระบบกำลังตรวจสอบโค้ดและเตรียมข้อมูลให้อัตโนมัติค่ะ</div>
+        </div>
+      </div>
+
+      <div class="card-inner">
+        <div class="redeem-head">
+          <div>
+            <div class="redeem-head-title">กรอกโค้ดเพื่อรับสินค้า</div>
+            <p class="redeem-head-desc">รองรับหลายโค้ดในครั้งเดียว โดยแยก 1 บรรทัดต่อ 1 โค้ด</p>
+          </div>
+          <div class="mini-badge" id="lineInfo">สูงสุด ~5 โค้ด/ครั้ง</div>
+        </div>
+
+        <div class="input-card">
+          <div class="input-title-row">
+            <strong>วางโค้ดของคุณ</strong>
+            <span id="meterText">0 / 5</span>
+          </div>
+
+          <div class="input-box">
+            <button class="paste-mini-btn" id="btnPaste" type="button">📋 วางโค้ด</button>
+
+            <textarea id="codeInput" placeholder="เช่น NFXA1B2&#10;หรือ DSN9X3Y"></textarea>
+
+            <div class="input-meta">
+              <div class="meta-pill">แนะนำ: 1 บรรทัดต่อ 1 โค้ด</div>
+              <span>พร้อมตรวจสอบ</span>
+            </div>
+
+            <div class="inline-warnings" id="inlineWarnings"></div>
+
+            <div class="meter-wrap">
+              <div class="meter-head">
+                <span>จำนวนโค้ดที่พร้อมตรวจสอบ</span>
+                <span>ระบบออนไลน์</span>
               </div>
-              <div class="hero-strip-item">
-                <div class="hero-strip-icon">📱</div>
-                <div class="hero-strip-text">
-                  <strong>รองรับมือถือ</strong>
-                  <span>ใช้งานง่ายทุกอุปกรณ์</span>
-                </div>
-              </div>
-              <div class="hero-strip-item">
-                <div class="hero-strip-icon">🔐</div>
-                <div class="hero-strip-text">
-                  <strong>อ่านง่าย</strong>
-                  <span>แยกผลลัพธ์เป็นหมวดชัดเจน</span>
-                </div>
-              </div>
-              <div class="hero-strip-item">
-                <div class="hero-strip-icon">📋</div>
-                <div class="hero-strip-text">
-                  <strong>คัดลอกสะดวก</strong>
-                  <span>รองรับคัดลอกทีละรายการหรือทั้งหมด</span>
-                </div>
+              <div class="meter-track">
+                <div class="meter-bar" id="codeMeterBar"></div>
               </div>
             </div>
           </div>
-        </section>
 
-        <section class="card redeem-card glass" id="mainCard">
-          <div class="loading-overlay" id="loadingOverlay">
-            <div class="loading-box">
-              <div class="loading-circle">
-                <div class="loading-spinner"></div>
-              </div>
-              <div class="loading-title">รอสักครู่นะคะ</div>
-              <div class="loading-sub">ระบบกำลังตรวจสอบโค้ดและเตรียมข้อมูลให้อัตโนมัติค่ะ</div>
-            </div>
+          <div class="action-row">
+            <button class="primary-btn" id="btnRedeem" type="button">
+              <span>รับสินค้า</span><span>↗</span>
+            </button>
+            <button class="secondary-btn" id="btnClear" type="button">ล้างทั้งหมด</button>
           </div>
 
-          <div class="card-inner">
-            <div class="redeem-head">
-              <div>
-                <div class="redeem-head-title">กรอกโค้ดเพื่อรับสินค้า</div>
-                <p class="redeem-head-desc">รองรับหลายโค้ดในครั้งเดียว โดยแยก 1 บรรทัดต่อ 1 โค้ด</p>
-              </div>
-              <div class="mini-badge" id="lineInfo">สูงสุด ~5 โค้ด/ครั้ง</div>
-            </div>
-
-            <div class="input-card">
-              <div class="input-title-row">
-                <strong>วางโค้ดของคุณ</strong>
-                <span id="meterText">0 / 5</span>
-              </div>
-
-              <div class="input-box">
-                <button class="paste-mini-btn" id="btnPaste" type="button">📋 วางโค้ด</button>
-
-                <textarea id="codeInput" placeholder="เช่น NFXA1B2&#10;หรือ DSN9X3Y"></textarea>
-
-                <div class="input-meta">
-                  <div class="meta-pill">แนะนำ: 1 บรรทัดต่อ 1 โค้ด</div>
-                  <span>พร้อมตรวจสอบ</span>
-                </div>
-
-                <div class="inline-warnings" id="inlineWarnings"></div>
-
-                <div class="meter-wrap">
-                  <div class="meter-head">
-                    <span>จำนวนโค้ดที่พร้อมตรวจสอบ</span>
-                    <span>ระบบออนไลน์</span>
-                  </div>
-                  <div class="meter-track">
-                    <div class="meter-bar" id="codeMeterBar"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="action-row">
-                <button class="primary-btn" id="btnRedeem" type="button">
-                  <span>รับสินค้า</span><span>↗</span>
-                </button>
-                <button class="secondary-btn" id="btnClear" type="button">ล้างทั้งหมด</button>
-              </div>
-
-              <div class="notice">
-                ⚠️ หลังจากกด “รับสินค้า” แล้ว <strong>ห้ามรีเฟรช / ปิดหน้านี้เด็ดขาด</strong> จนกว่าจะได้รับรหัสครบ
-              </div>
-            </div>
-
-            <div id="summary"></div>
-            <div id="status"></div>
-            <div id="copyActions"></div>
-            <div id="results"></div>
+          <div class="notice">
+            ⚠️ หลังจากกด “รับสินค้า” แล้ว <strong>ห้ามรีเฟรช / ปิดหน้านี้เด็ดขาด</strong> จนกว่าจะได้รับรหัสครบ
           </div>
-        </section>
+        </div>
 
-        <footer class="footer">
-          <div class="support-pill">
-            <span>Support</span>
-            <span>@467dlpti</span>
-          </div>
-          <div class="copyright">426 SHOP · EST 2024</div>
-        </footer>
-      </main>
+        <div id="summary"></div>
+        <div id="status"></div>
+        <div id="copyActions"></div>
+        <div id="results"></div>
 
-      <aside class="side-col side-stack">
-        <section class="card compact-card glass">
-          <div class="card-inner">
-            <div class="side-title">ช่วยเหลือ</div>
-            <div class="help-grid">
-              <a class="help-btn" href="https://lin.ee/gAh3wAH" target="_blank" rel="noopener noreferrer">💬 ติดต่อแอดมิน</a>
-              <button class="help-btn" id="helpIssue" type="button">⚠️ แจ้งปัญหา</button>
-              <button class="help-btn" id="helpHowto" type="button">📘 วิธีใช้งาน</button>
-            </div>
-          </div>
-        </section>
+        <div class="history-wrap">
+          <div class="history-title-bar">รายการล่าสุด</div>
+          <div id="historyBox" class="history-empty">ยังไม่มีประวัติการรับสินค้าล่าสุด</div>
+        </div>
+      </div>
+    </section>
 
-        <section class="card compact-card glass">
-          <div class="card-inner">
-            <div class="side-title">ขั้นตอน</div>
-            <div class="status-list">
-              <div class="status-card" data-step-card="1">
-                <div class="status-card-badge">1</div>
-                <div class="status-card-text">
-                  <strong>วางโค้ด</strong>
-                  <span>แยกคนละบรรทัด</span>
-                </div>
-              </div>
-              <div class="status-card" data-step-card="2">
-                <div class="status-card-badge">2</div>
-                <div class="status-card-text">
-                  <strong>กดรับสินค้า</strong>
-                  <span>ระบบตรวจสอบให้อัตโนมัติ</span>
-                </div>
-              </div>
-              <div class="status-card" data-step-card="3">
-                <div class="status-card-badge">3</div>
-                <div class="status-card-text">
-                  <strong>คัดลอกข้อมูล</strong>
-                  <span>เลือกคัดลอกได้ทันที</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="card compact-card glass">
-          <div class="card-inner">
-            <div class="side-title">รายการล่าสุด</div>
-            <div id="historyBox" class="history-empty">ยังไม่มีประวัติการรับสินค้าล่าสุด</div>
-          </div>
-        </section>
-      </aside>
-    </div>
+    <footer class="footer">
+      <a class="line-logo-wrap" href="https://lin.ee/gAh3wAH" target="_blank" rel="noopener noreferrer" aria-label="ติดต่อผ่าน LINE">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M20.438 10.563c0-4.438-4.45-8.05-9.919-8.05C5.05 2.513.6 6.125.6 10.563c0 3.978 3.532 7.31 8.305 7.94.324.07.767.214.879.492.1.252.065.647.032.902l-.143.86c-.043.254-.2.995.871.542 1.071-.452 5.775-3.4 7.878-5.82 1.453-1.594 2.116-3.214 2.116-4.916Z" fill="white"/>
+          <path d="M7.865 8.438a.51.51 0 0 0-.51.51v3.159a.51.51 0 0 0 1.02 0V8.948a.51.51 0 0 0-.51-.51Zm8.307 0a.51.51 0 0 0-.51.51v1.877l-1.447-2.16a.51.51 0 0 0-.424-.227.51.51 0 0 0-.51.51v3.159a.51.51 0 0 0 1.02 0v-1.876l1.447 2.16a.51.51 0 0 0 .934-.283V8.948a.51.51 0 0 0-.51-.51Zm-4.293 2.649h-1.389V8.948a.51.51 0 1 0-1.02 0v3.159a.51.51 0 0 0 .51.51h1.899a.51.51 0 0 0 0-1.02Zm6.66-1.069a.51.51 0 0 0 0-1.02H16.64a.51.51 0 0 0-.51.51v3.159a.51.51 0 0 0 .51.51h1.899a.51.51 0 0 0 0-1.02H17.15v-.56h1.389a.51.51 0 0 0 0-1.02H17.15v-.559h1.389Z" fill="#06C755"/>
+        </svg>
+      </a>
+      <div class="copyright">426 SHOP · EST 2024</div>
+    </footer>
   </div>
 
   <div id="toast" class="toast">คัดลอกข้อความแล้ว</div>
@@ -1617,7 +1564,7 @@
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const MAX_CODES = 5;
-    const HISTORY_KEY = "redeem_history_v7";
+    const HISTORY_KEY = "redeem_history_v8";
     const SOUND_KEY = "redeem_sound_on";
 
     const btnRedeem = document.getElementById("btnRedeem");
@@ -1639,8 +1586,6 @@
     const codeMeterBar = document.getElementById("codeMeterBar");
     const meterText = document.getElementById("meterText");
     const mainCard = document.getElementById("mainCard");
-    const helpIssue = document.getElementById("helpIssue");
-    const helpHowto = document.getElementById("helpHowto");
     const fxCanvas = document.getElementById("fxCanvas");
     const fxCtx = fxCanvas ? fxCanvas.getContext("2d") : null;
 
@@ -1649,57 +1594,21 @@
     let latestCopyAllText = "";
     let latestCopySuccessText = "";
 
-    function setStepState(state) {
-      const cards = document.querySelectorAll(".status-card");
-      cards.forEach((el) => {
-        el.style.boxShadow = "";
-        el.style.borderColor = "";
-        el.style.background = "";
-      });
-
-      const s1 = document.querySelector('[data-step-card="1"]');
-      const s2 = document.querySelector('[data-step-card="2"]');
-      const s3 = document.querySelector('[data-step-card="3"]');
-      if (!s1 || !s2 || !s3) return;
-
-      const active = (el) => {
-        el.style.borderColor = "var(--brand)";
-        el.style.boxShadow = "0 0 0 3px rgba(185,143,115,.12)";
-        el.style.background = "rgba(255,255,255,.88)";
-      };
-
-      const done = (el) => {
-        el.style.borderColor = "rgba(169,200,183,.55)";
-        el.style.background = "var(--accent-ok-soft)";
-      };
-
-      if (state === "idle") {
-        active(s1);
-      } else if (state === "loading") {
-        done(s1);
-        active(s2);
-      } else if (state === "done") {
-        done(s1);
-        done(s2);
-        active(s3);
-      } else if (state === "error") {
-        done(s1);
-        active(s2);
-      }
-    }
-
     function applyTheme(theme) {
       if (theme === "dark") {
         document.body.classList.add("theme-dark");
         themeToggle.textContent = "☀️";
+        themeToggle.setAttribute("aria-label", "สลับเป็นโหมดสว่าง");
       } else {
         document.body.classList.remove("theme-dark");
         themeToggle.textContent = "🌙";
+        themeToggle.setAttribute("aria-label", "สลับเป็นโหมดมืด");
       }
     }
 
     function updateSoundUI() {
       soundToggle.textContent = soundEnabled ? "🔔" : "🔕";
+      soundToggle.setAttribute("aria-label", soundEnabled ? "ปิดเสียง" : "เปิดเสียง");
     }
 
     applyTheme(localStorage.getItem("theme") || "light");
@@ -1721,7 +1630,7 @@
     const tips = [
       "วางหลายโค้ดได้ในครั้งเดียว สูงสุดประมาณ 5 โค้ด/ครั้ง",
       "กดคัดลอกทั้งหมดได้ในปุ่มเดียว สะดวกขึ้นเยอะ",
-      "ถ้ามีปัญหา แคปหน้าจอแล้วติดต่อแอดมินได้เลย",
+      "ถ้ามีปัญหา แคปหน้าจอแล้วส่งให้แอดมินได้เลย",
       "กดรับสินค้าแล้ว อย่าเพิ่งรีเฟรชหน้านะคะ"
     ];
 
@@ -1743,15 +1652,6 @@
     btnPaste.addEventListener("click", pasteFromClipboard);
     codeInput.addEventListener("input", updateLineInfo);
 
-    helpIssue.addEventListener("click", () => {
-      showToast("หากมีปัญหา แคปหน้าจอผลลัพธ์แล้วกดติดต่อแอดมินได้เลย");
-    });
-
-    helpHowto.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      showToast("วางโค้ด แล้วกดรับสินค้าได้เลยค่ะ");
-    });
-
     window.addEventListener("beforeunload", (e) => {
       if (!isLoading) return;
       e.preventDefault();
@@ -1759,7 +1659,6 @@
     });
 
     window.addEventListener("load", () => {
-      setStepState("idle");
       updateLineInfo();
       renderHistory();
       codeInput.focus();
@@ -1845,7 +1744,6 @@
       meterText.textContent = `0 / ${MAX_CODES}`;
       codeMeterBar.style.width = "0%";
       lineInfo.textContent = "สูงสุด ~5 โค้ด/ครั้ง";
-      setStepState("idle");
       codeInput.focus();
       showToast("ล้างข้อมูลแล้ว");
     }
@@ -1859,7 +1757,6 @@
         inputContainer.classList.add("shake");
         status.innerHTML = "กรุณากรอกรหัสก่อนนะคะ";
         status.classList.add("status-error");
-        setStepState("idle");
         playSound("error");
         setTimeout(() => inputContainer.classList.remove("shake"), 500);
         return;
@@ -1867,16 +1764,16 @@
 
       const originalLines = normalizeLines(codeInput.value);
       const trimmedLines = originalLines.slice(0, MAX_CODES);
-      const validation = getValidationState(originalLines);
 
       let preWarn = "";
-      if (originalLines.length > MAX_CODES) preWarn += `ระบบจะใช้เฉพาะ ${MAX_CODES} รายการแรกค่ะ`;
+      if (originalLines.length > MAX_CODES) {
+        preWarn = `ระบบจะใช้เฉพาะ ${MAX_CODES} รายการแรกค่ะ`;
+      }
 
       isLoading = true;
       mainCard.classList.add("loading");
       btnRedeem.disabled = true;
       btnRedeem.innerHTML = `<span class="spinner"></span><span>กำลังตรวจสอบ…</span>`;
-      setStepState("loading");
 
       status.style.color = "#8e8178";
       status.innerHTML =
@@ -1908,7 +1805,6 @@
           btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
           status.innerHTML = "เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้งค่ะ";
           status.classList.add("status-error");
-          setStepState("error");
           playSound("error");
           showToast("เชื่อมต่อไม่สำเร็จ");
         });
@@ -1925,7 +1821,6 @@
       if (!res) {
         status.innerHTML = "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งค่ะ";
         status.classList.add("status-error");
-        setStepState("error");
         return;
       }
 
@@ -1934,11 +1829,9 @@
       const nfCount = (res.notFound && res.notFound.length) || 0;
 
       if (res.ok && successCount > 0) {
-        setStepState("done");
         triggerSuccessAnimation();
         playSound("success");
       } else {
-        setStepState("error");
         playSound(usedCount > 0 || nfCount > 0 ? "warn" : "error");
       }
 
@@ -1999,7 +1892,7 @@
                 ${appTag ? `<span class="item-tag">${appTag}</span>` : ""}
               </div>
             </div>
-            <div class="item-body">${item.reply || ""}</div>
+            <div class="item-body">${escapeHtml(item.reply || "")}</div>
             <button class="copy-btn" data-text="${safeReplyText}">
               <span>คัดลอกรายละเอียด</span>
             </button>
@@ -2021,9 +1914,9 @@
           card.className = "result-item used-card";
           card.innerHTML = `
             <div class="item-top-row">
-              <div class="item-header">♻️ USED CODE: ${u.code}</div>
+              <div class="item-header">♻️ USED CODE: ${escapeHtml(u.code)}</div>
             </div>
-            <div class="item-body">${body}</div>
+            <div class="item-body">${escapeHtml(body)}</div>
           `;
           resultsDiv.appendChild(card);
           animateCard(card, index + successCount);
@@ -2037,7 +1930,7 @@
           card.className = "result-item notfound-card";
           card.innerHTML = `
             <div class="item-top-row">
-              <div class="item-header">❌ NOT FOUND CODE: ${code}</div>
+              <div class="item-header">❌ NOT FOUND CODE: ${escapeHtml(code)}</div>
             </div>
             <div class="item-body">ไม่พบโค้ดนี้ในระบบ กรุณาตรวจสอบการคัดลอก หรือติดต่อแอดมินเพื่อช่วยเช็กอีกครั้ง</div>
           `;
@@ -2295,7 +2188,8 @@
         .replaceAll("<", "&lt;")
         .replaceAll(">", "&gt;")
         .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+        .replaceAll("'", "&#039;")
+        .replaceAll("\n", "<br>");
     }
 
     function playSound(type) {
