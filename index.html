@@ -4,52 +4,50 @@
   <meta charset="UTF-8" />
   <title>426 SHOP – Redeem Code</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#f7f2ec" />
+  <meta name="theme-color" content="#f7f1ea" />
   <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f7f2ec;
-      --bg-2: #fff8f3;
-      --card: rgba(255, 252, 248, 0.88);
-      --card-strong: #fffaf6;
-      --text: #4b403a;
-      --sub: #95867d;
-      --line: #eadfd6;
-      --accent: #cda48a;
-      --accent-2: #ead2c2;
-      --accent-3: #d9b8a0;
-      --green: #a6c7b5;
-      --green-soft: #eef7f2;
-      --danger: #de7d7d;
-      --warn: #d39b73;
-      --ok: #5f8d73;
-      --used: #8a76c7;
-      --notfound: #ce7b78;
-      --shadow: 0 18px 40px rgba(95, 67, 49, 0.08);
+      --bg: #f7f1ea;
+      --bg-2: #fffaf6;
+      --card: rgba(255, 252, 248, 0.82);
+      --card-strong: rgba(255, 255, 255, 0.92);
+      --text: #4b4039;
+      --sub: #8d8179;
+      --line: #eadfd5;
+      --brown-1: #c89e84;
+      --brown-2: #b78568;
+      --brown-3: #e8c9b3;
+      --mint: #a9c8b7;
+      --mint-soft: #eef7f2;
+      --ok: #628a73;
+      --used: #7a6ac7;
+      --nf: #d27777;
+      --warn: #d19467;
+      --shadow: 0 18px 40px rgba(99, 71, 53, 0.08);
       --radius-xl: 30px;
       --radius-lg: 22px;
       --radius-md: 16px;
     }
 
     body.theme-dark {
-      --bg: #19191d;
-      --bg-2: #222329;
-      --card: rgba(34, 35, 40, 0.9);
-      --card-strong: #24262c;
-      --text: #f4f2ef;
-      --sub: #aca7a3;
-      --line: #383b43;
-      --accent: #c4a18b;
-      --accent-2: #6c5548;
-      --accent-3: #8d6b59;
-      --green: #8cb8a5;
-      --green-soft: #23332d;
-      --danger: #e19191;
-      --warn: #d7a27e;
-      --ok: #8bc19e;
-      --used: #ae9af0;
-      --notfound: #f19a96;
-      --shadow: 0 22px 44px rgba(0,0,0,0.42);
+      --bg: #17181d;
+      --bg-2: #202128;
+      --card: rgba(32, 34, 40, 0.86);
+      --card-strong: rgba(37, 39, 46, 0.96);
+      --text: #f3f2ef;
+      --sub: #aaa6a2;
+      --line: #383b44;
+      --brown-1: #b38a72;
+      --brown-2: #916854;
+      --brown-3: #d2af9a;
+      --mint: #8fb8a7;
+      --mint-soft: #23332d;
+      --ok: #8ec2a0;
+      --used: #ad9af0;
+      --nf: #ef9b98;
+      --warn: #e0ad83;
+      --shadow: 0 22px 46px rgba(0, 0, 0, 0.42);
     }
 
     * {
@@ -68,14 +66,14 @@
       font-family: "Anuphan", system-ui, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(234, 210, 194, 0.85), transparent 30%),
-        radial-gradient(circle at top right, rgba(166, 199, 181, 0.42), transparent 30%),
+        radial-gradient(circle at top left, rgba(232, 201, 179, 0.75), transparent 28%),
+        radial-gradient(circle at top right, rgba(169, 200, 183, 0.34), transparent 26%),
         linear-gradient(180deg, var(--bg-2), var(--bg));
       overflow-x: hidden;
       transition: background .25s ease, color .25s ease;
     }
 
-    .bg-blur {
+    .bg-layer {
       position: fixed;
       inset: 0;
       pointer-events: none;
@@ -87,7 +85,7 @@
       position: absolute;
       border-radius: 999px;
       filter: blur(34px);
-      opacity: .65;
+      opacity: .6;
       animation: floaty 16s ease-in-out infinite;
     }
 
@@ -95,31 +93,60 @@
       width: 240px;
       height: 240px;
       top: -40px;
-      left: -70px;
-      background: radial-gradient(circle, rgba(221,181,154,.72), transparent 70%);
+      left: -80px;
+      background: radial-gradient(circle, rgba(200,158,132,.7), transparent 70%);
     }
 
     .orb.two {
       width: 260px;
       height: 260px;
-      top: 80px;
-      right: -80px;
-      background: radial-gradient(circle, rgba(166,199,181,.55), transparent 72%);
-      animation-delay: -5s;
+      top: 100px;
+      right: -90px;
+      background: radial-gradient(circle, rgba(169,200,183,.55), transparent 72%);
+      animation-delay: -4s;
     }
 
     .orb.three {
       width: 180px;
       height: 180px;
-      bottom: 40px;
-      left: 18%;
-      background: radial-gradient(circle, rgba(255,225,203,.8), transparent 70%);
-      animation-delay: -8s;
+      bottom: 30px;
+      left: 20%;
+      background: radial-gradient(circle, rgba(255,228,210,.72), transparent 70%);
+      animation-delay: -7s;
     }
 
     @keyframes floaty {
-      0%,100% { transform: translate3d(0,0,0) scale(1); }
-      50% { transform: translate3d(8px,-16px,0) scale(1.04); }
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(8px, -16px, 0) scale(1.04); }
+    }
+
+    .bear-wallpaper {
+      position: absolute;
+      inset: 0;
+      opacity: .14;
+      pointer-events: none;
+    }
+
+    body.theme-dark .bear-wallpaper {
+      opacity: .09;
+    }
+
+    .bear-wallpaper svg {
+      width: 680px;
+      max-width: none;
+      position: absolute;
+      top: -30px;
+      right: -160px;
+      transform: rotate(-8deg);
+    }
+
+    .bear-wallpaper.bottom svg {
+      width: 520px;
+      left: -120px;
+      top: auto;
+      bottom: -120px;
+      right: auto;
+      transform: rotate(10deg) scale(.92);
     }
 
     #fxCanvas {
@@ -132,18 +159,15 @@
     .app {
       position: relative;
       z-index: 2;
-      max-width: 520px;
+      max-width: 1120px;
       margin: 0 auto;
       min-height: 100vh;
-      padding: 14px 14px 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+      padding: 18px;
     }
 
     .glass {
       background: var(--card);
-      border: 1px solid rgba(255,255,255,.5);
+      border: 1px solid rgba(255,255,255,.48);
       box-shadow: var(--shadow);
       backdrop-filter: blur(16px);
     }
@@ -152,100 +176,157 @@
       border-color: rgba(255,255,255,.06);
     }
 
-    .hero {
+    .shell {
+      display: grid;
+      grid-template-columns: 340px minmax(0, 1fr);
+      gap: 14px;
+      align-items: start;
+    }
+
+    .left-col,
+    .right-col {
+      display: grid;
+      gap: 14px;
+    }
+
+    .panel {
       border-radius: var(--radius-xl);
-      padding: 14px;
-      position: relative;
       overflow: hidden;
+      position: relative;
     }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 12% 12%, rgba(255,255,255,.45), transparent 25%),
-        linear-gradient(180deg, rgba(255,255,255,.1), transparent 40%);
-      pointer-events: none;
-    }
-
-    .hero-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
+    .panel-inner {
+      padding: 18px;
       position: relative;
       z-index: 1;
     }
 
-    .brand-area {
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.11), transparent 35%),
+        radial-gradient(circle at 0 0, rgba(255,255,255,.18), transparent 28%);
+      pointer-events: none;
+    }
+
+    .hero-card {
+      min-height: 240px;
+      background:
+        linear-gradient(155deg, rgba(255,255,255,.2), transparent 38%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02)),
+        var(--card);
+    }
+
+    .hero-top {
       display: flex;
+      justify-content: space-between;
       gap: 12px;
+      align-items: flex-start;
+    }
+
+    .hero-brand {
+      display: flex;
       align-items: center;
+      gap: 12px;
       min-width: 0;
     }
 
-    .brand-badge {
-      width: 72px;
-      height: 72px;
+    .logo-box {
+      width: 74px;
+      height: 74px;
       border-radius: 24px;
-      background: linear-gradient(145deg, #fff5ee, #f0e3d6);
-      border: 1px solid rgba(255,255,255,.6);
+      overflow: hidden;
+      flex-shrink: 0;
+      background: linear-gradient(145deg, #fff6ef, #f0e3d6);
+      border: 1px solid rgba(255,255,255,.7);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.75),
+        0 12px 24px rgba(112,84,66,.08);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.78),
-        0 12px 24px rgba(112,84,66,.1);
-      overflow: hidden;
-      position: relative;
-      flex-shrink: 0;
     }
 
-    body.theme-dark .brand-badge {
+    body.theme-dark .logo-box {
       background: linear-gradient(145deg, #312b28, #40342f);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.04),
-        0 12px 24px rgba(0,0,0,.34);
+      border-color: rgba(255,255,255,.08);
     }
 
-    .logo-img {
-      width: 58px;
-      height: 58px;
+    .logo-box img {
+      width: 60px;
+      height: 60px;
       object-fit: cover;
       border-radius: 18px;
       display: block;
       transform: scale(1.04);
     }
 
-    .brand-copy {
+    .hero-copy {
       min-width: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
     }
 
     .brand-title {
-      font-size: 1.42rem;
+      font-size: 1.6rem;
       font-weight: 700;
       letter-spacing: .08em;
       text-transform: uppercase;
-      line-height: 1.1;
-      white-space: nowrap;
+      line-height: 1.05;
     }
 
     .brand-sub {
+      margin-top: 4px;
       font-size: .78rem;
       color: var(--sub);
-      letter-spacing: .16em;
+      letter-spacing: .18em;
       text-transform: uppercase;
+    }
+
+    .hero-title {
+      margin-top: 16px;
+      font-size: 1.42rem;
+      font-weight: 700;
+      line-height: 1.22;
+      max-width: 520px;
+    }
+
+    .hero-desc {
+      margin-top: 8px;
+      color: var(--sub);
+      font-size: .9rem;
+      line-height: 1.65;
+      max-width: 520px;
+    }
+
+    .hero-tags {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.76);
+      border: 1px solid var(--line);
+      font-size: .76rem;
+      color: var(--text);
+    }
+
+    body.theme-dark .tag {
+      background: rgba(35,37,43,.9);
     }
 
     .hero-actions {
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
       gap: 8px;
+      align-items: flex-end;
       flex-shrink: 0;
     }
 
@@ -253,13 +334,14 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 7px 11px;
+      padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(255,255,255,.84);
+      background: rgba(255,255,255,.86);
       border: 1px solid rgba(0,0,0,.03);
-      font-size: .73rem;
+      font-size: .74rem;
       color: var(--sub);
       box-shadow: 0 8px 18px rgba(0,0,0,.04);
+      white-space: nowrap;
     }
 
     body.theme-dark .status-pill {
@@ -272,31 +354,31 @@
       height: 8px;
       border-radius: 999px;
       background: #62c171;
-      box-shadow: 0 0 0 4px rgba(98,193,113,.16);
+      box-shadow: 0 0 0 4px rgba(98,193,113,.15);
       animation: pulseDot 1.8s ease-in-out infinite;
     }
 
     @keyframes pulseDot {
-      0%,100% { transform: scale(1); }
+      0%, 100% { transform: scale(1); }
       50% { transform: scale(1.12); }
     }
 
-    .mini-action-row {
+    .mini-actions {
       display: flex;
       gap: 6px;
     }
 
     .icon-btn {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       border-radius: 999px;
       border: 1px solid rgba(0,0,0,.06);
       background: rgba(255,255,255,.9);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
       font-size: 1rem;
+      cursor: pointer;
       transition: .18s ease;
       box-shadow: 0 8px 18px rgba(0,0,0,.06);
     }
@@ -306,289 +388,268 @@
     }
 
     body.theme-dark .icon-btn {
-      background: rgba(34,36,42,.96);
+      background: rgba(35,37,43,.96);
       border-color: rgba(255,255,255,.08);
       color: var(--text);
     }
 
-    .service-grid {
-      position: relative;
-      z-index: 1;
+    .service-stack {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-      margin-top: 12px;
+      gap: 10px;
     }
 
-    .service-card {
-      border-radius: 18px;
-      padding: 12px 12px;
-      background: rgba(255,255,255,.74);
+    .service-item {
+      padding: 13px 14px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.76);
       border: 1px solid var(--line);
       display: flex;
       align-items: center;
-      gap: 8px;
-      color: var(--text);
-      font-size: .78rem;
-      line-height: 1.35;
-      min-height: 58px;
+      gap: 10px;
+      min-height: 62px;
     }
 
-    body.theme-dark .service-card {
-      background: rgba(35,37,43,.9);
+    body.theme-dark .service-item {
+      background: rgba(35,37,43,.88);
     }
 
-    .step-row {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 10px;
+    .service-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(233,205,187,.9), rgba(169,200,183,.5));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
     }
 
-    .step-pill {
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid #e1d5ca;
-      background: rgba(255,255,255,.82);
+    body.theme-dark .service-icon {
+      background: linear-gradient(135deg, rgba(111,84,69,.9), rgba(70,104,91,.75));
+    }
+
+    .service-text strong {
+      display: block;
+      font-size: .83rem;
+      margin-bottom: 2px;
+    }
+
+    .service-text span {
+      font-size: .75rem;
       color: var(--sub);
-      font-size: .72rem;
+      line-height: 1.45;
+    }
+
+    .step-card .panel-inner,
+    .faq-card .panel-inner,
+    .history-card .panel-inner {
+      padding: 16px;
+    }
+
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .92rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .step-grid {
+      display: grid;
+      gap: 8px;
+    }
+
+    .step-item {
+      padding: 11px 12px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.74);
+      border: 1px solid var(--line);
+      display: flex;
+      gap: 10px;
+      align-items: center;
       transition: .2s ease;
     }
 
-    body.theme-dark .step-pill {
-      background: rgba(35,37,43,.92);
-      border-color: #3a3e47;
+    body.theme-dark .step-item {
+      background: rgba(35,37,43,.88);
     }
 
-    .step-pill--muted {
-      opacity: .64;
-    }
-
-    .step-pill--active {
-      background: var(--green-soft);
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #f7eee7;
+      border: 1px solid #ead8cb;
       color: var(--text);
-      border-color: var(--green);
-      box-shadow: 0 0 0 3px rgba(166,199,181,.16);
-      opacity: 1;
+      font-size: .75rem;
+      font-weight: 700;
+      flex-shrink: 0;
     }
 
-    .step-pill--done {
+    body.theme-dark .step-num {
+      background: #2d3037;
+      border-color: #424650;
+    }
+
+    .step-content {
+      min-width: 0;
+    }
+
+    .step-content strong {
+      display: block;
+      font-size: .79rem;
+      margin-bottom: 1px;
+    }
+
+    .step-content span {
+      font-size: .74rem;
+      color: var(--sub);
+      line-height: 1.45;
+    }
+
+    .step-item.active {
+      background: var(--mint-soft);
+      border-color: var(--mint);
+      box-shadow: 0 0 0 3px rgba(169,200,183,.14);
+    }
+
+    .step-item.done {
       background: #eef8f2;
-      border-color: #cde4d8;
-      color: var(--ok);
-      opacity: 1;
+      border-color: #cce3d6;
     }
 
-    body.theme-dark .step-pill--done {
+    body.theme-dark .step-item.done {
       background: #23332d;
-      border-color: #3e5f52;
-      color: #bbe2cb;
+      border-color: #3f5e51;
     }
 
-    .layout {
+    .redeem-card {
+      min-height: 540px;
+    }
+
+    .redeem-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 220px;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .input-stack {
       display: grid;
       gap: 12px;
     }
 
-    .panel {
-      border-radius: var(--radius-xl);
-      padding: 16px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .panel::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(255,255,255,.14), transparent 42%);
-      pointer-events: none;
-    }
-
-    .welcome-box {
-      text-align: center;
-      padding: 16px 14px;
+    .mini-card {
       border-radius: 22px;
-      background:
-        radial-gradient(circle at top, rgba(255,255,255,.5), transparent 45%),
-        linear-gradient(135deg, rgba(255,255,255,.82), rgba(241,232,224,.94));
-      border: 1px solid rgba(205,164,138,.22);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
-      margin-bottom: 12px;
-    }
-
-    body.theme-dark .welcome-box {
-      background:
-        radial-gradient(circle at top, rgba(255,255,255,.06), transparent 45%),
-        linear-gradient(135deg, rgba(44,38,35,.96), rgba(34,36,42,.98));
-      border-color: rgba(196,161,139,.18);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
-    }
-
-    .bear-scene {
-      width: 136px;
-      height: 110px;
-      margin: 0 auto 8px;
-      position: relative;
-    }
-
-    .bear {
-      position: absolute;
-      left: 50%;
-      top: 8px;
-      transform: translateX(-50%);
-      width: 88px;
-      height: 78px;
-    }
-
-    .bear-ear {
-      position: absolute;
-      top: 0;
-      width: 24px;
-      height: 24px;
-      background: #c79a7e;
-      border-radius: 999px;
-      box-shadow: inset 0 0 0 6px #e8c6b2;
-    }
-
-    body.theme-dark .bear-ear {
-      background: #9a725c;
-      box-shadow: inset 0 0 0 6px #c49b88;
-    }
-
-    .bear-ear.left { left: 9px; }
-    .bear-ear.right { right: 9px; }
-
-    .bear-face {
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 84px;
-      height: 68px;
-      background: linear-gradient(180deg, #cca286, #be9073);
-      border-radius: 40px 40px 34px 34px;
-      box-shadow: inset 0 -4px 0 rgba(0,0,0,.03);
-    }
-
-    body.theme-dark .bear-face {
-      background: linear-gradient(180deg, #9f7862, #8a654f);
-    }
-
-    .bear-eye {
-      position: absolute;
-      top: 24px;
-      width: 7px;
-      height: 9px;
-      background: #483630;
-      border-radius: 999px;
-      animation: blinkEye 4.4s infinite;
-      transform-origin: center;
-    }
-
-    .bear-eye.left { left: 24px; }
-    .bear-eye.right { right: 24px; }
-
-    @keyframes blinkEye {
-      0%, 92%, 100% { transform: scaleY(1); }
-      95% { transform: scaleY(.15); }
-    }
-
-    .bear-muzzle {
-      position: absolute;
-      left: 50%;
-      bottom: 12px;
-      transform: translateX(-50%);
-      width: 34px;
-      height: 24px;
-      background: #f4dfd0;
-      border-radius: 18px;
-    }
-
-    .bear-nose {
-      position: absolute;
-      top: 6px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 11px;
-      height: 7px;
-      background: #4d3932;
-      border-radius: 999px;
-    }
-
-    .bear-mouth {
-      position: absolute;
-      top: 12px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 14px;
-      height: 8px;
-      border-bottom: 2px solid #6b5045;
-      border-radius: 0 0 10px 10px;
-    }
-
-    .bear-paw {
-      position: absolute;
-      bottom: 0;
-      width: 20px;
-      height: 14px;
-      background: #c79a7e;
-      border-radius: 12px;
-    }
-
-    body.theme-dark .bear-paw {
-      background: #9a725c;
-    }
-
-    .bear-paw.left { left: 18px; }
-    .bear-paw.right { right: 18px; }
-
-    .welcome-title {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .welcome-sub {
-      font-size: .83rem;
-      color: var(--sub);
-      line-height: 1.55;
-    }
-
-    .field-shell {
-      border-radius: 22px;
-      background: rgba(255,255,255,.68);
+      background: rgba(255,255,255,.72);
       border: 1px solid var(--line);
-      padding: 12px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
+      padding: 14px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.65);
     }
 
-    body.theme-dark .field-shell {
-      background: rgba(35,37,43,.72);
+    body.theme-dark .mini-card {
+      background: rgba(35,37,43,.82);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
     }
 
-    .field-title {
-      font-size: .8rem;
-      font-weight: 700;
+    .mini-card.soft-brown {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.25), transparent 45%),
+        linear-gradient(135deg, rgba(255,246,239,.88), rgba(247,237,229,.96));
+      border-color: #eddacd;
+    }
+
+    body.theme-dark .mini-card.soft-brown {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.03), transparent 45%),
+        linear-gradient(135deg, rgba(59,49,43,.92), rgba(42,36,33,.98));
+      border-color: #5d4a42;
+    }
+
+    .intro-card {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .intro-card h2 {
+      margin: 0 0 4px;
+      font-size: 1.02rem;
+      line-height: 1.25;
+    }
+
+    .intro-card p {
+      margin: 0;
+      font-size: .83rem;
+      color: var(--sub);
+      line-height: 1.6;
+    }
+
+    .intro-side {
+      min-width: 112px;
+      text-align: right;
+    }
+
+    .tiny-badge {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid #ead9cd;
+      font-size: .72rem;
+      color: var(--sub);
       margin-bottom: 8px;
     }
 
+    body.theme-dark .tiny-badge {
+      background: rgba(48,42,38,.92);
+      border-color: #5a4840;
+    }
+
+    .cute-line {
+      width: 100%;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--brown-3), var(--mint), var(--brown-3));
+      opacity: .7;
+    }
+
+    .field-card-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .field-card-title strong {
+      font-size: .84rem;
+    }
+
+    .field-card-title span {
+      font-size: .73rem;
+      color: var(--sub);
+    }
+
     .input-box {
-      border-radius: 18px;
-      background: rgba(255,255,255,.82);
-      border: 1.5px solid #eadfd6;
-      padding: 10px 12px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.84);
+      border: 1.5px solid #eadfd5;
+      padding: 12px 13px;
       transition: .22s ease;
       position: relative;
       overflow: hidden;
     }
 
     body.theme-dark .input-box {
-      background: rgba(31,33,38,.88);
-      border-color: #373b44;
+      background: rgba(31,33,38,.9);
+      border-color: #393d46;
     }
 
     .input-box::before {
@@ -602,13 +663,13 @@
     }
 
     .input-box:focus-within {
-      border-color: var(--green);
-      box-shadow: 0 0 0 3px rgba(166,199,181,.16), 0 10px 20px rgba(166,199,181,.08);
+      border-color: var(--mint);
+      box-shadow: 0 0 0 3px rgba(169,200,183,.16), 0 12px 20px rgba(169,200,183,.08);
       background: #fff;
     }
 
     body.theme-dark .input-box:focus-within {
-      background: #23262c;
+      background: #24272d;
     }
 
     .input-box:focus-within::before {
@@ -617,23 +678,23 @@
 
     textarea {
       width: 100%;
-      min-height: 170px;
+      min-height: 190px;
       resize: none;
       border: none;
       background: transparent;
       font-family: inherit;
       font-size: .98rem;
       color: var(--text);
-      line-height: 1.55;
+      line-height: 1.58;
       padding: 4px 0 0;
     }
 
     textarea::placeholder {
-      color: #b4aba4;
+      color: #b4aaa2;
     }
 
     .input-meta {
-      margin-top: 6px;
+      margin-top: 8px;
       display: flex;
       justify-content: space-between;
       gap: 8px;
@@ -644,15 +705,18 @@
     }
 
     .meta-pill {
-      padding: 4px 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 9px;
       border-radius: 999px;
-      background: #f6efe8;
-      border: 1px dashed #dfd3c6;
+      background: #f8efe8;
+      border: 1px dashed #e0d2c6;
     }
 
     body.theme-dark .meta-pill {
-      background: #292b32;
-      border-color: #3d424b;
+      background: #2b2e35;
+      border-color: #3f444d;
     }
 
     .inline-warnings {
@@ -705,8 +769,8 @@
       width: 0%;
       height: 100%;
       border-radius: inherit;
-      background: linear-gradient(90deg, #a6c7b5, #c7decf, #ead2c2);
-      box-shadow: 0 0 18px rgba(166,199,181,.35);
+      background: linear-gradient(90deg, #a9c8b7, #d7e7de, #ead2c2);
+      box-shadow: 0 0 18px rgba(169,200,183,.35);
       position: relative;
       overflow: hidden;
       transition: width .28s ease, filter .28s ease;
@@ -725,21 +789,14 @@
       to { transform: translateX(100%); }
     }
 
-    .action-grid {
+    .actions-card {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-    }
-
-    .help-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
+      gap: 10px;
     }
 
     .soft-btn,
-    .copy-btn,
     .help-btn,
+    .copy-btn,
     .history-btn {
       border-radius: 16px;
       border: 1px solid var(--line);
@@ -758,31 +815,26 @@
     }
 
     .soft-btn:hover,
-    .copy-btn:hover,
     .help-btn:hover,
+    .copy-btn:hover,
     .history-btn:hover {
       transform: translateY(-1px);
     }
 
     body.theme-dark .soft-btn,
-    body.theme-dark .copy-btn,
     body.theme-dark .help-btn,
+    body.theme-dark .copy-btn,
     body.theme-dark .history-btn {
-      background: rgba(37,39,45,.9);
+      background: rgba(37,39,45,.92);
       border-color: #3a3f49;
       color: var(--text);
     }
 
-    .primary-row {
-      display: flex;
-      gap: 8px;
-    }
-
     .primary-btn {
-      flex: 1;
+      width: 100%;
       border: none;
       border-radius: 999px;
-      padding: 14px;
+      padding: 15px 16px;
       background: radial-gradient(circle at 0 0, #b2dccc 0, #89b29f 55%);
       color: #fff;
       font-weight: 700;
@@ -833,6 +885,7 @@
     }
 
     .secondary-btn {
+      width: 100%;
       border-radius: 999px;
       border: 1px solid #ddd4cc;
       background: rgba(249,245,241,.94);
@@ -859,6 +912,35 @@
       transform: translateY(-1px);
     }
 
+    .mini-grid {
+      display: grid;
+      gap: 8px;
+    }
+
+    .mini-grid.two {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .mini-grid.three {
+      grid-template-columns: 1fr;
+    }
+
+    .helper-note {
+      padding: 12px;
+      border-radius: 18px;
+      background: #fff6ec;
+      border: 1px solid #f0ceb4;
+      color: var(--warn);
+      font-size: .77rem;
+      line-height: 1.55;
+    }
+
+    body.theme-dark .helper-note {
+      background: #392c24;
+      border-color: #805844;
+      color: #f1cfb9;
+    }
+
     .spinner {
       width: 14px;
       height: 14px;
@@ -872,23 +954,87 @@
       to { transform: rotate(360deg); }
     }
 
-    .notice {
+    .loading-overlay {
+      position: absolute;
+      inset: 0;
       display: flex;
-      gap: 8px;
-      align-items: flex-start;
-      padding: 12px;
-      border-radius: 18px;
-      background: #fff5ea;
-      border: 1px solid #f0c8aa;
-      color: var(--warn);
-      font-size: .77rem;
-      line-height: 1.55;
+      align-items: center;
+      justify-content: center;
+      background: rgba(247,241,234,.78);
+      backdrop-filter: blur(10px);
+      z-index: 30;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .22s ease;
+      padding: 20px;
     }
 
-    body.theme-dark .notice {
-      background: #392c24;
-      border-color: #805844;
-      color: #f1cfb9;
+    body.theme-dark .loading-overlay {
+      background: rgba(23,24,29,.76);
+    }
+
+    .redeem-card.loading .loading-overlay {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .loading-box {
+      width: 100%;
+      max-width: 270px;
+      border-radius: 24px;
+      padding: 18px 16px;
+      text-align: center;
+      background: var(--card-strong);
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 30px rgba(0,0,0,.08);
+    }
+
+    body.theme-dark .loading-box {
+      border-color: #3b4049;
+    }
+
+    .loading-circle {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 10px;
+      border-radius: 18px;
+      background: linear-gradient(145deg, #fff6ef, #f0e3d6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.8);
+      animation: bob 1s ease-in-out infinite;
+    }
+
+    body.theme-dark .loading-circle {
+      background: linear-gradient(145deg, #312b28, #40342f);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+    }
+
+    @keyframes bob {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    .loading-spinner {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      border: 3px solid rgba(169,200,183,.28);
+      border-top-color: var(--mint);
+      animation: spin .7s linear infinite;
+    }
+
+    .loading-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .loading-sub {
+      font-size: .78rem;
+      color: var(--sub);
+      line-height: 1.55;
     }
 
     #summary {
@@ -928,7 +1074,7 @@
     .summary-pill.nf {
       background: #ffeceb;
       border-color: #f1cbc8;
-      color: var(--notfound);
+      color: var(--nf);
     }
 
     body.theme-dark .summary-pill {
@@ -936,29 +1082,22 @@
       border-color: #3b4049;
     }
 
-    .info-card,
-    .faq-card,
-    .history-card {
-      border-radius: 24px;
+    .info-card {
+      border-radius: 22px;
       padding: 14px;
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.8);
       border: 1px solid var(--line);
       box-shadow: 0 10px 22px rgba(0,0,0,.04);
+      font-size: .79rem;
+      line-height: 1.58;
     }
 
-    body.theme-dark .info-card,
-    body.theme-dark .faq-card,
-    body.theme-dark .history-card {
+    body.theme-dark .info-card {
       background: rgba(36,38,43,.88);
     }
 
-    .section-title {
-      font-size: .9rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 10px;
+    .info-card .section-title {
+      margin-bottom: 6px;
     }
 
     #status {
@@ -966,6 +1105,7 @@
       color: var(--sub);
       line-height: 1.65;
       min-height: 18px;
+      margin-top: 2px;
     }
 
     .status-strong {
@@ -978,7 +1118,7 @@
     }
 
     .status-error {
-      color: var(--danger) !important;
+      color: var(--nf) !important;
     }
 
     .status-time {
@@ -1016,15 +1156,14 @@
     }
 
     #results {
-      display: flex;
-      flex-direction: column;
+      display: grid;
       gap: 12px;
       margin-top: 2px;
     }
 
     .result-item {
-      border-radius: 22px;
-      padding: 12px;
+      border-radius: 24px;
+      padding: 13px;
       border: 1px solid #e8dfd7;
       background: linear-gradient(180deg, rgba(255,255,255,.97), rgba(250,247,244,.98));
       box-shadow: 0 12px 24px rgba(0,0,0,.05);
@@ -1037,10 +1176,10 @@
       position: absolute;
       top: -20px;
       right: -20px;
-      width: 86px;
-      height: 86px;
+      width: 88px;
+      height: 88px;
       border-radius: 999px;
-      background: radial-gradient(circle, rgba(166,199,181,.18), transparent 70%);
+      background: radial-gradient(circle, rgba(169,200,183,.18), transparent 70%);
       pointer-events: none;
     }
 
@@ -1101,7 +1240,7 @@
 
     .item-body {
       padding: 12px;
-      border-radius: 16px;
+      border-radius: 18px;
       background: linear-gradient(135deg, #fffdfa, #f8f5f1);
       border: 1px solid #eee6de;
       box-shadow: inset 0 1px 0 rgba(255,255,255,.8);
@@ -1116,6 +1255,15 @@
       border-color: #3b4049;
     }
 
+    .section-title {
+      font-size: .9rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
     .faq-list,
     .history-list {
       display: flex;
@@ -1124,7 +1272,7 @@
     }
 
     details.faq-item {
-      border-radius: 16px;
+      border-radius: 18px;
       background: rgba(255,255,255,.72);
       border: 1px solid var(--line);
       padding: 0 12px;
@@ -1159,7 +1307,7 @@
     }
 
     .history-item {
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 10px 12px;
       background: rgba(255,255,255,.72);
       border: 1px solid var(--line);
@@ -1223,7 +1371,7 @@
       position: fixed;
       left: 14px;
       bottom: 26px;
-      max-width: 280px;
+      max-width: 290px;
       padding: 10px 12px;
       border-radius: 18px;
       background: rgba(255,255,255,.96);
@@ -1290,7 +1438,7 @@
 
     .shake {
       animation: shake .4s;
-      border-color: var(--danger) !important;
+      border-color: var(--nf) !important;
     }
 
     @keyframes shake {
@@ -1299,24 +1447,74 @@
       75% { transform: translateX(5px); }
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 980px) {
+      .shell {
+        grid-template-columns: 1fr;
+      }
+
+      .left-col {
+        order: 2;
+      }
+
+      .right-col {
+        order: 1;
+      }
+
+      .hero-card {
+        min-height: auto;
+      }
+
+      .hero-title,
+      .hero-desc {
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 760px) {
       .app {
-        padding: 10px 12px 14px;
+        padding: 12px;
+      }
+
+      .hero-top,
+      .intro-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-actions,
+      .intro-side {
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .redeem-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .help-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      .bear-wallpaper svg {
+        width: 520px;
+        right: -170px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .service-grid,
+      .mini-grid.two,
+      .copy-actions,
+      .help-grid {
+        grid-template-columns: 1fr 1fr;
       }
 
       .brand-title {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
       }
 
-      .brand-sub {
-        font-size: .74rem;
-      }
-
-      .service-grid,
-      .action-grid,
-      .help-grid,
-      .copy-actions {
-        grid-template-columns: 1fr 1fr;
+      .hero-title {
+        font-size: 1.18rem;
       }
 
       .tip-bubble {
@@ -1326,26 +1524,23 @@
       }
     }
 
-    @media (max-width: 380px) {
+    @media (max-width: 400px) {
       .service-grid,
-      .action-grid,
-      .help-grid,
+      .mini-grid.two,
       .copy-actions,
+      .help-grid,
       .primary-row {
-        display: grid;
         grid-template-columns: 1fr;
+        display: grid;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
       .orb,
       .status-dot,
-      .bear-eye,
       .meter-bar::after,
       .primary-btn::before,
-      .logo-circle.success-bounce,
-      .spinner-ring,
-      .intro-box {
+      .loading-circle {
         animation: none !important;
       }
 
@@ -1355,185 +1550,285 @@
       .copy-btn,
       .primary-btn,
       .secondary-btn,
-      .history-btn {
+      .history-btn,
+      .step-item {
         transition: none !important;
       }
     }
   </style>
 </head>
 <body>
-  <div class="bg-blur">
+  <div class="bg-layer">
     <div class="orb one"></div>
     <div class="orb two"></div>
     <div class="orb three"></div>
+
+    <div class="bear-wallpaper">
+      <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="200" cy="200" r="92" fill="var(--brown-1)"/>
+        <circle cx="130" cy="126" r="42" fill="var(--brown-1)"/>
+        <circle cx="270" cy="126" r="42" fill="var(--brown-1)"/>
+        <circle cx="130" cy="126" r="22" fill="var(--brown-3)"/>
+        <circle cx="270" cy="126" r="22" fill="var(--brown-3)"/>
+        <ellipse cx="200" cy="236" rx="48" ry="34" fill="var(--brown-3)"/>
+        <ellipse cx="165" cy="196" rx="8" ry="10" fill="var(--text)"/>
+        <ellipse cx="235" cy="196" rx="8" ry="10" fill="var(--text)"/>
+        <ellipse cx="200" cy="224" rx="14" ry="10" fill="var(--text)"/>
+        <path d="M185 243C190 251 196 255 200 255C204 255 210 251 215 243" stroke="var(--text)" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="86" cy="282" r="28" fill="var(--brown-1)"/>
+        <circle cx="314" cy="282" r="28" fill="var(--brown-1)"/>
+      </svg>
+    </div>
+
+    <div class="bear-wallpaper bottom">
+      <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="200" cy="200" r="92" fill="var(--brown-1)"/>
+        <circle cx="130" cy="126" r="42" fill="var(--brown-1)"/>
+        <circle cx="270" cy="126" r="42" fill="var(--brown-1)"/>
+        <circle cx="130" cy="126" r="22" fill="var(--brown-3)"/>
+        <circle cx="270" cy="126" r="22" fill="var(--brown-3)"/>
+        <ellipse cx="200" cy="236" rx="48" ry="34" fill="var(--brown-3)"/>
+        <ellipse cx="165" cy="196" rx="8" ry="10" fill="var(--text)"/>
+        <ellipse cx="235" cy="196" rx="8" ry="10" fill="var(--text)"/>
+        <ellipse cx="200" cy="224" rx="14" ry="10" fill="var(--text)"/>
+        <path d="M185 243C190 251 196 255 200 255C204 255 210 251 215 243" stroke="var(--text)" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="86" cy="282" r="28" fill="var(--brown-1)"/>
+        <circle cx="314" cy="282" r="28" fill="var(--brown-1)"/>
+      </svg>
+    </div>
   </div>
+
   <canvas id="fxCanvas"></canvas>
 
   <div class="app">
-    <header class="hero glass">
-      <div class="hero-top">
-        <div class="brand-area">
-          <div class="brand-badge" id="logoCircle">
-            <img class="logo-img" src="https://img2.imgbiz.com/imgbiz/IMG_1140f64febd99caf8614.jpeg" alt="426 Shop Logo" />
-          </div>
-          <div class="brand-copy">
-            <div class="brand-title">426 SHOP</div>
-            <div class="brand-sub">premium access</div>
-          </div>
-        </div>
+    <div class="shell">
+      <aside class="left-col">
+        <section class="panel hero-card glass">
+          <div class="panel-inner">
+            <div class="hero-top">
+              <div class="hero-brand">
+                <div class="logo-box" id="logoCircle">
+                  <img src="https://img2.imgbiz.com/imgbiz/IMG_1140f64febd99caf8614.jpeg" alt="426 Shop Logo" />
+                </div>
+                <div class="hero-copy">
+                  <div class="brand-title">426 SHOP</div>
+                  <div class="brand-sub">premium access</div>
+                </div>
+              </div>
 
-        <div class="hero-actions">
-          <div class="status-pill">
-            <span class="status-dot"></span>
-            <span>ออนไลน์ 24 ชม.</span>
-          </div>
-          <div class="mini-action-row">
-            <button class="icon-btn" id="soundToggle" type="button" aria-label="เปิดหรือปิดเสียง">🔔</button>
-            <button class="icon-btn" id="themeToggle" type="button" aria-label="สลับโหมดกลางคืน">🌙</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="service-grid">
-        <div class="service-card">⚡ ส่งอัตโนมัติทันที</div>
-        <div class="service-card">🕒 ไม่ต้องรอแอดมิน</div>
-        <div class="service-card">🔐 ใช้งานปลอดภัย</div>
-        <div class="service-card">📱 รองรับมือถือเต็มรูปแบบ</div>
-      </div>
-
-      <div class="step-row">
-        <div class="step-pill" data-step="1">① วางโค้ด</div>
-        <div class="step-pill" data-step="2">② กดรับสินค้า</div>
-        <div class="step-pill" data-step="3">③ คัดลอกข้อมูล</div>
-      </div>
-    </header>
-
-    <main class="panel glass" id="mainCard">
-      <div class="loading-overlay" id="loadingOverlay">
-        <div class="loading-box">
-          <div class="loading-bear">
-            <div class="spinner-ring"></div>
-          </div>
-          <div class="loading-title">รอสักครู่นะคะ</div>
-          <div class="loading-sub">ระบบกำลังตรวจสอบโค้ดและเตรียมข้อมูลให้อัตโนมัติค่ะ</div>
-        </div>
-      </div>
-
-      <div class="welcome-box">
-        <div class="bear-scene">
-          <div class="bear">
-            <div class="bear-ear left"></div>
-            <div class="bear-ear right"></div>
-            <div class="bear-face">
-              <div class="bear-eye left"></div>
-              <div class="bear-eye right"></div>
-              <div class="bear-muzzle">
-                <div class="bear-nose"></div>
-                <div class="bear-mouth"></div>
+              <div class="hero-actions">
+                <div class="status-pill">
+                  <span class="status-dot"></span>
+                  <span>ออนไลน์ 24 ชม.</span>
+                </div>
+                <div class="mini-actions">
+                  <button class="icon-btn" id="soundToggle" type="button" aria-label="เปิดหรือปิดเสียง">🔔</button>
+                  <button class="icon-btn" id="themeToggle" type="button" aria-label="สลับโหมดกลางคืน">🌙</button>
+                </div>
               </div>
             </div>
-            <div class="bear-paw left"></div>
-            <div class="bear-paw right"></div>
-          </div>
-        </div>
-        <div class="welcome-title">วางโค้ดจากแอดมินได้เลย ✨</div>
-        <div class="welcome-sub">รองรับหลายโค้ดในครั้งเดียว • 1 บรรทัดต่อ 1 โค้ด</div>
-      </div>
 
-      <div class="field-shell">
-        <div class="field-title">กรอกโค้ดเพื่อรับสินค้า</div>
-        <div class="input-box">
-          <textarea id="codeInput" placeholder="เช่น NFXA1B2&#10;หรือ DSN9X3Y"></textarea>
+            <div class="hero-title">รับสินค้าอัตโนมัติแบบน่ารัก เรียบง่าย และใช้งานไวในหน้าเดียว</div>
+            <div class="hero-desc">วางโค้ดจากแอดมิน แล้วรอระบบตรวจสอบและส่งรายละเอียดให้ทันที พร้อมคัดลอกได้ในคลิกเดียว</div>
 
-          <div class="input-meta">
-            <div class="meta-pill">แนะนำ: 1 บรรทัดต่อ 1 โค้ด</div>
-            <span id="lineInfo">สูงสุด ~5 โค้ด/ครั้ง</span>
-          </div>
-
-          <div class="inline-warnings" id="inlineWarnings"></div>
-
-          <div class="meter-wrap">
-            <div class="meter-head">
-              <span>จำนวนโค้ดที่พร้อมตรวจสอบ</span>
-              <span id="meterText">0 / 5</span>
-            </div>
-            <div class="meter-track">
-              <div class="meter-bar" id="codeMeterBar"></div>
+            <div class="hero-tags">
+              <div class="tag">⚡ ส่งอัตโนมัติ</div>
+              <div class="tag">🧸 โทนพาสเทล</div>
+              <div class="tag">📱 รองรับมือถือ</div>
             </div>
           </div>
-        </div>
-      </div>
+        </section>
 
-      <div class="action-grid">
-        <button class="soft-btn" id="btnPaste" type="button">📋 วางโค้ด</button>
-        <button class="soft-btn" id="btnDedup" type="button">🧹 ลบโค้ดซ้ำ</button>
-      </div>
+        <section class="panel step-card glass">
+          <div class="panel-inner">
+            <div class="card-title">🪄 ขั้นตอนการใช้งาน</div>
+            <div class="step-grid">
+              <div class="step-item" data-step-card="1">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                  <strong>วางโค้ด</strong>
+                  <span>ใส่หลายโค้ดได้ในครั้งเดียว แยก 1 บรรทัดต่อ 1 โค้ด</span>
+                </div>
+              </div>
+              <div class="step-item" data-step-card="2">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                  <strong>กดรับสินค้า</strong>
+                  <span>ระบบจะตรวจสอบให้อัตโนมัติทันที</span>
+                </div>
+              </div>
+              <div class="step-item" data-step-card="3">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                  <strong>คัดลอกข้อมูล</strong>
+                  <span>เลือกคัดลอกทั้งหมด หรือเฉพาะรายการสำเร็จได้</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-      <div class="primary-row">
-        <button class="primary-btn" id="btnRedeem" type="button">
-          <span>รับสินค้า</span><span>↗</span>
-        </button>
-        <button class="secondary-btn" id="btnClear" type="button">
-          <span>ล้างทั้งหมด</span>
-        </button>
-      </div>
+        <section class="panel faq-card glass">
+          <div class="panel-inner">
+            <div class="section-title">❓ คำถามที่พบบ่อย</div>
+            <div class="faq-list">
+              <details class="faq-item">
+                <summary>โค้ดขึ้นว่าใช้แล้ว หมายความว่าอะไร</summary>
+                <div class="faq-answer">หมายถึงโค้ดนี้ถูกใช้งานไปก่อนแล้ว หากไม่แน่ใจ แคปหน้าจอแล้วติดต่อแอดมินได้เลย</div>
+              </details>
+              <details class="faq-item">
+                <summary>ถ้าขึ้นว่าไม่พบโค้ด ต้องทำยังไง</summary>
+                <div class="faq-answer">ลองตรวจสอบตัวอักษร ช่องว่าง หรือคัดลอกใหม่จากข้อความเดิมอีกครั้ง หากยังไม่ผ่านให้ติดต่อแอดมิน</div>
+              </details>
+              <details class="faq-item">
+                <summary>ทำไมกดแล้วห้ามรีเฟรชหน้า</summary>
+                <div class="faq-answer">เพื่อให้ระบบประมวลผลและแสดงผลลัพธ์ครบถ้วน ถ้าปิดหน้าก่อนอาจทำให้ดูรายการไม่ครบได้</div>
+              </details>
+            </div>
+          </div>
+        </section>
+      </aside>
 
-      <div class="help-grid">
-        <a class="help-btn" href="https://lin.ee/gAh3wAH" target="_blank" rel="noopener noreferrer">💬 ติดต่อแอดมิน</a>
-        <button class="help-btn" id="helpIssue" type="button">⚠️ แจ้งปัญหา</button>
-        <button class="help-btn" id="helpHowto" type="button">📘 วิธีใช้งาน</button>
-      </div>
+      <main class="right-col">
+        <section class="panel redeem-card glass" id="mainCard">
+          <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-box">
+              <div class="loading-circle">
+                <div class="loading-spinner"></div>
+              </div>
+              <div class="loading-title">รอสักครู่นะคะ</div>
+              <div class="loading-sub">ระบบกำลังตรวจสอบโค้ดและเตรียมข้อมูลให้อัตโนมัติค่ะ</div>
+            </div>
+          </div>
 
-      <div class="notice">
-        <span>⚠️</span>
-        <span>หลังจากกด “รับสินค้า” แล้ว <strong>ห้ามรีเฟรช / ปิดหน้านี้เด็ดขาด</strong> จนกว่าจะได้รับรหัสครบ</span>
-      </div>
+          <div class="panel-inner">
+            <div class="redeem-grid">
+              <div class="input-stack">
+                <div class="mini-card soft-brown intro-card">
+                  <div>
+                    <h2>กรอกโค้ดเพื่อรับสินค้า</h2>
+                    <p>รองรับหลายโค้ดในครั้งเดียว พร้อมตรวจสอบให้อัตโนมัติแบบรวดเร็วและอ่านง่าย</p>
+                  </div>
+                  <div class="intro-side">
+                    <div class="tiny-badge">น่ารัก • มินิมอล</div>
+                    <div class="cute-line"></div>
+                  </div>
+                </div>
 
-      <div id="summary"></div>
-      <div id="status"></div>
-      <div id="copyActions"></div>
-      <div id="results"></div>
-    </main>
+                <div class="mini-card">
+                  <div class="field-card-title">
+                    <strong>วางโค้ดของคุณ</strong>
+                    <span id="lineInfo">สูงสุด ~5 โค้ด/ครั้ง</span>
+                  </div>
 
-    <section class="faq-card">
-      <div class="section-title">❓ คำถามที่พบบ่อย</div>
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary>โค้ดขึ้นว่าใช้แล้ว หมายความว่าอะไร</summary>
-          <div class="faq-answer">หมายถึงโค้ดนี้ถูกใช้งานไปก่อนแล้ว หากไม่แน่ใจ แคปหน้าจอแล้วติดต่อแอดมินได้เลย</div>
-        </details>
-        <details class="faq-item">
-          <summary>ถ้าขึ้นว่าไม่พบโค้ด ต้องทำยังไง</summary>
-          <div class="faq-answer">ลองตรวจสอบตัวอักษร ช่องว่าง หรือคัดลอกใหม่จากข้อความเดิมอีกครั้ง หากยังไม่ผ่านให้ติดต่อแอดมิน</div>
-        </details>
-        <details class="faq-item">
-          <summary>ทำไมกดแล้วห้ามรีเฟรชหน้า</summary>
-          <div class="faq-answer">เพื่อให้ระบบประมวลผลและแสดงผลลัพธ์ครบถ้วน ถ้าปิดหน้าก่อนอาจทำให้ดูรายการไม่ครบได้</div>
-        </details>
-      </div>
-    </section>
+                  <div class="input-box">
+                    <textarea id="codeInput" placeholder="เช่น NFXA1B2&#10;หรือ DSN9X3Y"></textarea>
 
-    <section class="history-card">
-      <div class="section-title">🕘 รายการล่าสุดของคุณ</div>
-      <div id="historyBox" class="history-empty">ยังไม่มีประวัติการรับสินค้าล่าสุด</div>
-    </section>
+                    <div class="input-meta">
+                      <div class="meta-pill">แนะนำ: 1 บรรทัดต่อ 1 โค้ด</div>
+                      <span id="meterText">0 / 5</span>
+                    </div>
 
-    <footer class="footer">
-      <div class="support-pill">
-        <span>Support</span>
-        <span>@467dlpti</span>
-      </div>
-      <div class="copyright">426 SHOP · EST 2024</div>
-    </footer>
+                    <div class="inline-warnings" id="inlineWarnings"></div>
+
+                    <div class="meter-wrap">
+                      <div class="meter-head">
+                        <span>จำนวนโค้ดที่พร้อมตรวจสอบ</span>
+                        <span>พร้อมใช้งาน</span>
+                      </div>
+                      <div class="meter-track">
+                        <div class="meter-bar" id="codeMeterBar"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mini-grid two">
+                  <button class="soft-btn" id="btnPaste" type="button">📋 วางโค้ด</button>
+                  <button class="soft-btn" id="btnDedup" type="button">🧹 ลบโค้ดซ้ำ</button>
+                </div>
+
+                <div class="primary-row">
+                  <button class="primary-btn" id="btnRedeem" type="button">
+                    <span>รับสินค้า</span><span>↗</span>
+                  </button>
+                  <button class="secondary-btn" id="btnClear" type="button">ล้างทั้งหมด</button>
+                </div>
+
+                <div class="helper-note">
+                  ⚠️ หลังจากกด “รับสินค้า” แล้ว <strong>ห้ามรีเฟรช / ปิดหน้านี้เด็ดขาด</strong> จนกว่าจะได้รับรหัสครบ
+                </div>
+              </div>
+
+              <div class="actions-card">
+                <div class="mini-card">
+                  <div class="card-title">💬 ช่วยเหลือด่วน</div>
+                  <div class="mini-grid three">
+                    <a class="help-btn" href="https://lin.ee/gAh3wAH" target="_blank" rel="noopener noreferrer">ติดต่อแอดมิน</a>
+                    <button class="help-btn" id="helpIssue" type="button">แจ้งปัญหา</button>
+                    <button class="help-btn" id="helpHowto" type="button">วิธีใช้งาน</button>
+                  </div>
+                </div>
+
+                <div class="mini-card">
+                  <div class="card-title">🎀 จุดเด่นของหน้า</div>
+                  <div class="service-stack">
+                    <div class="service-item">
+                      <div class="service-icon">⚡</div>
+                      <div class="service-text">
+                        <strong>เร็วและอัตโนมัติ</strong>
+                        <span>ไม่ต้องรอแอดมินมาตอบเอง</span>
+                      </div>
+                    </div>
+                    <div class="service-item">
+                      <div class="service-icon">🔐</div>
+                      <div class="service-text">
+                        <strong>ดูเป็นระเบียบ</strong>
+                        <span>ผลลัพธ์แยกสถานะ อ่านง่าย</span>
+                      </div>
+                    </div>
+                    <div class="service-item">
+                      <div class="service-icon">📋</div>
+                      <div class="service-text">
+                        <strong>คัดลอกสะดวก</strong>
+                        <span>กดได้ทั้งแบบรวมและเฉพาะสำเร็จ</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mini-card">
+                  <div class="card-title">🕘 รายการล่าสุด</div>
+                  <div id="historyBox" class="history-empty">ยังไม่มีประวัติการรับสินค้าล่าสุด</div>
+                </div>
+              </div>
+            </div>
+
+            <div id="summary"></div>
+            <div id="status"></div>
+            <div id="copyActions"></div>
+            <div id="results"></div>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <div class="support-pill">
+            <span>Support</span>
+            <span>@467dlpti</span>
+          </div>
+          <div class="copyright">426 SHOP · EST 2024</div>
+        </footer>
+      </main>
+    </div>
   </div>
 
   <div id="toast" class="toast">คัดลอกข้อความแล้ว</div>
-  <div id="tipBubble" class="tip-bubble">💡 1 บรรทัดต่อ 1 โค้ด ใช้งานง่ายสุดค่ะ</div>
+  <div id="tipBubble" class="tip-bubble">💡 วางหลายโค้ดได้ในครั้งเดียว สูงสุดประมาณ 5 โค้ด/ครั้ง</div>
 
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const MAX_CODES = 5;
-    const HISTORY_KEY = "redeem_history_v4";
+    const HISTORY_KEY = "redeem_history_v5";
     const SOUND_KEY = "redeem_sound_on";
 
     const btnRedeem = document.getElementById("btnRedeem");
@@ -1567,38 +1862,27 @@
     let latestCopySuccessText = "";
 
     function setStepState(state) {
-      const steps = document.querySelectorAll(".step-pill");
-      steps.forEach((el) => {
-        el.classList.remove("step-pill--active", "step-pill--done", "step-pill--muted");
-        el.classList.add("step-pill--muted");
-      });
+      const pills = document.querySelectorAll(".step-item");
+      pills.forEach((el) => el.classList.remove("active", "done"));
 
-      const s1 = document.querySelector('.step-pill[data-step="1"]');
-      const s2 = document.querySelector('.step-pill[data-step="2"]');
-      const s3 = document.querySelector('.step-pill[data-step="3"]');
+      const s1 = document.querySelector('[data-step-card="1"]');
+      const s2 = document.querySelector('[data-step-card="2"]');
+      const s3 = document.querySelector('[data-step-card="3"]');
 
       if (!s1 || !s2 || !s3) return;
 
       if (state === "idle") {
-        s1.classList.remove("step-pill--muted");
-        s1.classList.add("step-pill--active");
+        s1.classList.add("active");
       } else if (state === "loading") {
-        s1.classList.remove("step-pill--muted");
-        s1.classList.add("step-pill--done");
-        s2.classList.remove("step-pill--muted");
-        s2.classList.add("step-pill--active");
+        s1.classList.add("done");
+        s2.classList.add("active");
       } else if (state === "done") {
-        s1.classList.remove("step-pill--muted");
-        s2.classList.remove("step-pill--muted");
-        s1.classList.add("step-pill--done");
-        s2.classList.add("step-pill--done");
-        s3.classList.remove("step-pill--muted");
-        s3.classList.add("step-pill--active");
+        s1.classList.add("done");
+        s2.classList.add("done");
+        s3.classList.add("active");
       } else if (state === "error") {
-        s1.classList.remove("step-pill--muted");
-        s1.classList.add("step-pill--done");
-        s2.classList.remove("step-pill--muted");
-        s2.classList.add("step-pill--active");
+        s1.classList.add("done");
+        s2.classList.add("active");
       }
     }
 
@@ -1633,7 +1917,7 @@
     });
 
     const tips = [
-      "วางหลายโค้ดได้ สูงสุดประมาณ 5 โค้ด/ครั้ง ✨",
+      "วางหลายโค้ดได้ในครั้งเดียว สูงสุดประมาณ 5 โค้ด/ครั้ง",
       "กดคัดลอกทั้งหมดได้ในปุ่มเดียว สะดวกขึ้นเยอะ 💖",
       "ถ้ามีปัญหา แคปหน้าจอแล้วติดต่อแอดมินได้เลย",
       "กดรับสินค้าแล้ว อย่าเพิ่งรีเฟรชหน้านะคะ"
@@ -1831,7 +2115,7 @@
       btnRedeem.innerHTML = `<span class="spinner"></span><span>กำลังตรวจสอบ…</span>`;
       setStepState("loading");
 
-      status.style.color = "#95867d";
+      status.style.color = "#8d8179";
       status.innerHTML =
         "ระบบกำลังตรวจสอบรหัสของคุณ...<br>" +
         "<span style='font-size:.78rem;color:#c27a5a;'>ห้ามรีเฟรช/ปิดหน้านี้จนกว่าผลจะขึ้นครบค่ะ</span>" +
@@ -1903,7 +2187,7 @@
 
       if (usedCount >= 2) {
         summaryDiv.innerHTML += `
-          <div class="info-card" style="margin-top:8px;font-size:.78rem;line-height:1.55;">
+          <div class="info-card" style="margin-top:8px;">
             <div class="section-title" style="margin-bottom:6px;">💬 พบโค้ดที่ถูกใช้งานแล้วหลายรายการ</div>
             <div>หากไม่แน่ใจว่าโค้ดถูกใช้ไปแล้วจริงไหม แนะนำให้แคปหน้าจอนี้ แล้วติดต่อแอดมินช่วยตรวจสอบนะคะ</div>
           </div>
@@ -2091,7 +2375,7 @@
     function launchConfetti() {
       if (!fxCanvas || !fxCtx) return;
       const particles = [];
-      const colors = ["#a6c7b5", "#ead2c2", "#f6dd88", "#ffffff", "#d5efe1", "#ffd8d8"];
+      const colors = ["#a9c8b7", "#ead2c2", "#f6dd88", "#ffffff", "#d5efe1", "#ffd8d8"];
 
       for (let i = 0; i < 110; i++) {
         particles.push({
@@ -2159,7 +2443,7 @@
       const original = btn.innerHTML;
       btn.innerHTML = "คัดลอกแล้ว ✓";
       btn.style.background = "#f4faf7";
-      btn.style.borderColor = "#a6c7b5";
+      btn.style.borderColor = "#a9c8b7";
 
       setTimeout(() => {
         btn.innerHTML = original;
