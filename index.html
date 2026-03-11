@@ -8,39 +8,32 @@
   <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f7f2ee;
+      --bg: #f5f3f0;
       --card: #ffffff;
-      --accent: #86bba8;
-      --accent-2: #f2cdb2;
-      --accent-3: #d9e8ff;
-      --accent-soft: #e9f5ef;
-      --text-main: #3d3734;
-      --text-sub: #8c857f;
-      --border-soft: #e9e1d8;
-      --danger: #eb7f7f;
-      --warning: #d98c63;
-      --ok: #3f8b62;
-      --used: #8061c2;
-      --nf: #c96363;
-      --glass: rgba(255,255,255,0.80);
-      --shadow-soft: 0 18px 42px rgba(0,0,0,0.07);
+      --accent: #85b8a6;
+      --accent-2: #f0c7a7;
+      --accent-soft: #e3f0eb;
+      --text-main: #393532;
+      --text-sub: #8b8680;
+      --border-soft: #e2ddd7;
+      --danger: #e57373;
+      --warning: #d47955;
+      --shadow-soft: 0 18px 40px rgba(0,0,0,0.06);
       --radius-xl: 24px;
-      --radius-lg: 18px;
-      --radius-md: 14px;
+      --glass: rgba(255,255,255,0.76);
     }
 
     body.theme-dark {
-      --bg: #15171b;
-      --card: #1f2227;
-      --accent: #9ed3c1;
-      --accent-2: #f2cdb2;
-      --accent-3: #8ea7d8;
-      --accent-soft: #223933;
-      --text-main: #f5f6f8;
-      --text-sub: #a7abb5;
-      --border-soft: #32353c;
-      --glass: rgba(31,34,39,0.84);
-      --shadow-soft: 0 18px 42px rgba(0,0,0,0.65);
+      --bg: #15161a;
+      --card: #1f2024;
+      --accent: #9dd4c1;
+      --accent-2: #f0c7a7;
+      --accent-soft: #223a33;
+      --text-main: #f4f5f7;
+      --text-sub: #a5a9b3;
+      --border-soft: #2d3036;
+      --shadow-soft: 0 18px 40px rgba(0,0,0,0.7);
+      --glass: rgba(31,32,36,0.82);
     }
 
     * {
@@ -49,19 +42,23 @@
       outline: none;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
+      padding: 0;
       min-height: 100vh;
       display: flex;
       justify-content: center;
+      align-items: stretch;
       background:
-        radial-gradient(circle at 0 0, #fde8dd 0, transparent 52%),
-        radial-gradient(circle at 100% 0, #eaf7f1 0, transparent 52%),
+        radial-gradient(circle at 0 0, #f8e8dd 0, transparent 55%),
+        radial-gradient(circle at 100% 0, #e7f4ee 0, transparent 55%),
         var(--bg);
-      color: var(--text-main);
       font-family: "Anuphan", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-main);
       -webkit-font-smoothing: antialiased;
       transition: background 0.25s ease, color 0.25s ease;
       overflow-x: hidden;
@@ -69,8 +66,8 @@
 
     body.theme-dark {
       background:
-        radial-gradient(circle at 0 0, #23273a 0, transparent 52%),
-        radial-gradient(circle at 100% 0, #213337 0, transparent 52%),
+        radial-gradient(circle at 0 0, #222433 0, transparent 55%),
+        radial-gradient(circle at 100% 0, #243234 0, transparent 55%),
         var(--bg);
     }
 
@@ -84,36 +81,36 @@
     .bg-orb {
       position: fixed;
       border-radius: 999px;
-      pointer-events: none;
-      z-index: 0;
       filter: blur(34px);
       opacity: 0.55;
+      pointer-events: none;
+      z-index: 0;
       animation: orbFloat 14s ease-in-out infinite;
     }
 
     .orb-1 {
       width: 220px;
       height: 220px;
-      left: -70px;
+      left: -60px;
       top: 80px;
-      background: radial-gradient(circle, rgba(242,205,178,0.60), rgba(242,205,178,0));
+      background: radial-gradient(circle, rgba(255,190,150,0.55), rgba(255,190,150,0));
     }
 
     .orb-2 {
-      width: 270px;
-      height: 270px;
-      right: -80px;
-      top: 150px;
-      background: radial-gradient(circle, rgba(134,187,168,0.50), rgba(134,187,168,0));
+      width: 260px;
+      height: 260px;
+      right: -70px;
+      top: 140px;
+      background: radial-gradient(circle, rgba(133,184,166,0.5), rgba(133,184,166,0));
       animation-delay: -4s;
     }
 
     .orb-3 {
       width: 180px;
       height: 180px;
-      left: 22%;
-      bottom: 80px;
-      background: radial-gradient(circle, rgba(187,206,255,0.35), rgba(187,206,255,0));
+      left: 20%;
+      bottom: 60px;
+      background: radial-gradient(circle, rgba(195, 210, 255, 0.28), rgba(195,210,255,0));
       animation-delay: -7s;
     }
 
@@ -122,38 +119,39 @@
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      opacity: 0.08;
+      opacity: 0.1;
       background-image:
-        linear-gradient(rgba(255,255,255,0.65) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.65) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,0.55) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.55) 1px, transparent 1px);
       background-size: 28px 28px;
-      mask-image: radial-gradient(circle at center, black 34%, transparent 88%);
+      mask-image: radial-gradient(circle at center, black 35%, transparent 90%);
     }
 
     body.theme-dark .bg-grid {
-      opacity: 0.06;
+      opacity: 0.07;
       background-image:
         linear-gradient(rgba(255,255,255,0.18) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.18) 1px, transparent 1px);
     }
 
     @keyframes orbFloat {
-      0%,100% { transform: translateY(0) translateX(0) scale(1); }
-      25% { transform: translateY(-16px) translateX(10px) scale(1.04); }
-      50% { transform: translateY(10px) translateX(-12px) scale(0.98); }
-      75% { transform: translateY(-8px) translateX(8px) scale(1.03); }
+      0%, 100% { transform: translateY(0) translateX(0) scale(1); }
+      25% { transform: translateY(-18px) translateX(10px) scale(1.04); }
+      50% { transform: translateY(8px) translateX(-12px) scale(0.98); }
+      75% { transform: translateY(-10px) translateX(8px) scale(1.03); }
     }
 
     .app {
-      width: 100%;
-      max-width: 500px;
-      min-height: 100vh;
-      padding: 14px 16px 120px;
       position: relative;
       z-index: 2;
+      width: 100%;
+      max-width: 480px;
+      padding: 14px 16px 18px;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
+      overflow-y: auto;
     }
 
     .header {
@@ -161,8 +159,9 @@
       flex-direction: column;
       gap: 10px;
       padding: 6px;
-      border-radius: 28px;
+      border-radius: 26px;
       backdrop-filter: blur(10px);
+      position: relative;
     }
 
     .brand-row {
@@ -180,30 +179,41 @@
     }
 
     .logo-circle {
-      width: 60px;
-      height: 60px;
+      width: 58px;
+      height: 58px;
       border-radius: 999px;
       background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.2)),
-        linear-gradient(135deg, #faefe8, #e7f6ef);
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.22)),
+        linear-gradient(135deg, #f8efe7, #e7f4ee);
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow:
         0 10px 24px rgba(0,0,0,0.08),
-        inset 0 1px 0 rgba(255,255,255,0.7);
-      overflow: hidden;
+        inset 0 1px 0 rgba(255,255,255,0.6);
       position: relative;
+      overflow: hidden;
       flex-shrink: 0;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      isolation: isolate;
     }
 
     body.theme-dark .logo-circle {
       background:
         radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), rgba(255,255,255,0)),
-        linear-gradient(135deg, #2a2d38, #223433);
+        linear-gradient(135deg, #2a2b38, #223234);
       box-shadow:
-        0 12px 28px rgba(0,0,0,0.75),
+        0 10px 26px rgba(0,0,0,0.8),
         inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    .logo-circle::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18), transparent 55%);
+      z-index: 2;
+      pointer-events: none;
     }
 
     .logo-circle.success-bounce {
@@ -211,14 +221,14 @@
     }
 
     .logo-img-wrap {
-      width: 48px;
-      height: 48px;
+      width: 46px;
+      height: 46px;
       border-radius: 999px;
       overflow: hidden;
-      background: #fff;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
       position: relative;
       z-index: 1;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+      background: #fff;
     }
 
     .logo-img {
@@ -227,14 +237,6 @@
       object-fit: cover;
       display: block;
       transform: scale(1.05);
-    }
-
-    .logo-circle::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.18), transparent 55%);
-      pointer-events: none;
     }
 
     @keyframes successPop {
@@ -252,14 +254,14 @@
 
     .brand-title {
       font-weight: 700;
-      font-size: 1.38rem;
+      font-size: 1.4rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       white-space: nowrap;
     }
 
     .brand-sub {
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       color: var(--text-sub);
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -277,19 +279,20 @@
     .badge {
       padding: 6px 12px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.9);
       border: 1px solid rgba(0,0,0,0.03);
       font-size: 0.72rem;
       color: var(--text-sub);
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      white-space: nowrap;
       backdrop-filter: blur(6px);
       box-shadow: 0 6px 16px rgba(0,0,0,0.04);
     }
 
     body.theme-dark .badge {
-      background: rgba(31,34,39,0.95);
+      background: rgba(31,32,36,0.95);
       border-color: rgba(255,255,255,0.06);
     }
 
@@ -304,67 +307,35 @@
 
     @keyframes pulseDot {
       0%,100% { transform: scale(1); }
-      50% { transform: scale(1.14); }
+      50% { transform: scale(1.12); }
     }
 
     .theme-toggle {
-      width: 36px;
-      height: 36px;
-      border: 1px solid rgba(0,0,0,0.06);
       border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.06);
       background: rgba(255,255,255,0.95);
+      width: 34px;
+      height: 34px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 1rem;
       cursor: pointer;
+      font-size: 1rem;
       box-shadow: 0 6px 14px rgba(0,0,0,0.08);
       transition: all 0.18s ease;
+      backdrop-filter: blur(6px);
       position: relative;
       overflow: hidden;
     }
 
     .theme-toggle:hover {
       transform: translateY(-1px) rotate(3deg);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
     }
 
     body.theme-dark .theme-toggle {
-      background: rgba(24,26,30,0.96);
+      background: rgba(25,26,30,0.96);
       border-color: rgba(255,255,255,0.08);
-    }
-
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-    }
-
-    .stat-card {
-      padding: 10px 8px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.86);
-      border: 1px solid rgba(255,255,255,0.6);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.04);
-      backdrop-filter: blur(8px);
-      text-align: center;
-    }
-
-    body.theme-dark .stat-card {
-      background: rgba(31,34,39,0.88);
-      border-color: rgba(255,255,255,0.06);
-    }
-
-    .stat-num {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 2px;
-    }
-
-    .stat-label {
-      font-size: 0.7rem;
-      color: var(--text-sub);
-      line-height: 1.35;
     }
 
     .step-row {
@@ -384,46 +355,56 @@
       align-items: center;
       gap: 6px;
       transition: all 0.2s ease;
+      backdrop-filter: blur(6px);
     }
 
     body.theme-dark .step-pill {
-      background: rgba(36,39,45,0.95);
-      border-color: #32353c;
+      background: rgba(36,37,43,0.95);
+      border-color: #32343b;
     }
 
-    .step-pill--muted { opacity: 0.65; }
+    .step-pill--muted {
+      opacity: 0.65;
+    }
+
     .step-pill--active {
       border-color: var(--accent);
       background: var(--accent-soft);
       color: var(--text-main);
-      box-shadow: 0 0 0 3px rgba(134,187,168,0.18);
+      box-shadow: 0 0 0 3px rgba(133,184,166,0.18);
       opacity: 1;
       transform: translateY(-1px);
     }
+
     .step-pill--done {
-      background: #e8f6ef;
-      border-color: #bfe0d0;
-      color: #376854;
+      background: #e8f6f0;
+      border-color: #b8dccc;
+      color: #356655;
       opacity: 1;
     }
+
     body.theme-dark .step-pill--done {
-      background: #243a33;
-      border-color: #42685b;
-      color: #cae8dc;
+      background: #233a31;
+      border-color: #3e6d5b;
+      color: #c1e4d5;
     }
 
     .card {
-      position: relative;
-      overflow: hidden;
+      flex: 1;
       background: var(--glass);
       border-radius: var(--radius-xl);
-      border: 1px solid rgba(255,255,255,0.56);
-      box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255,255,255,0.7);
-      backdrop-filter: blur(16px);
+      box-shadow:
+        0 20px 40px rgba(0,0,0,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.55);
       padding: 18px 16px 16px;
       display: flex;
       flex-direction: column;
       gap: 12px;
+      transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+      backdrop-filter: blur(16px);
+      position: relative;
+      overflow: hidden;
     }
 
     .card::before {
@@ -435,20 +416,23 @@
     }
 
     body.theme-dark .card {
-      border-color: rgba(255,255,255,0.06);
-      box-shadow: 0 24px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow:
+        0 24px 40px rgba(0,0,0,0.5),
+        inset 0 1px 0 rgba(255,255,255,0.04);
     }
 
     .floating-glow {
       position: absolute;
       right: 6px;
       top: -6px;
-      width: 62px;
-      height: 62px;
+      width: 60px;
+      height: 60px;
       border-radius: 999px;
-      background: radial-gradient(circle, rgba(134,187,168,0.18), transparent 70%);
-      filter: blur(10px);
+      background: radial-gradient(circle, rgba(133,184,166,0.18), transparent 70%);
       pointer-events: none;
+      filter: blur(10px);
+      z-index: 0;
     }
 
     .loading-overlay {
@@ -459,7 +443,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.22s ease;
-      z-index: 4;
+      z-index: 3;
       overflow: hidden;
     }
 
@@ -491,7 +475,7 @@
       gap: 8px;
     }
 
-    .card-title .icon {
+    .card-title span.icon {
       width: 24px;
       height: 24px;
       border-radius: 999px;
@@ -500,25 +484,25 @@
       align-items: center;
       justify-content: center;
       font-size: 0.9rem;
-      box-shadow: 0 4px 10px rgba(134,187,168,0.16);
+      box-shadow: 0 4px 10px rgba(133,184,166,0.16);
     }
 
     .card-desc {
       text-align: center;
       font-size: 0.9rem;
-      line-height: 1.5;
       color: var(--text-main);
+      line-height: 1.5;
       padding: 10px 14px;
       border-radius: 16px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.74), rgba(233,245,239,0.9));
-      border: 1px solid rgba(134,187,168,0.22);
-      box-shadow: 0 8px 18px rgba(134,187,168,0.08);
+      background: linear-gradient(135deg, rgba(255,255,255,0.72), rgba(227,240,235,0.9));
+      border: 1px solid rgba(133,184,166,0.22);
+      box-shadow: 0 8px 18px rgba(133,184,166,0.08);
       animation: cuteBlink 1.8s ease-in-out infinite;
     }
 
     body.theme-dark .card-desc {
-      background: linear-gradient(135deg, rgba(34,57,51,0.95), rgba(31,34,39,0.95));
-      border-color: rgba(158,211,193,0.18);
+      background: linear-gradient(135deg, rgba(34,58,51,0.95), rgba(31,32,36,0.95));
+      border-color: rgba(157,212,193,0.18);
       color: #edf4f1;
     }
 
@@ -529,30 +513,30 @@
     }
 
     @keyframes cuteBlink {
-      0%,100% {
+      0%, 100% {
         transform: scale(1);
-        box-shadow: 0 8px 18px rgba(134,187,168,0.08);
+        box-shadow: 0 8px 18px rgba(133,184,166,0.08);
       }
       50% {
         transform: scale(1.015);
-        box-shadow: 0 10px 22px rgba(242,205,178,0.18);
+        box-shadow: 0 10px 22px rgba(240,199,167,0.18);
       }
     }
 
     .input-field {
-      background: rgba(250,248,246,0.9);
-      border: 1.5px solid #e7dfd7;
+      background: rgba(250,248,246,0.88);
       border-radius: 18px;
+      border: 1.5px solid #e6e0da;
       padding: 10px 12px;
+      transition: all 0.25s ease;
       position: relative;
       overflow: hidden;
-      transition: all 0.25s ease;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
     }
 
     body.theme-dark .input-field {
-      background: rgba(35,38,43,0.88);
-      border-color: #32353c;
+      background: rgba(35,36,41,0.88);
+      border-color: #32343b;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
     }
 
@@ -569,11 +553,13 @@
     .input-field:focus-within {
       border-color: var(--accent);
       background: #ffffff;
-      box-shadow: 0 0 0 3px rgba(134,187,168,0.16), 0 10px 20px rgba(134,187,168,0.08);
+      box-shadow:
+        0 0 0 3px rgba(133,184,166,0.16),
+        0 10px 20px rgba(133,184,166,0.08);
     }
 
     body.theme-dark .input-field:focus-within {
-      background: #26292f;
+      background: #25272d;
     }
 
     .input-field:focus-within::before {
@@ -582,7 +568,6 @@
 
     textarea {
       width: 100%;
-      min-height: 160px;
       border: none;
       resize: none;
       background: transparent;
@@ -591,41 +576,42 @@
       color: var(--text-main);
       line-height: 1.55;
       padding: 4px 0 0;
+      min-height: 170px;
       letter-spacing: 0.01em;
     }
 
     textarea::placeholder {
-      color: #b3ada7;
+      color: #b0aaa3;
     }
 
     .input-helper-row {
-      margin-top: 6px;
+      margin-top: 4px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
       font-size: 0.72rem;
       color: var(--text-sub);
+      gap: 6px;
+      flex-wrap: wrap;
     }
 
     .small-tag {
       padding: 3px 8px;
       border-radius: 999px;
-      background: #f7f0ea;
-      border: 1px dashed #dfd3c6;
+      background: #f5efea;
+      border: 1px dashed #e0d4c8;
       white-space: nowrap;
     }
 
     body.theme-dark .small-tag {
-      background: #272a31;
-      border-color: #40434a;
+      background: #26272e;
+      border-color: #3a3c45;
     }
 
     #lineInfo {
-      min-height: 1.2em;
       text-align: right;
       flex: 1;
+      min-height: 1.2em;
     }
 
     .code-meter-wrap {
@@ -657,8 +643,8 @@
       width: 0%;
       height: 100%;
       border-radius: inherit;
-      background: linear-gradient(90deg, #86bba8, #9dd3bf, #f2d4bc);
-      box-shadow: 0 0 18px rgba(134,187,168,0.35);
+      background: linear-gradient(90deg, #85b8a6, #9bd3bf, #f0d2b9);
+      box-shadow: 0 0 18px rgba(133,184,166,0.35);
       transition: width 0.28s ease, filter 0.28s ease;
       position: relative;
       overflow: hidden;
@@ -678,39 +664,36 @@
     }
 
     .btn-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      display: flex;
       gap: 8px;
-    }
-
-    .btn-primary,
-    .btn-secondary,
-    .btn-paste {
-      border-radius: 999px;
-      padding: 13px 12px;
-      font-weight: 700;
-      font-size: 0.86rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      cursor: pointer;
-      transition: all 0.18s ease;
-      position: relative;
-      overflow: hidden;
-      white-space: nowrap;
+      margin-top: 2px;
+      align-items: stretch;
     }
 
     .btn-primary {
+      flex: 1;
+      border-radius: 999px;
       border: none;
-      background: radial-gradient(circle at 0 0, #a5d8c4 0, #7eae9a 55%);
-      color: #fff;
+      padding: 14px;
+      background: radial-gradient(circle at 0 0, #a2d5c2 0, #7fae9b 55%);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
       isolation: isolate;
     }
 
     body.theme-dark .btn-primary {
-      background: radial-gradient(circle at 0 0, #94ceb9 0, #5d8d7c 55%);
+      background: radial-gradient(circle at 0 0, #8fcbb7 0, #5a8a79 55%);
       box-shadow: 0 12px 30px rgba(0,0,0,0.6);
     }
 
@@ -724,36 +707,106 @@
       z-index: 0;
     }
 
-    .btn-primary > * { position: relative; z-index: 1; }
+    .btn-primary::after {
+      content: "";
+      position: absolute;
+      inset: auto auto 0 0;
+      width: 100%;
+      height: 50%;
+      background: linear-gradient(to top, rgba(255,255,255,0.16), transparent);
+      z-index: 0;
+    }
+
+    .btn-primary > * {
+      position: relative;
+      z-index: 1;
+    }
 
     @keyframes btnShimmer {
       to { transform: translateX(130%); }
     }
 
-    .btn-secondary,
-    .btn-paste {
-      border: 1px solid #dad2c9;
-      background: rgba(248,244,241,0.92);
-      color: var(--text-sub);
-      backdrop-filter: blur(6px);
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.18);
     }
 
-    body.theme-dark .btn-secondary,
-    body.theme-dark .btn-paste {
-      background: rgba(38,41,48,0.92);
-      border-color: #3a3d44;
-    }
-
-    .btn-primary:hover,
-    .btn-secondary:hover,
-    .btn-paste:hover {
-      transform: translateY(-1px);
+    .btn-primary:active {
+      transform: translateY(0);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.14);
     }
 
     .btn-primary:disabled {
       opacity: 0.68;
       cursor: default;
       transform: none;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+    }
+
+    .btn-secondary {
+      border-radius: 999px;
+      border: 1px solid #dad3cc;
+      background: rgba(248,244,241,0.9);
+      padding: 12px 14px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-sub);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(6px);
+    }
+
+    body.theme-dark .btn-secondary {
+      background: rgba(37,38,43,0.9);
+      border-color: #383a40;
+    }
+
+    .btn-secondary:hover {
+      background: #f2ece6;
+      border-color: #cfc5ba;
+      transform: translateY(-1px);
+    }
+
+    body.theme-dark .btn-secondary:hover {
+      background: #2b2c32;
+      border-color: #444751;
+    }
+
+    .btn-copy-all {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px dashed #c9ddd4;
+      background: linear-gradient(135deg, #f7fcfa, #eef8f4);
+      padding: 11px 14px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #3f6f60;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.18s ease;
+      box-shadow: 0 8px 18px rgba(133,184,166,0.08);
+      margin-top: 6px;
+    }
+
+    .btn-copy-all:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(133,184,166,0.12);
+    }
+
+    body.theme-dark .btn-copy-all {
+      background: linear-gradient(135deg, #223831, #273a35);
+      border-color: #45685b;
+      color: #d8efe6;
     }
 
     .btn-primary .spinner {
@@ -761,7 +814,7 @@
       height: 14px;
       border-radius: 999px;
       border: 2px solid rgba(255,255,255,0.6);
-      border-top-color: #fff;
+      border-top-color: rgba(255,255,255,1);
       animation: spin 0.7s linear infinite;
     }
 
@@ -770,28 +823,13 @@
     }
 
     .warn-text {
+      margin-top: 4px;
+      font-size: 0.76rem;
+      color: var(--warning);
       display: flex;
       align-items: flex-start;
       gap: 6px;
-      font-size: 0.76rem;
       line-height: 1.5;
-      color: var(--warning);
-      margin-top: 4px;
-    }
-
-    .warn-text--important {
-      margin-top: 6px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: #fff4e8;
-      border: 1px solid #f0c5a4;
-      box-shadow: 0 8px 20px rgba(240,197,164,0.16);
-      animation: warnPulse 1.4s ease-in-out infinite;
-    }
-
-    body.theme-dark .warn-text--important {
-      background: #3b2b22;
-      border-color: #f0c5a4;
     }
 
     .warn-text-icon {
@@ -799,22 +837,65 @@
       margin-top: 1px;
     }
 
+    .warn-text--important {
+      margin-top: 6px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: #fff4e7;
+      border: 1px solid #f0c2a0;
+      animation: warnPulse 1.4s ease-in-out infinite;
+      box-shadow: 0 8px 20px rgba(240,194,160,0.16);
+    }
+
+    body.theme-dark .warn-text--important {
+      background: #3b2a21;
+      border-color: #f0c2a0;
+    }
+
     .warn-text--important .warn-text-icon {
       animation: warnIconPulse 1.4s ease-in-out infinite;
     }
 
     @keyframes warnPulse {
-      0%,100% { box-shadow: 0 0 0 0 rgba(217,140,99,0.35); }
-      50% { box-shadow: 0 0 0 6px rgba(217,140,99,0); }
+      0%, 100% { box-shadow: 0 0 0 0 rgba(212, 125, 76, 0.35); }
+      50% { box-shadow: 0 0 0 6px rgba(212, 125, 76, 0); }
     }
 
     @keyframes warnIconPulse {
-      0%,100% { transform: translateY(0) scale(1); }
+      0%, 100% { transform: translateY(0) scale(1); }
       50% { transform: translateY(-1px) scale(1.12); }
     }
 
+    #status {
+      font-size: 0.8rem;
+      margin-top: 8px;
+      color: var(--text-sub);
+      line-height: 1.6;
+      min-height: 20px;
+      padding: 4px 2px 0;
+    }
+
+    .status-strong {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .status-error {
+      color: #e57373 !important;
+    }
+
+    .status-ok {
+      color: #2e7d32 !important;
+      text-shadow: 0 0 10px rgba(46,125,50,0.06);
+    }
+
+    .status-time {
+      font-size: 0.76rem;
+      color: var(--text-sub);
+    }
+
     #summary {
-      margin-top: 6px;
+      margin-top: 8px;
       font-size: 0.78rem;
     }
 
@@ -827,112 +908,88 @@
     .summary-pill {
       padding: 5px 10px;
       border-radius: 999px;
+      background: #f5efea;
+      border: 1px solid #e1d6ca;
       display: inline-flex;
       align-items: center;
       gap: 6px;
       white-space: nowrap;
-      border: 1px solid #e3d9cf;
-      background: #f7f1eb;
+      backdrop-filter: blur(6px);
       box-shadow: 0 4px 10px rgba(0,0,0,0.03);
     }
 
     .summary-pill--ok {
-      background: #e7f5ee;
-      border-color: #c3dfd0;
+      background: #e7f4ee;
+      border-color: #c3dfd2;
     }
 
     .summary-pill--used {
-      background: #f4efff;
-      border-color: #d6c9ff;
+      background: #f6f0ff;
+      border-color: #d9c8ff;
     }
 
     .summary-pill--nf {
-      background: #ffeceb;
-      border-color: #f1c3bf;
+      background: #ffe9e7;
+      border-color: #f5c5bf;
     }
 
     body.theme-dark .summary-pill {
-      background: #272a31;
-      border-color: #3b3f46;
+      background: #26272e;
+      border-color: #3a3c45;
     }
 
     body.theme-dark .summary-pill--ok {
       background: #223831;
-      border-color: #3f6d5d;
+      border-color: #3e6d5b;
     }
 
     body.theme-dark .summary-pill--used {
-      background: #2a2538;
-      border-color: #4a3f67;
+      background: #2a2637;
+      border-color: #4b3f65;
     }
 
     body.theme-dark .summary-pill--nf {
-      background: #382526;
-      border-color: #5b3633;
+      background: #3b2626;
+      border-color: #5a3631;
     }
 
-    #status {
-      min-height: 20px;
-      font-size: 0.8rem;
-      line-height: 1.6;
-      color: var(--text-sub);
-      padding: 4px 2px 0;
+    .used-info-card {
+      margin-top: 8px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: #eef3ff;
+      border: 1px solid #cbd7ff;
+      font-size: 0.78rem;
+      line-height: 1.5;
+      box-shadow: 0 10px 20px rgba(80,106,146,0.06);
     }
 
-    .status-strong {
+    body.theme-dark .used-info-card {
+      background: #23283a;
+      border-color: #404c7a;
+    }
+
+    .used-info-title {
       font-weight: 600;
-      color: var(--text-main);
-    }
-
-    .status-ok { color: var(--ok) !important; }
-    .status-error { color: var(--danger) !important; }
-    .status-time {
-      font-size: 0.76rem;
-      color: var(--text-sub);
-    }
-
-    .btn-copy-all {
-      width: 100%;
-      margin-top: 6px;
-      padding: 11px 14px;
-      border-radius: 16px;
-      border: 1px dashed #c9ddd4;
-      background: linear-gradient(135deg, #f8fcfa, #eef8f4);
-      color: #3f6f60;
-      font-size: 0.86rem;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      cursor: pointer;
-      box-shadow: 0 8px 18px rgba(134,187,168,0.08);
-      transition: all 0.18s ease;
-    }
-
-    .btn-copy-all:hover { transform: translateY(-1px); }
-
-    body.theme-dark .btn-copy-all {
-      background: linear-gradient(135deg, #223831, #273a35);
-      border-color: #45685b;
-      color: #d8efe6;
+      margin-bottom: 2px;
     }
 
     #results {
+      margin-top: 4px;
       display: flex;
       flex-direction: column;
       gap: 12px;
-      margin-top: 4px;
     }
 
     .result-item {
       border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(250,247,244,0.98));
+      border: 1px solid rgba(227,221,215,0.95);
       padding: 12px;
+      animation: fadeIn 0.35s ease-out;
       box-shadow: 0 12px 24px rgba(0,0,0,0.05);
       position: relative;
       overflow: hidden;
-      border: 1px solid rgba(227,221,215,0.95);
-      background: linear-gradient(180deg, rgba(255,255,255,0.97), rgba(250,247,244,0.99));
     }
 
     .result-item::before {
@@ -940,136 +997,52 @@
       position: absolute;
       top: -20px;
       right: -20px;
-      width: 84px;
-      height: 84px;
+      width: 80px;
+      height: 80px;
       border-radius: 999px;
+      background: radial-gradient(circle, rgba(133,184,166,0.16), transparent 70%);
       pointer-events: none;
-      opacity: 0.8;
     }
 
     body.theme-dark .result-item {
-      border-color: rgba(255,255,255,0.05);
-      background: linear-gradient(180deg, rgba(39,42,48,0.98), rgba(33,36,42,1));
+      background: linear-gradient(180deg, rgba(39,40,46,0.98), rgba(33,34,39,1));
+      border: 1px solid rgba(255,255,255,0.05);
       box-shadow: 0 10px 28px rgba(0,0,0,0.35);
     }
 
-    .result-item.status-success {
-      border-color: #c8e2d6;
-      background: linear-gradient(180deg, #fcfffd, #f0faf5);
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .result-item.status-success::before {
-      background: radial-gradient(circle, rgba(134,187,168,0.18), transparent 72%);
-    }
-
-    .result-item.status-used {
-      border-color: #ddd1ff;
-      background: linear-gradient(180deg, #fffefe, #f7f2ff);
-    }
-
-    .result-item.status-used::before {
-      background: radial-gradient(circle, rgba(128,97,194,0.16), transparent 72%);
-    }
-
-    .result-item.status-notfound {
-      border-color: #f1c8c3;
-      background: linear-gradient(180deg, #fffefe, #fff2f0);
-    }
-
-    .result-item.status-notfound::before {
-      background: radial-gradient(circle, rgba(201,99,99,0.14), transparent 72%);
-    }
-
-    body.theme-dark .result-item.status-success {
-      background: linear-gradient(180deg, #24342e, #223029);
-      border-color: #3d6757;
-    }
-
-    body.theme-dark .result-item.status-used {
-      background: linear-gradient(180deg, #2b2639, #272232);
-      border-color: #4b3f68;
-    }
-
-    body.theme-dark .result-item.status-notfound {
-      background: linear-gradient(180deg, #382627, #332223);
-      border-color: #5a3634;
-    }
-
-    .result-top {
+    .item-top-row {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 8px;
       margin-bottom: 8px;
       flex-wrap: wrap;
     }
 
-    .result-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.74rem;
-      font-weight: 700;
-      padding: 5px 10px;
-      border-radius: 999px;
-      white-space: nowrap;
-    }
-
-    .result-badge.ok {
-      background: #e7f5ee;
-      color: #3f8b62;
-      border: 1px solid #c4dfd1;
-    }
-
-    .result-badge.used {
-      background: #f3eeff;
-      color: #6a56b7;
-      border: 1px solid #d6c9ff;
-    }
-
-    .result-badge.nf {
-      background: #ffeaea;
-      color: #c45a5a;
-      border: 1px solid #f1c2c2;
-    }
-
-    body.theme-dark .result-badge.ok {
-      background: #294439;
-      color: #d4f0e2;
-      border-color: #42685a;
-    }
-
-    body.theme-dark .result-badge.used {
-      background: #332b49;
-      color: #e4ddff;
-      border-color: #4d4270;
-    }
-
-    body.theme-dark .result-badge.nf {
-      background: #4a2b2b;
-      color: #ffd3d3;
-      border-color: #694141;
-    }
-
     .item-header {
-      font-size: 0.76rem;
+      font-size: 0.75rem;
       letter-spacing: 0.1em;
       color: var(--text-sub);
       font-weight: 700;
     }
 
     .item-tag {
-      margin-left: 4px;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
       font-size: 0.72rem;
       padding: 4px 9px;
       border-radius: 999px;
-      white-space: nowrap;
       background: #f1f7ff;
       border: 1px solid #d3e2f7;
       color: #506a92;
+      margin-left: 4px;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
 
     body.theme-dark .item-tag {
@@ -1079,224 +1052,61 @@
     }
 
     .item-body {
+      font-size: 0.92rem;
+      line-height: 1.72;
+      color: var(--text-main);
+      white-space: pre-wrap;
+      margin-bottom: 10px;
       padding: 12px;
       border-radius: 14px;
       background: linear-gradient(135deg, #fffdfa, #f8f5f1);
       border: 1px solid #eee5db;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
-      font-size: 0.92rem;
-      line-height: 1.7;
-      white-space: pre-wrap;
-      color: var(--text-main);
-      margin-bottom: 10px;
     }
 
     body.theme-dark .item-body {
-      background: linear-gradient(135deg, #2a2d33, #24272d);
-      border-color: #3a3d45;
+      background: linear-gradient(135deg, #2a2b31, #24252b);
+      border-color: #3a3c45;
     }
 
     .btn-copy {
       width: 100%;
-      padding: 10px;
+      padding: 10px 10px;
       border-radius: 14px;
       border: 1px solid #e3ddd5;
-      background: #fff;
-      color: var(--text-main);
+      background: #ffffff;
       font-size: 0.8rem;
       font-weight: 700;
+      color: var(--text-main);
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
-      cursor: pointer;
       transition: all 0.15s ease;
       position: relative;
       overflow: hidden;
     }
 
-    .btn-copy:hover {
-      transform: translateY(-1px);
-      border-color: var(--accent);
-      background: #f4faf7;
-    }
-
     body.theme-dark .btn-copy {
-      background: #282b31;
-      border-color: #3b3f46;
+      background: #26272d;
+      border-color: #3b3d45;
       color: #f2f3f6;
     }
 
-    body.theme-dark .btn-copy:hover {
-      background: #2b3336;
-      border-color: #9ed3c1;
-    }
-
-    .history-card,
-    .faq-card,
-    .contact-card {
-      background: var(--glass);
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.56);
-      box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255,255,255,0.7);
-      backdrop-filter: blur(14px);
-      padding: 14px;
-    }
-
-    body.theme-dark .history-card,
-    body.theme-dark .faq-card,
-    body.theme-dark .contact-card {
-      border-color: rgba(255,255,255,0.06);
-      box-shadow: 0 18px 38px rgba(0,0,0,0.46), inset 0 1px 0 rgba(255,255,255,0.04);
-    }
-
-    .section-title {
-      font-size: 0.94rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 10px;
-    }
-
-    .section-title .dot {
-      width: 20px;
-      height: 20px;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--accent-soft);
-      font-size: 0.8rem;
-    }
-
-    .history-empty,
-    .faq-empty {
-      font-size: 0.8rem;
-      color: var(--text-sub);
-      line-height: 1.5;
-    }
-
-    .history-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .history-item {
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.72);
-      border: 1px solid #ece2d9;
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      align-items: center;
-    }
-
-    body.theme-dark .history-item {
-      background: rgba(38,41,47,0.86);
-      border-color: #393d45;
-    }
-
-    .history-meta {
-      min-width: 0;
-    }
-
-    .history-title {
-      font-size: 0.82rem;
-      font-weight: 700;
-      margin-bottom: 2px;
-    }
-
-    .history-sub {
-      font-size: 0.72rem;
-      color: var(--text-sub);
-      line-height: 1.4;
-    }
-
-    .faq-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .faq-item {
-      border-radius: 14px;
-      background: rgba(255,255,255,0.74);
-      border: 1px solid #ece2d9;
-      overflow: hidden;
-    }
-
-    body.theme-dark .faq-item {
-      background: rgba(38,41,47,0.86);
-      border-color: #393d45;
-    }
-
-    .faq-q {
-      width: 100%;
-      border: none;
-      background: transparent;
-      text-align: left;
-      color: var(--text-main);
-      font-family: inherit;
-      font-size: 0.82rem;
-      font-weight: 700;
-      padding: 12px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .faq-a {
-      display: none;
-      padding: 0 12px 12px;
-      font-size: 0.78rem;
-      color: var(--text-sub);
-      line-height: 1.6;
-    }
-
-    .faq-item.open .faq-a {
-      display: block;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
-    .contact-btn {
-      padding: 12px;
-      border-radius: 16px;
-      border: 1px solid #e4dbd2;
-      background: rgba(255,255,255,0.78);
-      color: var(--text-main);
-      font-weight: 700;
-      font-size: 0.82rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.16s ease;
-    }
-
-    .contact-btn:hover {
+    .btn-copy:hover {
+      border-color: var(--accent);
+      background: #f4faf7;
       transform: translateY(-1px);
     }
 
-    body.theme-dark .contact-btn {
-      background: rgba(38,41,47,0.86);
-      border-color: #393d45;
-      color: #f3f4f6;
+    body.theme-dark .btn-copy:hover {
+      border-color: #9dd4c1;
+      background: #283036;
     }
 
     .footer {
-      margin-top: 2px;
+      margin-top: 4px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -1318,13 +1128,33 @@
     }
 
     body.theme-dark .support-pill {
-      background: rgba(22,24,28,0.95);
-      border-color: #343840;
+      background: rgba(22,23,27,0.95);
+      border-color: #34363f;
+    }
+
+    .support-pill span:first-child {
+      font-weight: 600;
+      color: #7d7a76;
+    }
+
+    body.theme-dark .support-pill span:first-child {
+      color: #d0d3da;
     }
 
     .copyright {
       letter-spacing: 0.18em;
       text-transform: uppercase;
+    }
+
+    .shake {
+      animation: shake 0.4s;
+      border-color: var(--danger) !important;
+    }
+
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
     }
 
     .toast {
@@ -1358,7 +1188,7 @@
     .tip-bubble {
       position: fixed;
       left: 14px;
-      bottom: 82px;
+      bottom: 68px;
       max-width: 270px;
       padding: 10px 12px;
       border-radius: 16px;
@@ -1400,181 +1230,53 @@
       transform: translateY(0);
     }
 
-    .sticky-bar {
-      position: fixed;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 14px;
-      width: min(500px, calc(100vw - 20px));
-      padding: 8px;
-      border-radius: 22px;
-      background: rgba(255,255,255,0.86);
-      border: 1px solid rgba(255,255,255,0.65);
-      box-shadow: 0 16px 30px rgba(0,0,0,0.12);
-      backdrop-filter: blur(14px);
-      z-index: 8000;
-    }
-
-    body.theme-dark .sticky-bar {
-      background: rgba(27,29,34,0.9);
-      border-color: rgba(255,255,255,0.06);
-      box-shadow: 0 18px 32px rgba(0,0,0,0.5);
-    }
-
-    .sticky-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 8px;
-    }
-
-    .sticky-btn {
-      border: none;
-      border-radius: 16px;
-      padding: 12px 10px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(244,249,246,0.96));
-      color: var(--text-main);
-      font-weight: 700;
-      font-size: 0.78rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: all 0.16s ease;
-      white-space: nowrap;
-    }
-
-    .sticky-btn:hover {
-      transform: translateY(-1px);
-    }
-
-    body.theme-dark .sticky-btn {
-      background: linear-gradient(135deg, #2a2d33, #25282d);
-      color: #f2f4f7;
-    }
-
-    .sticky-btn.primary {
-      background: linear-gradient(135deg, #8bc1ad, #74a792);
-      color: #fff;
-    }
-
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.35);
-      backdrop-filter: blur(6px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 10000;
-      padding: 18px;
-    }
-
-    .modal-backdrop.show {
-      display: flex;
-    }
-
-    .modal-card {
-      width: 100%;
-      max-width: 360px;
-      border-radius: 24px;
-      padding: 20px 18px 18px;
-      background: rgba(255,255,255,0.94);
-      border: 1px solid rgba(255,255,255,0.66);
-      box-shadow: 0 22px 50px rgba(0,0,0,0.18);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    body.theme-dark .modal-card {
-      background: rgba(31,34,39,0.96);
-      border-color: rgba(255,255,255,0.06);
-    }
-
-    .modal-icon {
-      width: 70px;
-      height: 70px;
-      border-radius: 999px;
-      margin: 0 auto 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      background: linear-gradient(135deg, #e9f5ef, #fff3ea);
-      box-shadow: 0 10px 24px rgba(134,187,168,0.16);
-    }
-
-    body.theme-dark .modal-icon {
-      background: linear-gradient(135deg, #244036, #3a3028);
-    }
-
-    .modal-title {
-      font-size: 1.08rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .modal-desc {
-      font-size: 0.84rem;
-      color: var(--text-sub);
-      line-height: 1.6;
-      margin-bottom: 14px;
-    }
-
-    .modal-btn {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 16px;
-      background: linear-gradient(135deg, #8bc1ad, #74a792);
-      color: #fff;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .shake {
-      animation: shake 0.4s;
-      border-color: var(--danger) !important;
-    }
-
-    @keyframes shake {
-      0%,100% { transform: translateX(0); }
-      25% { transform: translateX(-5px); }
-      75% { transform: translateX(5px); }
+    .tip-bubble-emoji {
+      margin-right: 4px;
     }
 
     @media (max-width: 480px) {
       .app {
-        padding: 10px 12px 120px;
+        padding: 10px 12px 14px;
       }
 
-      .brand-title { font-size: 1.2rem; }
-      .brand-sub { font-size: 0.72rem; }
+      .card {
+        padding: 16px 14px 14px;
+      }
 
       .tip-bubble {
         left: 10px;
         right: 10px;
         max-width: none;
       }
+
+      .brand-title {
+        font-size: 1.2rem;
+      }
+
+      .brand-sub {
+        font-size: 0.74rem;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
       .bg-orb,
-      .badge-dot,
-      .card-desc,
       .code-meter-bar::after,
       .btn-primary::before,
+      .logo-circle.success-bounce,
       .warn-text--important,
       .warn-text--important .warn-text-icon,
+      .badge-dot,
       .loading-overlay::after,
-      .logo-circle.success-bounce {
+      .card-desc {
         animation: none !important;
       }
 
-      * {
+      .card,
+      .btn-primary,
+      .btn-secondary,
+      .btn-copy,
+      .theme-toggle {
         transition: none !important;
-        scroll-behavior: auto !important;
       }
     }
   </style>
@@ -1601,30 +1303,15 @@
           </div>
           <div class="brand-text">
             <div class="brand-title">426 SHOP</div>
-            <div class="brand-sub">AUTO DELIVERY 24/7</div>
+            <div class="brand-sub">PREMIUM ACCESS</div>
           </div>
         </div>
         <div class="header-right">
           <div class="badge">
             <span class="badge-dot"></span>
-            <span>ส่งอัตโนมัติ 24 ชั่วโมง</span>
+            <span>ระบบออนไลน์</span>
           </div>
           <button class="theme-toggle" id="themeToggle" type="button" aria-label="สลับโหมดกลางคืน">🌙</button>
-        </div>
-      </div>
-
-      <div class="stats-row">
-        <div class="stat-card">
-          <div class="stat-num">24 ชม.</div>
-          <div class="stat-label">เปิดรับตลอดเวลา</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">10–30 วิ</div>
-          <div class="stat-label">เวลาส่งเฉลี่ย</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">อัตโนมัติ</div>
-          <div class="stat-label">ไม่ต้องรอแอดมิน</div>
         </div>
       </div>
 
@@ -1669,14 +1356,11 @@
       </div>
 
       <div class="btn-row">
-        <button class="btn-paste" id="btnPaste" type="button">
-          <span>📋</span><span>วาง</span>
-        </button>
         <button class="btn-primary" id="btnRedeem" type="button">
           <span>รับสินค้า</span><span>↗</span>
         </button>
         <button class="btn-secondary" id="btnClear" type="button">
-          <span>ล้าง</span>
+          <span>ล้างทั้งหมด</span>
         </button>
       </div>
 
@@ -1691,59 +1375,6 @@
       <div id="results"></div>
     </main>
 
-    <section class="history-card">
-      <div class="section-title">
-        <span class="dot">🕘</span>
-        <span>ประวัติล่าสุดในเครื่องนี้</span>
-      </div>
-      <div id="historyBox" class="history-empty">ยังไม่มีประวัติการรับสินค้าในเครื่องนี้</div>
-    </section>
-
-    <section class="faq-card">
-      <div class="section-title">
-        <span class="dot">❔</span>
-        <span>คำถามที่พบบ่อย</span>
-      </div>
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-q" type="button">
-            <span>กดรับสินค้าแล้วไม่ได้รหัส ต้องทำยังไง?</span>
-            <span>＋</span>
-          </button>
-          <div class="faq-a">อย่าเพิ่งรีเฟรชหน้า แคปหน้าจอผลลัพธ์ แล้วส่งให้แอดมินตรวจสอบได้เลยค่ะ</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" type="button">
-            <span>วางหลายโค้ดพร้อมกันได้ไหม?</span>
-            <span>＋</span>
-          </button>
-          <div class="faq-a">ได้ค่ะ แนะนำ 1 บรรทัดต่อ 1 โค้ด และสูงสุดประมาณ 5 โค้ดต่อครั้งเพื่อความเสถียร</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" type="button">
-            <span>ถ้าขึ้นว่าใช้แล้ว แปลว่าอะไร?</span>
-            <span>＋</span>
-          </button>
-          <div class="faq-a">หมายถึงโค้ดนั้นถูกใช้งานไปก่อนหน้านี้แล้ว ระบบจะแจ้งเวลาและข้อมูลเดิมให้ดูประกอบ</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact-card">
-      <div class="section-title">
-        <span class="dot">💬</span>
-        <span>ช่วยเหลือ / ติดต่อร้าน</span>
-      </div>
-      <div class="contact-grid">
-        <a class="contact-btn" id="contactAdminBtn" href="https://t.me/467dlpti" target="_blank" rel="noopener noreferrer">
-          <span>💬</span><span>ติดต่อแอดมิน</span>
-        </a>
-        <button class="contact-btn" id="sendResultBtn" type="button">
-          <span>📨</span><span>ส่งผลลัพธ์ให้แอดมิน</span>
-        </button>
-      </div>
-    </section>
-
     <footer class="footer">
       <div class="support-pill">
         <span>Support</span>
@@ -1753,78 +1384,38 @@
     </footer>
   </div>
 
-  <div class="sticky-bar">
-    <div class="sticky-grid">
-      <button class="sticky-btn" id="stickyPaste" type="button">
-        <span>📋</span><span>วาง</span>
-      </button>
-      <button class="sticky-btn primary" id="stickyRedeem" type="button">
-        <span>⚡</span><span>รับสินค้า</span>
-      </button>
-      <button class="sticky-btn" id="stickyCopyAll" type="button">
-        <span>🧾</span><span>คัดลอกทั้งหมด</span>
-      </button>
-    </div>
-  </div>
-
   <div id="toast" class="toast">คัดลอกข้อความแล้ว</div>
 
   <div id="tipBubble" class="tip-bubble">
-    <span>💡</span>
+    <span class="tip-bubble-emoji">💡</span>
     <span id="tipText">1 บรรทัดต่อ 1 โค้ด ใช้งานง่ายสุดค่ะ</span>
-  </div>
-
-  <div class="modal-backdrop" id="successModal">
-    <div class="modal-card">
-      <div class="modal-icon">🎉</div>
-      <div class="modal-title" id="modalTitle">รับสินค้าเรียบร้อย</div>
-      <div class="modal-desc" id="modalDesc">ระบบส่งข้อมูลให้แล้ว สามารถคัดลอกรายละเอียดด้านล่างได้เลยค่ะ</div>
-      <button class="modal-btn" id="closeModalBtn" type="button">ตกลง</button>
-    </div>
   </div>
 
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const MAX_CODES = 5;
-    const HISTORY_KEY = "shop426_recent_history_v2";
-    const SUPPORT_HANDLE = "@467dlpti";
-    const SUPPORT_LINK = "https://t.me/467dlpti";
 
     const btnRedeem = document.getElementById("btnRedeem");
     const btnClear = document.getElementById("btnClear");
-    const btnPaste = document.getElementById("btnPaste");
-    const stickyRedeem = document.getElementById("stickyRedeem");
-    const stickyPaste = document.getElementById("stickyPaste");
-    const stickyCopyAll = document.getElementById("stickyCopyAll");
-    const sendResultBtn = document.getElementById("sendResultBtn");
-
     const codeInput = document.getElementById("codeInput");
     const lineInfo = document.getElementById("lineInfo");
-    const meterText = document.getElementById("meterText");
-    const codeMeterBar = document.getElementById("codeMeterBar");
     const status = document.getElementById("status");
+    const resultsDiv = document.getElementById("results");
     const summaryDiv = document.getElementById("summary");
     const copyAllWrap = document.getElementById("copyAllWrap");
-    const resultsDiv = document.getElementById("results");
-    const historyBox = document.getElementById("historyBox");
     const toast = document.getElementById("toast");
-    const tipText = document.getElementById("tipText");
-    const tipBubble = document.getElementById("tipBubble");
-    const themeToggle = document.getElementById("themeToggle");
     const logoCircle = document.querySelector(".logo-circle");
-    const mainCard = document.getElementById("mainCard");
+    const themeToggle = document.getElementById("themeToggle");
+    const tipBubble = document.getElementById("tipBubble");
+    const tipText = document.getElementById("tipText");
+    const codeMeterBar = document.getElementById("codeMeterBar");
+    const meterText = document.getElementById("meterText");
     const fxCanvas = document.getElementById("fxCanvas");
     const fxCtx = fxCanvas ? fxCanvas.getContext("2d") : null;
-
-    const successModal = document.getElementById("successModal");
-    const closeModalBtn = document.getElementById("closeModalBtn");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalDesc = document.getElementById("modalDesc");
+    const mainCard = document.getElementById("mainCard");
 
     let isLoading = false;
     let latestCopyAllText = "";
-    let latestShareText = "";
-    let latestResultStats = { success: 0, used: 0, nf: 0 };
 
     function setStepState(state) {
       const steps = document.querySelectorAll(".step-pill");
@@ -1879,113 +1470,102 @@
 
     themeToggle.addEventListener("click", () => {
       const nowDark = !document.body.classList.contains("theme-dark");
-      const next = nowDark ? "dark" : "light";
-      applyTheme(next);
-      localStorage.setItem("theme", next);
+      const newTheme = nowDark ? "dark" : "light";
+      applyTheme(newTheme);
+      localStorage.setItem("theme", newTheme);
     });
 
     const tips = [
       "วางหลายโค้ดได้ สูงสุดประมาณ 5 โค้ด/ครั้ง ✨",
       "1 บรรทัดต่อ 1 โค้ด ใช้งานง่ายสุดค่ะ",
       "กดรับสินค้าแล้ว อย่าเพิ่งรีเฟรชหน้านะคะ",
-      "คัดลอกทั้งหมดได้ในปุ่มเดียว สะดวกขึ้นเยอะ 💖",
-      "ถ้ามีปัญหา สามารถส่งผลลัพธ์ให้แอดมินได้ทันที 💬"
+      "คัดลอกทั้งหมดได้ในปุ่มเดียว สะดวกขึ้นเยอะ 💖"
     ];
+
     let tipIndex = 0;
 
     function rotateTip() {
       if (!tipBubble || !tipText) return;
       tipBubble.classList.remove("show");
       setTimeout(() => {
-        tipText.textContent = tips[tipIndex] || tips[0];
+        const text = tips[tipIndex] || tips[0];
+        tipText.textContent = text;
         tipBubble.classList.add("show");
         tipIndex = (tipIndex + 1) % tips.length;
-      }, 180);
+      }, 200);
     }
+
+    setTimeout(rotateTip, 700);
+    setInterval(rotateTip, 12000);
+
+    btnRedeem.addEventListener("click", redeem);
+    btnClear.addEventListener("click", clearForm);
+    codeInput.addEventListener("input", updateLineInfo);
+
+    window.addEventListener("beforeunload", (e) => {
+      if (!isLoading) return;
+      e.preventDefault();
+      e.returnValue = "ระบบกำลังตรวจสอบโค้ดของคุณอยู่ หากออกจากหน้านี้อาจทำให้ไม่ได้รับโค้ดนะคะ";
+    });
+
+    window.addEventListener("load", () => {
+      setStepState("idle");
+      updateLineInfo();
+      codeInput.focus();
+    });
 
     function updateLineInfo() {
       const raw = codeInput.value || "";
       const lines = raw.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
-      const deduped = [...new Set(lines)];
+      const count = lines.length;
 
-      if (!lines.length) {
+      if (!count) {
         lineInfo.textContent = "สูงสุด ~5 โค้ด/ครั้ง";
-        meterText.textContent = `0 / ${MAX_CODES}`;
-        codeMeterBar.style.width = "0%";
+        if (meterText) meterText.textContent = `0 / ${MAX_CODES}`;
+        if (codeMeterBar) codeMeterBar.style.width = "0%";
         return;
       }
 
-      let text = `โค้ดที่กรอก: ${lines.length} รายการ`;
-      if (deduped.length !== lines.length) {
-        text += ` • ซ้ำ ${lines.length - deduped.length} รายการ`;
-      }
-      if (lines.length > MAX_CODES) {
-        text += ` • ใช้เฉพาะ ${MAX_CODES} รายการแรก`;
+      let text = `โค้ดที่กรอก: ${count} รายการ`;
+      if (count > MAX_CODES) {
+        text += ` (ระบบจะใช้เฉพาะ ${MAX_CODES} รายการแรก)`;
       }
       lineInfo.textContent = text;
 
-      const capped = Math.min(lines.length, MAX_CODES);
-      meterText.textContent = `${capped} / ${MAX_CODES}`;
-      codeMeterBar.style.width = ((capped / MAX_CODES) * 100) + "%";
-      codeMeterBar.style.filter = lines.length > MAX_CODES ? "saturate(0.8)" : "none";
+      const capped = Math.min(count, MAX_CODES);
+      const percent = (capped / MAX_CODES) * 100;
+
+      if (meterText) meterText.textContent = `${capped} / ${MAX_CODES}`;
+      if (codeMeterBar) {
+        codeMeterBar.style.width = percent + "%";
+        codeMeterBar.style.filter = count > MAX_CODES ? "saturate(0.8)" : "none";
+      }
     }
 
     function clearForm() {
       codeInput.value = "";
       status.innerHTML = "";
-      status.classList.remove("status-ok", "status-error");
+      status.classList.remove("status-error", "status-ok");
+      resultsDiv.innerHTML = "";
       summaryDiv.innerHTML = "";
       copyAllWrap.innerHTML = "";
-      resultsDiv.innerHTML = "";
       latestCopyAllText = "";
-      latestShareText = "";
-      latestResultStats = { success: 0, used: 0, nf: 0 };
-      updateLineInfo();
+      lineInfo.textContent = "สูงสุด ~5 โค้ด/ครั้ง";
+      if (meterText) meterText.textContent = `0 / ${MAX_CODES}`;
+      if (codeMeterBar) codeMeterBar.style.width = "0%";
       setStepState("idle");
       codeInput.focus();
       showToast("ล้างข้อมูลแล้ว");
     }
 
-    async function pasteFromClipboard() {
-      try {
-        if (!navigator.clipboard) throw new Error("clipboard unavailable");
-        const text = await navigator.clipboard.readText();
-        if (!text) {
-          showToast("ไม่มีข้อความในคลิปบอร์ด");
-          return;
-        }
-        codeInput.value = text.trim();
-        updateLineInfo();
-        showToast("วางข้อความแล้ว");
-      } catch (e) {
-        showToast("ไม่สามารถวางอัตโนมัติได้");
-      }
-    }
-
-    function normalizeInput(raw) {
-      const lines = raw.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
-      const seen = new Set();
-      const unique = [];
-      for (const line of lines) {
-        if (!seen.has(line)) {
-          seen.add(line);
-          unique.push(line);
-        }
-      }
-      return {
-        lines,
-        unique,
-        finalLines: unique.slice(0, MAX_CODES)
-      };
-    }
-
     function redeem() {
       const inputContainer = document.querySelector(".input-field");
-      const raw = codeInput.value.trim();
+      const raw = codeInput.value;
+      const input = raw.trim();
 
-      status.classList.remove("status-ok", "status-error");
+      status.classList.remove("status-error", "status-ok");
 
-      if (!raw) {
+      if (!input) {
         inputContainer.classList.add("shake");
         status.innerHTML = "กรุณากรอกรหัสก่อนนะคะ";
         status.classList.add("status-error");
@@ -1994,31 +1574,27 @@
         return;
       }
 
-      const parsed = normalizeInput(codeInput.value);
-      let preWarn = [];
-
-      if (parsed.lines.length !== parsed.unique.length) {
-        preWarn.push(`พบโค้ดซ้ำ ${parsed.lines.length - parsed.unique.length} รายการ ระบบตัดซ้ำให้อัตโนมัติ`);
-      }
-      if (parsed.unique.length > MAX_CODES) {
-        preWarn.push(`ระบบจะใช้เฉพาะ ${MAX_CODES} รายการแรกค่ะ`);
+      const lines = raw.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+      let preWarn = "";
+      if (lines.length > MAX_CODES) {
+        preWarn = `คุณกรอกโค้ด ${lines.length} รายการ ระบบจะใช้เฉพาะ ${MAX_CODES} รายการแรกค่ะ`;
       }
 
       isLoading = true;
       mainCard.classList.add("loading");
       setStepState("loading");
       btnRedeem.disabled = true;
-      stickyRedeem.disabled = true;
-      btnRedeem.innerHTML = `<span class="spinner"></span><span>กำลังตรวจสอบ…</span>`;
-      stickyRedeem.innerHTML = `⏳ กำลังตรวจ`;
+      btnRedeem.innerHTML = `
+        <span class="spinner"></span>
+        <span>กำลังตรวจสอบ…</span>
+      `;
 
-      status.style.color = "#8c857f";
+      status.style.color = "#8b8680";
       status.innerHTML =
         "ระบบกำลังตรวจสอบรหัสของคุณ...<br>" +
         "<span style='font-size:0.78rem;color:#c27a5a;'>หลังจากส่งโค้ดแล้ว ห้ามรีเฟรช/ปิดหน้านี้จนกว่าผลจะขึ้นครบค่ะ</span>" +
-        (preWarn.length ? "<br><span style='font-size:0.78rem;color:#c27a5a;'>" + preWarn.join(" • ") + "</span>" : "");
+        (preWarn ? "<br><span style='font-size:0.78rem;color:#c27a5a;'>" + preWarn + "</span>" : "");
 
-      const input = parsed.finalLines.join("\n");
       const url = API_URL + "?action=redeem&text=" + encodeURIComponent(input);
       const startTime = performance.now();
 
@@ -2032,9 +1608,7 @@
           isLoading = false;
           mainCard.classList.remove("loading");
           btnRedeem.disabled = false;
-          stickyRedeem.disabled = false;
           btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
-          stickyRedeem.innerHTML = `<span>⚡</span><span>รับสินค้า</span>`;
           renderResult(data, elapsedSec);
         })
         .catch((err) => {
@@ -2042,9 +1616,7 @@
           isLoading = false;
           mainCard.classList.remove("loading");
           btnRedeem.disabled = false;
-          stickyRedeem.disabled = false;
           btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
-          stickyRedeem.innerHTML = `<span>⚡</span><span>รับสินค้า</span>`;
           status.innerHTML = "เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้งค่ะ";
           status.classList.add("status-error");
           setStepState("error");
@@ -2052,66 +1624,12 @@
         });
     }
 
-    function renderSummary(successCount, usedCount, nfCount) {
-      const chips = [];
-      if (successCount) chips.push(`<div class="summary-pill summary-pill--ok">✅ สำเร็จ ${successCount} โค้ด</div>`);
-      if (usedCount) chips.push(`<div class="summary-pill summary-pill--used">♻️ ใช้แล้ว ${usedCount} โค้ด</div>`);
-      if (nfCount) chips.push(`<div class="summary-pill summary-pill--nf">❌ ไม่พบ ${nfCount} โค้ด</div>`);
-      summaryDiv.innerHTML = chips.length ? `<div class="summary-row">${chips.join("")}</div>` : "";
-    }
-
-    function buildCopyAll(items, used, notFound) {
-      const chunks = [];
-
-      if (items && items.length) {
-        items.forEach((item) => {
-          chunks.push(`CODE: ${item.code}${item.appName ? ` (${item.appName})` : ""}\n${item.reply || ""}`);
-        });
-      }
-
-      if (used && used.length) {
-        used.forEach((u) => {
-          let line = `USED CODE: ${u.code}`;
-          if (u.app) line += ` (${u.app})`;
-          if (u.usedAt) line += ` — ${u.usedAt}`;
-          chunks.push(line);
-        });
-      }
-
-      if (notFound && notFound.length) {
-        chunks.push("NOT FOUND:\n" + notFound.join("\n"));
-      }
-
-      return chunks.join("\n\n--------------------\n\n");
-    }
-
-    function buildShareText(res) {
-      const parts = ["ผลลัพธ์จาก 426 SHOP"];
-      if (res.message) parts.push(res.message);
-
-      if (res.items && res.items.length) {
-        parts.push(`สำเร็จ ${res.items.length} โค้ด`);
-      }
-      if (res.used && res.used.length) {
-        parts.push(`ใช้แล้ว ${res.used.length} โค้ด`);
-      }
-      if (res.notFound && res.notFound.length) {
-        parts.push(`ไม่พบ ${res.notFound.length} โค้ด`);
-      }
-
-      const details = buildCopyAll(res.items || [], res.used || [], res.notFound || []);
-      if (details) parts.push("\n" + details);
-
-      return parts.join("\n");
-    }
-
     function renderResult(res, elapsedSec) {
       resultsDiv.innerHTML = "";
       summaryDiv.innerHTML = "";
       copyAllWrap.innerHTML = "";
       latestCopyAllText = "";
-      latestShareText = "";
-      status.classList.remove("status-ok", "status-error");
+      status.classList.remove("status-error", "status-ok");
 
       if (!res) {
         status.innerHTML = "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งค่ะ";
@@ -2123,15 +1641,32 @@
       const successCount = (res.items && res.items.length) || 0;
       const usedCount = (res.used && res.used.length) || 0;
       const nfCount = (res.notFound && res.notFound.length) || 0;
-      latestResultStats = { success: successCount, used: usedCount, nf: nfCount };
-
-      renderSummary(successCount, usedCount, nfCount);
 
       if (res.ok && successCount > 0) {
         setStepState("done");
-        triggerSuccessAnimation(successCount);
+        triggerSuccessAnimation();
       } else {
         setStepState("error");
+      }
+
+      const chips = [];
+      if (successCount) chips.push(`<div class="summary-pill summary-pill--ok">✅ สำเร็จ ${successCount} โค้ด</div>`);
+      if (usedCount) chips.push(`<div class="summary-pill summary-pill--used">♻️ ใช้แล้ว ${usedCount} โค้ด</div>`);
+      if (nfCount) chips.push(`<div class="summary-pill summary-pill--nf">❌ ไม่พบ ${nfCount} โค้ด</div>`);
+
+      if (chips.length) {
+        summaryDiv.innerHTML = `<div class="summary-row">${chips.join("")}</div>`;
+      }
+
+      if (usedCount >= 2) {
+        summaryDiv.innerHTML += `
+          <div class="used-info-card">
+            <div class="used-info-title">พบโค้ดที่ถูกใช้งานแล้วหลายรายการ</div>
+            <div class="used-info-text">
+              หากไม่แน่ใจว่าโค้ดถูกใช้ไปแล้วจริงไหม แนะนำให้แคปหน้าจอนี้ แล้วส่งให้แอดมินช่วยตรวจสอบนะคะ 💬
+            </div>
+          </div>
+        `;
       }
 
       let msgLines = [];
@@ -2162,36 +1697,31 @@
       status.innerHTML = msgLines.join("<br>");
       status.classList.add(res.ok ? "status-ok" : "status-error");
 
-      latestCopyAllText = buildCopyAll(res.items || [], res.used || [], res.notFound || []);
-      latestShareText = buildShareText(res);
-
-      if (latestCopyAllText) {
-        copyAllWrap.innerHTML = `
-          <button class="btn-copy-all" id="btnCopyAll" type="button">
-            <span>📋</span>
-            <span>คัดลอกทั้งหมด</span>
-          </button>
-        `;
-        document.getElementById("btnCopyAll").addEventListener("click", () => {
-          copyText(latestCopyAllText);
-          showToast("คัดลอกทั้งหมดแล้ว ✨");
-        });
+      if (res.ok && successCount > 0) {
+        codeInput.value = "";
+        updateLineInfo();
       }
+
+      const copyAllChunks = [];
 
       if (res.items && res.items.length > 0) {
         res.items.forEach((item, index) => {
           const card = document.createElement("div");
-          card.className = "result-item status-success";
+          card.className = "result-item";
           const safeReplyText = encodeURIComponent(item.reply || "");
           const appTag = (item.appName || "").trim();
 
+          const sectionText = `CODE: ${item.code}${appTag ? ` (${appTag})` : ""}\n${item.reply || ""}`;
+          copyAllChunks.push(sectionText);
+
           card.innerHTML = `
-            <div class="result-top">
-              <div class="item-header">
-                REDEEMED CODE: ${item.code}
-                ${appTag ? `<span class="item-tag">✨ ${appTag}</span>` : ""}
+            <div class="item-top-row">
+              <div>
+                <div class="item-header">
+                  REDEEMED CODE: ${item.code}
+                  ${appTag ? `<span class="item-tag">✨ ${appTag}</span>` : ""}
+                </div>
               </div>
-              <div class="result-badge ok">✅ สำเร็จ</div>
             </div>
             <div class="item-body">${item.reply || ""}</div>
             <button class="btn-copy" data-text="${safeReplyText}">
@@ -2200,6 +1730,7 @@
           `;
 
           resultsDiv.appendChild(card);
+
           card.animate(
             [
               { opacity: 0, transform: "translateY(16px) scale(0.98)" },
@@ -2213,153 +1744,40 @@
             }
           );
         });
-      }
 
-      if (res.used && res.used.length > 0) {
-        res.used.forEach((u, idx) => {
-          const card = document.createElement("div");
-          card.className = "result-item status-used";
-          let detail = `โค้ดนี้ถูกใช้งานไปแล้ว`;
-          if (u.app) detail += `\nสินค้า: ${u.app}`;
-          if (u.usedAt) detail += `\nเวลาใช้งานเดิม: ${u.usedAt}`;
+        latestCopyAllText = copyAllChunks.join("\n\n--------------------\n\n");
 
-          card.innerHTML = `
-            <div class="result-top">
-              <div class="item-header">
-                USED CODE: ${u.code}
-                ${u.app ? `<span class="item-tag">♻️ ${u.app}</span>` : ""}
-              </div>
-              <div class="result-badge used">♻️ ใช้แล้ว</div>
-            </div>
-            <div class="item-body">${detail}</div>
-          `;
-          resultsDiv.appendChild(card);
-          card.animate(
-            [
-              { opacity: 0, transform: "translateY(16px) scale(0.98)" },
-              { opacity: 1, transform: "translateY(0) scale(1)" }
-            ],
-            {
-              duration: 320,
-              delay: (successCount + idx) * 60,
-              easing: "cubic-bezier(.2,.8,.2,1)",
-              fill: "both"
-            }
-          );
+        copyAllWrap.innerHTML = `
+          <button class="btn-copy-all" id="btnCopyAll" type="button">
+            <span>📋</span>
+            <span>คัดลอกทั้งหมด</span>
+          </button>
+        `;
+
+        const btnCopyAll = document.getElementById("btnCopyAll");
+        if (btnCopyAll) {
+          btnCopyAll.addEventListener("click", () => {
+            copyText(latestCopyAllText);
+            showToast("คัดลอกทั้งหมดแล้ว ✨");
+          });
+        }
+
+        document.querySelectorAll(".btn-copy").forEach((btn) => {
+          btn.addEventListener("click", () => copyToClipboard(btn));
         });
-      }
 
-      if (res.notFound && res.notFound.length > 0) {
-        res.notFound.forEach((code, idx) => {
-          const card = document.createElement("div");
-          card.className = "result-item status-notfound";
-          card.innerHTML = `
-            <div class="result-top">
-              <div class="item-header">NOT FOUND: ${code}</div>
-              <div class="result-badge nf">❌ ไม่พบ</div>
-            </div>
-            <div class="item-body">ไม่พบโค้ดนี้ในระบบ กรุณาตรวจสอบการคัดลอก หรือส่งผลลัพธ์นี้ให้แอดมินช่วยตรวจสอบต่อได้เลยค่ะ</div>
-          `;
-          resultsDiv.appendChild(card);
-          card.animate(
-            [
-              { opacity: 0, transform: "translateY(16px) scale(0.98)" },
-              { opacity: 1, transform: "translateY(0) scale(1)" }
-            ],
-            {
-              duration: 320,
-              delay: (successCount + usedCount + idx) * 60,
-              easing: "cubic-bezier(.2,.8,.2,1)",
-              fill: "both"
-            }
-          );
-        });
-      }
-
-      document.querySelectorAll(".btn-copy").forEach((btn) => {
-        btn.addEventListener("click", () => copyToClipboard(btn));
-      });
-
-      if (res.ok && successCount > 0) {
-        codeInput.value = "";
-        updateLineInfo();
-      }
-
-      saveHistory({
-        time: new Date().toLocaleString("th-TH"),
-        success: successCount,
-        used: usedCount,
-        nf: nfCount,
-        message: res.message || ""
-      });
-
-      renderHistory();
-
-      if (resultsDiv.innerHTML) {
         window.scrollTo({ top: resultsDiv.offsetTop - 70, behavior: "smooth" });
       }
     }
 
-    function copyText(text) {
-      if (!navigator.clipboard) {
-        const temp = document.createElement("textarea");
-        temp.value = text;
-        document.body.appendChild(temp);
-        temp.select();
-        document.execCommand("copy");
-        document.body.removeChild(temp);
-      } else {
-        navigator.clipboard.writeText(text);
+    function triggerSuccessAnimation() {
+      if (logoCircle) {
+        logoCircle.classList.remove("success-bounce");
+        void logoCircle.offsetWidth;
+        logoCircle.classList.add("success-bounce");
       }
-    }
-
-    function copyToClipboard(btn) {
-      const text = decodeURIComponent(btn.getAttribute("data-text") || "");
-      copyText(text);
-
-      const old = btn.innerHTML;
-      btn.innerHTML = "คัดลอกแล้ว ✓";
-      btn.style.background = "#f4faf7";
-      btn.style.borderColor = "#86bba8";
-
-      setTimeout(() => {
-        btn.innerHTML = old;
-        btn.style.background = "";
-        btn.style.borderColor = "";
-      }, 1800);
-
-      showToast("คัดลอกรายละเอียดแล้ว ✨");
-    }
-
-    function showToast(message) {
-      toast.textContent = message;
-      toast.classList.add("show");
-      clearTimeout(showToast._timer);
-      showToast._timer = setTimeout(() => toast.classList.remove("show"), 2000);
-    }
-
-    function openSuccessModal(successCount) {
-      modalTitle.textContent = "รับสินค้าเรียบร้อย 🎉";
-      modalDesc.textContent = `ระบบส่งสำเร็จ ${successCount} โค้ดแล้ว สามารถคัดลอกข้อมูลหรือส่งผลลัพธ์ให้แอดมินต่อได้เลยค่ะ`;
-      successModal.classList.add("show");
-    }
-
-    function closeSuccessModal() {
-      successModal.classList.remove("show");
-    }
-
-    closeModalBtn.addEventListener("click", closeSuccessModal);
-    successModal.addEventListener("click", (e) => {
-      if (e.target === successModal) closeSuccessModal();
-    });
-
-    function triggerSuccessAnimation(successCount) {
-      logoCircle.classList.remove("success-bounce");
-      void logoCircle.offsetWidth;
-      logoCircle.classList.add("success-bounce");
       launchConfetti();
       showToast("รับสินค้าเรียบร้อย ✨");
-      openSuccessModal(successCount);
     }
 
     function resizeFxCanvas() {
@@ -2375,11 +1793,14 @@
       }
     }
 
+    window.addEventListener("resize", resizeFxCanvas);
+    resizeFxCanvas();
+
     function launchConfetti() {
       if (!fxCanvas || !fxCtx) return;
 
       const particles = [];
-      const colors = ["#86bba8", "#f2cdb2", "#f6da7c", "#ffffff", "#cdeade", "#ffd6d6"];
+      const colors = ["#85b8a6", "#f0c7a7", "#f6d97a", "#ffffff", "#c6eadb", "#ffd7d7"];
 
       for (let i = 0; i < 120; i++) {
         particles.push({
@@ -2417,6 +1838,7 @@
         });
 
         frame++;
+
         for (let i = particles.length - 1; i >= 0; i--) {
           if (particles[i].life <= 0 || particles[i].y > window.innerHeight + 30) {
             particles.splice(i, 1);
@@ -2433,140 +1855,44 @@
       draw();
     }
 
-    function addRippleEffect(button) {
-      if (!button) return;
-      button.addEventListener("click", function (e) {
-        const circle = document.createElement("span");
-        const diameter = Math.max(this.clientWidth, this.clientHeight);
-        const rect = this.getBoundingClientRect();
-
-        circle.style.width = circle.style.height = diameter + "px";
-        circle.style.position = "absolute";
-        circle.style.left = (e.clientX - rect.left - diameter / 2) + "px";
-        circle.style.top = (e.clientY - rect.top - diameter / 2) + "px";
-        circle.style.borderRadius = "999px";
-        circle.style.background = "rgba(255,255,255,0.35)";
-        circle.style.transform = "scale(0)";
-        circle.style.pointerEvents = "none";
-        circle.style.animation = "rippleFx 0.6s ease-out forwards";
-
-        this.appendChild(circle);
-        setTimeout(() => circle.remove(), 650);
-      });
-    }
-
-    const rippleStyle = document.createElement("style");
-    rippleStyle.textContent = `
-      @keyframes rippleFx {
-        to {
-          transform: scale(2.8);
-          opacity: 0;
-        }
-      }
-    `;
-    document.head.appendChild(rippleStyle);
-
-    function saveHistory(item) {
-      try {
-        const current = JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]");
-        current.unshift(item);
-        const trimmed = current.slice(0, 5);
-        localStorage.setItem(HISTORY_KEY, JSON.stringify(trimmed));
-      } catch (e) {}
-    }
-
-    function renderHistory() {
-      try {
-        const items = JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]");
-        if (!items.length) {
-          historyBox.className = "history-empty";
-          historyBox.textContent = "ยังไม่มีประวัติการรับสินค้าในเครื่องนี้";
-          return;
-        }
-
-        historyBox.className = "history-list";
-        historyBox.innerHTML = items.map((item) => `
-          <div class="history-item">
-            <div class="history-meta">
-              <div class="history-title">${item.message || "ทำรายการล่าสุด"}</div>
-              <div class="history-sub">${item.time}</div>
-            </div>
-            <div class="history-sub">✅ ${item.success} • ♻️ ${item.used} • ❌ ${item.nf}</div>
-          </div>
-        `).join("");
-      } catch (e) {
-        historyBox.className = "history-empty";
-        historyBox.textContent = "ไม่สามารถโหลดประวัติได้";
+    function copyText(text) {
+      if (!navigator.clipboard) {
+        const temp = document.createElement("textarea");
+        temp.value = text;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand("copy");
+        document.body.removeChild(temp);
+      } else {
+        navigator.clipboard.writeText(text);
       }
     }
 
-    function sendResultToAdmin() {
-      if (!latestShareText) {
-        showToast("ยังไม่มีผลลัพธ์สำหรับส่ง");
-        return;
-      }
-      const text = encodeURIComponent(latestShareText + `\n\nติดต่อร้าน: ${SUPPORT_HANDLE}`);
-      window.open(`${SUPPORT_LINK}?text=${text}`, "_blank");
+    function copyToClipboard(btn) {
+      const text = decodeURIComponent(btn.getAttribute("data-text") || "");
+      copyText(text);
+
+      const originalText = btn.innerHTML;
+      btn.innerHTML = "คัดลอกแล้ว ✓";
+      btn.style.background = "#f4faf7";
+      btn.style.borderColor = "#85b8a6";
+
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.style.background = "";
+        btn.style.borderColor = "";
+      }, 1800);
+
+      showToast("คัดลอกรายละเอียดแล้ว ✨");
     }
 
-    document.querySelectorAll(".faq-q").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const item = btn.closest(".faq-item");
-        const isOpen = item.classList.contains("open");
-        document.querySelectorAll(".faq-item").forEach((x) => {
-          x.classList.remove("open");
-          const icon = x.querySelector(".faq-q span:last-child");
-          if (icon) icon.textContent = "＋";
-        });
-        if (!isOpen) {
-          item.classList.add("open");
-          const icon = item.querySelector(".faq-q span:last-child");
-          if (icon) icon.textContent = "－";
-        }
-      });
-    });
-
-    btnRedeem.addEventListener("click", redeem);
-    stickyRedeem.addEventListener("click", redeem);
-
-    btnClear.addEventListener("click", clearForm);
-    btnPaste.addEventListener("click", pasteFromClipboard);
-    stickyPaste.addEventListener("click", pasteFromClipboard);
-
-    stickyCopyAll.addEventListener("click", () => {
-      if (!latestCopyAllText) {
-        showToast("ยังไม่มีข้อมูลให้คัดลอก");
-        return;
-      }
-      copyText(latestCopyAllText);
-      showToast("คัดลอกทั้งหมดแล้ว ✨");
-    });
-
-    sendResultBtn.addEventListener("click", sendResultToAdmin);
-
-    codeInput.addEventListener("input", updateLineInfo);
-
-    window.addEventListener("beforeunload", (e) => {
-      if (!isLoading) return;
-      e.preventDefault();
-      e.returnValue = "ระบบกำลังตรวจสอบโค้ดของคุณอยู่ หากออกจากหน้านี้อาจทำให้ไม่ได้รับโค้ดนะคะ";
-    });
-
-    window.addEventListener("resize", resizeFxCanvas);
-
-    window.addEventListener("load", () => {
-      setStepState("idle");
-      updateLineInfo();
-      resizeFxCanvas();
-      renderHistory();
-      rotateTip();
-      setInterval(rotateTip, 12000);
-      codeInput.focus();
-    });
-
-    document.getElementById("contactAdminBtn").setAttribute("href", SUPPORT_LINK);
-
-    [btnRedeem, btnClear, btnPaste, stickyRedeem, stickyPaste, stickyCopyAll, themeToggle, sendResultBtn].forEach(addRippleEffect);
+    function showToast(message) {
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(showToast._timer);
+      showToast._timer = setTimeout(() => toast.classList.remove("show"), 2000);
+    }
   </script>
 </body>
 </html>
