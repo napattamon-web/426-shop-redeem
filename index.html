@@ -352,6 +352,36 @@
       margin: 0;
     }
 
+    .hero-tip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      max-width: 100%;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      color: var(--text-sub);
+      font-size: .76rem;
+      line-height: 1.45;
+      box-shadow: 0 8px 18px rgba(0,0,0,.04);
+    }
+
+    .hero-tip-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--brand);
+      flex-shrink: 0;
+      animation: pulseDot 1.8s ease-in-out infinite;
+    }
+
+    body.theme-dark .hero-tip {
+      background: rgba(35,37,43,.92);
+      border-color: #3a3f49;
+    }
+
     .hero-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -949,7 +979,7 @@
       width: 100%;
       max-width: 310px;
       border-radius: 24px;
-      padding: 20px 18px 18px;
+      padding: 22px 18px 18px;
       text-align: center;
       background: var(--card-strong);
       border: 1px solid var(--line);
@@ -958,87 +988,35 @@
 
     body.theme-dark .loading-box { border-color: #3b4049; }
 
-    .loading-cute-wrap {
-      width: 110px;
-      height: 96px;
-      margin: 0 auto 12px;
+    .loading-spinner-wrap {
+      width: 92px;
+      height: 92px;
+      margin: 0 auto 14px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .loading-orbit {
-      position: relative;
-      width: 84px;
-      height: 84px;
-      animation: orbitBob 2s ease-in-out infinite;
-    }
-
-    .orbit-ring {
-      position: absolute;
-      inset: 0;
+    .loading-spinner-circle {
+      width: 62px;
+      height: 62px;
       border-radius: 999px;
-      border: 2px dashed rgba(185, 143, 115, 0.45);
+      border: 5px solid rgba(185, 143, 115, 0.18);
+      border-top-color: var(--brand);
+      border-right-color: var(--brand);
+      animation: circleSpin 0.95s linear infinite;
+      box-shadow: 0 0 0 8px rgba(185, 143, 115, 0.05);
     }
 
-    .ring-a {
-      animation: spinSlow 5s linear infinite;
+    body.theme-dark .loading-spinner-circle {
+      border-color: rgba(181, 140, 114, 0.16);
+      border-top-color: var(--brand);
+      border-right-color: var(--brand);
+      box-shadow: 0 0 0 8px rgba(181, 140, 114, 0.05);
     }
 
-    .ring-b {
-      inset: 8px;
-      border-color: rgba(214, 125, 134, 0.4);
-      animation: spinReverse 4s linear infinite;
-    }
-
-    .cute-center-star {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 42px;
-      height: 42px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(180deg, #fff7ef, #f2dfcf);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.75),
-        0 8px 18px rgba(185,143,115,.16);
-      color: #b98f73;
-      font-size: 1.15rem;
-      animation: starPulse 1.2s ease-in-out infinite;
-    }
-
-    body.theme-dark .cute-center-star {
-      background: linear-gradient(180deg, #43342d, #342823);
-      color: #f1d3c0;
-    }
-
-    .float-heart {
-      position: absolute;
-      font-size: .9rem;
-      color: #d67d86;
-      opacity: .9;
-    }
-
-    .heart-a {
-      top: -4px;
-      right: 6px;
-      animation: floatMini 1.8s ease-in-out infinite;
-    }
-
-    .heart-b {
-      bottom: 4px;
-      left: -2px;
-      animation: floatMini 2.1s ease-in-out infinite .2s;
-    }
-
-    .heart-c {
-      top: 24px;
-      left: -10px;
-      animation: floatMini 1.9s ease-in-out infinite .4s;
+    @keyframes circleSpin {
+      to { transform: rotate(360deg); }
     }
 
     .loading-title {
@@ -1116,31 +1094,6 @@
       border-radius: inherit;
       background: linear-gradient(90deg, #d9b8a0, #b98f73, #ead8cb);
       animation: progressMove 1.4s ease-in-out infinite;
-    }
-
-    @keyframes orbitBob {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-4px) scale(1.03); }
-    }
-
-    @keyframes spinSlow {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    @keyframes spinReverse {
-      from { transform: rotate(360deg); }
-      to { transform: rotate(0deg); }
-    }
-
-    @keyframes starPulse {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); }
-      50% { transform: translate(-50%, -50%) scale(1.08); }
-    }
-
-    @keyframes floatMini {
-      0%, 100% { transform: translateY(0) scale(1); opacity: .75; }
-      50% { transform: translateY(-6px) scale(1.12); opacity: 1; }
     }
 
     @keyframes dotBounce {
@@ -1497,51 +1450,6 @@
       text-align: center;
     }
 
-    .tip-bubble {
-      position: fixed;
-      left: 14px;
-      bottom: 26px;
-      max-width: 290px;
-      padding: 10px 12px;
-      border-radius: 18px;
-      background: rgba(255,255,255,.96);
-      border: 1px solid rgba(0,0,0,.06);
-      box-shadow: 0 10px 26px rgba(0,0,0,.14);
-      font-size: .78rem;
-      color: var(--text-sub);
-      opacity: 0;
-      transform: translateY(8px);
-      pointer-events: none;
-      transition: all .25s ease;
-      backdrop-filter: blur(10px);
-      z-index: 9000;
-    }
-
-    body.theme-dark .tip-bubble {
-      background: rgba(18,20,24,.98);
-      border-color: rgba(255,255,255,.06);
-      box-shadow: 0 12px 30px rgba(0,0,0,.8);
-    }
-
-    .tip-bubble.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .tip-bubble::after {
-      content: "";
-      position: absolute;
-      left: 18px;
-      bottom: -6px;
-      border-width: 6px 6px 0 6px;
-      border-style: solid;
-      border-color: rgba(255,255,255,.96) transparent transparent transparent;
-    }
-
-    body.theme-dark .tip-bubble::after {
-      border-color: rgba(18,20,24,.98) transparent transparent transparent;
-    }
-
     .toast {
       position: fixed;
       left: 50%;
@@ -1594,10 +1502,9 @@
       .topbar-actions { align-items: flex-end; }
       .brand-title { font-size: 1.28rem; }
       .hero-title { font-size: 1.08rem; }
-      .tip-bubble {
-        left: 10px;
-        right: 10px;
-        max-width: none;
+      .hero-tip {
+        width: 100%;
+        border-radius: 16px;
       }
       .floating-admin {
         right: 10px;
@@ -1637,14 +1544,11 @@
       .orb,
       .status-dot,
       .live-text,
+      .hero-tip-dot,
       .meter-bar::after,
       .primary-btn::before,
       .primary-btn.ready-pulse,
-      .loading-orbit,
-      .ring-a,
-      .ring-b,
-      .cute-center-star,
-      .float-heart,
+      .loading-spinner-circle,
       .loading-dots span,
       .loading-progress-bar,
       .loading-warning,
@@ -1756,6 +1660,11 @@
           <div class="card-inner">
             <h1 class="hero-title">ระบบรับสินค้าอัตโนมัติสำหรับลูกค้า</h1>
 
+            <div class="hero-tip" id="heroTip">
+              <span class="hero-tip-dot"></span>
+              <span id="heroTipText">วางหลายโค้ดได้ในครั้งเดียว สูงสุดประมาณ 5 โค้ด/ครั้ง</span>
+            </div>
+
             <div class="hero-strip">
               <div class="hero-strip-item">
                 <div class="hero-strip-icon">⚡</div>
@@ -1792,15 +1701,8 @@
         <section class="card redeem-card glass" id="mainCard">
           <div class="loading-overlay" id="loadingOverlay">
             <div class="loading-box">
-              <div class="loading-cute-wrap">
-                <div class="loading-orbit">
-                  <div class="orbit-ring ring-a"></div>
-                  <div class="orbit-ring ring-b"></div>
-                  <div class="cute-center-star">✦</div>
-                  <div class="float-heart heart-a">♥</div>
-                  <div class="float-heart heart-b">♥</div>
-                  <div class="float-heart heart-c">♥</div>
-                </div>
+              <div class="loading-spinner-wrap">
+                <div class="loading-spinner-circle"></div>
               </div>
 
               <div class="loading-title">รอสักครู่นะคะ</div>
@@ -1932,12 +1834,11 @@
   </div>
 
   <div id="toast" class="toast">คัดลอกข้อความแล้ว</div>
-  <div id="tipBubble" class="tip-bubble">💡 วางหลายโค้ดได้ในครั้งเดียว สูงสุดประมาณ 5 โค้ด/ครั้ง</div>
 
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const MAX_CODES = 5;
-    const HISTORY_KEY = "redeem_history_v22";
+    const HISTORY_KEY = "redeem_history_v23";
 
     const btnRedeem = document.getElementById("btnRedeem");
     const btnClear = document.getElementById("btnClear");
@@ -1954,7 +1855,7 @@
     const toast = document.getElementById("toast");
     const logoCircle = document.getElementById("logoCircle");
     const themeToggle = document.getElementById("themeToggle");
-    const tipBubble = document.getElementById("tipBubble");
+    const heroTipText = document.getElementById("heroTipText");
     const codeMeterBar = document.getElementById("codeMeterBar");
     const meterText = document.getElementById("meterText");
     const mainCard = document.getElementById("mainCard");
@@ -2038,15 +1939,12 @@
 
     let tipIndex = 0;
     function rotateTip() {
-      tipBubble.classList.remove("show");
-      setTimeout(() => {
-        tipBubble.textContent = "💡 " + (tips[tipIndex] || tips[0]);
-        tipBubble.classList.add("show");
-        tipIndex = (tipIndex + 1) % tips.length;
-      }, 180);
+      if (!heroTipText) return;
+      heroTipText.textContent = tips[tipIndex] || tips[0];
+      tipIndex = (tipIndex + 1) % tips.length;
     }
 
-    setTimeout(rotateTip, 700);
+    rotateTip();
     setInterval(rotateTip, 12000);
 
     setInterval(() => {
