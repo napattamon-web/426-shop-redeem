@@ -354,14 +354,6 @@
       margin: 0;
     }
 
-    .hero-desc {
-      margin: 0;
-      color: var(--text-sub);
-      font-size: .84rem;
-      line-height: 1.58;
-      max-width: 680px;
-    }
-
     .hero-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -822,7 +814,36 @@
       line-height: 1.55;
     }
 
-    body.theme-dark .notice { border-color: #805844; }
+    body.theme-dark .notice {
+      border-color: #805844;
+    }
+
+    .notice-important {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      animation: noticeGlow 1.5s ease-in-out infinite;
+    }
+
+    .notice-icon {
+      flex-shrink: 0;
+      animation: noticeBlink 1s ease-in-out infinite;
+    }
+
+    .notice-text {
+      font-weight: 700;
+      animation: noticeBlink 1s ease-in-out infinite;
+    }
+
+    @keyframes noticeBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .45; }
+    }
+
+    @keyframes noticeGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(204, 147, 109, 0); }
+      50% { box-shadow: 0 0 0 6px rgba(204, 147, 109, 0.08); }
+    }
 
     .side-stack {
       display: grid;
@@ -1446,7 +1467,10 @@
       .meter-bar::after,
       .primary-btn::before,
       .loading-circle,
-      .bear-stars span {
+      .bear-stars span,
+      .notice-important,
+      .notice-icon,
+      .notice-text {
         animation: none !important;
       }
 
@@ -1540,7 +1564,6 @@
         <section class="card hero-card glass">
           <div class="card-inner">
             <h1 class="hero-title">ระบบรับสินค้าอัตโนมัติสำหรับลูกค้า</h1>
-            <p class="hero-desc">วางโค้ดจากแอดมิน แล้วให้ระบบตรวจสอบและแสดงรายละเอียดให้อัตโนมัติในหน้าเดียว พร้อมคัดลอกผลลัพธ์ได้สะดวก</p>
 
             <div class="hero-strip">
               <div class="hero-strip-item">
@@ -1636,8 +1659,9 @@
                 <button class="secondary-btn" id="btnClear" type="button">ล้างทั้งหมด</button>
               </div>
 
-              <div class="notice">
-                ⚠️ หลังจากกด “รับสินค้า” แล้ว <strong>ห้ามรีเฟรช / ปิดหน้านี้เด็ดขาด</strong> จนกว่าจะได้รับรหัสครบ
+              <div class="notice notice-important">
+                <span class="notice-icon">⚠️</span>
+                <span class="notice-text">หลังจากกด “รับสินค้า” แล้ว ห้ามรีเฟรช / ปิดหน้านี้เด็ดขาด จนกว่าจะได้รับรหัสครบ</span>
               </div>
             </div>
 
@@ -1699,7 +1723,7 @@
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const MAX_CODES = 5;
-    const HISTORY_KEY = "redeem_history_v14";
+    const HISTORY_KEY = "redeem_history_v15";
 
     const btnRedeem = document.getElementById("btnRedeem");
     const btnClear = document.getElementById("btnClear");
