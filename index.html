@@ -899,6 +899,13 @@
       font-size: 0.78rem;
     }
 
+    .summary-top-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: start;
+    }
+
     .summary-row {
       display: flex;
       flex-wrap: wrap;
@@ -953,6 +960,75 @@
       border-color: #5a3631;
     }
 
+    .success-ring-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .success-ring-card {
+      width: 112px;
+      height: 112px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(248,245,241,0.98));
+      border: 1px solid #e9e2da;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    body.theme-dark .success-ring-card {
+      background: linear-gradient(180deg, rgba(39,40,46,0.98), rgba(33,34,39,1));
+      border-color: #393c44;
+    }
+
+    .success-ring {
+      --percent: 0;
+      width: 68px;
+      height: 68px;
+      border-radius: 999px;
+      background:
+        conic-gradient(var(--accent) calc(var(--percent) * 1%), #e9e2da 0);
+      display: grid;
+      place-items: center;
+      position: relative;
+      box-shadow: 0 8px 16px rgba(133,184,166,0.18);
+    }
+
+    body.theme-dark .success-ring {
+      background:
+        conic-gradient(var(--accent) calc(var(--percent) * 1%), #343842 0);
+    }
+
+    .success-ring::before {
+      content: "";
+      width: 50px;
+      height: 50px;
+      border-radius: 999px;
+      background: var(--card);
+      position: absolute;
+    }
+
+    body.theme-dark .success-ring::before {
+      background: #1f2024;
+    }
+
+    .success-ring-value {
+      position: relative;
+      z-index: 1;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .success-ring-label {
+      font-size: 0.74rem;
+      color: var(--text-sub);
+      font-weight: 600;
+    }
+
     .used-info-card {
       margin-top: 8px;
       padding: 10px 12px;
@@ -972,6 +1048,46 @@
     .used-info-title {
       font-weight: 600;
       margin-bottom: 2px;
+    }
+
+    .admin-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn-admin-share,
+    .btn-copy-problem {
+      flex: 1;
+      min-width: 160px;
+      border-radius: 14px;
+      border: 1px solid #d8dcd8;
+      background: linear-gradient(135deg, #ffffff, #f6faf8);
+      padding: 11px 14px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #46675c;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.18s ease;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+    }
+
+    .btn-admin-share:hover,
+    .btn-copy-problem:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
+
+    body.theme-dark .btn-admin-share,
+    body.theme-dark .btn-copy-problem {
+      background: linear-gradient(135deg, #27312e, #22262a);
+      border-color: #3e4b46;
+      color: #d8efe6;
     }
 
     #results {
@@ -1234,6 +1350,24 @@
       margin-right: 4px;
     }
 
+    @media (max-width: 420px) {
+      .summary-top-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .success-ring-wrap {
+        justify-content: flex-start;
+      }
+
+      .success-ring-card {
+        width: 100%;
+        height: auto;
+        padding: 12px;
+        flex-direction: row;
+        justify-content: flex-start;
+      }
+    }
+
     @media (max-width: 480px) {
       .app {
         padding: 10px 12px 14px;
@@ -1372,6 +1506,7 @@
       <div id="summary"></div>
       <div id="status"></div>
       <div id="copyAllWrap"></div>
+      <div id="adminActionsWrap"></div>
       <div id="results"></div>
     </main>
 
@@ -1403,6 +1538,7 @@
     const resultsDiv = document.getElementById("results");
     const summaryDiv = document.getElementById("summary");
     const copyAllWrap = document.getElementById("copyAllWrap");
+    const adminActionsWrap = document.getElementById("adminActionsWrap");
     const toast = document.getElementById("toast");
     const logoCircle = document.querySelector(".logo-circle");
     const themeToggle = document.getElementById("themeToggle");
@@ -1479,7 +1615,8 @@
       "วางหลายโค้ดได้ สูงสุดประมาณ 5 โค้ด/ครั้ง ✨",
       "1 บรรทัดต่อ 1 โค้ด ใช้งานง่ายสุดค่ะ",
       "กดรับสินค้าแล้ว อย่าเพิ่งรีเฟรชหน้านะคะ",
-      "คัดลอกทั้งหมดได้ในปุ่มเดียว สะดวกขึ้นเยอะ 💖"
+      "คัดลอกทั้งหมดได้ในปุ่มเดียว สะดวกขึ้นเยอะ 💖",
+      "แชร์สรุปให้แอดมินได้ทันทีจากปุ่มด้านล่าง 📩"
     ];
 
     let tipIndex = 0;
@@ -1549,6 +1686,7 @@
       resultsDiv.innerHTML = "";
       summaryDiv.innerHTML = "";
       copyAllWrap.innerHTML = "";
+      adminActionsWrap.innerHTML = "";
       latestCopyAllText = "";
       lineInfo.textContent = "สูงสุด ~5 โค้ด/ครั้ง";
       if (meterText) meterText.textContent = `0 / ${MAX_CODES}`;
@@ -1624,10 +1762,84 @@
         });
     }
 
+    function buildAdminSummary(res) {
+      const successCount = (res.items && res.items.length) || 0;
+      const usedCount = (res.used && res.used.length) || 0;
+      const nfCount = (res.notFound && res.notFound.length) || 0;
+
+      const lines = [];
+      lines.push("สรุปผลการตรวจสอบโค้ด");
+      lines.push(`สำเร็จ: ${successCount}`);
+      lines.push(`ใช้แล้ว: ${usedCount}`);
+      lines.push(`ไม่พบ: ${nfCount}`);
+
+      if (res.items && res.items.length) {
+        lines.push("");
+        lines.push("รายการที่สำเร็จ:");
+        res.items.forEach((item) => {
+          let line = `- ${item.code}`;
+          if (item.appName) line += ` (${item.appName})`;
+          lines.push(line);
+        });
+      }
+
+      if (res.used && res.used.length) {
+        lines.push("");
+        lines.push("รายการที่ใช้แล้ว:");
+        res.used.forEach((u) => {
+          let line = `- ${u.code}`;
+          if (u.app) line += ` (${u.app})`;
+          if (u.usedAt) line += ` — ${u.usedAt}`;
+          lines.push(line);
+        });
+      }
+
+      if (res.notFound && res.notFound.length) {
+        lines.push("");
+        lines.push("รายการที่ไม่พบ:");
+        res.notFound.forEach((c) => lines.push(`- ${c}`));
+      }
+
+      lines.push("");
+      lines.push("รบกวนแอดมินช่วยตรวจสอบเพิ่มเติมให้หน่อยค่ะ");
+
+      return lines.join("\n");
+    }
+
+    function buildProblemSummary(res) {
+      const lines = [];
+      const hasUsed = res.used && res.used.length;
+      const hasNotFound = res.notFound && res.notFound.length;
+
+      if (!hasUsed && !hasNotFound) return "";
+
+      lines.push("รายการที่ต้องการให้แอดมินช่วยตรวจสอบ");
+
+      if (hasUsed) {
+        lines.push("");
+        lines.push("โค้ดที่ใช้แล้ว:");
+        res.used.forEach((u) => {
+          let line = `- ${u.code}`;
+          if (u.app) line += ` (${u.app})`;
+          if (u.usedAt) line += ` — ${u.usedAt}`;
+          lines.push(line);
+        });
+      }
+
+      if (hasNotFound) {
+        lines.push("");
+        lines.push("โค้ดที่ไม่พบ:");
+        res.notFound.forEach((c) => lines.push(`- ${c}`));
+      }
+
+      return lines.join("\n");
+    }
+
     function renderResult(res, elapsedSec) {
       resultsDiv.innerHTML = "";
       summaryDiv.innerHTML = "";
       copyAllWrap.innerHTML = "";
+      adminActionsWrap.innerHTML = "";
       latestCopyAllText = "";
       status.classList.remove("status-error", "status-ok");
 
@@ -1641,6 +1853,8 @@
       const successCount = (res.items && res.items.length) || 0;
       const usedCount = (res.used && res.used.length) || 0;
       const nfCount = (res.notFound && res.notFound.length) || 0;
+      const totalChecked = successCount + usedCount + nfCount;
+      const successPercent = totalChecked > 0 ? Math.round((successCount / totalChecked) * 100) : 0;
 
       if (res.ok && successCount > 0) {
         setStepState("done");
@@ -1654,8 +1868,22 @@
       if (usedCount) chips.push(`<div class="summary-pill summary-pill--used">♻️ ใช้แล้ว ${usedCount} โค้ด</div>`);
       if (nfCount) chips.push(`<div class="summary-pill summary-pill--nf">❌ ไม่พบ ${nfCount} โค้ด</div>`);
 
-      if (chips.length) {
-        summaryDiv.innerHTML = `<div class="summary-row">${chips.join("")}</div>`;
+      if (chips.length || totalChecked > 0) {
+        summaryDiv.innerHTML = `
+          <div class="summary-top-grid">
+            <div>
+              <div class="summary-row">${chips.join("")}</div>
+            </div>
+            <div class="success-ring-wrap">
+              <div class="success-ring-card">
+                <div class="success-ring" style="--percent:${successPercent}">
+                  <div class="success-ring-value">${successPercent}%</div>
+                </div>
+                <div class="success-ring-label">Success</div>
+              </div>
+            </div>
+          </div>
+        `;
       }
 
       if (usedCount >= 2) {
@@ -1767,6 +1995,57 @@
         });
 
         window.scrollTo({ top: resultsDiv.offsetTop - 70, behavior: "smooth" });
+      }
+
+      const adminSummaryText = buildAdminSummary(res);
+      const problemSummaryText = buildProblemSummary(res);
+
+      adminActionsWrap.innerHTML = `
+        <div class="admin-actions">
+          <button class="btn-admin-share" id="btnAdminShare" type="button">
+            <span>📨</span>
+            <span>แชร์ให้แอดมิน</span>
+          </button>
+          ${
+            problemSummaryText
+              ? `
+              <button class="btn-copy-problem" id="btnCopyProblem" type="button">
+                <span>⚠️</span>
+                <span>คัดลอกรายการมีปัญหา</span>
+              </button>
+            `
+              : ""
+          }
+        </div>
+      `;
+
+      const btnAdminShare = document.getElementById("btnAdminShare");
+      if (btnAdminShare) {
+        btnAdminShare.addEventListener("click", async () => {
+          if (navigator.share) {
+            try {
+              await navigator.share({
+                title: "สรุปผลการตรวจสอบโค้ด",
+                text: adminSummaryText
+              });
+              showToast("แชร์สรุปให้แอดมินแล้ว ✨");
+            } catch (err) {
+              copyText(adminSummaryText);
+              showToast("คัดลอกข้อความสรุปแล้ว");
+            }
+          } else {
+            copyText(adminSummaryText);
+            showToast("คัดลอกข้อความสรุปแล้ว");
+          }
+        });
+      }
+
+      const btnCopyProblem = document.getElementById("btnCopyProblem");
+      if (btnCopyProblem) {
+        btnCopyProblem.addEventListener("click", () => {
+          copyText(problemSummaryText);
+          showToast("คัดลอกรายการมีปัญหาแล้ว");
+        });
       }
     }
 
