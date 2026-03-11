@@ -291,7 +291,7 @@
 
     .layout {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 280px;
+      grid-template-columns: minmax(0, 1fr) 240px;
       gap: 14px;
       align-items: start;
     }
@@ -299,7 +299,7 @@
     .main-col,
     .side-col {
       display: grid;
-      gap: 14px;
+      gap: 12px;
     }
 
     .card {
@@ -321,16 +321,17 @@
     .card-inner {
       position: relative;
       z-index: 1;
-      padding: 18px;
+      padding: 16px;
     }
 
     .hero-card .card-inner {
       display: grid;
-      gap: 14px;
+      gap: 10px;
+      padding: 14px 16px;
     }
 
     .hero-title {
-      font-size: 1.35rem;
+      font-size: 1.18rem;
       font-weight: 700;
       line-height: 1.25;
       margin: 0;
@@ -339,9 +340,9 @@
     .hero-desc {
       margin: 0;
       color: var(--text-sub);
-      font-size: .9rem;
-      line-height: 1.65;
-      max-width: 680px;
+      font-size: .84rem;
+      line-height: 1.6;
+      max-width: 620px;
     }
 
     .hero-strip {
@@ -351,11 +352,11 @@
     }
 
     .hero-strip-item {
-      border-radius: 18px;
-      padding: 12px;
+      border-radius: 16px;
+      padding: 10px;
       background: rgba(255,255,255,.74);
       border: 1px solid var(--line);
-      min-height: 68px;
+      min-height: 58px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -366,15 +367,15 @@
     }
 
     .hero-strip-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 13px;
+      width: 34px;
+      height: 34px;
+      border-radius: 11px;
       flex-shrink: 0;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       background: linear-gradient(135deg, rgba(233,216,203,.95), rgba(185,143,115,.22));
-      font-size: 1rem;
+      font-size: .95rem;
     }
 
     body.theme-dark .hero-strip-icon {
@@ -383,19 +384,15 @@
 
     .hero-strip-text strong {
       display: block;
-      font-size: .8rem;
+      font-size: .77rem;
       margin-bottom: 2px;
     }
 
     .hero-strip-text span {
       display: block;
-      font-size: .74rem;
+      font-size: .71rem;
       color: var(--text-sub);
-      line-height: 1.45;
-    }
-
-    .redeem-card {
-      min-height: 540px;
+      line-height: 1.4;
     }
 
     .redeem-head {
@@ -403,12 +400,12 @@
       justify-content: space-between;
       align-items: flex-start;
       gap: 12px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       flex-wrap: wrap;
     }
 
     .redeem-head-title {
-      font-size: 1.02rem;
+      font-size: 1rem;
       font-weight: 700;
       margin: 0 0 4px;
     }
@@ -416,7 +413,7 @@
     .redeem-head-desc {
       margin: 0;
       color: var(--text-sub);
-      font-size: .84rem;
+      font-size: .83rem;
       line-height: 1.55;
     }
 
@@ -507,9 +504,44 @@
       transform: translateX(120%);
     }
 
+    .mini-tools {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      gap: 6px;
+      z-index: 3;
+    }
+
+    .mini-tool-btn {
+      border: 1px solid #e4d7cb;
+      background: rgba(255,255,255,.92);
+      color: var(--brand-deep);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: .7rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 6px 14px rgba(0,0,0,.05);
+      transition: .18s ease;
+    }
+
+    .mini-tool-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    body.theme-dark .mini-tool-btn {
+      background: rgba(40,42,48,.96);
+      border-color: #4a4e59;
+      color: #ead6ca;
+    }
+
     textarea {
       width: 100%;
-      min-height: 210px;
+      min-height: 220px;
       resize: none;
       border: none;
       background: transparent;
@@ -517,7 +549,7 @@
       font-size: .98rem;
       color: var(--text-main);
       line-height: 1.58;
-      padding: 4px 0 0;
+      padding: 40px 0 0;
     }
 
     textarea::placeholder {
@@ -619,53 +651,10 @@
       to { transform: translateX(100%); }
     }
 
-    .tool-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-top: 10px;
-    }
-
-    .soft-btn,
-    .help-btn,
-    .copy-btn,
-    .history-btn {
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.82);
-      padding: 11px 12px;
-      font-size: .82rem;
-      font-weight: 700;
-      color: var(--text-main);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: .18s ease;
-    }
-
-    .soft-btn:hover,
-    .help-btn:hover,
-    .copy-btn:hover,
-    .history-btn:hover {
-      transform: translateY(-1px);
-    }
-
-    body.theme-dark .soft-btn,
-    body.theme-dark .help-btn,
-    body.theme-dark .copy-btn,
-    body.theme-dark .history-btn {
-      background: rgba(37,39,45,.92);
-      border-color: #3a3f49;
-      color: var(--text-main);
-    }
-
     .action-row {
       display: flex;
       gap: 8px;
-      margin-top: 10px;
+      margin-top: 12px;
     }
 
     .primary-btn {
@@ -773,43 +762,43 @@
       border-color: #805844;
     }
 
-    .side-stack {
-      display: grid;
-      gap: 14px;
+    .small-card .card-inner {
+      padding: 12px 13px;
     }
 
     .side-title {
-      font-size: .9rem;
+      font-size: .82rem;
       font-weight: 700;
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .help-grid {
       display: grid;
-      gap: 8px;
+      gap: 7px;
     }
 
     .help-btn {
       justify-content: flex-start;
-      padding-left: 14px;
-      min-height: 46px;
+      min-height: 40px;
+      padding: 10px 12px;
+      font-size: .78rem;
     }
 
     .status-list {
       display: grid;
-      gap: 8px;
+      gap: 7px;
     }
 
     .status-card {
-      border-radius: 18px;
-      padding: 12px;
+      border-radius: 15px;
+      padding: 10px;
       background: rgba(255,255,255,.74);
       border: 1px solid var(--line);
       display: flex;
-      gap: 9px;
+      gap: 8px;
       align-items: flex-start;
     }
 
@@ -818,14 +807,16 @@
     }
 
     .status-card-badge {
-      width: 34px;
-      height: 34px;
-      border-radius: 12px;
+      width: 28px;
+      height: 28px;
+      border-radius: 10px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
       background: linear-gradient(135deg, rgba(233,216,203,.95), rgba(185,143,115,.18));
+      font-size: .72rem;
+      font-weight: 700;
     }
 
     body.theme-dark .status-card-badge {
@@ -834,15 +825,15 @@
 
     .status-card-text strong {
       display: block;
-      font-size: .8rem;
-      margin-bottom: 2px;
+      font-size: .76rem;
+      margin-bottom: 1px;
     }
 
     .status-card-text span {
       display: block;
-      font-size: .74rem;
+      font-size: .7rem;
       color: var(--text-sub);
-      line-height: 1.5;
+      line-height: 1.4;
     }
 
     .loading-overlay {
@@ -1145,7 +1136,7 @@
 
     .history-empty {
       color: var(--text-sub);
-      font-size: .82rem;
+      font-size: .78rem;
     }
 
     .history-list {
@@ -1155,8 +1146,8 @@
     }
 
     .history-item {
-      border-radius: 18px;
-      padding: 10px 12px;
+      border-radius: 16px;
+      padding: 9px 10px;
       background: rgba(255,255,255,.72);
       border: 1px solid var(--line);
       display: flex;
@@ -1177,12 +1168,12 @@
     }
 
     .history-title {
-      font-size: .82rem;
+      font-size: .78rem;
       font-weight: 700;
     }
 
     .history-sub {
-      font-size: .74rem;
+      font-size: .71rem;
       color: var(--text-sub);
     }
 
@@ -1299,14 +1290,6 @@
       .layout {
         grid-template-columns: 1fr;
       }
-
-      .side-col {
-        order: 2;
-      }
-
-      .main-col {
-        order: 1;
-      }
     }
 
     @media (max-width: 760px) {
@@ -1317,29 +1300,20 @@
       .hero-strip {
         grid-template-columns: 1fr 1fr;
       }
-
-      .layout {
-        gap: 12px;
-      }
     }
 
     @media (max-width: 520px) {
-      .topbar-row,
-      .redeem-head {
-        align-items: flex-start;
-      }
-
-      .tool-row,
-      .copy-actions {
-        grid-template-columns: 1fr 1fr;
-      }
-
       .brand-title {
         font-size: 1.28rem;
       }
 
       .hero-title {
-        font-size: 1.14rem;
+        font-size: 1.08rem;
+      }
+
+      .tool-row,
+      .copy-actions {
+        grid-template-columns: 1fr 1fr;
       }
 
       .tip-bubble {
@@ -1357,25 +1331,15 @@
         display: grid;
         grid-template-columns: 1fr;
       }
-    }
 
-    @media (prefers-reduced-motion: reduce) {
-      .orb,
-      .status-dot,
-      .meter-bar::after,
-      .primary-btn::before,
-      .loading-circle {
-        animation: none !important;
+      .mini-tools {
+        position: static;
+        margin-bottom: 8px;
+        justify-content: flex-end;
       }
 
-      .icon-btn,
-      .soft-btn,
-      .help-btn,
-      .copy-btn,
-      .primary-btn,
-      .secondary-btn,
-      .history-btn {
-        transition: none !important;
+      textarea {
+        padding-top: 8px;
       }
     }
   </style>
@@ -1439,7 +1403,7 @@
                 <div class="hero-strip-icon">🔐</div>
                 <div class="hero-strip-text">
                   <strong>อ่านง่าย</strong>
-                  <span>แยกผลลัพธ์เป็นหมวดชัดเจน</span>
+                  <span>ผลลัพธ์แยกสถานะชัดเจน</span>
                 </div>
               </div>
               <div class="hero-strip-item">
@@ -1480,6 +1444,11 @@
               </div>
 
               <div class="input-box">
+                <div class="mini-tools">
+                  <button class="mini-tool-btn" id="btnPaste" type="button">📋 วางโค้ด</button>
+                  <button class="mini-tool-btn" id="btnDedup" type="button">🧹 ลบโค้ดซ้ำ</button>
+                </div>
+
                 <textarea id="codeInput" placeholder="เช่น NFXA1B2&#10;หรือ DSN9X3Y"></textarea>
 
                 <div class="input-meta">
@@ -1498,11 +1467,6 @@
                     <div class="meter-bar" id="codeMeterBar"></div>
                   </div>
                 </div>
-              </div>
-
-              <div class="tool-row">
-                <button class="soft-btn" id="btnPaste" type="button">📋 วางโค้ด</button>
-                <button class="soft-btn" id="btnDedup" type="button">🧹 ลบโค้ดซ้ำ</button>
               </div>
 
               <div class="action-row">
@@ -1534,7 +1498,7 @@
       </main>
 
       <aside class="side-col">
-        <section class="card glass">
+        <section class="card small-card glass">
           <div class="card-inner">
             <div class="side-title">ช่วยเหลือ</div>
             <div class="help-grid">
@@ -1545,36 +1509,36 @@
           </div>
         </section>
 
-        <section class="card glass">
+        <section class="card small-card glass">
           <div class="card-inner">
-            <div class="side-title">ขั้นตอนการใช้งาน</div>
+            <div class="side-title">ขั้นตอน</div>
             <div class="status-list">
               <div class="status-card" data-step-card="1">
                 <div class="status-card-badge">1</div>
                 <div class="status-card-text">
                   <strong>วางโค้ด</strong>
-                  <span>ใส่ได้หลายโค้ดโดยแยกคนละบรรทัด</span>
+                  <span>แยก 1 บรรทัดต่อ 1 โค้ด</span>
                 </div>
               </div>
               <div class="status-card" data-step-card="2">
                 <div class="status-card-badge">2</div>
                 <div class="status-card-text">
                   <strong>กดรับสินค้า</strong>
-                  <span>ระบบจะตรวจสอบให้ทันที</span>
+                  <span>ระบบจะตรวจสอบทันที</span>
                 </div>
               </div>
               <div class="status-card" data-step-card="3">
                 <div class="status-card-badge">3</div>
                 <div class="status-card-text">
                   <strong>คัดลอกข้อมูล</strong>
-                  <span>เลือกคัดลอกแบบรวม หรือเฉพาะที่สำเร็จ</span>
+                  <span>เลือกคัดลอกตามต้องการ</span>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="card glass">
+        <section class="card small-card glass">
           <div class="card-inner">
             <div class="side-title">รายการล่าสุด</div>
             <div id="historyBox" class="history-empty">ยังไม่มีประวัติการรับสินค้าล่าสุด</div>
@@ -1590,7 +1554,7 @@
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const MAX_CODES = 5;
-    const HISTORY_KEY = "redeem_history_v6";
+    const HISTORY_KEY = "redeem_history_v7";
     const SOUND_KEY = "redeem_sound_on";
 
     const btnRedeem = document.getElementById("btnRedeem");
@@ -1634,7 +1598,6 @@
       const s1 = document.querySelector('[data-step-card="1"]');
       const s2 = document.querySelector('[data-step-card="2"]');
       const s3 = document.querySelector('[data-step-card="3"]');
-
       if (!s1 || !s2 || !s3) return;
 
       const active = (el) => {
@@ -1642,9 +1605,8 @@
         el.style.boxShadow = "0 0 0 3px rgba(185,143,115,.12)";
         el.style.background = "rgba(255,255,255,.88)";
       };
-
       const done = (el) => {
-        el.style.borderColor = "rgba(169,200,183,.55)";
+        el.style.borderColor = "rgba(125,165,141,.45)";
         el.style.background = "var(--accent-ok-soft)";
       };
 
@@ -1695,7 +1657,7 @@
 
     const tips = [
       "วางหลายโค้ดได้ในครั้งเดียว สูงสุดประมาณ 5 โค้ด/ครั้ง",
-      "กดคัดลอกทั้งหมดได้ในปุ่มเดียว สะดวกขึ้นเยอะ",
+      "กดคัดลอกทั้งหมดได้ในปุ่มเดียว",
       "ถ้ามีปัญหา แคปหน้าจอแล้วติดต่อแอดมินได้เลย",
       "กดรับสินค้าแล้ว อย่าเพิ่งรีเฟรชหน้านะคะ"
     ];
@@ -1724,7 +1686,6 @@
     });
 
     helpHowto.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
       showToast("วางโค้ด แล้วกดรับสินค้าได้เลยค่ะ");
     });
 
