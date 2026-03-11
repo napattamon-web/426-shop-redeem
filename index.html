@@ -368,15 +368,6 @@
       box-shadow: 0 8px 18px rgba(0,0,0,.04);
     }
 
-    .hero-tip-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--brand);
-      flex-shrink: 0;
-      animation: pulseDot 1.8s ease-in-out infinite;
-    }
-
     body.theme-dark .hero-tip {
       background: rgba(35,37,43,.92);
       border-color: #3a3f49;
@@ -1544,7 +1535,6 @@
       .orb,
       .status-dot,
       .live-text,
-      .hero-tip-dot,
       .meter-bar::after,
       .primary-btn::before,
       .primary-btn.ready-pulse,
@@ -1661,7 +1651,7 @@
             <h1 class="hero-title">ระบบรับสินค้าอัตโนมัติสำหรับลูกค้า</h1>
 
             <div class="hero-tip" id="heroTip">
-              <span class="hero-tip-dot"></span>
+              <span>💡</span>
               <span id="heroTipText">วางหลายโค้ดได้ในครั้งเดียว สูงสุดประมาณ 5 โค้ด/ครั้ง</span>
             </div>
 
@@ -1737,7 +1727,6 @@
                   <span class="status-dot"></span>
                   <span class="live-text">ระบบออนไลน์ 24 ชม.</span>
                 </div>
-                <div class="mini-badge" id="lineInfo">สูงสุด ~5 โค้ด/ครั้ง</div>
               </div>
             </div>
 
@@ -1838,7 +1827,7 @@
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const MAX_CODES = 5;
-    const HISTORY_KEY = "redeem_history_v23";
+    const HISTORY_KEY = "redeem_history_v24";
 
     const btnRedeem = document.getElementById("btnRedeem");
     const btnClear = document.getElementById("btnClear");
@@ -1846,7 +1835,6 @@
     const btnCopyAllFloating = document.getElementById("btnCopyAllFloating");
     const floatingCopyWrap = document.getElementById("floatingCopyWrap");
     const codeInput = document.getElementById("codeInput");
-    const lineInfo = document.getElementById("lineInfo");
     const inlineWarnings = document.getElementById("inlineWarnings");
     const status = document.getElementById("status");
     const summaryDiv = document.getElementById("summary");
@@ -2019,18 +2007,6 @@
       const lines = normalizeLines(codeInput.value || "");
       updateInlineWarnings(lines);
 
-      if (!lines.length) {
-        lineInfo.textContent = "สูงสุด ~5 โค้ด/ครั้ง";
-        meterText.textContent = `0 / ${MAX_CODES}`;
-        codeMeterBar.style.width = "0%";
-        updateRedeemButtonState();
-        return;
-      }
-
-      lineInfo.textContent = lines.length > MAX_CODES
-        ? `ใช้เฉพาะ ${MAX_CODES} รายการแรก`
-        : `โค้ดที่กรอก: ${lines.length} รายการ`;
-
       const capped = Math.min(lines.length, MAX_CODES);
       meterText.textContent = `${capped} / ${MAX_CODES}`;
       codeMeterBar.style.width = `${(capped / MAX_CODES) * 100}%`;
@@ -2073,7 +2049,6 @@
       latestCopyAllText = "";
       meterText.textContent = `0 / ${MAX_CODES}`;
       codeMeterBar.style.width = "0%";
-      lineInfo.textContent = "สูงสุด ~5 โค้ด/ครั้ง";
       hideFloatingCopy();
       setStepState("idle");
       codeInput.focus();
