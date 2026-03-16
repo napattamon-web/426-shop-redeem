@@ -275,6 +275,7 @@
       letter-spacing: .08em;
       text-transform: uppercase;
       line-height: 1.05;
+      text-shadow: 0 1px 0 rgba(255,255,255,.45);
     }
 
     .brand-sub {
@@ -942,7 +943,6 @@
       line-height: 1.42;
     }
 
-    /* ================= Cute Loading ================= */
     .loading-overlay {
       position: absolute;
       inset: 0;
@@ -1184,6 +1184,27 @@
       z-index: 1;
     }
 
+    .loading-percent {
+      margin-top: 8px;
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--brand-deep);
+      position: relative;
+      z-index: 1;
+    }
+
+    body.theme-dark .loading-percent {
+      color: #f1ddd0;
+    }
+
+    .loading-mini-note {
+      margin-top: 6px;
+      font-size: .73rem;
+      color: var(--text-sub);
+      position: relative;
+      z-index: 1;
+    }
+
     .loading-warning {
       margin-top: 12px;
       padding: 10px 12px;
@@ -1363,17 +1384,23 @@
 
     .result-item.success-card {
       border-color: #cfe6d8;
-      background: linear-gradient(180deg, #f9fffb, #edf8f2);
+      background:
+        radial-gradient(circle at top right, rgba(111,159,132,.08), transparent 24%),
+        linear-gradient(180deg, #f9fffb, #edf8f2);
     }
 
     .result-item.used-card {
       border-color: #dfd3ff;
-      background: linear-gradient(180deg, #fbf8ff, #f7f2ff);
+      background:
+        radial-gradient(circle at top right, rgba(139,116,201,.10), transparent 24%),
+        linear-gradient(180deg, #fbf8ff, #f7f2ff);
     }
 
     .result-item.notfound-card {
       border-color: #f4c8d0;
-      background: linear-gradient(180deg, #fff8f9, #fff0f3);
+      background:
+        radial-gradient(circle at top right, rgba(214,125,134,.10), transparent 24%),
+        linear-gradient(180deg, #fff8f9, #fff0f3);
     }
 
     .result-item.new-highlight {
@@ -1425,6 +1452,32 @@
       letter-spacing: .08em;
       color: var(--text-sub);
       font-weight: 700;
+    }
+
+    .result-app-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .app-icon-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #fffaf6, #f1e3d8);
+      border: 1px solid #e7d7ca;
+      box-shadow: 0 6px 12px rgba(0,0,0,.05);
+      font-size: .9rem;
+      flex-shrink: 0;
+    }
+
+    body.theme-dark .app-icon-badge {
+      background: linear-gradient(135deg, #3a302a, #4a3a31);
+      border-color: #5b463c;
     }
 
     .item-tag {
@@ -1866,6 +1919,8 @@
               </div>
 
               <div class="loading-sub" id="loadingSub">กำลังตรวจสอบโค้ดค่ะ</div>
+              <div class="loading-percent" id="loadingPercent">0%</div>
+              <div class="loading-mini-note">โปรดอยู่หน้านี้จนกว่าระบบจะประมวลผลเสร็จ</div>
 
               <div class="loading-warning">
                 <span class="loading-warning-icon">⚠️</span>
@@ -2011,12 +2066,26 @@
     const meterText = document.getElementById("meterText");
     const mainCard = document.getElementById("mainCard");
     const loadingSub = document.getElementById("loadingSub");
+    const loadingPercent = document.getElementById("loadingPercent");
     const fxCanvas = document.getElementById("fxCanvas");
     const fxCtx = fxCanvas ? fxCanvas.getContext("2d") : null;
 
     let isLoading = false;
     let latestCopyAllText = "";
     let loadingMsgIndex = 0;
+    let progressTimer = null;
+    let progressValue = 0;
+
+    const APP_ICONS = {
+      netflix: "🎬",
+      disney: "🏰",
+      youtube: "▶️",
+      "จอส่วนตัว": "👤",
+      "แอคส่วนตัว": "🔐",
+      "จอหาร 2": "👥",
+      "จอหาร 3-4": "👨‍👩‍👧",
+      default: "🎁"
+    };
 
     function escapeHtml(str) {
       return String(str == null ? "" : str)
@@ -2033,6 +2102,37 @@
 
     function safeText(v) {
       return String(v == null ? "" : v);
+    }
+
+    function getAppIcon(appName) {
+      const key = String(appName || "").trim().toLowerCase();
+      return APP_ICONS[key] || APP_ICONS.default;
+    }
+
+    function startFakeProgress() {
+      stopFakeProgress();
+      progressValue = 0;
+      if (loadingPercent) loadingPercent.textContent = "0%";
+
+      progressTimer = setInterval(() => {
+        if (!isLoading) return;
+        const step = progressValue < 60 ? 7 : progressValue < 85 ? 3 : 1;
+        progressValue = Math.min(92, progressValue + step);
+        if (loadingPercent) loadingPercent.textContent = progressValue + "%";
+      }, 220);
+    }
+
+    function finishFakeProgress() {
+      progressValue = 100;
+      if (loadingPercent) loadingPercent.textContent = "100%";
+      stopFakeProgress();
+    }
+
+    function stopFakeProgress() {
+      if (progressTimer) {
+        clearInterval(progressTimer);
+        progressTimer = null;
+      }
     }
 
     function setStepState(state) {
@@ -2263,9 +2363,15 @@
         setStepState("loading");
         loadingMsgIndex = 0;
         if (loadingSub) loadingSub.textContent = loadingMessages[0];
+        if (loadingPercent) loadingPercent.textContent = "0%";
+        startFakeProgress();
         hideFloatingCopy();
       } else {
+        finishFakeProgress();
         btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
+        setTimeout(() => {
+          if (loadingPercent) loadingPercent.textContent = "0%";
+        }, 300);
       }
 
       updateRedeemButtonState();
@@ -2352,6 +2458,7 @@
         renderResult(data, elapsedSec);
       } catch (err) {
         console.error(err);
+        stopFakeProgress();
         setLoadingUI(false);
         status.innerHTML = "เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้งค่ะ";
         status.classList.add("status-error");
@@ -2432,6 +2539,7 @@
           const code = safeText(item.code);
           const appName = safeText(item.appName);
           const reply = safeText(item.reply);
+          const appIcon = getAppIcon(appName);
 
           const card = document.createElement("div");
           card.className = "result-item success-card";
@@ -2442,8 +2550,9 @@
 
           card.innerHTML = `
             <div class="item-top-row">
-              <div class="item-header">
-                ✅ REDEEMED CODE: ${escapeHtml(code)}
+              <div class="item-header result-app-row">
+                <span class="app-icon-badge">${appIcon}</span>
+                <span>✅ REDEEMED CODE: ${escapeHtml(code)}</span>
                 ${appName ? `<span class="item-tag">${escapeHtml(appName)}</span>` : ""}
               </div>
             </div>
