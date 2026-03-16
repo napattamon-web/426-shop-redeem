@@ -1075,22 +1075,18 @@
       height: 116px;
       margin: 0 auto 14px;
       position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     .loading-ring-shadow {
       position: absolute;
-      width: 116px;
-      height: 116px;
+      inset: 0;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(182,143,120,.14), transparent 66%);
       animation: pulseRingShadow 1.8s ease-in-out infinite;
     }
 
     @keyframes pulseRingShadow {
-      0%,100% { transform: scale(.96); opacity: .7; }
+      0%, 100% { transform: scale(.96); opacity: .7; }
       50% { transform: scale(1.08); opacity: 1; }
     }
 
@@ -1100,24 +1096,29 @@
       left: 50%;
       width: 78px;
       height: 78px;
-      margin-top: -39px;
       margin-left: -39px;
+      margin-top: -39px;
+    }
+
+    .loading-spinner-circle::before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
       border: 6px solid rgba(182,143,120,0.18);
       border-top-color: var(--brand);
       border-right-color: #c7a38d;
       border-bottom-color: rgba(182,143,120,0.10);
       border-left-color: rgba(182,143,120,0.30);
-      background: transparent;
       box-shadow:
         0 0 0 8px rgba(182,143,120,0.05),
         0 8px 18px rgba(182,143,120,.08);
-      animation: spinnerRotate 0.8s linear infinite;
-      transform-origin: center center;
+      animation: spinnerRotate .8s linear infinite;
       will-change: transform;
     }
 
-    body.theme-dark .loading-spinner-circle {
+    body.theme-dark .loading-spinner-circle::before {
       border-color: rgba(182,143,120,0.10);
       border-top-color: var(--brand);
       border-right-color: #c7a38d;
@@ -1728,7 +1729,7 @@
       .meter-bar::after,
       .primary-btn::before,
       .primary-btn.ready-pulse,
-      .loading-spinner-circle,
+      .loading-spinner-circle::before,
       .loading-dots span,
       .loading-progress-bar,
       .loading-warning,
@@ -2032,7 +2033,7 @@
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const MAX_CODES = 5;
-    const HISTORY_KEY = "redeem_history_v29";
+    const HISTORY_KEY = "redeem_history_v30";
     const REQUEST_TIMEOUT_MS = 30000;
 
     const btnRedeem = document.getElementById("btnRedeem");
