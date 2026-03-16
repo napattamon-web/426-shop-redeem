@@ -942,23 +942,31 @@
       line-height: 1.42;
     }
 
+    /* ================= Cute Loading ================= */
     .loading-overlay {
       position: absolute;
       inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(244,237,231,.82);
-      backdrop-filter: blur(10px);
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,.55), transparent 24%),
+        radial-gradient(circle at 70% 30%, rgba(255,255,255,.28), transparent 22%),
+        rgba(244,237,231,.84);
+      backdrop-filter: blur(12px);
       z-index: 30;
       opacity: 0;
       pointer-events: none;
       transition: opacity .22s ease;
       padding: 20px;
+      overflow: hidden;
     }
 
     body.theme-dark .loading-overlay {
-      background: rgba(24,24,28,.78);
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,.10), transparent 24%),
+        radial-gradient(circle at 70% 30%, rgba(255,255,255,.06), transparent 22%),
+        rgba(24,24,28,.80);
     }
 
     .redeem-card.loading .loading-overlay {
@@ -966,44 +974,165 @@
       pointer-events: all;
     }
 
-    .loading-box {
-      width: 100%;
-      max-width: 310px;
-      border-radius: 24px;
-      padding: 22px 18px 18px;
-      text-align: center;
-      background: var(--card-strong);
-      border: 1px solid var(--line);
-      box-shadow: 0 18px 30px rgba(0,0,0,.08);
+    .loading-overlay::before,
+    .loading-overlay::after {
+      content: "";
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border-radius: 999px;
+      filter: blur(18px);
+      opacity: .55;
+      animation: loadingOrb 5s ease-in-out infinite;
     }
 
-    body.theme-dark .loading-box { border-color: #3b4049; }
+    .loading-overlay::before {
+      top: -28px;
+      left: -26px;
+      background: radial-gradient(circle, rgba(185,143,115,.22), transparent 68%);
+    }
+
+    .loading-overlay::after {
+      right: -34px;
+      bottom: -28px;
+      background: radial-gradient(circle, rgba(234,216,203,.6), transparent 68%);
+      animation-delay: -2.4s;
+    }
+
+    @keyframes loadingOrb {
+      0%,100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-10px) scale(1.05); }
+    }
+
+    .loading-box {
+      width: 100%;
+      max-width: 340px;
+      border-radius: 28px;
+      padding: 24px 18px 18px;
+      text-align: center;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,248,242,.98));
+      border: 1px solid rgba(255,255,255,.65);
+      box-shadow:
+        0 18px 30px rgba(0,0,0,.08),
+        inset 0 1px 0 rgba(255,255,255,.85);
+      position: relative;
+      overflow: hidden;
+    }
+
+    body.theme-dark .loading-box {
+      background:
+        linear-gradient(180deg, rgba(40,42,48,.98), rgba(33,35,40,.99));
+      border-color: rgba(255,255,255,.06);
+      box-shadow: 0 18px 30px rgba(0,0,0,.28);
+    }
+
+    .loading-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.14), transparent 28%),
+        radial-gradient(circle at top left, rgba(255,255,255,.18), transparent 28%);
+      pointer-events: none;
+    }
+
+    .loading-cute-stars {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .loading-cute-stars span {
+      position: absolute;
+      font-size: 12px;
+      opacity: .85;
+      animation: loadingTwinkle 2s ease-in-out infinite;
+    }
+
+    .loading-cute-stars span:nth-child(1) { top: 18px; left: 24px; animation-delay: 0s; }
+    .loading-cute-stars span:nth-child(2) { top: 26px; right: 28px; animation-delay: .7s; }
+    .loading-cute-stars span:nth-child(3) { bottom: 84px; left: 36px; animation-delay: 1.3s; }
+    .loading-cute-stars span:nth-child(4) { bottom: 74px; right: 34px; animation-delay: 1.9s; }
+
+    @keyframes loadingTwinkle {
+      0%,100% { transform: scale(.8) rotate(0deg); opacity: .35; }
+      50% { transform: scale(1.2) rotate(8deg); opacity: 1; }
+    }
 
     .loading-spinner-wrap {
-      width: 92px;
-      height: 92px;
+      width: 116px;
+      height: 116px;
       margin: 0 auto 14px;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .loading-spinner-circle {
-      width: 62px;
-      height: 62px;
+    .loading-ring-shadow {
+      position: absolute;
+      width: 116px;
+      height: 116px;
       border-radius: 999px;
-      border: 5px solid rgba(185, 143, 115, 0.18);
+      background: radial-gradient(circle, rgba(185,143,115,.12), transparent 66%);
+      animation: pulseRingShadow 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulseRingShadow {
+      0%,100% { transform: scale(.96); opacity: .7; }
+      50% { transform: scale(1.08); opacity: 1; }
+    }
+
+    .loading-spinner-circle {
+      position: absolute;
+      width: 84px;
+      height: 84px;
+      border-radius: 999px;
+      border: 6px solid rgba(185, 143, 115, 0.14);
       border-top-color: var(--brand);
-      border-right-color: var(--brand);
-      animation: circleSpin 0.95s linear infinite;
-      box-shadow: 0 0 0 8px rgba(185, 143, 115, 0.05);
+      border-right-color: #d7b8a4;
+      border-bottom-color: rgba(234,216,203,.32);
+      animation: circleSpin .95s linear infinite;
+      box-shadow:
+        0 0 0 8px rgba(185, 143, 115, 0.05),
+        0 8px 18px rgba(185,143,115,.10);
     }
 
     body.theme-dark .loading-spinner-circle {
-      border-color: rgba(181, 140, 114, 0.16);
+      border-color: rgba(181, 140, 114, 0.14);
       border-top-color: var(--brand);
-      border-right-color: var(--brand);
-      box-shadow: 0 0 0 8px rgba(181, 140, 114, 0.05);
+      border-right-color: #d7b8a4;
+      border-bottom-color: rgba(181,140,114,.24);
+      box-shadow:
+        0 0 0 8px rgba(181, 140, 114, 0.05),
+        0 8px 18px rgba(0,0,0,.18);
+    }
+
+    .loading-bear-face {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #fffaf6, #f3e7de);
+      border: 1px solid #ead8cb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 8px 20px rgba(185,143,115,.12);
+      animation: bearBob 1.6s ease-in-out infinite;
+    }
+
+    body.theme-dark .loading-bear-face {
+      background: linear-gradient(180deg, #3b322d, #302924);
+      border-color: #54453b;
+      box-shadow: 0 8px 20px rgba(0,0,0,.22);
+    }
+
+    @keyframes bearBob {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
     }
 
     @keyframes circleSpin {
@@ -1011,16 +1140,28 @@
     }
 
     .loading-title {
-      font-size: 1rem;
+      font-size: 1.03rem;
       font-weight: 700;
       margin-bottom: 6px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .loading-title small {
+      display: block;
+      margin-top: 4px;
+      font-size: .74rem;
+      color: var(--text-sub);
+      font-weight: 500;
     }
 
     .loading-dots {
       display: flex;
       justify-content: center;
       gap: 6px;
-      margin: 4px 0 10px;
+      margin: 6px 0 10px;
+      position: relative;
+      z-index: 1;
     }
 
     .loading-dots span {
@@ -1039,6 +1180,8 @@
       color: var(--text-sub);
       line-height: 1.5;
       min-height: 38px;
+      position: relative;
+      z-index: 1;
     }
 
     .loading-warning {
@@ -1054,6 +1197,8 @@
       gap: 8px;
       align-items: flex-start;
       animation: warningPulse 1.5s ease-in-out infinite;
+      position: relative;
+      z-index: 1;
     }
 
     body.theme-dark .loading-warning {
@@ -1073,6 +1218,8 @@
       border-radius: 999px;
       background: rgba(0,0,0,.06);
       overflow: hidden;
+      position: relative;
+      z-index: 1;
     }
 
     body.theme-dark .loading-progress {
@@ -1548,7 +1695,10 @@
       .notice-icon,
       .notice-text,
       .result-item.new-highlight,
-      .result-item.new-highlight::after {
+      .result-item.new-highlight::after,
+      .loading-ring-shadow,
+      .loading-bear-face,
+      .loading-cute-stars span {
         animation: none !important;
       }
 
@@ -1691,11 +1841,23 @@
         <section class="card redeem-card glass" id="mainCard">
           <div class="loading-overlay" id="loadingOverlay">
             <div class="loading-box">
-              <div class="loading-spinner-wrap">
-                <div class="loading-spinner-circle"></div>
+              <div class="loading-cute-stars" aria-hidden="true">
+                <span>✨</span>
+                <span>⭐</span>
+                <span>✨</span>
+                <span>💫</span>
               </div>
 
-              <div class="loading-title">รอสักครู่นะคะ</div>
+              <div class="loading-spinner-wrap">
+                <div class="loading-ring-shadow"></div>
+                <div class="loading-spinner-circle"></div>
+                <div class="loading-bear-face">🧸</div>
+              </div>
+
+              <div class="loading-title">
+                รอสักครู่นะคะ
+                <small>ระบบกำลังตรวจสอบให้แบบอัตโนมัติ</small>
+              </div>
 
               <div class="loading-dots" aria-hidden="true">
                 <span></span>
@@ -1707,7 +1869,7 @@
 
               <div class="loading-warning">
                 <span class="loading-warning-icon">⚠️</span>
-                <span>ห้ามรีเฟรช หรือปิดหน้าจอ</span>
+                <span>ห้ามรีเฟรช หรือปิดหน้าจอ จนกว่าจะได้รับผลลัพธ์ครบ</span>
               </div>
 
               <div class="loading-progress">
@@ -1827,7 +1989,8 @@
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const MAX_CODES = 5;
-    const HISTORY_KEY = "redeem_history_v24";
+    const HISTORY_KEY = "redeem_history_v25";
+    const REQUEST_TIMEOUT_MS = 30000;
 
     const btnRedeem = document.getElementById("btnRedeem");
     const btnClear = document.getElementById("btnClear");
@@ -1854,6 +2017,23 @@
     let isLoading = false;
     let latestCopyAllText = "";
     let loadingMsgIndex = 0;
+
+    function escapeHtml(str) {
+      return String(str == null ? "" : str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function nl2br(str) {
+      return escapeHtml(str).replace(/\n/g, "<br>");
+    }
+
+    function safeText(v) {
+      return String(v == null ? "" : v);
+    }
 
     function setStepState(state) {
       const cards = document.querySelectorAll(".status-card");
@@ -1971,16 +2151,31 @@
     window.addEventListener("resize", resizeFxCanvas);
 
     function normalizeLines(raw) {
-      return raw.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+      return String(raw || "")
+        .split(/\r?\n/)
+        .map((l) => l.trim())
+        .filter(Boolean);
+    }
+
+    function dedupeLines(lines) {
+      const seen = new Set();
+      const out = [];
+      lines.forEach((line) => {
+        const k = line.toLowerCase();
+        if (seen.has(k)) return;
+        seen.add(k);
+        out.push(line);
+      });
+      return out;
     }
 
     function getValidationState(lines) {
       const warnings = [];
       let formatInvalid = 0;
-      const allowedPattern = /^[A-Za-z0-9_-]{4,60}$/;
+      const suspiciousPattern = /^[A-Za-z0-9_-]{4,60}$/;
 
       lines.forEach((line) => {
-        if (!allowedPattern.test(line)) formatInvalid++;
+        if (!suspiciousPattern.test(line)) formatInvalid++;
       });
 
       if (formatInvalid > 0) warnings.push(`รูปแบบโค้ดน่าสงสัย ${formatInvalid} รายการ`);
@@ -1991,7 +2186,9 @@
 
     function updateInlineWarnings(lines) {
       const { warnings } = getValidationState(lines);
-      inlineWarnings.innerHTML = warnings.map((w) => `<div class="warning-chip">${w}</div>`).join("");
+      inlineWarnings.innerHTML = warnings
+        .map((w) => `<div class="warning-chip">${escapeHtml(w)}</div>`)
+        .join("");
     }
 
     function updateRedeemButtonState() {
@@ -2027,7 +2224,7 @@
         updateLineInfo();
         codeInput.focus();
         showToast("วางโค้ดเรียบร้อย");
-      } catch {
+      } catch (e) {
         showToast("อุปกรณ์นี้ไม่รองรับการวางอัตโนมัติ");
       }
     }
@@ -2056,7 +2253,64 @@
       showToast("ล้างข้อมูลแล้ว");
     }
 
-    function redeem() {
+    function setLoadingUI(on) {
+      isLoading = on;
+      mainCard.classList.toggle("loading", on);
+      btnRedeem.disabled = on;
+
+      if (on) {
+        btnRedeem.innerHTML = `<span class="spinner"></span><span>กำลังตรวจสอบ…</span>`;
+        setStepState("loading");
+        loadingMsgIndex = 0;
+        if (loadingSub) loadingSub.textContent = loadingMessages[0];
+        hideFloatingCopy();
+      } else {
+        btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
+      }
+
+      updateRedeemButtonState();
+    }
+
+    function buildRedeemUrl(lines) {
+      const params = new URLSearchParams();
+      params.set("action", "redeem");
+      params.set("text", lines.join("\n"));
+      params.set("_ts", String(Date.now()));
+      return `${API_URL}?${params.toString()}`;
+    }
+
+    async function fetchJsonWithTimeout(url, timeoutMs) {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), timeoutMs);
+
+      try {
+        const res = await fetch(url, {
+          method: "GET",
+          cache: "no-store",
+          redirect: "follow",
+          signal: controller.signal
+        });
+
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status}`);
+        }
+
+        const text = await res.text();
+
+        let data;
+        try {
+          data = JSON.parse(text);
+        } catch (e) {
+          throw new Error("INVALID_JSON_RESPONSE");
+        }
+
+        return data;
+      } finally {
+        clearTimeout(timer);
+      }
+    }
+
+    async function redeem() {
       const input = codeInput.value.trim();
       const inputContainer = document.querySelector(".input-box");
       status.classList.remove("status-error", "status-ok");
@@ -2070,57 +2324,40 @@
         return;
       }
 
-      const originalLines = normalizeLines(codeInput.value);
+      let originalLines = normalizeLines(codeInput.value);
+      originalLines = dedupeLines(originalLines);
+
       const trimmedLines = originalLines.slice(0, MAX_CODES);
 
       let preWarn = "";
-      if (originalLines.length > MAX_CODES) preWarn += `ระบบจะใช้เฉพาะ ${MAX_CODES} รายการแรกค่ะ`;
+      if (originalLines.length > MAX_CODES) {
+        preWarn = `ระบบจะใช้เฉพาะ ${MAX_CODES} รายการแรกค่ะ`;
+      }
 
-      isLoading = true;
-      hideFloatingCopy();
-      updateRedeemButtonState();
-      mainCard.classList.add("loading");
-      btnRedeem.disabled = true;
-      btnRedeem.innerHTML = `<span class="spinner"></span><span>กำลังตรวจสอบ…</span>`;
-      setStepState("loading");
-      loadingMsgIndex = 0;
-      if (loadingSub) loadingSub.textContent = loadingMessages[0];
+      setLoadingUI(true);
 
       status.style.color = "#8e8178";
       status.innerHTML =
         "ระบบกำลังตรวจสอบรหัสของคุณ...<br>" +
         "<span style='font-size:.78rem;color:#c27a5a;'>ห้ามรีเฟรช/ปิดหน้านี้จนกว่าผลจะขึ้นครบค่ะ</span>" +
-        (preWarn ? "<br><span style='font-size:.78rem;color:#c27a5a;'>" + preWarn + "</span>" : "");
+        (preWarn ? "<br><span style='font-size:.78rem;color:#c27a5a;'>" + escapeHtml(preWarn) + "</span>" : "");
 
       const startTime = performance.now();
-      const url = API_URL + "?action=redeem&text=" + encodeURIComponent(trimmedLines.join("\n"));
 
-      fetch(url)
-        .then((res) => {
-          if (!res.ok) throw new Error("HTTP " + res.status);
-          return res.json();
-        })
-        .then((data) => {
-          const elapsedSec = (performance.now() - startTime) / 1000;
-          isLoading = false;
-          mainCard.classList.remove("loading");
-          btnRedeem.disabled = false;
-          btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
-          updateRedeemButtonState();
-          renderResult(data, elapsedSec);
-        })
-        .catch((err) => {
-          console.error(err);
-          isLoading = false;
-          mainCard.classList.remove("loading");
-          btnRedeem.disabled = false;
-          btnRedeem.innerHTML = "<span>รับสินค้า</span><span>↗</span>";
-          updateRedeemButtonState();
-          status.innerHTML = "เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้งค่ะ";
-          status.classList.add("status-error");
-          setStepState("error");
-          showToast("เชื่อมต่อไม่สำเร็จ");
-        });
+      try {
+        const url = buildRedeemUrl(trimmedLines);
+        const data = await fetchJsonWithTimeout(url, REQUEST_TIMEOUT_MS);
+        const elapsedSec = (performance.now() - startTime) / 1000;
+        setLoadingUI(false);
+        renderResult(data, elapsedSec);
+      } catch (err) {
+        console.error(err);
+        setLoadingUI(false);
+        status.innerHTML = "เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้งค่ะ";
+        status.classList.add("status-error");
+        setStepState("error");
+        showToast("เชื่อมต่อไม่สำเร็จ");
+      }
     }
 
     function renderResult(res, elapsedSec) {
@@ -2130,16 +2367,20 @@
       status.classList.remove("status-error", "status-ok");
       hideFloatingCopy();
 
-      if (!res) {
+      if (!res || typeof res !== "object") {
         status.innerHTML = "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งค่ะ";
         status.classList.add("status-error");
         setStepState("error");
         return;
       }
 
-      const successCount = (res.items && res.items.length) || 0;
-      const usedCount = (res.used && res.used.length) || 0;
-      const nfCount = (res.notFound && res.notFound.length) || 0;
+      const items = Array.isArray(res.items) ? res.items : [];
+      const used = Array.isArray(res.used) ? res.used : [];
+      const notFound = Array.isArray(res.notFound) ? res.notFound : [];
+
+      const successCount = items.length;
+      const usedCount = used.length;
+      const nfCount = notFound.length;
 
       if (res.ok && successCount > 0) {
         setStepState("done");
@@ -2163,15 +2404,15 @@
         `;
       }
 
-      let msgLines = [];
+      const msgLines = [];
       if (res.ok && successCount > 0) {
         msgLines.push("<span class='status-strong'>ส่งสินค้าเรียบร้อยแล้ว คัดลอกรายละเอียดด้านล่าง</span>");
       } else if (res.message) {
-        msgLines.push("<span class='status-strong'>" + res.message + "</span>");
+        msgLines.push("<span class='status-strong'>" + escapeHtml(res.message) + "</span>");
       }
 
-      if (res.overflowMessage) msgLines.push("• " + res.overflowMessage);
-      if (res.multiInLineMessage) msgLines.push("• " + res.multiInLineMessage);
+      if (res.overflowMessage) msgLines.push("• " + escapeHtml(res.overflowMessage));
+      if (res.multiInLineMessage) msgLines.push("• " + escapeHtml(res.multiInLineMessage));
       if (nfCount > 0 && successCount === 0) {
         msgLines.push("💡 ถ้าเชื่อว่าโค้ดถูกต้อง แนะนำให้ติดต่อแอดมินพร้อมภาพหน้าจอ");
       }
@@ -2186,64 +2427,85 @@
 
       const copyAllChunks = [];
 
-      if (res.items && res.items.length > 0) {
-        res.items.forEach((item, index) => {
+      if (items.length > 0) {
+        items.forEach((item, index) => {
+          const code = safeText(item.code);
+          const appName = safeText(item.appName);
+          const reply = safeText(item.reply);
+
           const card = document.createElement("div");
           card.className = "result-item success-card";
           if (index === 0) card.classList.add("new-highlight");
 
-          const safeReplyText = encodeURIComponent(item.reply || "");
-          const appTag = (item.appName || "").trim();
-
-          const sectionText = `CODE: ${item.code}${appTag ? ` (${appTag})` : ""}\n${item.reply || ""}`;
+          const sectionText = `CODE: ${code}${appName ? ` (${appName})` : ""}\n${reply}`;
           copyAllChunks.push(sectionText);
 
           card.innerHTML = `
             <div class="item-top-row">
               <div class="item-header">
-                ✅ REDEEMED CODE: ${item.code}
-                ${appTag ? `<span class="item-tag">${appTag}</span>` : ""}
+                ✅ REDEEMED CODE: ${escapeHtml(code)}
+                ${appName ? `<span class="item-tag">${escapeHtml(appName)}</span>` : ""}
               </div>
             </div>
-            <div class="item-body">${item.reply || ""}</div>
-            <button class="copy-btn" data-text="${safeReplyText}">
-              <span>คัดลอกรายละเอียด</span>
-            </button>
+            <div class="item-body">${nl2br(reply)}</div>
+            <button class="copy-btn" type="button">คัดลอกรายละเอียด</button>
           `;
+
+          const btn = card.querySelector(".copy-btn");
+          btn.addEventListener("click", () => {
+            copyText(reply);
+            const original = btn.innerHTML;
+            btn.innerHTML = "คัดลอกแล้ว ✓";
+            btn.style.background = "#f8efe8";
+            btn.style.borderColor = "#d9b8a0";
+            setTimeout(() => {
+              btn.innerHTML = original;
+              btn.style.background = "";
+              btn.style.borderColor = "";
+            }, 1800);
+            showToast("คัดลอกรายละเอียดแล้ว");
+          });
 
           resultsDiv.appendChild(card);
           animateCard(card, index);
         });
       }
 
-      if (res.used && res.used.length > 0) {
-        res.used.forEach((u, index) => {
+      if (used.length > 0) {
+        used.forEach((u, index) => {
+          const code = safeText(u.code);
+          const app = safeText(u.app);
+          const usedAt = safeText(u.usedAt);
+
           let body = `โค้ดนี้ถูกใช้งานไปแล้ว`;
-          if (u.app) body += `\nสินค้า: ${u.app}`;
-          if (u.usedAt) body += `\nเวลาใช้งาน: ${u.usedAt}`;
-          copyAllChunks.push(`USED CODE: ${u.code}\n${body}`);
+          if (app) body += `\nสินค้า: ${app}`;
+          if (usedAt) body += `\nเวลาใช้งาน: ${usedAt}`;
+
+          copyAllChunks.push(`USED CODE: ${code}\n${body}`);
 
           const card = document.createElement("div");
           card.className = "result-item used-card";
           card.innerHTML = `
             <div class="item-top-row">
-              <div class="item-header">♻️ USED CODE: ${u.code}</div>
+              <div class="item-header">♻️ USED CODE: ${escapeHtml(code)}</div>
             </div>
-            <div class="item-body">${body}</div>
+            <div class="item-body">${nl2br(body)}</div>
           `;
           resultsDiv.appendChild(card);
           animateCard(card, index + successCount);
         });
       }
 
-      if (res.notFound && res.notFound.length > 0) {
-        res.notFound.forEach((code, index) => {
-          copyAllChunks.push(`NOT FOUND CODE: ${code}`);
+      if (notFound.length > 0) {
+        notFound.forEach((code, index) => {
+          const safeCode = safeText(code);
+          copyAllChunks.push(`NOT FOUND CODE: ${safeCode}`);
+
           const card = document.createElement("div");
           card.className = "result-item notfound-card";
           card.innerHTML = `
             <div class="item-top-row">
-              <div class="item-header">❌ NOT FOUND CODE: ${code}</div>
+              <div class="item-header">❌ NOT FOUND CODE: ${escapeHtml(safeCode)}</div>
             </div>
             <div class="item-body">ไม่พบโค้ดนี้ในระบบ กรุณาตรวจสอบการคัดลอก หรือติดต่อแอดมินเพื่อช่วยเช็กอีกครั้ง</div>
           `;
@@ -2258,15 +2520,11 @@
         showFloatingCopy();
       }
 
-      document.querySelectorAll(".copy-btn[data-text]").forEach((btn) => {
-        btn.addEventListener("click", () => copyToClipboard(btn));
-      });
-
       if (res.ok && successCount > 0) {
         saveHistory({
           time: new Date().toISOString(),
           count: successCount,
-          preview: res.items.map((x) => x.code).join(", "),
+          preview: items.map((x) => safeText(x.code)).join(", "),
           copyText: latestCopyAllText
         });
         renderHistory();
@@ -2361,13 +2619,15 @@
           fxCtx.translate(p.x, p.y);
           fxCtx.rotate(p.rot);
           fxCtx.fillStyle = p.color;
-          fxCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * .72);
+          fxCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.72);
           fxCtx.restore();
         });
 
         frame++;
         for (let i = particles.length - 1; i >= 0; i--) {
-          if (particles[i].life <= 0 || particles[i].y > window.innerHeight + 30) particles.splice(i, 1);
+          if (particles[i].life <= 0 || particles[i].y > window.innerHeight + 30) {
+            particles.splice(i, 1);
+          }
         }
 
         if (particles.length > 0 && frame < 140) {
@@ -2380,33 +2640,24 @@
     }
 
     function copyText(text) {
+      const value = safeText(text);
       if (!navigator.clipboard) {
         const temp = document.createElement("textarea");
-        temp.value = text;
+        temp.value = value;
         document.body.appendChild(temp);
         temp.select();
         document.execCommand("copy");
         document.body.removeChild(temp);
-      } else {
-        navigator.clipboard.writeText(text);
+        return;
       }
-    }
-
-    function copyToClipboard(btn) {
-      const text = decodeURIComponent(btn.getAttribute("data-text") || "");
-      copyText(text);
-      const original = btn.innerHTML;
-      btn.innerHTML = "คัดลอกแล้ว ✓";
-      btn.style.background = "#f8efe8";
-      btn.style.borderColor = "#d9b8a0";
-
-      setTimeout(() => {
-        btn.innerHTML = original;
-        btn.style.background = "";
-        btn.style.borderColor = "";
-      }, 1800);
-
-      showToast("คัดลอกรายละเอียดแล้ว");
+      navigator.clipboard.writeText(value).catch(() => {
+        const temp = document.createElement("textarea");
+        temp.value = value;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand("copy");
+        document.body.removeChild(temp);
+      });
     }
 
     function showToast(message) {
@@ -2425,7 +2676,7 @@
     function loadHistory() {
       try {
         return JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]");
-      } catch {
+      } catch (e) {
         return [];
       }
     }
@@ -2458,23 +2709,14 @@
         return `
           <div class="history-item">
             <div class="history-meta">
-              <div class="history-title">สำเร็จ ${item.count} โค้ด</div>
-              <div class="history-sub">ล่าสุดเมื่อ ${timeText}</div>
-              <div class="history-sub">${dateText}</div>
+              <div class="history-title">สำเร็จ ${escapeHtml(item.count || 0)} โค้ด</div>
+              <div class="history-sub">ล่าสุดเมื่อ ${escapeHtml(timeText)}</div>
+              <div class="history-sub">${escapeHtml(dateText)}</div>
               <div class="history-sub">${escapeHtml(item.preview || "")}</div>
             </div>
           </div>
         `;
       }).join("");
-    }
-
-    function escapeHtml(str) {
-      return String(str)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
     }
   </script>
 </body>
