@@ -1084,7 +1084,7 @@
       position: absolute;
       width: 116px;
       height: 116px;
-      border-radius: 999px;
+      border-radius: 50%;
       background: radial-gradient(circle, rgba(182,143,120,.14), transparent 66%);
       animation: pulseRingShadow 1.8s ease-in-out infinite;
     }
@@ -1096,38 +1096,40 @@
 
     .loading-spinner-circle {
       position: absolute;
+      top: 50%;
+      left: 50%;
       width: 78px;
       height: 78px;
+      margin-top: -39px;
+      margin-left: -39px;
       border-radius: 50%;
       border: 6px solid rgba(182,143,120,0.18);
-      border-top: 6px solid var(--brand);
-      border-right: 6px solid #c7a38d;
-      border-bottom: 6px solid rgba(182,143,120,0.10);
-      border-left: 6px solid rgba(182,143,120,0.30);
-      animation: circleSpin .8s linear infinite;
+      border-top-color: var(--brand);
+      border-right-color: #c7a38d;
+      border-bottom-color: rgba(182,143,120,0.10);
+      border-left-color: rgba(182,143,120,0.30);
+      background: transparent;
       box-shadow:
         0 0 0 8px rgba(182,143,120,0.05),
         0 8px 18px rgba(182,143,120,.08);
-      background: transparent;
+      animation: spinnerRotate 0.8s linear infinite;
+      transform-origin: center center;
+      will-change: transform;
     }
 
     body.theme-dark .loading-spinner-circle {
-      border: 6px solid rgba(182,143,120,0.10);
-      border-top: 6px solid var(--brand);
-      border-right: 6px solid #c7a38d;
-      border-bottom: 6px solid rgba(182,143,120,0.06);
-      border-left: 6px solid rgba(182,143,120,0.22);
+      border-color: rgba(182,143,120,0.10);
+      border-top-color: var(--brand);
+      border-right-color: #c7a38d;
+      border-bottom-color: rgba(182,143,120,0.06);
+      border-left-color: rgba(182,143,120,0.22);
       box-shadow:
         0 0 0 8px rgba(182,143,120,0.04),
         0 8px 18px rgba(0,0,0,.18);
-      background: transparent;
     }
 
-    .loading-spinner-core {
-      display: none !important;
-    }
-
-    @keyframes circleSpin {
+    @keyframes spinnerRotate {
+      from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
 
@@ -2030,7 +2032,7 @@
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const MAX_CODES = 5;
-    const HISTORY_KEY = "redeem_history_v28";
+    const HISTORY_KEY = "redeem_history_v29";
     const REQUEST_TIMEOUT_MS = 30000;
 
     const btnRedeem = document.getElementById("btnRedeem");
