@@ -4,54 +4,54 @@
   <meta charset="UTF-8" />
   <title>426 SHOP – Redeem Code</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#f4ede7" />
+  <meta name="theme-color" content="#f7efe9" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f4ede7;
-      --bg-soft: #fbf7f3;
+      --bg: #f8f1eb;
+      --bg-soft: #fff8f4;
       --card: rgba(255, 251, 247, 0.92);
       --card-strong: #fffaf6;
-      --text-main: #4a403a;
-      --text-sub: #8e8178;
-      --line: #e6d8cb;
-      --brand: #b98f73;
-      --brand-deep: #9f765d;
-      --brand-soft: #ead8cb;
-      --brand-soft-2: #f3e7de;
-      --accent-ok: #6f9f84;
-      --accent-ok-soft: #edf6f1;
-      --accent-used: #8b74c9;
-      --accent-used-soft: #f4f0ff;
-      --accent-nf: #d67d86;
-      --accent-nf-soft: #fff1f3;
-      --accent-warn: #cc936d;
-      --accent-warn-soft: #fff4ea;
-      --shadow: 0 18px 40px rgba(94, 71, 56, 0.08);
+      --text-main: #51453f;
+      --text-sub: #9a8d84;
+      --line: #eadccf;
+      --brand: #d7a98c;
+      --brand-deep: #b98466;
+      --brand-soft: #f6e5d9;
+      --brand-soft-2: #fff1e8;
+      --accent-ok: #6ea687;
+      --accent-ok-soft: #edf8f1;
+      --accent-used: #9c83d6;
+      --accent-used-soft: #f5f1ff;
+      --accent-nf: #dc7d89;
+      --accent-nf-soft: #fff2f4;
+      --accent-warn: #d79b6c;
+      --accent-warn-soft: #fff5eb;
+      --shadow: 0 18px 42px rgba(103, 77, 60, 0.08);
       --radius-xl: 30px;
     }
 
     body.theme-dark {
-      --bg: #18181c;
-      --bg-soft: #202126;
-      --card: rgba(34, 35, 40, 0.92);
-      --card-strong: #25272d;
-      --text-main: #f2f1ee;
-      --text-sub: #aca7a2;
-      --line: #393c44;
-      --brand: #b58c72;
-      --brand-deep: #8d6753;
-      --brand-soft: #47352c;
-      --brand-soft-2: #362922;
-      --accent-ok: #9bd1b2;
-      --accent-ok-soft: #24342d;
-      --accent-used: #c0aef7;
-      --accent-used-soft: #2c263d;
+      --bg: #18191d;
+      --bg-soft: #202227;
+      --card: rgba(35, 36, 41, 0.94);
+      --card-strong: #26282e;
+      --text-main: #f5f2ef;
+      --text-sub: #b2aca6;
+      --line: #3d4048;
+      --brand: #d4a98f;
+      --brand-deep: #b17d63;
+      --brand-soft: #4e392f;
+      --brand-soft-2: #3f2d25;
+      --accent-ok: #9ad3b2;
+      --accent-ok-soft: #24352d;
+      --accent-used: #ccb9ff;
+      --accent-used-soft: #2c2740;
       --accent-nf: #f2a2ab;
-      --accent-nf-soft: #3a272b;
-      --accent-warn: #d6a27d;
-      --accent-warn-soft: #3b2c24;
-      --shadow: 0 24px 46px rgba(0, 0, 0, 0.42);
+      --accent-nf-soft: #3d2a2e;
+      --accent-warn: #e0ab80;
+      --accent-warn-soft: #3e2f26;
+      --shadow: 0 24px 50px rgba(0, 0, 0, 0.42);
     }
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
@@ -63,8 +63,8 @@
       font-family: "Noto Sans Thai", system-ui, sans-serif;
       color: var(--text-main);
       background:
-        radial-gradient(circle at top left, rgba(234, 216, 203, 0.90), transparent 28%),
-        radial-gradient(circle at top right, rgba(185, 143, 115, 0.14), transparent 28%),
+        radial-gradient(circle at top left, rgba(255, 226, 207, 0.95), transparent 28%),
+        radial-gradient(circle at top right, rgba(215, 169, 140, 0.18), transparent 28%),
         linear-gradient(180deg, var(--bg-soft), var(--bg));
       overflow-x: hidden;
       transition: background .25s ease, color .25s ease;
@@ -81,31 +81,31 @@
     .orb {
       position: absolute;
       border-radius: 999px;
-      filter: blur(36px);
-      opacity: .55;
+      filter: blur(40px);
+      opacity: .62;
       animation: floaty 16s ease-in-out infinite;
     }
 
     .orb.one {
-      width: 240px; height: 240px; top: -40px; left: -70px;
-      background: radial-gradient(circle, rgba(185,143,115,.34), transparent 72%);
+      width: 260px; height: 260px; top: -50px; left: -80px;
+      background: radial-gradient(circle, rgba(255, 196, 168, .42), transparent 72%);
     }
 
     .orb.two {
-      width: 260px; height: 260px; top: 120px; right: -80px;
-      background: radial-gradient(circle, rgba(234,216,203,.72), transparent 74%);
+      width: 280px; height: 280px; top: 90px; right: -90px;
+      background: radial-gradient(circle, rgba(255, 226, 207, .82), transparent 74%);
       animation-delay: -5s;
     }
 
     .orb.three {
-      width: 180px; height: 180px; bottom: 30px; left: 18%;
-      background: radial-gradient(circle, rgba(255,236,222,.82), transparent 72%);
+      width: 190px; height: 190px; bottom: 30px; left: 18%;
+      background: radial-gradient(circle, rgba(255, 241, 232, .9), transparent 72%);
       animation-delay: -8s;
     }
 
     @keyframes floaty {
       0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-      50% { transform: translate3d(8px, -14px, 0) scale(1.04); }
+      50% { transform: translate3d(10px, -14px, 0) scale(1.05); }
     }
 
     .app {
@@ -113,18 +113,18 @@
       z-index: 2;
       max-width: 1120px;
       margin: 0 auto;
-      padding: 18px 18px 26px;
+      padding: 18px 18px 30px;
       min-height: 100vh;
     }
 
     .glass {
       background: var(--card);
-      border: 1px solid rgba(255,255,255,.52);
+      border: 1px solid rgba(255,255,255,.56);
       box-shadow: var(--shadow);
       backdrop-filter: blur(16px);
     }
 
-    body.theme-dark .glass { border-color: rgba(255,255,255,.06); }
+    body.theme-dark .glass { border-color: rgba(255,255,255,.07); }
 
     .topbar {
       border-radius: var(--radius-xl);
@@ -152,25 +152,25 @@
     }
 
     .logo-box {
-      width: 76px; height: 76px; border-radius: 24px; overflow: hidden;
-      background: linear-gradient(145deg, #fff6ef, #f0e3d8);
-      border: 1px solid rgba(255,255,255,.7);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.78), 0 10px 22px rgba(112,84,66,.08);
+      width: 78px; height: 78px; border-radius: 24px; overflow: hidden;
+      background: linear-gradient(145deg, #fff7f1, #f5e4d7);
+      border: 1px solid rgba(255,255,255,.75);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.85), 0 12px 24px rgba(112,84,66,.08);
       flex-shrink: 0; display: flex; align-items: center; justify-content: center;
     }
 
     body.theme-dark .logo-box {
-      background: linear-gradient(145deg, #332a26, #43352e);
+      background: linear-gradient(145deg, #352c27, #44362f);
       border-color: rgba(255,255,255,.08);
     }
 
     .logo-box img {
-      width: 62px; height: 62px; object-fit: cover; border-radius: 18px; display: block;
+      width: 64px; height: 64px; object-fit: cover; border-radius: 18px; display: block;
       transform: scale(1.04);
     }
 
     .brand-title {
-      font-size: 1.46rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; line-height: 1.05;
+      font-size: 1.48rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; line-height: 1.05;
     }
 
     .brand-sub {
@@ -181,7 +181,7 @@
 
     .icon-btn, .admin-mini-btn {
       width: 38px; height: 38px; border-radius: 999px; border: 1px solid rgba(0,0,0,.06);
-      background: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.94);
       display: inline-flex; align-items: center; justify-content: center;
       font-size: 1rem; cursor: pointer; transition: .18s ease;
       box-shadow: 0 8px 18px rgba(0,0,0,.06);
@@ -203,7 +203,7 @@
 
     .layout {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 250px;
+      grid-template-columns: minmax(0, 1fr) 260px;
       gap: 14px;
       align-items: start;
     }
@@ -223,9 +223,9 @@
     }
 
     .hero-title {
-      font-size: 1.14rem;
+      font-size: 1.16rem;
       font-weight: 700;
-      line-height: 1.25;
+      line-height: 1.28;
       margin: 0;
     }
 
@@ -237,7 +237,7 @@
       max-width: 100%;
       padding: 9px 12px;
       border-radius: 999px;
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.86);
       border: 1px solid var(--line);
       color: var(--text-sub);
       font-size: .76rem;
@@ -254,20 +254,20 @@
     }
 
     .hero-strip-item {
-      border-radius: 15px;
-      padding: 9px 10px;
-      background: rgba(255,255,255,.76);
+      border-radius: 16px;
+      padding: 10px;
+      background: rgba(255,255,255,.8);
       border: 1px solid var(--line);
-      min-height: 56px;
+      min-height: 58px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
     .hero-strip-icon {
-      width: 32px; height: 32px; border-radius: 11px; flex-shrink: 0;
+      width: 32px; height: 32px; border-radius: 12px; flex-shrink: 0;
       display: inline-flex; align-items: center; justify-content: center;
-      background: linear-gradient(135deg, rgba(233,216,203,.95), rgba(185,143,115,.22));
+      background: linear-gradient(135deg, rgba(255,226,207,.95), rgba(215,169,140,.26));
       font-size: .92rem;
     }
 
@@ -316,7 +316,7 @@
       justify-content: center;
       padding: 7px 10px;
       border-radius: 999px;
-      background: rgba(255,255,255,.76);
+      background: rgba(255,255,255,.82);
       border: 1px solid var(--line);
       font-size: .73rem;
       color: var(--text-sub);
@@ -338,10 +338,10 @@
 
     .input-card {
       border-radius: 22px;
-      background: rgba(255,255,255,.74);
+      background: rgba(255,255,255,.78);
       border: 1px solid var(--line);
       padding: 14px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.65);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
     }
 
     .input-title-row {
@@ -358,7 +358,7 @@
 
     .input-box {
       border-radius: 20px;
-      background: rgba(255,255,255,.86);
+      background: rgba(255,255,255,.9);
       border: 1.5px solid var(--line);
       padding: 12px 13px;
       transition: .22s ease;
@@ -368,7 +368,7 @@
 
     .input-box:focus-within {
       border-color: var(--brand);
-      box-shadow: 0 0 0 3px rgba(185,143,115,.14), 0 12px 20px rgba(185,143,115,.08);
+      box-shadow: 0 0 0 3px rgba(215,169,140,.15), 0 12px 20px rgba(215,169,140,.08);
       background: #fff;
     }
 
@@ -377,7 +377,7 @@
       top: 10px;
       right: 10px;
       border-radius: 999px;
-      border: 1px solid #decdc1;
+      border: 1px solid #ead6c7;
       background: rgba(255,255,255,.98);
       color: var(--brand-deep);
       padding: 7px 10px;
@@ -405,7 +405,7 @@
       padding: 34px 0 0;
     }
 
-    textarea::placeholder { color: #b4aaa2; line-height: 1.8; }
+    textarea::placeholder { color: #b8ada5; line-height: 1.8; }
 
     .input-meta, .request-meta {
       margin-top: 8px;
@@ -424,8 +424,8 @@
       gap: 6px;
       padding: 5px 9px;
       border-radius: 999px;
-      background: #f8efe8;
-      border: 1px dashed #e0d2c6;
+      background: #fbf2ec;
+      border: 1px dashed #e5d6cb;
     }
 
     .inline-warnings {
@@ -466,8 +466,8 @@
       width: 0%;
       height: 100%;
       border-radius: inherit;
-      background: linear-gradient(90deg, #d9b8a0, #b98f73, #ead8cb);
-      box-shadow: 0 0 18px rgba(185,143,115,.3);
+      background: linear-gradient(90deg, #f0c4ab, #d7a98c, #ffe5d2);
+      box-shadow: 0 0 18px rgba(215,169,140,.3);
       position: relative;
       overflow: hidden;
       transition: width .28s ease, filter .28s ease;
@@ -501,7 +501,7 @@
     .copy-group-btn {
       border-radius: 16px;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,.84);
+      background: rgba(255,255,255,.88);
       padding: 10px 12px;
       font-size: .8rem;
       font-weight: 700;
@@ -520,7 +520,7 @@
       border: none;
       border-radius: 999px;
       padding: 15px 16px;
-      background: radial-gradient(circle at 0 0, #d7b8a4 0, #b98f73 55%);
+      background: radial-gradient(circle at 0 0, #f0c6ae 0, #d7a98c 58%);
       color: #fff;
       font-weight: 700;
       font-size: 1rem;
@@ -551,16 +551,16 @@
     .primary-btn.ready-pulse { animation: redeemPulse 1.8s ease-in-out infinite; }
 
     @keyframes redeemPulse {
-      0%, 100% { box-shadow: 0 12px 25px rgba(0,0,0,.14), 0 0 0 0 rgba(185,143,115,.10); }
-      50% { box-shadow: 0 14px 28px rgba(0,0,0,.16), 0 0 0 10px rgba(185,143,115,0); }
+      0%, 100% { box-shadow: 0 12px 25px rgba(0,0,0,.14), 0 0 0 0 rgba(215,169,140,.10); }
+      50% { box-shadow: 0 14px 28px rgba(0,0,0,.16), 0 0 0 10px rgba(215,169,140,0); }
     }
 
     @keyframes btnShimmer { to { transform: translateX(130%); } }
 
     .secondary-btn {
       border-radius: 999px;
-      border: 1px solid #ddd4cc;
-      background: rgba(249,245,241,.94);
+      border: 1px solid #e4d8cf;
+      background: rgba(250,246,242,.96);
       padding: 12px 14px;
       font-size: .8rem;
       font-weight: 600;
@@ -625,7 +625,7 @@
     .status-card {
       border-radius: 15px;
       padding: 9px 10px;
-      background: rgba(255,255,255,.76);
+      background: rgba(255,255,255,.8);
       border: 1px solid var(--line);
       display: flex;
       gap: 8px;
@@ -636,7 +636,7 @@
       width: 28px; height: 28px; border-radius: 10px;
       display: inline-flex; align-items: center; justify-content: center;
       flex-shrink: 0;
-      background: linear-gradient(135deg, rgba(233,216,203,.95), rgba(185,143,115,.18));
+      background: linear-gradient(135deg, rgba(255,226,207,.95), rgba(215,169,140,.22));
       font-size: .75rem; font-weight: 700;
     }
 
@@ -645,14 +645,14 @@
 
     .loading-overlay {
       position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-      background: rgba(244,237,231,.82); backdrop-filter: blur(10px);
+      background: rgba(248,241,235,.84); backdrop-filter: blur(10px);
       z-index: 30; opacity: 0; pointer-events: none; transition: opacity .22s ease; padding: 20px;
     }
 
     .redeem-card.loading .loading-overlay { opacity: 1; pointer-events: all; }
 
     .loading-box {
-      width: 100%; max-width: 310px; border-radius: 24px; padding: 22px 18px 18px;
+      width: 100%; max-width: 320px; border-radius: 24px; padding: 22px 18px 18px;
       text-align: center; background: var(--card-strong); border: 1px solid var(--line);
       box-shadow: 0 18px 30px rgba(0,0,0,.08);
     }
@@ -661,10 +661,10 @@
 
     .loading-spinner-circle {
       width: 62px; height: 62px; border-radius: 999px;
-      border: 5px solid rgba(185, 143, 115, 0.18);
+      border: 5px solid rgba(215, 169, 140, 0.18);
       border-top-color: var(--brand); border-right-color: var(--brand);
       animation: circleSpin 0.95s linear infinite;
-      box-shadow: 0 0 0 8px rgba(185, 143, 115, 0.05);
+      box-shadow: 0 0 0 8px rgba(215, 169, 140, 0.05);
     }
 
     @keyframes circleSpin { to { transform: rotate(360deg); } }
@@ -694,7 +694,7 @@
     .loading-progress { margin-top: 12px; height: 9px; border-radius: 999px; background: rgba(0,0,0,.06); overflow: hidden; }
     .loading-progress-bar {
       width: 42%; height: 100%; border-radius: inherit;
-      background: linear-gradient(90deg, #d9b8a0, #b98f73, #ead8cb);
+      background: linear-gradient(90deg, #f0c4ab, #d7a98c, #ffe5d2);
       animation: progressMove 1.4s ease-in-out infinite;
     }
 
@@ -719,8 +719,8 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      border: 1px solid #e3d8cf;
-      background: #f7f1eb;
+      border: 1px solid #e6dcd4;
+      background: #fbf5f0;
     }
 
     .summary-pill.ok { background: var(--accent-ok-soft); border-color: #cbe5d8; color: var(--accent-ok); }
@@ -731,7 +731,7 @@
     .info-card {
       border-radius: 22px;
       padding: 14px;
-      background: rgba(255,255,255,.8);
+      background: rgba(255,255,255,.84);
       border: 1px solid var(--line);
       box-shadow: 0 10px 22px rgba(0,0,0,.04);
       font-size: .79rem;
@@ -743,7 +743,7 @@
       margin-top: 8px;
       border-radius: 22px;
       padding: 14px;
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.84);
       border: 1px solid var(--line);
     }
 
@@ -761,7 +761,7 @@
     .admin-box {
       border-radius: 16px;
       padding: 10px 12px;
-      background: rgba(255,255,255,.86);
+      background: rgba(255,255,255,.9);
       border: 1px solid var(--line);
       font-size: .78rem;
       min-height: 56px;
@@ -788,8 +788,8 @@
     .result-item {
       border-radius: 24px;
       padding: 13px;
-      border: 1px solid #e8dfd7;
-      background: linear-gradient(180deg, rgba(255,255,255,.97), rgba(250,247,244,.98));
+      border: 1px solid #eadfd7;
+      background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(252,248,244,.98));
       box-shadow: 0 12px 24px rgba(0,0,0,.05);
       position: relative;
       overflow: hidden;
@@ -822,8 +822,8 @@
       margin-left: 4px;
       padding: 4px 9px;
       border-radius: 999px;
-      background: #f6efe9;
-      border: 1px solid #e6d6ca;
+      background: #f7efe8;
+      border: 1px solid #ead9cc;
       color: var(--brand-deep);
       font-size: .72rem;
     }
@@ -836,8 +836,8 @@
     .item-body {
       padding: 12px;
       border-radius: 18px;
-      background: linear-gradient(135deg, #fffdfa, #f8f5f1);
-      border: 1px solid #eee6de;
+      background: linear-gradient(135deg, #fffdfa, #faf6f2);
+      border: 1px solid #efe6dd;
       box-shadow: inset 0 1px 0 rgba(255,255,255,.8);
       font-size: .92rem;
       line-height: 1.72;
@@ -859,7 +859,7 @@
     .history-item {
       border-radius: 18px;
       padding: 10px 12px;
-      background: rgba(255,255,255,.72);
+      background: rgba(255,255,255,.8);
       border: 1px solid var(--line);
       display: flex;
       justify-content: space-between;
@@ -889,7 +889,7 @@
       border: none;
       border-radius: 999px;
       padding: 10px 13px;
-      background: linear-gradient(135deg, #ffffff, #f8fff9);
+      background: linear-gradient(135deg, #ffffff, #fff7f4);
       color: #06c755;
       box-shadow: 0 18px 34px rgba(6, 199, 85, 0.18);
     }
@@ -928,9 +928,9 @@
       border: none;
       border-radius: 999px;
       padding: 10px 14px;
-      background: linear-gradient(135deg, #fffaf6, #f3e7de);
+      background: linear-gradient(135deg, #fffaf6, #faece3);
       color: var(--brand-deep);
-      box-shadow: 0 16px 28px rgba(185,143,115,.16);
+      box-shadow: 0 16px 28px rgba(215,169,140,.16);
     }
 
     .bottom-footer {
@@ -1055,7 +1055,7 @@
         <section class="card glass">
           <div class="card-inner">
             <h1 class="hero-title">ระบบรับสินค้าอัตโนมัติสำหรับลูกค้า</h1>
-            <div class="hero-tip"><span>💡</span><span id="heroTipText">วางหลายโค้ดได้ในครั้งเดียว สูงสุดประมาณ 5 โค้ด/ครั้ง</span></div>
+            <div class="hero-tip"><span>💖</span><span id="heroTipText">วางหลายโค้ดได้ในครั้งเดียว สูงสุดประมาณ 5 โค้ด/ครั้ง</span></div>
 
             <div class="hero-strip">
               <div class="hero-strip-item">
@@ -1067,8 +1067,8 @@
                 <div class="hero-strip-text"><strong>รองรับมือถือ</strong><span>ใช้งานง่ายทุกอุปกรณ์</span></div>
               </div>
               <div class="hero-strip-item">
-                <div class="hero-strip-icon">🔐</div>
-                <div class="hero-strip-text"><strong>อ่านง่าย</strong><span>แยกผลลัพธ์ชัดเจน</span></div>
+                <div class="hero-strip-icon">🎀</div>
+                <div class="hero-strip-text"><strong>อ่านง่าย</strong><span>ผลลัพธ์แยกสีชัดเจน</span></div>
               </div>
               <div class="hero-strip-item">
                 <div class="hero-strip-icon">📋</div>
@@ -1087,7 +1087,7 @@
               <div class="loading-title">รอสักครู่นะคะ</div>
               <div class="loading-dots"><span></span><span></span><span></span></div>
               <div class="loading-sub" id="loadingSub">กำลังตรวจสอบโค้ดค่ะ</div>
-              <div class="loading-warning"><span>⚠️</span><span>ห้ามรีเฟรช หรือปิดหน้าจอ</span></div>
+              <div class="loading-warning"><span>⚠️</span><span>ห้ามรีเฟรช หรือปิดหน้าจอ จนกว่าจะได้รับผลลัพธ์ค่ะ</span></div>
               <div class="loading-progress"><div class="loading-progress-bar"></div></div>
             </div>
           </div>
@@ -1101,7 +1101,7 @@
               <div class="head-badges">
                 <div class="mini-badge mini-badge-live">
                   <span class="status-dot"></span>
-                  <span id="healthText">กำลังตรวจสอบระบบ...</span>
+                  <span id="healthText">พร้อมใช้งาน</span>
                 </div>
                 <div class="mini-badge" id="maintenanceBadge">โหมดปกติ</div>
               </div>
@@ -1115,7 +1115,7 @@
 
               <div class="input-box" id="inputBox">
                 <button class="paste-mini-btn" id="btnPaste" type="button">📋 วางโค้ด</button>
-                <textarea id="codeInput" placeholder="ตัวอย่าง&#10;ABC12345&#10;DEF67890&#10;GHI24680"></textarea>
+                <textarea id="codeInput" placeholder="ตัวอย่าง&#10;NFXA1B2&#10;DSNC3D4&#10;YTBE5F6"></textarea>
 
                 <div class="input-meta">
                   <div class="meta-pill">แนะนำ: 1 บรรทัดต่อ 1 โค้ด</div>
@@ -1133,7 +1133,7 @@
                 <div class="meter-wrap">
                   <div class="meter-head">
                     <span>จำนวนโค้ดที่พร้อมตรวจสอบ</span>
-                    <span>ระบบออนไลน์</span>
+                    <span>ระบบเชื่อมกับ GAS</span>
                   </div>
                   <div class="meter-track">
                     <div class="meter-bar" id="codeMeterBar"></div>
@@ -1157,7 +1157,7 @@
 
               <div class="notice notice-important">
                 <span class="notice-icon">⚠️</span>
-                <span class="notice-text">หลังจากกด “รับสินค้า” แล้ว ห้ามรีเฟรช / ปิดหน้านี้เด็ดขาด จนกว่าจะได้รับรหัสครบ</span>
+                <span class="notice-text">หลังจากกด “รับสินค้า” แล้ว ห้ามรีเฟรช / ปิดหน้านี้เด็ดขาด จนกว่าจะได้รับผลลัพธ์ครบ</span>
               </div>
             </div>
 
@@ -1168,11 +1168,11 @@
             <div class="admin-panel hidden" id="adminPanel">
               <h3>Admin panel</h3>
               <div class="admin-grid">
-                <div class="admin-box" id="adminHealthBox">Health: -</div>
-                <div class="admin-box" id="adminValidateBox">Validate: -</div>
-                <div class="admin-box" id="adminStockBox">Stock: -</div>
-                <div class="admin-box" id="adminErrorBox">Errors: -</div>
-                <div class="admin-box" id="adminUsageBox">Usage: -</div>
+                <div class="admin-box" id="adminHealthBox">Health: frontend only</div>
+                <div class="admin-box" id="adminValidateBox">Validate: local only</div>
+                <div class="admin-box" id="adminStockBox">Stock: จากผลล่าสุด</div>
+                <div class="admin-box" id="adminErrorBox">Errors: ดูจาก response</div>
+                <div class="admin-box" id="adminUsageBox">Usage: จาก session นี้</div>
                 <div class="admin-box" id="adminInfoBox">Info: -</div>
               </div>
             </div>
@@ -1220,15 +1220,11 @@
   <script>
     const CONFIG = {
       apiUrl: "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec",
-      webRedeemKey: "426redeem2026",
       adminLineUrl: "https://lin.ee/gAh3wAH",
       maxCodes: 5,
-      historyKey: "redeem_history_v30",
-      draftKey: "redeem_draft_v30",
-      requestTimeoutMs: 30000,
-      healthTimeoutMs: 12000,
-      validateTimeoutMs: 12000,
-      usePostFirst: true
+      historyKey: "redeem_history_v31",
+      draftKey: "redeem_draft_v31",
+      requestTimeoutMs: 45000
     };
 
     const btnRedeem = document.getElementById("btnRedeem");
@@ -1290,8 +1286,8 @@
 
     const loadingMessages = [
       "กำลังตรวจสอบโค้ดค่ะ",
-      "กำลังเตรียมข้อมูลให้ค่ะ",
-      "กำลังดึงข้อมูลสินค้าให้ค่ะ",
+      "กำลังเตรียมข้อมูลสินค้าให้ค่ะ",
+      "กำลังค้นหาโค้ดในระบบ",
       "อย่ารีเฟรชหน้านะคะ"
     ];
 
@@ -1341,11 +1337,11 @@
       };
     }
 
-    async function fetchWithTimeout(url, options = {}, timeout = CONFIG.requestTimeoutMs) {
+    async function fetchWithTimeout(url, timeout = CONFIG.requestTimeoutMs) {
       const controller = new AbortController();
       const timer = setTimeout(() => controller.abort(), timeout);
       try {
-        return await fetch(url, { ...options, signal: controller.signal });
+        return await fetch(url, { signal: controller.signal });
       } finally {
         clearTimeout(timer);
       }
@@ -1399,8 +1395,8 @@
 
       const active = (el) => {
         el.style.borderColor = "var(--brand)";
-        el.style.boxShadow = "0 0 0 3px rgba(185,143,115,.12)";
-        el.style.background = "rgba(255,255,255,.90)";
+        el.style.boxShadow = "0 0 0 3px rgba(215,169,140,.12)";
+        el.style.background = "rgba(255,255,255,.92)";
       };
 
       const done = (el) => {
@@ -1463,7 +1459,7 @@
     btnAdminToggle.addEventListener("click", async () => {
       adminOpen = !adminOpen;
       adminPanel.classList.toggle("hidden", !adminOpen);
-      if (adminOpen) await refreshAdminPanel();
+      if (adminOpen) refreshAdminPanel();
     });
 
     let tipIndex = 0;
@@ -1627,49 +1623,28 @@
     }
 
     async function checkHealth() {
+      maintenanceMode = false;
+      healthText.textContent = "พร้อมใช้งาน";
+      updateMaintenanceUI();
+
       try {
-        healthText.textContent = "กำลังตรวจสอบระบบ...";
-        const res = await fetchWithTimeout(`${CONFIG.apiUrl}?action=health`, {}, CONFIG.healthTimeoutMs);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        maintenanceMode = !!data.maintenance;
-        healthText.textContent = maintenanceMode ? "ระบบปิดปรับปรุงชั่วคราว" : "ระบบออนไลน์ 24 ชม.";
-        updateMaintenanceUI();
+        const res = await fetchWithTimeout(CONFIG.apiUrl, 12000);
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        healthText.textContent = "เชื่อมต่อ GAS สำเร็จ";
       } catch {
-        healthText.textContent = "ไม่สามารถเช็กสถานะระบบได้";
+        healthText.textContent = "เชื่อมต่อ GAS ไม่ได้";
       }
     }
 
-    async function refreshAdminPanel() {
-      adminHealthBox.textContent = "Health: loading...";
-      adminValidateBox.textContent = "Validate: loading...";
-      adminStockBox.textContent = "Stock: จากผลล่าสุด";
-      adminErrorBox.textContent = "Errors: ดูจาก validate";
-      adminUsageBox.textContent = "Usage: จาก session นี้";
-      adminInfoBox.textContent = "Info: loading...";
-
-      try {
-        const healthRes = await fetchWithTimeout(`${CONFIG.apiUrl}?action=health`, {}, CONFIG.healthTimeoutMs);
-        const health = await healthRes.json();
-        adminHealthBox.textContent = `Health: ${health.maintenance ? "maintenance" : "online"} / apps ${health.appsLoaded ?? "-"}`;
-      } catch {
-        adminHealthBox.textContent = "Health: unavailable";
-      }
-
-      try {
-        const validateRes = await fetchWithTimeout(`${CONFIG.apiUrl}?action=validate`, {}, CONFIG.validateTimeoutMs);
-        const validate = await validateRes.json();
-        adminValidateBox.textContent = `Validate: ${validate.ok ? "ok" : "issue"} / errors ${validate.issues?.length ?? "-"} / warnings ${validate.warnings?.length ?? "-"}`;
-        adminErrorBox.textContent = `Errors: ${validate.issues?.slice(0, 2).join(" | ") || "none"}`;
-      } catch {
-        adminValidateBox.textContent = "Validate: unavailable";
-        adminErrorBox.textContent = "Errors: unavailable";
-      }
-
+    function refreshAdminPanel() {
       const history = loadHistory();
       const totalSuccess = history.reduce((acc, x) => acc + (Number(x.count || 0) || 0), 0);
+
+      adminHealthBox.textContent = `Health: ${healthText.textContent}`;
+      adminValidateBox.textContent = `Validate: local check only`;
+      adminStockBox.textContent = latestResultPayload ? `Stock: success ล่าสุด ${latestResultPayload.items?.length || 0}` : "Stock: ยังไม่มีผลล่าสุด";
+      adminErrorBox.textContent = latestResultPayload?.message ? `Errors/Message: ${latestResultPayload.message}` : "Errors: -";
       adminUsageBox.textContent = `Usage: history ${history.length} รายการ / success ${totalSuccess} โค้ด`;
-      adminStockBox.textContent = latestResultPayload ? `Stock: ล่าสุดมี success ${latestResultPayload.items?.length || 0}` : "Stock: ยังไม่มีผลล่าสุด";
       adminInfoBox.textContent = `Info: requestId ล่าสุด ${lastRequestId || "-"}`;
     }
 
@@ -1681,39 +1656,13 @@
     }
 
     async function callRedeemApi(text, requestId) {
-      const postBody = {
-        action: "redeem",
-        key: CONFIG.webRedeemKey,
-        text,
-        requestId
-      };
-
-      if (CONFIG.usePostFirst) {
-        try {
-          const res = await fetchWithTimeout(
-            CONFIG.apiUrl,
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(postBody)
-            },
-            CONFIG.requestTimeoutMs
-          );
-          if (res.ok) {
-            const data = await res.json();
-            if (data && typeof data === "object") return data;
-          }
-        } catch (_) {}
-      }
-
       const url =
         CONFIG.apiUrl +
         "?action=redeem" +
-        "&key=" + encodeURIComponent(CONFIG.webRedeemKey) +
         "&requestId=" + encodeURIComponent(requestId) +
         "&text=" + encodeURIComponent(text);
 
-      const res = await fetchWithTimeout(url, {}, CONFIG.requestTimeoutMs);
+      const res = await fetchWithTimeout(url, CONFIG.requestTimeoutMs);
       if (!res.ok) throw new Error("HTTP " + res.status);
       return await res.json();
     }
@@ -1764,7 +1713,7 @@
       loadingSub.textContent = loadingMessages[0];
 
       const startedAt = new Date();
-      status.style.color = "#8e8178";
+      status.style.color = "#9a8d84";
       status.innerHTML =
         "⏳ ระบบกำลังตรวจสอบโค้ดของคุณ...<br>" +
         `<span style='font-size:.78rem;color:#c27a5a;'>requestId: ${escapeHtml(lastRequestId)}</span><br>` +
@@ -1902,7 +1851,7 @@
       const copyNotFoundChunks = [];
 
       if (items.length > 0) {
-        items.forEach((item, index) => {
+        items.forEach((item) => {
           const safeCode = escapeHtml(item.code || "");
           const safeReply = escapeHtml(item.reply || "");
           const safeAppTag = escapeHtml((item.appName || "").trim());
@@ -2016,10 +1965,9 @@
       if (lastRequestId) msg += `requestId: ${lastRequestId}\n`;
       if (lastSubmittedText) msg += `โค้ด:\n${lastSubmittedText}\n`;
       if (latestResultPayload?.message) msg += `ผลล่าสุด: ${latestResultPayload.message}\n`;
-      const url = CONFIG.adminLineUrl;
       copyText(msg);
       showToast("คัดลอกข้อความสำหรับส่งหาแอดมินแล้ว");
-      window.open(url, "_blank", "noopener,noreferrer");
+      window.open(CONFIG.adminLineUrl, "_blank", "noopener,noreferrer");
     }
 
     function showFloatingCopy() {
@@ -2067,8 +2015,8 @@
       copyText(text);
       const original = btn.innerHTML;
       btn.innerHTML = "คัดลอกแล้ว ✓";
-      btn.style.background = "#f8efe8";
-      btn.style.borderColor = "#d9b8a0";
+      btn.style.background = "#fbf1ea";
+      btn.style.borderColor = "#e4b89e";
 
       setTimeout(() => {
         btn.innerHTML = original;
