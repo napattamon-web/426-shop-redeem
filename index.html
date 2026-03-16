@@ -408,7 +408,7 @@
     }
 
     body.theme-dark .hero-strip-icon {
-      background: linear-gradient(135deg, rgba(88,73,63,.95), rgba(182,143,120,.25));
+      background: linear-gradient(135deg, rgba(88,73,63,.95), rgba(182,143,120,.24));
     }
 
     .hero-strip-text strong {
@@ -1096,49 +1096,35 @@
 
     .loading-spinner-circle {
       position: absolute;
-      width: 84px;
-      height: 84px;
-      border-radius: 999px;
-      border: 6px solid rgba(182,143,120,0.14);
-      border-top-color: var(--brand);
-      border-right-color: #c7a38d;
-      border-left-color: rgba(182,143,120,0.30);
-      border-bottom-color: rgba(182,143,120,0.10);
-      animation: circleSpin .95s linear infinite;
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      border: 6px solid rgba(182,143,120,0.18);
+      border-top: 6px solid var(--brand);
+      border-right: 6px solid #c7a38d;
+      border-bottom: 6px solid rgba(182,143,120,0.10);
+      border-left: 6px solid rgba(182,143,120,0.30);
+      animation: circleSpin .8s linear infinite;
       box-shadow:
         0 0 0 8px rgba(182,143,120,0.05),
         0 8px 18px rgba(182,143,120,.08);
+      background: transparent;
     }
 
     body.theme-dark .loading-spinner-circle {
-      border-color: rgba(182,143,120,0.10);
-      border-top-color: var(--brand);
-      border-right-color: #c7a38d;
-      border-left-color: rgba(182,143,120,0.24);
-      border-bottom-color: rgba(182,143,120,0.06);
+      border: 6px solid rgba(182,143,120,0.10);
+      border-top: 6px solid var(--brand);
+      border-right: 6px solid #c7a38d;
+      border-bottom: 6px solid rgba(182,143,120,0.06);
+      border-left: 6px solid rgba(182,143,120,0.22);
       box-shadow:
         0 0 0 8px rgba(182,143,120,0.04),
         0 8px 18px rgba(0,0,0,.18);
+      background: transparent;
     }
 
     .loading-spinner-core {
-      position: absolute;
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      background: linear-gradient(180deg, #fffaf6, #efdfd3);
-      border: 1px solid rgba(182,143,120,.18);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.70),
-        0 4px 10px rgba(182,143,120,.10);
-    }
-
-    body.theme-dark .loading-spinner-core {
-      background: linear-gradient(180deg, #5a4a41, #443730);
-      border-color: rgba(255,255,255,.08);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.05),
-        0 4px 10px rgba(0,0,0,.16);
+      display: none !important;
     }
 
     @keyframes circleSpin {
@@ -1905,7 +1891,6 @@
               <div class="loading-spinner-wrap">
                 <div class="loading-ring-shadow"></div>
                 <div class="loading-spinner-circle"></div>
-                <div class="loading-spinner-core"></div>
               </div>
 
               <div class="loading-title">
@@ -2045,7 +2030,7 @@
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycby5mil7Axii3dSqUOAnU_Xd--hIp9ErKbfuw41vuPlOvPpt9tdZT2I6ZjmiU0No192j/exec";
     const MAX_CODES = 5;
-    const HISTORY_KEY = "redeem_history_v27";
+    const HISTORY_KEY = "redeem_history_v28";
     const REQUEST_TIMEOUT_MS = 30000;
 
     const btnRedeem = document.getElementById("btnRedeem");
