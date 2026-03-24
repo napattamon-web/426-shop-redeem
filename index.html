@@ -3,417 +3,855 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Premium Cute Shop</title>
+  <title>แอปพรีเมี่ยม</title>
   <style>
     * { box-sizing: border-box; }
+
     :root{
-      --bg:#fffaf3;
-      --card:#ffffff;
-      --line:#f0dfbf;
-      --soft:#fff2d8;
-      --soft2:#fff7ea;
-      --main:#e4a53c;
-      --main2:#f6c76f;
-      --text:#2f251c;
-      --muted:#7d6c58;
-      --ok:#1f8a43;
-      --danger:#cf4343;
-      --shadow:0 10px 24px rgba(185,140,64,.10);
-      --radius:24px;
+      --bg: #fffaf2;
+      --bg-pattern: #fdeef0;
+      --text: #5b312d;
+      --muted: #8e706a;
+
+      --pink: #f9c9d4;
+      --pink-strong: #ef9eb2;
+      --pink-soft: #fff1f5;
+
+      --mint: #bfead9;
+      --mint-soft: #eefcf6;
+
+      --cream: #f7e1b7;
+      --cream-soft: #fff7e7;
+
+      --blue-soft: #d8eefb;
+      --card: #fffdf9;
+      --line: #e9d8cf;
+
+      --shadow: 0 8px 18px rgba(163, 121, 110, 0.10);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
     }
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      color: var(--text);
       background:
-        radial-gradient(circle at top right,#fff0cc 0,#fffaf3 30%),
-        radial-gradient(circle at bottom left,#fff4da 0,#fffaf3 35%);
-      color:var(--text);
-    }
-    .container{
-      max-width:1360px;
-      margin:0 auto;
-      padding:22px;
-    }
-    .hero{
-      position:relative;
-      overflow:hidden;
-      background:linear-gradient(135deg,#fff7e6,#fffdf9);
-      border:1px solid var(--line);
-      border-radius:32px;
-      padding:26px;
-      box-shadow:var(--shadow);
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:16px;
-      margin-bottom:18px;
-    }
-    .hero:before,
-    .hero:after{
-      content:"";
-      position:absolute;
-      border-radius:50%;
-      background:rgba(244, 196, 98, .12);
-    }
-    .hero:before{
-      width:180px;height:180px;right:-40px;top:-50px;
-    }
-    .hero:after{
-      width:120px;height:120px;left:-20px;bottom:-30px;
-    }
-    .hero h1{
-      margin:0;
-      font-size:34px;
-      line-height:1.15;
-    }
-    .hero .sub{
-      font-weight:800;
-      color:#c68722;
-      margin-bottom:8px;
-    }
-    .hero p{
-      margin:10px 0 0;
-      color:var(--muted);
-      max-width:760px;
-    }
-    .hero-badge{
-      background:linear-gradient(135deg,var(--main),var(--main2));
-      color:#fff;
-      font-weight:800;
-      padding:14px 18px;
-      border-radius:999px;
-      white-space:nowrap;
-      box-shadow:0 10px 20px rgba(228,165,60,.25);
+        radial-gradient(circle at 12px 12px, #f8d7de 2px, transparent 2.5px),
+        radial-gradient(circle at 30px 26px, #f7d7df 1.6px, transparent 2px),
+        linear-gradient(var(--bg), var(--bg));
+      background-size: 42px 42px, 42px 42px, auto;
+      background-position: 0 0, 0 0, 0 0;
     }
 
-    .panel{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:16px;
-      margin-bottom:16px;
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 22px 18px 40px;
     }
 
-    .toolbar-grid,
-    .checkout-grid{
-      display:grid;
-      gap:12px;
-      grid-template-columns:repeat(4,1fr);
+    /* header */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 0 18px;
     }
 
-    input, button, select{
-      width:100%;
-      border-radius:16px;
-      padding:13px 14px;
-      font-size:15px;
-      outline:none;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
     }
 
-    input, select{
-      border:1px solid #ead7b0;
-      background:#fffdfa;
-      color:var(--text);
+    .brand-logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #d4f7e8, #fff1f4);
+      border: 2px solid #7b5d57;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: var(--shadow);
+      flex: 0 0 auto;
     }
 
-    button{
-      border:none;
-      cursor:pointer;
-      font-weight:800;
-      transition:.18s ease;
-    }
-    button:hover{ transform:translateY(-1px); }
-
-    .btn-main{
-      background:linear-gradient(135deg,var(--main),var(--main2));
-      color:white;
-      box-shadow:0 10px 18px rgba(228,165,60,.22);
-    }
-    .btn-soft{
-      background:var(--soft2);
-      color:#9d6d1e;
-      border:1px solid #efd9aa;
+    .brand-title {
+      font-size: 34px;
+      font-weight: 900;
+      line-height: 1;
+      color: #6a3230;
+      text-shadow:
+        -2px -2px 0 #fff,
+         2px -2px 0 #fff,
+        -2px  2px 0 #fff,
+         2px  2px 0 #fff,
+         0px  3px 0 #3c1f1d20;
+      white-space: nowrap;
     }
 
-    .mini-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-      margin:20px 0 12px;
-    }
-    .mini-head h2{
-      margin:0;
-      font-size:28px;
-    }
-    .muted{ color:var(--muted); }
-
-    .wallet-card{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:14px;
-      flex-wrap:wrap;
-      background:linear-gradient(135deg,#fff7df,#fffef9);
-    }
-    .wallet-balance{
-      font-size:28px;
-      font-weight:900;
-      color:#cf8a18;
+    .nav-pills {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
-    .product-grid{
-      display:grid;
-      grid-template-columns:repeat(4,minmax(0,1fr));
-      gap:18px;
+    .pill {
+      border: 2px solid #b98f88;
+      border-radius: 18px;
+      padding: 12px 22px;
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      user-select: none;
     }
 
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:26px;
-      overflow:hidden;
-      box-shadow:var(--shadow);
-      transition:.18s ease;
-    }
-    .card:hover{
-      transform:translateY(-3px);
-    }
-    .thumb-wrap{
-      aspect-ratio:1/1;
-      background:linear-gradient(135deg,#fff2d5,#fffaf0);
-      overflow:hidden;
-      position:relative;
-    }
-    .thumb-wrap img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
-    .thumb-wrap:after{
-      content:"✦";
-      position:absolute;
-      right:12px;
-      top:10px;
-      width:34px;
-      height:34px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:50%;
-      background:rgba(255,255,255,.86);
-      color:#d5992d;
-      font-weight:900;
-    }
-    .card-body{
-      padding:14px;
-    }
-    .cat{
-      display:inline-block;
-      background:#fff2cc;
-      color:#9c7024;
-      border-radius:999px;
-      padding:6px 10px;
-      font-size:12px;
-      font-weight:800;
-      margin-bottom:10px;
-    }
-    .title{
-      font-size:20px;
-      font-weight:900;
-      min-height:50px;
-      line-height:1.25;
-      margin-bottom:6px;
-    }
-    .desc{
-      color:var(--muted);
-      font-size:14px;
-      min-height:42px;
-    }
-    .price-row{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-      margin-top:12px;
-    }
-    .price{
-      font-size:24px;
-      font-weight:900;
-      color:#d08d1b;
-    }
-    .stock{
-      font-size:13px;
-      font-weight:800;
-      border-radius:999px;
-      padding:6px 10px;
-    }
-    .stock.ok{
-      background:#eefaf1;
-      color:var(--ok);
-    }
-    .stock.out{
-      background:#fff1f1;
-      color:var(--danger);
+    .pill.pink { background: #f9c8d3; }
+    .pill.mint { background: #c6eddc; }
+    .pill.cream { background: #f6deb0; }
+
+    .search-box {
+      width: 280px;
+      max-width: 100%;
+      background: #fff;
+      border: 2px solid #ab8a85;
+      border-radius: 22px;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow);
+      flex: 0 0 auto;
     }
 
-    .qty-row{
-      display:grid;
-      grid-template-columns:46px 1fr 46px;
-      gap:8px;
-      align-items:center;
-      margin-top:14px;
-    }
-    .qty{
-      text-align:center;
-      padding:10px;
-      border-radius:14px;
-      background:#fffaf0;
-      border:1px solid var(--line);
-      font-weight:900;
-    }
-    .qty-row button{
-      background:linear-gradient(135deg,#e5aa47,#f2c26c);
-      color:white;
-      font-size:22px;
-      border-radius:14px;
-      box-shadow:0 8px 16px rgba(229,170,71,.22);
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 16px;
+      padding: 10px 12px;
+      color: var(--text);
     }
 
-    .summary-grid{
-      display:grid;
-      grid-template-columns:1.1fr 1fr;
-      gap:16px;
+    .search-btn {
+      width: 44px;
+      height: 44px;
+      border: none;
+      border-radius: 50%;
+      background: #f6bfd0;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: inset 0 0 0 2px #d28da5;
     }
 
-    .cart-row,
-    .history-item{
-      padding:12px 0;
-      border-bottom:1px dashed #ecd8ad;
-    }
-    .cart-row:last-child,
-    .history-item:last-child{
-      border-bottom:none;
-    }
-    .strong{ font-weight:900; }
-
-    pre{
-      margin:0;
-      white-space:pre-wrap;
-      word-break:break-word;
-      background:#fff9ed;
-      border:1px solid var(--line);
-      border-radius:18px;
-      padding:14px;
-      max-height:460px;
-      overflow:auto;
+    /* banner */
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, #bff2de 0%, #bde9ff 35%, #fff1b8 100%);
+      border-radius: 30px;
+      border: 2px solid #e9d1c8;
+      padding: 28px 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      min-height: 255px;
     }
 
-    code{
-      background:#fff4d8;
-      padding:3px 7px;
-      border-radius:8px;
-      font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    .hero .cloud {
+      position: absolute;
+      background: #fff;
+      border: 3px solid #7d6260;
+      border-radius: 999px;
+      box-shadow: 0 5px 0 rgba(255,255,255,0.4);
     }
 
-    .success{ color:var(--ok); font-weight:800; }
-    .danger{ color:var(--danger); font-weight:800; }
+    .cloud.c1 { width: 80px; height: 42px; left: 24px; top: 42px; }
+    .cloud.c2 { width: 66px; height: 36px; right: 34px; top: 44px; }
+    .cloud.c3 { width: 62px; height: 34px; left: 300px; bottom: 46px; }
 
-    .cute-note{
-      font-size:13px;
-      color:#8d785f;
-      margin-top:8px;
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+      padding-top: 8px;
     }
 
-    @media (max-width: 1100px){
-      .product-grid{ grid-template-columns:repeat(3,minmax(0,1fr)); }
-      .toolbar-grid,.checkout-grid{ grid-template-columns:repeat(2,1fr); }
-      .summary-grid{ grid-template-columns:1fr; }
+    .hero-title {
+      font-size: 54px;
+      font-weight: 900;
+      margin: 8px 0 8px;
+      line-height: 1.08;
+      color: #6a2f2d;
+      text-shadow:
+        -3px -3px 0 #fff,
+         3px -3px 0 #fff,
+        -3px  3px 0 #fff,
+         3px  3px 0 #fff;
     }
-    @media (max-width: 760px){
-      .hero{ flex-direction:column; align-items:flex-start; }
-      .product-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+
+    .hero-sub {
+      font-size: 19px;
+      color: #5a3b34;
+      font-weight: 700;
+      margin-bottom: 22px;
     }
-    @media (max-width: 520px){
-      .product-grid{ grid-template-columns:1fr; }
-      .toolbar-grid,.checkout-grid{ grid-template-columns:1fr; }
-      .hero h1{ font-size:28px; }
-      .wallet-balance{ font-size:24px; }
+
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 34px;
+      background: #f7aebe;
+      color: white;
+      border: 3px solid #d68798;
+      border-radius: 24px;
+      font-size: 28px;
+      font-weight: 900;
+      box-shadow: 0 8px 0 #e49bac;
+    }
+
+    .hero-deco {
+      position: absolute;
+      z-index: 1;
+      font-size: 86px;
+      filter: drop-shadow(0 6px 8px rgba(0,0,0,0.08));
+    }
+
+    .hero-deco.left  { left: 18px; bottom: 6px; }
+    .hero-deco.mid   { left: 220px; bottom: 36px; font-size: 70px; }
+    .hero-deco.right { right: 26px; bottom: 8px; }
+
+    .hero-star {
+      position: absolute;
+      font-size: 28px;
+      z-index: 2;
+    }
+
+    .s1 { left: 100px; top: 88px; }
+    .s2 { right: 210px; top: 52px; }
+    .s3 { left: 520px; top: 78px; }
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 0 8px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #e7cfd0;
+    }
+
+    .dot.active {
+      background: #f3a9bc;
+      width: 14px;
+      height: 14px;
+    }
+
+    /* section */
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 12px 0 14px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 900;
+      color: #5f2d2b;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    /* user panel */
+    .user-panel {
+      margin: 18px 0 16px;
+      background: rgba(255,255,255,0.78);
+      backdrop-filter: blur(8px);
+      border: 2px solid #eadcd3;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 16px;
+    }
+
+    .user-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr 1fr auto;
+      gap: 12px;
+    }
+
+    .field {
+      width: 100%;
+      background: #fffdfa;
+      border: 2px solid #ead8cf;
+      border-radius: 16px;
+      padding: 14px 14px;
+      font-size: 15px;
+      outline: none;
+      color: var(--text);
+    }
+
+    .btn {
+      border: none;
+      border-radius: 16px;
+      padding: 0 18px;
+      min-height: 50px;
+      font-size: 15px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-pink {
+      background: #f7b8c7;
+      color: #6b3131;
+    }
+
+    .wallet-panel {
+      margin-top: 14px;
+      background: linear-gradient(135deg, #fff7e5, #fffdf9);
+      border: 2px solid #efd9b2;
+      border-radius: 22px;
+      padding: 16px 18px;
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .wallet-main {
+      min-width: 0;
+    }
+
+    .wallet-name {
+      font-size: 18px;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .wallet-meta {
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .wallet-balance,
+    .wallet-spent {
+      background: white;
+      border: 2px solid #efdecc;
+      border-radius: 18px;
+      padding: 12px 18px;
+      min-width: 160px;
+      text-align: center;
+    }
+
+    .wallet-label {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .wallet-value {
+      font-size: 24px;
+      font-weight: 900;
+      color: #d18c22;
+    }
+
+    /* grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      position: relative;
+      background: var(--card);
+      border: 2px solid #e6d7cf;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .sparkle {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      font-size: 24px;
+      z-index: 2;
+    }
+
+    .card-inner {
+      display: flex;
+      gap: 12px;
+      align-items: stretch;
+      padding: 14px;
+    }
+
+    .thumb {
+      width: 108px;
+      min-width: 108px;
+      height: 108px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #ffd9e3, #d8f0ff);
+      border: 2px solid #d7d8d4;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .thumb-fallback {
+      font-size: 44px;
+    }
+
+    .card-info {
+      min-width: 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 900;
+      line-height: 1.25;
+      margin-bottom: 4px;
+      word-break: break-word;
+    }
+
+    .card-desc {
+      color: #7c645f;
+      font-size: 13px;
+      line-height: 1.35;
+      min-height: 34px;
+      margin-bottom: 8px;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin: 4px 0 8px;
+    }
+
+    .price {
+      font-size: 18px;
+      font-weight: 900;
+      color: #2d4d45;
+      background: #d0f2e2;
+      border-radius: 999px;
+      padding: 4px 10px;
+      white-space: nowrap;
+    }
+
+    .stock {
+      font-size: 12px;
+      font-weight: 800;
+      border-radius: 999px;
+      padding: 4px 8px;
+      white-space: nowrap;
+    }
+
+    .stock.ok {
+      background: #eefaf1;
+      color: #2f8d4f;
+    }
+
+    .stock.out {
+      background: #fff0f0;
+      color: #c24d4d;
+    }
+
+    .qty-row {
+      display: grid;
+      grid-template-columns: 34px 1fr 34px;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .qty-row button {
+      height: 34px;
+      border: none;
+      border-radius: 12px;
+      font-size: 20px;
+      font-weight: 900;
+      color: #7b3d3e;
+      background: #ffd7e0;
+      cursor: pointer;
+    }
+
+    .qty-display {
+      text-align: center;
+      border-radius: 12px;
+      background: #fff8fa;
+      border: 2px solid #efdbe0;
+      padding: 6px 8px;
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    /* checkout */
+    .checkout-wrap {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .panel {
+      background: rgba(255,255,255,0.88);
+      border: 2px solid #eaded6;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 16px;
+    }
+
+    .panel h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .cart-item,
+    .history-item {
+      padding: 12px 0;
+      border-bottom: 1px dashed #ead8cf;
+    }
+
+    .cart-item:last-child,
+    .history-item:last-child {
+      border-bottom: none;
+    }
+
+    .cart-title,
+    .history-title {
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .grand-total {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px dashed #ead8cf;
+    }
+
+    .grand-total .amount {
+      font-size: 30px;
+      font-weight: 900;
+      color: #cf8c24;
+      margin-top: 4px;
+    }
+
+    .checkout-fields {
+      display: grid;
+      gap: 10px;
+    }
+
+    .checkout-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .btn-mint {
+      background: #cceedd;
+      color: #2f5a4f;
+    }
+
+    .btn-cream {
+      background: #f8e3b8;
+      color: #724f20;
+    }
+
+    .btn-big {
+      margin-top: 12px;
+      width: 100%;
+      min-height: 54px;
+      font-size: 17px;
+    }
+
+    pre {
+      margin: 0;
+      padding: 14px;
+      border-radius: 18px;
+      background: #fff9fb;
+      border: 2px solid #f0dbe2;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow: auto;
+      max-height: 360px;
+      color: #6a4543;
+      font-size: 13px;
+    }
+
+    code {
+      background: #fff0f5;
+      border-radius: 8px;
+      padding: 2px 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+    }
+
+    .history-delivery {
+      margin-top: 10px;
+      background: #fff7eb;
+      border: 2px solid #f1dfbc;
+      border-radius: 16px;
+      padding: 10px 12px;
+    }
+
+    .history-delivery-title {
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .success {
+      color: #24834a;
+      font-weight: 900;
+    }
+
+    .danger {
+      color: #d15252;
+      font-weight: 900;
+    }
+
+    @media (max-width: 1100px) {
+      .product-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .checkout-wrap {
+        grid-template-columns: 1fr;
+      }
+      .user-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .wallet-panel {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .topbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav-pills {
+        justify-content: flex-start;
+      }
+      .search-box {
+        width: 100%;
+      }
+      .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .hero-title {
+        font-size: 38px;
+      }
+      .hero-btn {
+        font-size: 22px;
+        padding: 14px 26px;
+      }
+      .hero-deco.mid,
+      .hero-star,
+      .cloud.c3 {
+        display: none;
+      }
+      .wallet-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+      .user-grid {
+        grid-template-columns: 1fr;
+      }
+      .checkout-actions {
+        grid-template-columns: 1fr;
+      }
+      .brand-title {
+        font-size: 28px;
+      }
+      .hero {
+        min-height: 220px;
+        padding: 22px 16px;
+      }
+      .hero-title {
+        font-size: 30px;
+      }
+      .hero-sub {
+        font-size: 16px;
+      }
+      .hero-deco.right,
+      .hero-deco.left {
+        opacity: 0.55;
+        font-size: 62px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="hero">
-      <div>
-        <div class="sub">Premium Cute Shop</div>
-        <h1>ร้านขายพรีเมี่ยมน่ารัก ✨</h1>
-        <p>ระบบจะใช้เครดิตคงเหลือของลูกค้าก่อนอัตโนมัติ ถ้าไม่พอจะแจ้งเฉพาะยอดที่ต้องโอนเพิ่ม และเมื่อสลิปผ่านจะส่งสินค้าดิจิทัลทันที</p>
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-logo">☁️</div>
+        <div class="brand-title">แอปนี่สิ ☁️</div>
       </div>
-      <div class="hero-badge">พร้อมส่งทันที</div>
+
+      <nav class="nav-pills">
+        <div class="pill pink">หน้าแรก</div>
+        <div class="pill mint">หมวดหมู่</div>
+        <div class="pill cream">ยอดฮิต</div>
+      </nav>
+
+      <div class="search-box">
+        <input id="searchInput" placeholder="ค้นหาแอป" oninput="renderProducts()" />
+        <button class="search-btn">🔍</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="cloud c1"></div>
+      <div class="cloud c2"></div>
+      <div class="cloud c3"></div>
+
+      <div class="hero-star s1">✨</div>
+      <div class="hero-star s2">✨</div>
+      <div class="hero-star s3">🎉</div>
+
+      <div class="hero-deco left">🐰</div>
+      <div class="hero-deco mid">🧸</div>
+      <div class="hero-deco right">🐻</div>
+
+      <div class="hero-content">
+        <div class="hero-title">แอปพรีเมี่ยม สไตล์น่ารักสุดๆ</div>
+        <div class="hero-sub">ไม่มีโฆษณา ราคาประหยัด ใช้งานง่าย ปลอดภัย 100%</div>
+        <div class="hero-btn">เลือกดูเลย</div>
+      </div>
+    </section>
+
+    <div class="dots">
+      <div class="dot"></div>
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
     </div>
 
-    <div class="panel">
-      <div class="toolbar-grid">
-        <input id="userId" placeholder="User ID เช่น U001" value="U001" />
-        <input id="userNameView" placeholder="ชื่อผู้ใช้" disabled />
-        <input id="userTierView" placeholder="ระดับสมาชิก" disabled />
-        <button class="btn-main" onclick="loadAll()">โหลดข้อมูลผู้ใช้</button>
+    <section class="user-panel">
+      <div class="user-grid">
+        <input id="userId" class="field" placeholder="User ID เช่น U001" value="U001" />
+        <input id="userNameView" class="field" placeholder="ชื่อผู้ใช้" disabled />
+        <input id="userTierView" class="field" placeholder="ระดับสมาชิก" disabled />
+        <button class="btn btn-pink" onclick="loadAll()">โหลดข้อมูลผู้ใช้</button>
       </div>
-      <div class="cute-note">ระบบนี้ไม่ใช้หมายเลขโทรศัพท์ ใช้เพียง userId และระดับสมาชิกจากชีต users</div>
+
+      <div class="wallet-panel">
+        <div class="wallet-main">
+          <div class="wallet-name" id="walletName">ยังไม่ได้โหลดข้อมูลผู้ใช้</div>
+          <div class="wallet-meta" id="walletText">ระบบจะใช้เครดิตคงเหลือก่อนอัตโนมัติ ถ้าไม่พอค่อยให้โอนส่วนต่าง</div>
+        </div>
+
+        <div class="wallet-balance">
+          <div class="wallet-label">เครดิตคงเหลือ</div>
+          <div class="wallet-value" id="walletBalance">฿0</div>
+        </div>
+
+        <div class="wallet-spent">
+          <div class="wallet-label">ยอดซื้อสะสม</div>
+          <div class="wallet-value" id="spentText">฿0</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-head">
+      <div class="section-title">👑 แอปยอดนิยมวันนี้</div>
+      <div class="section-sub" id="productCount">0 รายการ</div>
     </div>
 
-    <div class="panel wallet-card">
-      <div>
-        <div class="muted">เครดิตคงเหลือของคุณ</div>
-        <div class="wallet-balance" id="walletBalance">฿0</div>
-        <div class="cute-note" id="walletText">ยังไม่ได้โหลดข้อมูล</div>
-      </div>
-      <div>
-        <div class="muted">ยอดซื้อสะสม</div>
-        <div class="wallet-balance" id="spentText">฿0</div>
-      </div>
-    </div>
+    <section id="productGrid" class="product-grid"></section>
 
-    <div class="mini-head">
-      <h2>สินค้าทั้งหมด</h2>
-      <div class="muted" id="productCount">0 รายการ</div>
-    </div>
-
-    <div id="productGrid" class="product-grid"></div>
-
-    <div class="panel">
-      <div class="checkout-grid">
-        <input id="slipRef" placeholder="Slip Ref / QR / หมายเลขอ้างอิง" />
-        <input id="slipAmount" type="number" placeholder="ยอดเงินที่โอนจริง" />
-        <button class="btn-soft" onclick="loadHistory()">โหลดประวัติการซื้อ</button>
-        <button class="btn-main" onclick="checkout()">ชำระเงินและรับสินค้า</button>
-      </div>
-      <div class="cute-note">ถ้าเครดิตคงเหลือพอทั้งหมด ระบบจะไม่ต้องใช้สลิปเลย</div>
-    </div>
-
-    <div class="summary-grid">
+    <section class="checkout-wrap">
       <div class="panel">
-        <h3 style="margin-top:0;">สรุปตะกร้า</h3>
+        <h3>สรุปตะกร้า</h3>
         <div id="cartSummary" class="muted">ยังไม่มีสินค้าในตะกร้า</div>
-        <div style="margin-top:14px;padding-top:14px;border-top:1px dashed #ecd8ad;">
-          <div><span class="muted">ยอดรวมทั้งหมด</span></div>
-          <div class="wallet-balance" id="grandTotal">฿0</div>
-          <div class="cute-note" id="paymentHint">เลือกรายการสินค้าเพื่อคำนวณยอดที่ต้องโอนเพิ่ม</div>
+
+        <div class="grand-total">
+          <div class="muted">ยอดรวมทั้งหมด</div>
+          <div class="amount" id="grandTotal">฿0</div>
+          <div class="muted" id="paymentHint">เลือกรายการสินค้าเพื่อคำนวณยอดที่ต้องโอนเพิ่ม</div>
         </div>
       </div>
 
       <div class="panel">
-        <h3 style="margin-top:0;">ผลลัพธ์ระบบ</h3>
-        <pre id="resultBox">รอทำรายการ...</pre>
-      </div>
-    </div>
+        <h3>ชำระเงินและรับสินค้า</h3>
 
-    <div class="panel">
-      <h3 style="margin-top:0;">ประวัติการซื้อ</h3>
+        <div class="checkout-fields">
+          <input id="slipRef" class="field" placeholder="Slip Ref / QR / หมายเลขอ้างอิง" />
+          <input id="slipAmount" class="field" type="number" placeholder="ยอดเงินที่โอนจริง" />
+        </div>
+
+        <div class="checkout-actions">
+          <button class="btn btn-mint" onclick="loadHistory()">โหลดประวัติการซื้อ</button>
+          <button class="btn btn-cream" onclick="clearCart()">ล้างตะกร้า</button>
+        </div>
+
+        <button class="btn btn-pink btn-big" onclick="checkout()">ชำระเงินและรับสินค้า</button>
+
+        <div style="margin-top:12px;">
+          <pre id="resultBox">รอทำรายการ...</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-top:16px;">
+      <h3>ประวัติการซื้อ</h3>
       <div id="historyList" class="muted">ยังไม่มีข้อมูล</div>
-    </div>
+    </section>
   </div>
 
   <script>
@@ -454,9 +892,9 @@
         document.getElementById('userTierView').value = userRes.user.tier || '';
         document.getElementById('walletBalance').textContent = baht(userRes.user.balance || 0);
         document.getElementById('spentText').textContent = baht(userRes.user.total_spent || 0);
-        document.getElementById('walletText').innerHTML =
-          'ชื่อ: <strong>' + escapeHtml(userRes.user.name || '-') + '</strong> • ระดับ: <strong>' +
-          escapeHtml(userRes.user.tier || '-') + '</strong>';
+        document.getElementById('walletName').textContent = 'สวัสดี ' + (userRes.user.name || 'สมาชิก');
+        document.getElementById('walletText').textContent =
+          'ระดับ ' + (userRes.user.tier || '-') + ' • ระบบจะใช้เครดิตก่อนอัตโนมัติ';
       } else {
         alert(userRes.message || 'โหลดข้อมูลผู้ใช้ไม่สำเร็จ');
       }
@@ -478,31 +916,68 @@
         : Number(product.price_member || 0);
     }
 
+    function getDisplayEmoji(name, category) {
+      const text = (name + ' ' + category).toLowerCase();
+      if (text.includes('netflix') || text.includes('movie') || text.includes('series')) return '📺';
+      if (text.includes('spotify') || text.includes('music')) return '🎵';
+      if (text.includes('canva') || text.includes('draw') || text.includes('design')) return '🎨';
+      if (text.includes('chatgpt') || text.includes('ai')) return '🤖';
+      if (text.includes('youtube')) return '▶️';
+      if (text.includes('game') || text.includes('nitro')) return '🎮';
+      return '🌟';
+    }
+
     function renderProducts() {
       const grid = document.getElementById('productGrid');
-      document.getElementById('productCount').textContent = (state.products.length || 0) + ' รายการ';
+      const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
 
-      grid.innerHTML = state.products.map(p => {
+      const filtered = state.products.filter(p => {
+        const text = `${p.name || ''} ${p.category || ''} ${p.description || ''}`.toLowerCase();
+        return !keyword || text.includes(keyword);
+      });
+
+      document.getElementById('productCount').textContent = filtered.length + ' รายการ';
+
+      if (!filtered.length) {
+        grid.innerHTML = `<div class="panel" style="grid-column:1/-1;text-align:center;">ไม่พบสินค้าที่ค้นหา</div>`;
+        renderCartSummary();
+        return;
+      }
+
+      grid.innerHTML = filtered.map((p, index) => {
         const qty = state.cart[p.id] || 0;
         const stockClass = Number(p.stock) > 0 ? 'ok' : 'out';
-        const img = p.image || 'https://placehold.co/600x600?text=Premium';
+        const hasImage = !!p.image;
+        const fallback = getDisplayEmoji(p.name || '', p.category || '');
+        const sparkles = ['✨','💫','⭐','✨'];
         return `
           <div class="card">
-            <div class="thumb-wrap">
-              <img src="${escapeAttr(img)}" alt="${escapeAttr(p.name)}">
-            </div>
-            <div class="card-body">
-              <div class="cat">${escapeHtml(p.category || 'ทั่วไป')}</div>
-              <div class="title">${escapeHtml(p.name)}</div>
-              <div class="desc">${escapeHtml(p.description || 'สินค้าดิจิทัลพร้อมส่ง')}</div>
-              <div class="price-row">
-                <div class="price">${baht(getPrice(p))}</div>
-                <div class="stock ${stockClass}">คงเหลือ ${Number(p.stock || 0)}</div>
+            <div class="sparkle">${sparkles[index % sparkles.length]}</div>
+            <div class="card-inner">
+              <div class="thumb">
+                ${hasImage
+                  ? `<img src="${escapeAttr(p.image)}" alt="${escapeAttr(p.name)}">`
+                  : `<div class="thumb-fallback">${fallback}</div>`}
               </div>
-              <div class="qty-row">
-                <button onclick="changeQty('${escapeJs(p.id)}', -1)">-</button>
-                <div class="qty">${qty}</div>
-                <button onclick="changeQty('${escapeJs(p.id)}', 1)" ${Number(p.stock) <= 0 ? 'disabled' : ''}>+</button>
+
+              <div class="card-info">
+                <div>
+                  <div class="card-title">${escapeHtml(p.name || '')}</div>
+                  <div class="card-desc">${escapeHtml(p.description || 'สินค้าดิจิทัลพร้อมส่งทันที')}</div>
+                </div>
+
+                <div>
+                  <div class="price-row">
+                    <div class="price">${baht(getPrice(p))}</div>
+                    <div class="stock ${stockClass}">คงเหลือ ${Number(p.stock || 0)}</div>
+                  </div>
+
+                  <div class="qty-row">
+                    <button onclick="changeQty('${escapeJs(p.id)}', -1)">-</button>
+                    <div class="qty-display">${qty}</div>
+                    <button onclick="changeQty('${escapeJs(p.id)}', 1)" ${Number(p.stock) <= 0 ? 'disabled' : ''}>+</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -525,6 +1000,11 @@
       renderProducts();
     }
 
+    function clearCart() {
+      state.cart = {};
+      renderProducts();
+    }
+
     function renderCartSummary() {
       const box = document.getElementById('cartSummary');
 
@@ -532,6 +1012,7 @@
         .filter(id => Number(state.cart[id]) > 0)
         .map(id => {
           const product = state.products.find(p => p.id === id);
+          if (!product) return null;
           const qty = Number(state.cart[id]);
           const unitPrice = getPrice(product);
           return {
@@ -541,12 +1022,14 @@
             unitPrice,
             lineTotal: qty * unitPrice
           };
-        });
+        })
+        .filter(Boolean);
 
       if (!items.length) {
         box.innerHTML = '<div class="muted">ยังไม่มีสินค้าในตะกร้า</div>';
         document.getElementById('grandTotal').textContent = baht(0);
-        document.getElementById('paymentHint').textContent = 'เลือกรายการสินค้าเพื่อคำนวณยอดที่ต้องโอนเพิ่ม';
+        document.getElementById('paymentHint').textContent =
+          'เลือกรายการสินค้าเพื่อคำนวณยอดที่ต้องโอนเพิ่ม';
         return;
       }
 
@@ -554,8 +1037,8 @@
       box.innerHTML = items.map(item => {
         total += item.lineTotal;
         return `
-          <div class="cart-row">
-            <div class="strong">${escapeHtml(item.name)}</div>
+          <div class="cart-item">
+            <div class="cart-title">${escapeHtml(item.name)}</div>
             <div class="muted">จำนวน ${item.qty} × ${baht(item.unitPrice)} = <strong>${baht(item.lineTotal)}</strong></div>
           </div>
         `;
@@ -651,7 +1134,7 @@
 
         return `
           <div class="history-item">
-            <div class="strong">ออเดอร์ ${escapeHtml(order.order_id)}</div>
+            <div class="history-title">ออเดอร์ ${escapeHtml(order.order_id)}</div>
             <div class="muted">วันที่ ${escapeHtml(order.created_at || '-')}</div>
             <div class="muted" style="margin-top:6px;">
               ยอดรวม <strong>${baht(order.total)}</strong> • ใช้เครดิต <strong>${baht(order.wallet_used)}</strong>
@@ -660,13 +1143,15 @@
               • เครดิตเพิ่ม <strong>${baht(order.credit_added)}</strong>
             </div>
             <div style="margin-top:8px;" class="success">สถานะ ${escapeHtml(order.payment_status || '-')}</div>
+
             <div style="margin-top:10px;">
               ${items.map(it => `
                 <div class="muted">- ${escapeHtml(it.name)} × ${it.qty} = ${baht(it.lineTotal)}</div>
               `).join('')}
             </div>
-            <div style="margin-top:12px;padding:12px;background:#fff8ea;border:1px solid #eddab1;border-radius:16px;">
-              <div class="strong">สินค้าที่ได้รับ</div>
+
+            <div class="history-delivery">
+              <div class="history-delivery-title">สินค้าที่ได้รับ</div>
               ${delivery.length ? delivery.map(d => `
                 <div class="muted" style="margin-top:8px;">
                   ${escapeHtml(d.productName)} × ${d.qty}
