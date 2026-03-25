@@ -1,61 +1,281 @@
-/* 1. ปรับความโค้ง (Border Radius) ให้เป็น 40px ดูเป็นมิตรและน่ารักสุดๆ */
-:root {
-  --radius-xl: 40px;
-}
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>426 SHOP – Member & Claim Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#fff0f3" />
+  <style>
+    :root {
+      /* Palette: Sweet & Modern */
+      --primary: #ff4d6d;
+      --primary-soft: #ff85a1;
+      --primary-deep: #a4133c;
+      --bg-gradient: linear-gradient(135deg, #fff5f7 0%, #ffe0e9 100%);
+      --glass: rgba(255, 255, 255, 0.85);
+      --card-white: #ffffff;
+      --text-main: #592d38;
+      --text-sub: #8c5e69;
+      --radius-xl: 40px; /* ตามคำขอ: โค้งมนพิเศษ */
+      --shadow-cute: 0 15px 35px rgba(255, 77, 109, 0.12);
+    }
 
-.card, .glass, .payment-card, .queue-card, .live-card, .swap-panel-status {
-  border-radius: 40px !important;
-}
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    
+    body {
+      margin: 0;
+      font-family: 'Kanit', sans-serif; /* แนะนำให้เพิ่ม font Kanit ในโปรเจกต์จริง */
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 15px;
+    }
 
-.input-shell, .btn-primary, .btn-secondary, .member-pill, .btn-soft-cute, .qr-wrap, .upload-btn {
-  border-radius: 20px !important;
-}
+    /* Ambient Background Objects */
+    .bubble {
+      position: fixed;
+      width: 200px;
+      height: 200px;
+      background: var(--primary-soft);
+      filter: blur(80px);
+      opacity: 0.2;
+      z-index: -1;
+      border-radius: 50%;
+    }
 
-/* 2. กิมมิคส่วนหัว โลโก้เอียงเล็กน้อย ดูมีลูกเล่นขี้เล่น */
-.logo-shell {
-  border-radius: 32px !important;
-  transform: rotate(-4deg);
-  animation: cuteBob 4.5s ease-in-out infinite !important;
-}
-.logo-shell img {
-  border-radius: 26px !important;
-}
+    .app-container {
+      width: 100%;
+      max-width: 480px;
+      z-index: 1;
+    }
 
-@keyframes cuteBob {
-  0%, 100% { transform: translateY(0) rotate(-4deg); }
-  50% { transform: translateY(-6px) rotate(-1deg); }
-}
+    /* Header Section with Tilt Gimmick */
+    .header-card {
+      background: var(--glass);
+      backdrop-filter: blur(15px);
+      border-radius: var(--radius-xl);
+      padding: 30px 20px;
+      text-align: center;
+      border: 2px solid #ffffff;
+      box-shadow: var(--shadow-cute);
+      margin-bottom: 25px;
+      position: relative;
+      overflow: hidden;
+    }
 
-/* 3. ปรับพื้นหลังให้ดูคลีน เพิ่ม Space พักสายตา เนื้อหาไม่โดนแย่งซีน */
-.bg-icons span, .float-shapes span {
-  opacity: 0.03 !important; /* ดรอปความเข้มลง ให้เป็นแค่ลวดลายจางๆ */
-}
-.ambient::before, .ambient::after {
-  opacity: 0.10; /* ลดความฟุ้งของแสงเบื้องหลังลงให้นวลตาขึ้น */
-}
+    .logo-wrapper {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 15px;
+      transform: rotate(-5deg); /* กิมมิคโลโก้เอียงเล็กน้อย */
+      transition: 0.3s;
+    }
+    
+    .logo-wrapper:hover {
+      transform: rotate(0deg) scale(1.05);
+    }
 
-/* 4. เน้นปุ่มคัดลอกให้เด่น น่ากดใช้งาน */
-#btnCopyAccount {
-  border: 1.5px solid var(--primary-3);
-  color: var(--primary-deep);
-  background: linear-gradient(180deg, #ffffff, #fff0f4);
-  padding: 8px 18px;
-  border-radius: 20px;
-  box-shadow: 0 6px 14px rgba(255, 92, 124, 0.15);
-  transition: all 0.15s ease;
-}
-#btnCopyAccount:active {
-  transform: scale(0.94);
-}
+    .logo-wrapper img {
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      object-fit: cover;
+      border: 4px solid #fff;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
 
-/* 5. ปรับช่องไฟ (Spacing) ของฟอร์มให้เรียงบรรทัดสวยงาม */
-.field-group {
-  gap: 8px;
-  margin-top: 16px;
-}
-.input-shell {
-  padding: 14px 16px; /* ขยายกล่องกรอกข้อความให้ดูอวบอิ่ม พิมพ์ง่ายขึ้น */
-}
-.member-val {
-  padding-top: 6px;
-}
+    .brand-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin: 0;
+      color: var(--primary-deep);
+    }
+
+    .brand-sub {
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+
+    /* Card & Inputs */
+    .main-card {
+      background: var(--card-white);
+      border-radius: var(--radius-xl);
+      padding: 30px 25px;
+      box-shadow: var(--shadow-cute);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-label {
+      display: block;
+      margin-bottom: 8px;
+      margin-left: 15px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-sub);
+    }
+
+    .custom-input {
+      width: 100%;
+      background: #fff8f9;
+      border: 2px solid #ffe5ec;
+      padding: 15px 20px;
+      border-radius: 25px; /* โค้งมนให้เข้ากับ theme */
+      font-size: 1rem;
+      outline: none;
+      transition: 0.3s;
+      color: var(--text-main);
+      text-align: center;
+    }
+
+    .custom-input:focus {
+      border-color: var(--primary-soft);
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(255, 133, 161, 0.1);
+    }
+
+    /* Buttons */
+    .btn-main {
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary-soft) 0%, var(--primary) 100%);
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: 25px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(255, 77, 109, 0.2);
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+
+    .btn-main:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 25px rgba(255, 77, 109, 0.3);
+    }
+
+    .btn-main:active {
+      transform: scale(0.98);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 2px solid #ffe5ec;
+      color: var(--text-sub);
+      width: 100%;
+      padding: 12px;
+      border-radius: 20px;
+      font-weight: 600;
+      margin-top: 15px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-ghost:hover {
+      background: #fff8f9;
+      color: var(--primary);
+    }
+
+    /* Status Pill */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      background: #e6fffa;
+      color: #2c7a7b;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-top: 15px;
+      border: 1px solid #b2f5ea;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #38b2ac;
+      border-radius: 50%;
+      margin-right: 8px;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); opacity: 0.7; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.7; }
+    }
+
+    .footer-info {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.8rem;
+      color: var(--text-sub);
+    }
+
+    /* Utility */
+    .mt-4 { margin-top: 1.5rem; }
+    .text-center { text-align: center; }
+
+  </style>
+</head>
+<body>
+
+  <div class="bubble" style="top: -50px; left: -50px;"></div>
+  <div class="bubble" style="bottom: -50px; right: -50px; background: #ffccd5;"></div>
+
+  <div class="app-container">
+    <header class="header-card">
+      <div class="logo-wrapper">
+        <img src="https://img2.imgbiz.com/imgbiz/IMG_0923.jpeg" alt="426 SHOP">
+      </div>
+      <h1 class="brand-title">426 SHOP</h1>
+      <p class="brand-sub">Member & Claim Center</p>
+      
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        เปิดรับเคลมหน้าเว็บ
+      </div>
+    </header>
+
+    <main class="main-card">
+      <div class="text-center" style="margin-bottom: 25px;">
+        <h2 style="font-size: 1.2rem; margin: 0;">เข้าสู่ระบบสมาชิก</h2>
+        <p style="font-size: 0.9rem; color: var(--text-sub); margin-top: 5px;">จัดการเรื่องเคลมและคิวของคุณได้ที่นี่</p>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label">อีเมลของคุณ</label>
+        <input type="email" class="custom-input" placeholder="example@mail.com">
+      </div>
+
+      <div class="input-group">
+        <label class="input-label">รหัสผ่าน</label>
+        <input type="password" class="custom-input" placeholder="••••••••">
+      </div>
+
+      <button class="btn-main">เข้าสู่ระบบ</button>
+      
+      <div class="text-center mt-4">
+        <span style="font-size: 0.9rem; color: var(--text-sub);">ยังไม่มีบัญชีใช่ไหม?</span>
+        <button class="btn-ghost">สมัครสมาชิกใหม่</button>
+      </div>
+    </main>
+
+    <footer class="footer-info">
+      <p>426 SHOP · EST 2024</p>
+      <p style="opacity: 0.7;">Support Line: @467dlpti</p>
+    </footer>
+  </div>
+
+</body>
+</html>
